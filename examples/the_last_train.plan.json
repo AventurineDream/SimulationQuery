@@ -21,7 +21,7 @@
       "name": "MARA",
       "character_brief": "Late 40s, ex-paramedic, guarded, speaks in short clipped lines. Believes preparation beats hope.",
       "voice_notes": "Terse. Rarely asks questions. Deflects with dry observations.",
-      "casting": { "model_hint": "qwen2.5:1.5b", "size_class": "small", "tags": ["fast"] },
+      "casting": { "backend": "mac", "model": "qwen2.5:3b", "size_class": "small" },
       "params": { "temperature": 0.8, "top_p": 0.9, "max_tokens": 200 }
     },
     {

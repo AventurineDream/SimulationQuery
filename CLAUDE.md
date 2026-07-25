@@ -104,8 +104,12 @@ test engine changes without any models.
 
 ## Open items / things not yet decided
 
-- **Actor models are not chosen.** User expects **1–2B** models to work; nothing has
-  been tested against real hardware yet. First real-hardware run is still pending.
+- **Recommended actor models are chosen and wired into `examples/backends.yaml`,
+  but untested on real hardware.** Mac mini (16GB, workhorse): `qwen3:4b`,
+  `qwen2.5:3b`, `gemma2:2b`, `llama3.2:3b`. Laptop (8GB, CPU-only): `llama3.2:1b`,
+  `qwen2.5:1.5b`. See `examples/safehouse.plan.json` for a 6-actor cast split across
+  both machines. Turns are sequential, so 6 characters can reuse ~5 model loads.
+  First real-hardware run is still pending.
 - **Not yet run against live LM Studio/Ollama** — only `--dry-run` has been exercised
   here. Fill in real hostnames in `examples/backends.yaml` and verify streaming +
   casting-hint resolution against actual `/v1/models` output.
