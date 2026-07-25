@@ -1,0 +1,30 @@
+# Maps logical backend handles -> real endpoints on your two machines.
+# Plans reference these handles (or casting hints), never raw URLs, so plans
+# stay portable. Fill in your actual hostnames/IPs.
+#
+# Both LM Studio (:1234) and Ollama (:11434) expose an OpenAI-compatible /v1.
+# The optional `models:` list lets casting hints resolve without a live probe;
+# `improv backends examples/backends.yaml` fills these in for real.
+
+backends:
+  studio-a:
+    base_url: "http://machine-a:1234/v1"
+    kind: lmstudio
+    api_key: "lm-studio"
+    models: []
+
+  ollama-a:
+    base_url: "http://machine-a:11434/v1"
+    kind: ollama
+    models:
+      - "qwen2.5:1.5b"
+      - "llama3.2:1b"
+
+  ollama-b:
+    base_url: "http://machine-b:11434/v1"
+    kind: ollama
+    models:
+      - "llama3.2:1b"
+      - "gemma2:2b"
+
+default_backend: ollama-a

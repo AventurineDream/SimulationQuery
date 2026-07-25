@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "title": "The Last Train",
+  "logline": "Two strangers share a train car as the world ends outside.",
+  "scene": {
+    "setting": "A dim, swaying night train between cities. Rain streaks the windows.",
+    "premise": "News just broke that this is the last train out. Neither knows if it leads anywhere safe.",
+    "tone": "tense, melancholic, darkly funny",
+    "genre": "dramedy",
+    "opening_beat": "MARA is already seated when JONAS stumbles in, out of breath, and drops into the opposite seat."
+  },
+  "constraints": {
+    "content": ["no graphic violence", "keep it PG-13"],
+    "max_turns": 8,
+    "turn_length": "1-4 sentences, plus an optional [stage direction]",
+    "objective": "Reveal why each of them really got on this train.",
+    "end_condition": "The train arrives, or one of them decides to get off."
+  },
+  "cast": [
+    {
+      "name": "MARA",
+      "character_brief": "Late 40s, ex-paramedic, guarded, speaks in short clipped lines. Believes preparation beats hope.",
+      "voice_notes": "Terse. Rarely asks questions. Deflects with dry observations.",
+      "casting": { "model_hint": "qwen2.5:1.5b", "size_class": "small", "tags": ["fast"] },
+      "params": { "temperature": 0.8, "top_p": 0.9, "max_tokens": 200 }
+    },
+    {
+      "name": "JONAS",
+      "character_brief": "Mid-20s, over-caffeinated grad student, talks to fill silence, secretly terrified.",
+      "voice_notes": "Rambles. Nervous humor. Overshares.",
+      "casting": { "model_hint": "llama3.2:1b", "size_class": "small", "tags": [] },
+      "params": { "temperature": 1.0, "top_p": 0.95, "max_tokens": 200 }
+    }
+  ],
+  "direction": {
+    "turn_strategy": "round_robin",
+    "first_speaker": "JONAS",
+    "seed": 42
+  },
+  "meta": {
+    "created_by": "hand-written example",
+    "created_at": "2026-07-25T00:00:00Z"
+  }
+}
