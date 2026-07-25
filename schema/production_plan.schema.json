@@ -1,0 +1,338 @@
+{
+  "$defs": {
+    "Actor": {
+      "description": "A cast member: a character plus the model that plays them.",
+      "properties": {
+        "name": {
+          "description": "Character name; used as the script label.",
+          "title": "Name",
+          "type": "string"
+        },
+        "character_brief": {
+          "description": "Who they are: background, wants, attitude, manner.",
+          "title": "Character Brief",
+          "type": "string"
+        },
+        "voice_notes": {
+          "default": "",
+          "description": "How they talk: rhythm, tics, vocabulary.",
+          "title": "Voice Notes",
+          "type": "string"
+        },
+        "casting": {
+          "$ref": "#/$defs/Casting"
+        },
+        "params": {
+          "$ref": "#/$defs/SamplingParams"
+        }
+      },
+      "required": [
+        "name",
+        "character_brief"
+      ],
+      "title": "Actor",
+      "type": "object"
+    },
+    "Casting": {
+      "description": "How a character binds to an actual model.\n\nSupports BOTH styles:\n  * concrete  -> set `backend` (a handle in backends.yaml) and `model`.\n  * portable  -> leave those empty and give hints; the app resolves at import.\nConcrete wins when present and resolvable; otherwise hints are used.",
+      "properties": {
+        "backend": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Concrete backend handle from backends.yaml (optional).",
+          "title": "Backend"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Concrete model id on that backend (optional).",
+          "title": "Model"
+        },
+        "model_hint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Suggested model id if concrete binding is absent.",
+          "title": "Model Hint"
+        },
+        "size_class": {
+          "anyOf": [
+            {
+              "enum": [
+                "tiny",
+                "small",
+                "medium",
+                "large"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Rough size preference used to pick a model.",
+          "title": "Size Class"
+        },
+        "tags": {
+          "description": "Free-form casting tags, e.g. ['fast'].",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        }
+      },
+      "title": "Casting",
+      "type": "object"
+    },
+    "Constraints": {
+      "description": "Guardrails and shape for the performance.",
+      "properties": {
+        "content": {
+          "description": "Content rules, e.g. 'keep it PG-13'.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Content",
+          "type": "array"
+        },
+        "max_turns": {
+          "default": 20,
+          "description": "Hard cap on spoken turns.",
+          "maximum": 500,
+          "minimum": 1,
+          "title": "Max Turns",
+          "type": "integer"
+        },
+        "turn_length": {
+          "default": "1-4 sentences, plus an optional [stage direction]",
+          "description": "Guidance given to each actor about how long a turn should be.",
+          "title": "Turn Length",
+          "type": "string"
+        },
+        "objective": {
+          "default": "",
+          "description": "Dramatic goal to steer toward (optional).",
+          "title": "Objective",
+          "type": "string"
+        },
+        "end_condition": {
+          "default": "",
+          "description": "Human-readable note on how the scene should resolve (advisory).",
+          "title": "End Condition",
+          "type": "string"
+        }
+      },
+      "title": "Constraints",
+      "type": "object"
+    },
+    "Direction": {
+      "description": "How turns are scheduled.",
+      "properties": {
+        "turn_strategy": {
+          "default": "round_robin",
+          "enum": [
+            "round_robin",
+            "random"
+          ],
+          "title": "Turn Strategy",
+          "type": "string"
+        },
+        "first_speaker": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Name of the actor who opens; defaults to first in cast.",
+          "title": "First Speaker"
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "RNG seed for reproducible runs.",
+          "title": "Seed"
+        }
+      },
+      "title": "Direction",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": true,
+      "description": "Provenance. Extra keys allowed.",
+      "properties": {
+        "created_by": {
+          "default": "",
+          "title": "Created By",
+          "type": "string"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Created At"
+        }
+      },
+      "title": "Meta",
+      "type": "object"
+    },
+    "SamplingParams": {
+      "additionalProperties": true,
+      "description": "Per-actor generation settings. Extra keys pass through to the backend.",
+      "properties": {
+        "temperature": {
+          "default": 0.9,
+          "maximum": 2.0,
+          "minimum": 0.0,
+          "title": "Temperature",
+          "type": "number"
+        },
+        "top_p": {
+          "default": 0.95,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Top P",
+          "type": "number"
+        },
+        "max_tokens": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": 300,
+          "title": "Max Tokens"
+        }
+      },
+      "title": "SamplingParams",
+      "type": "object"
+    },
+    "Scene": {
+      "description": "Where we are and how we got here.",
+      "properties": {
+        "setting": {
+          "description": "Physical/temporal setting of the scene.",
+          "title": "Setting",
+          "type": "string"
+        },
+        "premise": {
+          "description": "The situation the characters are in.",
+          "title": "Premise",
+          "type": "string"
+        },
+        "tone": {
+          "default": "",
+          "description": "Emotional register, e.g. 'tense, darkly funny'.",
+          "title": "Tone",
+          "type": "string"
+        },
+        "genre": {
+          "default": "",
+          "description": "e.g. 'dramedy', 'noir', 'sci-fi'.",
+          "title": "Genre",
+          "type": "string"
+        },
+        "opening_beat": {
+          "description": "The first thing that happens; seeds the transcript as a stage direction.",
+          "title": "Opening Beat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "setting",
+        "premise",
+        "opening_beat"
+      ],
+      "title": "Scene",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Everything the performance engine needs to run a scene.",
+  "properties": {
+    "schema_version": {
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "logline": {
+      "default": "",
+      "title": "Logline",
+      "type": "string"
+    },
+    "scene": {
+      "$ref": "#/$defs/Scene"
+    },
+    "constraints": {
+      "$ref": "#/$defs/Constraints"
+    },
+    "cast": {
+      "items": {
+        "$ref": "#/$defs/Actor"
+      },
+      "minItems": 1,
+      "title": "Cast",
+      "type": "array"
+    },
+    "direction": {
+      "$ref": "#/$defs/Direction"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    }
+  },
+  "required": [
+    "title",
+    "scene",
+    "cast"
+  ],
+  "title": "ProductionPlan",
+  "type": "object"
+}
