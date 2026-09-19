@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1770" viewBox="0 0 390 1770">
+  <rect width="390" height="1770" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 8px; font-weight: 750; letter-spacing: 1.2px; fill: #aeb8b2; }
+    .title { font-size: 25px; font-weight: 700; letter-spacing: -0.7px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 11px; }
+    .small { font-size: 9px; fill: #6c6b63; }
+    .tiny { font-size: 8px; fill: #6c6b63; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1; }
+    .danger { fill: #f0dcd8; stroke: #aa6157; stroke-width: 1; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .infoText { fill: #354f63; }
+    .dangerText { fill: #6a302b; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="84" fill="#26302d"/>
+  <circle cx="27" cy="25" r="13" fill="#c56f42"/>
+  <text x="20" y="29" class="h3 onDark">SQ</text>
+  <text x="49" y="23" class="h3 onDark">Simulation Query</text>
+  <text x="49" y="40" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="270" y="20" class="eyebrowDark">DIAGNOSTICS</text>
+  <text x="270" y="40" class="h3 onDark">S02 · Call 16</text>
+  <circle cx="273" cy="58" r="3.5" fill="#cf7f73"/>
+  <text x="282" y="61" class="tiny onDark">READ-ONLY</text>
+
+  <text x="16" y="111" class="eyebrow">DIAGNOSTICS / MODEL CALL</text>
+  <text x="16" y="143" class="title">Explain one call.</text>
+  <text x="16" y="166" class="body">Read-only evidence. Nothing here reruns or accepts.</text>
+  <rect x="16" y="182" width="358" height="96" rx="14" class="warm"/>
+  <text x="32" y="210" class="eyebrow warmText">PRIVATE OWNER MODE</text>
+  <text x="32" y="238" class="body warmText">Identity and raw artifacts require deliberate disclosure.</text>
+  <text x="32" y="260" class="small warmText">Raw wellness text is excluded.</text>
+
+  <rect x="16" y="294" width="358" height="126" rx="14" class="soft"/>
+  <text x="32" y="322" class="eyebrow">FILTERS</text>
+  <rect x="32" y="338" width="150" height="30" rx="8" class="surface"/>
+  <text x="47" y="357" class="small">Day 1 · Afternoon</text>
+  <rect x="194" y="338" width="164" height="30" rx="8" class="surface"/>
+  <text x="209" y="357" class="small">Run 02 · Round 4</text>
+  <rect x="32" y="378" width="150" height="30" rx="8" class="surface"/>
+  <text x="47" y="397" class="small">Purpose · director</text>
+  <rect x="194" y="378" width="164" height="30" rx="8" class="danger"/>
+  <text x="209" y="397" class="small dangerText">Status · schema failure</text>
+
+  <text x="16" y="452" class="eyebrow">SELECTED CALL · 16</text>
+  <text x="16" y="482" class="h2">Completed stream / schema failure</text>
+  <rect x="16" y="498" width="358" height="142" rx="15" class="surface"/>
+  <text x="32" y="526" class="eyebrow">CALL IDENTITY</text>
+  <text x="32" y="555" class="body">Director · attempt 2 · NATIVE_SCHEMA</text>
+  <text x="32" y="581" class="body">director-candidate-12b-a · manifest m-07</text>
+  <text x="32" y="607" class="small">Warm · 42.8 s · finish stop · 1,462 tokens</text>
+  <text x="32" y="628" class="tiny">No transport error · recovery required</text>
+
+  <text x="16" y="675" class="eyebrow">RAW-TO-RENDERED SEQUENCE</text>
+  <rect x="16" y="692" width="358" height="72" rx="12" class="good"/>
+  <text x="32" y="719" class="h3 goodText">1 · Raw output · available</text>
+  <text x="32" y="743" class="small goodText">Owner-only excerpt remains collapsed.</text>
+  <rect x="271" y="709" width="87" height="34" rx="9" class="surface"/>
+  <text x="292" y="730" class="tiny">Reveal raw</text>
+  <rect x="16" y="778" width="358" height="66" rx="12" class="good"/>
+  <text x="32" y="805" class="h3 goodText">2 · Parsed output · available</text>
+  <text x="32" y="829" class="small goodText">Object created; no creative rewrite.</text>
+  <rect x="16" y="858" width="358" height="116" rx="12" class="danger"/>
+  <text x="32" y="885" class="h3 dangerText">3 · Validation · failed</text>
+  <text x="32" y="915" class="body dangerText">state_changes expected an array.</text>
+  <text x="32" y="941" class="body dangerText">Received a string.</text>
+  <text x="32" y="963" class="tiny dangerText">director-beat-v4 · property type</text>
+  <rect x="16" y="988" width="358" height="66" rx="12" class="soft"/>
+  <text x="32" y="1015" class="h3">4 · Accepted output · absent</text>
+  <text x="32" y="1039" class="small">Canon and causal Review did not advance.</text>
+  <rect x="16" y="1068" width="358" height="66" rx="12" class="soft"/>
+  <text x="32" y="1095" class="h3">5 · Rendered output · absent</text>
+  <text x="32" y="1119" class="small">Nothing from call 16 appears as story text.</text>
+
+  <rect x="16" y="1150" width="358" height="108" rx="14" class="warm"/>
+  <text x="32" y="1178" class="eyebrow warmText">CORRECTION ATTEMPT 1</text>
+  <text x="32" y="1208" class="body warmText">Returned the same invalid property type.</text>
+  <text x="32" y="1236" class="small warmText">Original and correction artifacts remain linked.</text>
+
+  <rect x="16" y="1274" width="358" height="132" rx="14" class="surface"/>
+  <text x="32" y="1302" class="eyebrow">VERSION PROVENANCE</text>
+  <text x="32" y="1332" class="body">Prompt · scene-director-v6</text>
+  <text x="32" y="1358" class="body">Context · run2-r3-v15</text>
+  <text x="32" y="1384" class="body">Schema · director-beat-v4</text>
+  <text x="215" y="1384" class="tiny">role sheet deliberately closed</text>
+
+  <rect x="16" y="1422" width="358" height="104" rx="14" class="good"/>
+  <text x="32" y="1450" class="eyebrow goodText">RETURN TO REVIEW</text>
+  <text x="32" y="1480" class="body goodText">Afternoon · after accepted #15</text>
+  <text x="32" y="1508" class="small goodText">Return to the exact causal position →</text>
+
+  <rect x="16" y="1542" width="358" height="96" rx="14" class="soft"/>
+  <text x="32" y="1570" class="eyebrow">DEFERRED FROM THIS SLICE</text>
+  <text x="32" y="1600" class="body">Reruns · benchmarks · bulk comparison</text>
+  <text x="32" y="1624" class="small">Diagnostics explains evidence; it does not operate the story.</text>
+
+  <rect x="16" y="1634" width="358" height="40" rx="10" class="info"/>
+  <text x="32" y="1658" class="tiny infoText">Raw wellness text remains outside the Diagnostics payload.</text>
+
+  <rect x="0" y="1682" width="390" height="88" fill="#26302d"/>
+  <circle cx="43" cy="1718" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="31" y="1742" class="tiny mutedDark">Home</text>
+  <circle cx="121" cy="1718" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="104" y="1742" class="tiny mutedDark">Prepare</text>
+  <circle cx="199" cy="1718" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="190" y="1742" class="tiny mutedDark">Live</text>
+  <circle cx="277" cy="1718" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="262" y="1742" class="tiny mutedDark">Review</text>
+  <rect x="320" y="1692" width="62" height="61" rx="12" fill="#3b4843"/>
+  <rect x="333" y="1698" width="36" height="3" rx="1.5" fill="#c56f42"/>
+  <circle cx="351" cy="1718" r="7" fill="none" stroke="#f4efe5" stroke-width="1.4"/>
+  <text x="340" y="1742" class="tiny onDark">More</text>
+</svg>

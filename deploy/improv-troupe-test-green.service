@@ -1,0 +1,16 @@
+[Unit]
+Description=Green the isolated S02 test season after its preflight
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=improv
+Group=improv
+WorkingDirectory=/opt/improv-troupe-test
+ExecStart=/opt/improv-troupe-test/.venv/bin/python /opt/improv-troupe-test/scripts/green_first_run.py --approved-opening /opt/improv-troupe-test/benchmarks/s02-test-approved-opening-2026-08-30.json --manifest /opt/improv-troupe-test/benchmarks/s02-test-model-manifest-2026-08-30.json --config /etc/improv-troupe-test/config.yaml --data-root /var/lib/improv-troupe-test --season S02
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/improv-troupe-test

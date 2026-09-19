@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1800" viewBox="0 0 390 1800">
+  <rect width="390" height="1800" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 8px; font-weight: 750; letter-spacing: 1.2px; fill: #aeb8b2; }
+    .title { font-size: 25px; font-weight: 700; letter-spacing: -0.7px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 11px; }
+    .small { font-size: 9px; fill: #6c6b63; }
+    .tiny { font-size: 8px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1; }
+    .danger { fill: #f0dcd8; stroke: #aa6157; stroke-width: 1; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .infoText { fill: #354f63; }
+    .dangerText { fill: #6a302b; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="84" fill="#26302d"/>
+  <circle cx="27" cy="25" r="13" fill="#c56f42"/>
+  <text x="20" y="29" class="h3 onDark">SQ</text>
+  <text x="49" y="23" class="h3 onDark">Simulation Query</text>
+  <text x="49" y="40" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="267" y="20" class="eyebrowDark">LIVE · DAY 1</text>
+  <text x="267" y="40" class="h3 onDark">Afternoon · Run 02</text>
+  <circle cx="270" cy="58" r="3.5" fill="#7fa487"/>
+  <text x="279" y="61" class="tiny onDark">RUNNING · FRESH</text>
+
+  <text x="16" y="111" class="eyebrow">LIVE / PERFORMANCE SUPERVISION</text>
+  <text x="16" y="143" class="title">Moving without you.</text>
+  <text x="16" y="166" class="body">Worker healthy · evidence checked 13:08:24</text>
+
+  <rect x="16" y="182" width="358" height="180" rx="15" class="surface"/>
+  <text x="32" y="210" class="eyebrow">CURRENT PERFORMANCE</text>
+  <text x="32" y="239" class="h2">Run 02 · Round 3 of 4</text>
+  <text x="32" y="268" class="body">Fiction time · 14:37 aboard the archive</text>
+  <text x="32" y="296" class="body">Scheduled 12:00 · actual 12:18:42</text>
+  <text x="32" y="324" class="body">Elapsed 00:49:42 · delay +00:18:42</text>
+  <text x="32" y="347" class="small">Accepted 10 of 16 · Mara call · attempt 1 · 18 s</text>
+  <rect x="266" y="203" width="90" height="28" rx="8" class="good"/>
+  <text x="280" y="221" class="tiny goodText">IN PROGRESS</text>
+
+  <rect x="16" y="378" width="358" height="166" rx="15" class="good"/>
+  <rect x="16" y="378" width="4" height="166" rx="2" fill="#c56f42"/>
+  <text x="32" y="406" class="eyebrow goodText">LAST ACCEPTED BEAT · TURN 10</text>
+  <text x="32" y="435" class="h2 goodText">Sable Reed</text>
+  <text x="32" y="464" class="serif body goodText">“The labels are not names,” Sable says.</text>
+  <text x="32" y="486" class="serif body goodText">“They are promises the rooms remember.”</text>
+  <text x="32" y="521" class="tiny goodText">Accepted private story only</text>
+  <rect x="239" y="493" width="117" height="34" rx="9" fill="#26302d"/>
+  <text x="260" y="514" class="small onDark">Open transcript</text>
+
+  <rect x="16" y="560" width="358" height="574" rx="15" class="surface"/>
+  <text x="32" y="590" class="h2">Stable transcript</text>
+  <text x="32" y="612" class="small">Opened at accepted turn 8 · position saved</text>
+  <rect x="32" y="629" width="326" height="86" rx="12" class="info"/>
+  <text x="48" y="658" class="h3 infoText">2 newer accepted turns are available</text>
+  <text x="48" y="681" class="small infoText">This reading surface has not moved.</text>
+  <rect x="219" y="684" width="123" height="24" rx="7" class="surface"/>
+  <text x="242" y="700" class="tiny">Load new beats</text>
+  <text x="32" y="753" class="eyebrow">ACCEPTED TURN 6 · DIRECTOR</text>
+  <text x="32" y="783" class="serif body">The archive lights dim around Chamber Nine.</text>
+  <text x="32" y="805" class="serif body">Its new label reads: WEATHER THAT LISTENS.</text>
+  <line x1="32" y1="828" x2="358" y2="828" class="rule"/>
+  <text x="32" y="863" class="eyebrow">ACCEPTED TURN 7 · OREN VALE</text>
+  <text x="32" y="893" class="serif body">Oren tastes copper in the vented air and</text>
+  <text x="32" y="915" class="serif body">lowers the heat beneath the archive kettles.</text>
+  <line x1="32" y1="938" x2="358" y2="938" class="rule"/>
+  <text x="32" y="973" class="eyebrow">ACCEPTED TURN 8 · TAVI NORTH</text>
+  <text x="32" y="1003" class="serif body">Tavi knots a service cable around the latch,</text>
+  <text x="32" y="1025" class="serif body">then listens for the storm to pull back.</text>
+  <line x1="32" y1="1048" x2="358" y2="1048" class="rule"/>
+  <text x="32" y="1080" class="small">Polling continues outside this pane.</text>
+  <text x="32" y="1103" class="small">Refresh stays creator-triggered and preserves place.</text>
+
+  <rect x="16" y="1150" width="358" height="142" rx="15" class="soft"/>
+  <text x="32" y="1179" class="eyebrow">WORKER AND QUEUE</text>
+  <text x="32" y="1210" class="body">Lease · Healthy</text>
+  <text x="220" y="1210" class="body">Heartbeat · 8 s ago</text>
+  <text x="32" y="1242" class="body">Downstream · 6 turns</text>
+  <text x="32" y="1272" class="small">Next run · Evening · 18:00 · browser may close safely</text>
+
+  <rect x="16" y="1308" width="358" height="188" rx="15" class="surface"/>
+  <text x="32" y="1337" class="h2">Valid controls</text>
+  <rect x="32" y="1354" width="326" height="58" rx="11" class="info"/>
+  <text x="48" y="1378" class="h3 infoText">Pause after current call</text>
+  <text x="48" y="1398" class="small infoText">Review impact before submitting.</text>
+  <rect x="32" y="1422" width="326" height="58" rx="11" class="surface"/>
+  <text x="48" y="1446" class="h3">Private end journey</text>
+  <text x="48" y="1466" class="small">Read-only snapshot first; never publishes.</text>
+
+  <rect x="16" y="1512" width="358" height="106" rx="15" class="soft"/>
+  <text x="32" y="1541" class="eyebrow">DAY COMPLETION</text>
+  <text x="32" y="1571" class="body">Morning diaries · 4 / 4</text>
+  <text x="32" y="1598" class="body">Day closure · blocked while run is active</text>
+
+  <rect x="16" y="1634" width="358" height="54" rx="11" class="good"/>
+  <text x="32" y="1658" class="h3 goodText">No operator attention required</text>
+  <text x="32" y="1677" class="small goodText">Every submitted command returns a durable receipt.</text>
+
+  <rect x="0" y="1712" width="390" height="88" fill="#26302d"/>
+  <circle cx="43" cy="1748" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="31" y="1772" class="tiny mutedDark">Home</text>
+  <circle cx="121" cy="1748" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="104" y="1772" class="tiny mutedDark">Prepare</text>
+  <rect x="164" y="1722" width="70" height="61" rx="12" fill="#3b4843"/>
+  <rect x="181" y="1728" width="36" height="3" rx="1.5" fill="#c56f42"/>
+  <circle cx="199" cy="1748" r="7" fill="none" stroke="#f4efe5" stroke-width="1.4"/>
+  <text x="190" y="1772" class="tiny onDark">Live</text>
+  <circle cx="277" cy="1748" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="262" y="1772" class="tiny mutedDark">Review</text>
+  <circle cx="355" cy="1748" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="344" y="1772" class="tiny mutedDark">More</text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1120" viewBox="0 0 1440 1120">
+  <rect width="1440" height="1120" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .nav { fill: #1f2421; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 2; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 2; }
+    .warn { fill: #f5ead7; stroke: #b4965a; stroke-width: 2; }
+    .stage { fill: #e8edf0; stroke: #aab5bb; stroke-width: 2; }
+    .actor { fill: #ffffff; stroke: #ccd1cd; stroke-width: 2; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: #5a645e; }
+    .title { font-size: 32px; font-weight: 700; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 15px; font-weight: 700; }
+    .body { font-size: 14px; }
+    .small { font-size: 12px; fill: #5f6862; }
+    .navtext { font-size: 15px; fill: #dce2dd; }
+    .navactive { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    .inverse { fill: #ffffff; }
+    .inverse-subtle { fill: #9fb0a6; }
+  </style>
+  <rect x="0" y="0" width="232" height="1120" class="nav"/>
+  <text x="28" y="45" class="eyebrow inverse-subtle">AI IMPROV TROUPE</text><text x="28" y="77" class="h2 inverse">Operator</text>
+  <text x="32" y="147" class="navtext">Home</text><text x="32" y="201" class="navtext">Prepare</text><text x="32" y="255" class="navtext">Live</text>
+  <rect x="16" y="278" width="200" height="46" rx="10" fill="#39423d"/><text x="32" y="307" class="navactive">Review</text>
+  <text x="32" y="363" class="navtext">Diagnostics</text><text x="32" y="417" class="navtext">Seasons</text>
+  <rect x="232" y="0" width="1208" height="74" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="260" y="18" width="114" height="38" rx="19" fill="#dfeee6" stroke="#6f9c82"/><text x="283" y="42" class="eyebrow">SANDBOX</text>
+  <text x="402" y="34" class="small">Season</text><text x="402" y="54" class="h3">S02 — The Weather Library ▾</text>
+  <text x="1060" y="34" class="small">Reading snapshot</text><text x="1060" y="54" class="body">Stable · 1 new beat available</text>
+
+  <text x="272" y="120" class="eyebrow">REVIEW / DAY</text><text x="272" y="164" class="title">Day 1 · The labels changed overnight</text>
+  <text x="272" y="194" class="body">Original date Aug 25 · day open · diary cutoff not started</text>
+  <rect x="1164" y="126" width="224" height="48" rx="12" class="soft"/><text x="1192" y="156" class="body">New material available</text>
+
+  <rect x="272" y="222" width="1116" height="106" rx="16" class="surface"/>
+  <rect x="288" y="238" width="346" height="74" rx="12" class="soft"/><text x="306" y="265" class="eyebrow">MORNING · RUN 1</text><text x="306" y="291" class="body">Completed · 16 turns · normal</text>
+  <rect x="648" y="238" width="346" height="74" rx="12" class="warn"/><text x="666" y="265" class="eyebrow">AFTERNOON · RUN 2</text><text x="666" y="291" class="body">Recovery required · 15 turns</text>
+  <rect x="1008" y="238" width="364" height="74" rx="12" class="surface"/><text x="1026" y="265" class="eyebrow">EVENING · RUN 3</text><text x="1026" y="291" class="body">Queued · scheduled 18:00</text>
+
+  <rect x="272" y="352" width="760" height="708" rx="18" class="surface"/>
+  <text x="300" y="390" class="h2">Afternoon transcript</text><text x="808" y="390" class="small">Causal accepted order · snapshot 10:42</text>
+  <rect x="300" y="414" width="704" height="72" rx="12" class="warn"/>
+  <text x="318" y="441" class="eyebrow">COMPLETION EVIDENCE</text><text x="318" y="465" class="body">Recovery required · schema_failure · 15 accepted turns · +00:18:42 delay</text>
+
+  <rect x="300" y="510" width="704" height="92" rx="12" class="stage"/>
+  <text x="318" y="537" class="eyebrow">ROUND 3 · DIRECTOR BEAT · ACCEPTED #11</text>
+  <text x="318" y="566" class="body">The archive lights dim as the storm relabels Chamber Seven “DO NOT REMEMBER.”</text>
+  <text x="318" y="586" class="small">State change: access corridor sealed · mystery clock +1</text>
+
+  <rect x="330" y="622" width="674" height="80" rx="12" class="actor"/>
+  <text x="348" y="649" class="eyebrow">MARA VENN · ACCEPTED #12</text><text x="348" y="678" class="body">Mara stops the alarm and listens for the chamber’s new resonance before moving.</text>
+  <rect x="330" y="718" width="674" height="80" rx="12" class="actor"/>
+  <text x="348" y="745" class="eyebrow">TAVI NORTH · ACCEPTED #13 · AFTER CORRECTION</text><text x="348" y="774" class="body">Tavi anchors a repair line and enters only far enough to test the altered latch.</text>
+  <rect x="330" y="814" width="674" height="80" rx="12" class="actor"/>
+  <text x="348" y="841" class="eyebrow">OREN VALE · ACCEPTED #14</text><text x="348" y="870" class="body">Oren samples the air and recognizes rain that has never fallen in this orbit.</text>
+  <rect x="330" y="910" width="674" height="80" rx="12" class="actor"/>
+  <text x="348" y="937" class="eyebrow">SABLE REED · ACCEPTED #15</text><text x="348" y="966" class="body">Sable records the forbidden label without saying it aloud to the others.</text>
+  <text x="300" y="1028" class="small">The failed next director output is not rendered here. Open its Diagnostics record.</text>
+
+  <rect x="1056" y="352" width="332" height="292" rx="18" class="surface"/>
+  <text x="1084" y="390" class="h2">Run state</text>
+  <text x="1084" y="429" class="eyebrow">FICTION CLOCK</text><text x="1084" y="454" class="body">Day 1 · Afternoon · six hours since morning</text>
+  <text x="1084" y="493" class="eyebrow">BEGINNING</text><text x="1084" y="518" class="body">Chamber Seven stable; labels trusted.</text>
+  <text x="1084" y="557" class="eyebrow">ACCEPTED CHANGES</text><text x="1084" y="582" class="body">Corridor sealed · label altered · rain sampled.</text>
+  <text x="1084" y="621" class="eyebrow">UNRESOLVED</text><text x="1084" y="646" class="body">Who or what is editing the archive?</text>
+
+  <rect x="1056" y="668" width="332" height="188" rx="18" class="surface"/>
+  <text x="1084" y="706" class="h2">Evidence links</text>
+  <text x="1084" y="746" class="body">15 accepted turns</text><text x="1084" y="778" class="body">1 correction</text>
+  <text x="1084" y="810" class="body">1 schema failure</text><text x="1084" y="842" class="small">Open selected call in Diagnostics →</text>
+
+  <rect x="1056" y="880" width="332" height="180" rx="18" class="surface"/>
+  <text x="1084" y="918" class="h2">Private diaries</text>
+  <text x="1084" y="958" class="body">1 accepted · 1 late</text><text x="1084" y="990" class="body">1 held · 1 missing</text>
+  <text x="1084" y="1026" class="small">Reading does not clear or publish.</text>
+</svg>

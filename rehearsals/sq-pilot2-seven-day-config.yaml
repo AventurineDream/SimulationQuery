@@ -1,0 +1,17 @@
+# Seven-day launch amendment; isolated private server root.
+service:
+  data_root: /home/aven/sq-pilot2-20260906/data
+  poll_interval_seconds: 5
+  recovery_wait_seconds: 1800
+  auto_retry_timeouts: false
+  timeout_retry_max_attempts: 1
+  worker_id: sq-pilot2-seven-day
+backends:
+  local:
+    base_url: http://10.0.0.103:11434
+    kind: ollama
+    timeout_seconds: 1800
+    models:
+      - gpt-oss:20b
+      - qwen3:30b-instruct
+default_backend: local

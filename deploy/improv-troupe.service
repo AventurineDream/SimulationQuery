@@ -1,0 +1,28 @@
+[Unit]
+Description=AI Improv Troupe durable workflow service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=improv
+Group=improv
+WorkingDirectory=/opt/improv-troupe
+Environment=PYTHONUNBUFFERED=1
+ExecStartPre=/opt/improv-troupe/.venv/bin/improv migrate --config /etc/improv-troupe/config.yaml
+ExecStart=/opt/improv-troupe/.venv/bin/improv serve --config /etc/improv-troupe/config.yaml
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+
+# The service owns only its persistent state root.  Keep the dashboard and
+# model endpoints on the private network; do not expose this unit directly to
+# the public internet.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/improv-troupe
+
+[Install]
+WantedBy=multi-user.target

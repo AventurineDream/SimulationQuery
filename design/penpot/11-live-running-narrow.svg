@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1800" viewBox="0 0 390 1800">
+  <rect width="390" height="1800" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 1.5; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 1.5; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 1.5; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 1.5; }
+    .active { fill: #e8edf0; stroke: #8fa2ad; stroke-width: 1.5; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 1.5; }
+    .eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 1.1px; fill: #5a645e; }
+    .title { font-size: 23px; font-weight: 700; }
+    .h2 { font-size: 16px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 12px; }
+    .script { font-family: Georgia, serif; font-size: 13px; }
+    .small { font-size: 10px; fill: #5f6862; }
+    .inverse { fill: #ffffff; }
+    .inverse-muted { fill: #c7cec9; }
+    .line { stroke: #c8cec9; stroke-width: 1.5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="64" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="14" y="14" width="90" height="36" rx="18" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="30" y="36" class="eyebrow">SANDBOX</text>
+  <text x="120" y="28" class="small">S02 — Weather Library</text><text x="120" y="46" class="body">Day 1 · Afternoon · RUNNING</text>
+  <rect x="338" y="16" width="36" height="32" rx="9" class="approved"/><text x="349" y="36" class="body">●</text>
+
+  <text x="18" y="96" class="eyebrow">LIVE / PERFORMANCE SUPERVISION</text>
+  <text x="18" y="128" class="title">Moving without you.</text>
+  <text x="18" y="151" class="body">Worker healthy · evidence checked 13:08:24</text>
+
+  <rect x="14" y="174" width="362" height="192" rx="14" class="surface"/>
+  <text x="32" y="202" class="eyebrow">CURRENT PERFORMANCE</text>
+  <text x="32" y="230" class="h2">Run 2 · Round 3 of 4</text>
+  <text x="32" y="256" class="body">Fiction time · 14:37 aboard the archive</text>
+  <text x="32" y="280" class="body">Scheduled 12:00 · actual 12:18:42</text>
+  <text x="32" y="304" class="body">Elapsed 00:49:42 · delay +00:18:42</text>
+  <text x="32" y="330" class="small">Accepted 10 of 16 · Mara call · attempt 1 · 18 s</text>
+  <text x="32" y="350" class="small">No operator action required</text>
+
+  <rect x="14" y="382" width="362" height="170" rx="14" class="approved"/>
+  <text x="32" y="410" class="eyebrow">LAST ACCEPTED BEAT · TURN 10</text>
+  <text x="32" y="438" class="h2">Sable Reed</text>
+  <text x="32" y="468" class="script">“The labels are not names,” Sable says.</text>
+  <text x="32" y="490" class="script">“They are promises the rooms remember.”</text>
+  <text x="32" y="520" class="small">Accepted private story only</text>
+  <rect x="236" y="502" width="122" height="34" rx="8" fill="#1f2421"/><text x="253" y="524" class="small inverse">Open transcript</text>
+
+  <rect x="14" y="568" width="362" height="574" rx="14" class="surface"/>
+  <text x="32" y="598" class="h2">Stable transcript</text>
+  <text x="32" y="620" class="small">Opened at accepted turn 8</text>
+  <rect x="32" y="640" width="326" height="92" rx="12" class="attention"/>
+  <text x="48" y="668" class="h3">New material available · 2 turns</text>
+  <text x="48" y="692" class="small">This reading surface has not moved.</text>
+  <rect x="210" y="702" width="130" height="24" rx="7" class="soft"/><text x="236" y="718" class="small">Load new beats</text>
+  <text x="32" y="770" class="eyebrow">ACCEPTED TURN 6 · DIRECTOR</text>
+  <text x="32" y="798" class="script">The archive lights dim around Chamber Nine.</text>
+  <text x="32" y="820" class="script">Its new label reads: WEATHER THAT LISTENS.</text>
+  <line x1="32" y1="844" x2="358" y2="844" class="line"/>
+  <text x="32" y="876" class="eyebrow">ACCEPTED TURN 7 · OREN VALE</text>
+  <text x="32" y="904" class="script">Oren tastes copper in the vented air and</text>
+  <text x="32" y="926" class="script">lowers the heat beneath the archive kettles.</text>
+  <line x1="32" y1="950" x2="358" y2="950" class="line"/>
+  <text x="32" y="982" class="eyebrow">ACCEPTED TURN 8 · TAVI NORTH</text>
+  <text x="32" y="1010" class="script">Tavi knots a service cable around the latch,</text>
+  <text x="32" y="1032" class="script">then listens for the storm to pull back.</text>
+  <text x="32" y="1072" class="small">Polling continues outside this pane.</text>
+  <text x="32" y="1094" class="small">Refresh stays creator-triggered and preserves place.</text>
+
+  <rect x="14" y="1158" width="362" height="170" rx="14" class="surface"/>
+  <text x="32" y="1186" class="eyebrow">WORKER AND QUEUE</text>
+  <text x="32" y="1214" class="body">Lease · Healthy</text><text x="220" y="1214" class="body">Heartbeat · 8 s ago</text>
+  <text x="32" y="1242" class="body">Downstream · 6 turns</text>
+  <text x="32" y="1270" class="body">Next run · Evening · 18:00</text>
+  <text x="32" y="1298" class="small">Browser may close safely; the worker continues.</text>
+
+  <rect x="14" y="1344" width="362" height="214" rx="14" class="surface"/>
+  <text x="32" y="1372" class="h2">Valid controls</text>
+  <rect x="32" y="1392" width="326" height="58" rx="10" class="active"/>
+  <text x="48" y="1418" class="h3">Pause after current call</text>
+  <text x="48" y="1438" class="small">Review impact before submitting.</text>
+  <rect x="32" y="1464" width="326" height="58" rx="10" class="soft"/>
+  <text x="48" y="1490" class="h3">Private end journey</text>
+  <text x="48" y="1510" class="small">Read-only snapshot first; never publishes.</text>
+  <text x="32" y="1544" class="small">Submitted commands produce durable receipts.</text>
+
+  <rect x="14" y="1574" width="362" height="104" rx="14" class="soft"/>
+  <text x="32" y="1602" class="eyebrow">DAY COMPLETION</text>
+  <text x="32" y="1630" class="body">Morning diaries · 4 / 4</text>
+  <text x="32" y="1654" class="body">Day closure · blocked while run is active</text>
+
+  <rect x="0" y="1734" width="390" height="66" fill="#1f2421"/>
+  <text x="17" y="1766" class="small inverse-muted">Home</text><text x="75" y="1766" class="small inverse-muted">Prepare</text><text x="143" y="1766" class="small inverse">Live</text>
+  <text x="192" y="1766" class="small inverse-muted">Review</text><text x="252" y="1766" class="small inverse-muted">Diagnose</text><text x="326" y="1766" class="small inverse-muted">Seasons</text>
+</svg>

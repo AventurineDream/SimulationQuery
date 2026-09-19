@@ -1,0 +1,52 @@
+{
+  "orchestrator": {
+    "backend": "local",
+    "model": "gpt-oss:20b",
+    "params": {
+      "reasoning_effort": "low",
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "max_tokens": 384
+    }
+  },
+  "actors": {
+    "REPLACE_WITH_CHARACTER_ID_MINISTRAL_A": {
+      "backend": "local",
+      "model": "ministral-3:8b",
+      "params": {
+        "temperature": 0.7,
+        "top_p": 0.9,
+        "max_tokens": 640
+      }
+    },
+    "REPLACE_WITH_CHARACTER_ID_MINISTRAL_B": {
+      "backend": "local",
+      "model": "ministral-3:8b",
+      "params": {
+        "temperature": 0.7,
+        "top_p": 0.9,
+        "max_tokens": 640
+      }
+    },
+    "REPLACE_WITH_CHARACTER_ID_QWEN_ALIGNED": {
+      "backend": "local",
+      "model": "qwen3:8b",
+      "params": {
+        "reasoning_effort": "none",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "max_tokens": 640
+      }
+    },
+    "REPLACE_WITH_CHARACTER_ID_QWEN_UNCENSORED": {
+      "backend": "local",
+      "model": "richardyoung/qwen3-8b-abliterated:Q4_K_M",
+      "params": {
+        "reasoning_effort": "none",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "max_tokens": 640
+      }
+    }
+  }
+}

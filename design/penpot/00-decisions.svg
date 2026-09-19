@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+  <rect width="1200" height="820" fill="#f4f4f1"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #161916; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: #53605a; }
+    .title { font-size: 38px; font-weight: 700; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .body { font-size: 16px; }
+    .small { font-size: 13px; fill: #59615d; }
+    .card { fill: #ffffff; stroke: #c9ceca; stroke-width: 2; }
+    .approved { fill: #e9f3ed; stroke: #85aa93; stroke-width: 2; }
+    .open { fill: #f5efe1; stroke: #bda56d; stroke-width: 2; }
+  </style>
+  <text x="64" y="65" class="eyebrow">00 — DECISIONS / LOW-FIDELITY CHECKPOINT</text>
+  <text x="64" y="118" class="title">Operator dashboard design contract</text>
+  <text x="64" y="150" class="small">Functional decisions are approved. Layout and visual language remain collaborative.</text>
+
+  <rect x="64" y="190" width="520" height="544" rx="18" class="approved"/>
+  <text x="96" y="232" class="h2">Approved functional decisions</text>
+  <text x="96" y="274" class="body">1. Guided studio workflow</text>
+  <text x="116" y="299" class="small">Control-room density only in Live and Diagnostics.</text>
+  <text x="96" y="342" class="body">2. Six stable destinations</text>
+  <text x="116" y="367" class="small">Home · Prepare · Live · Review · Diagnostics · Seasons</text>
+  <text x="96" y="410" class="body">3. Stable live reading</text>
+  <text x="116" y="435" class="small">Last accepted beat, deliberate transcript, manual refresh.</text>
+  <text x="96" y="478" class="body">4. Revisable preparation checklist</text>
+  <text x="116" y="503" class="small">One focused step; downstream invalidation stays visible.</text>
+  <text x="96" y="546" class="body">5. Read-only call diagnostics</text>
+  <text x="116" y="571" class="small">Raw → parsed → validated → accepted → rendered.</text>
+  <text x="96" y="614" class="body">6. Operationally complete narrow layouts</text>
+  <text x="116" y="639" class="small">Presentation changes; safety capability does not.</text>
+  <text x="96" y="682" class="body">7. Synthetic Penpot fixture</text>
+  <text x="116" y="707" class="small">No private S01 creative or wellness material.</text>
+
+  <rect x="616" y="190" width="520" height="340" rx="18" class="open"/>
+  <text x="648" y="232" class="h2">Open visual questions</text>
+  <text x="648" y="276" class="body">• Navigation placement</text>
+  <text x="648" y="312" class="body">• Information density and whitespace</text>
+  <text x="648" y="348" class="body">• Reading typography</text>
+  <text x="648" y="384" class="body">• State and privacy color language</text>
+  <text x="648" y="420" class="body">• Transcript speaker treatment</text>
+  <text x="648" y="456" class="body">• Molten aesthetic: retain, evolve, or replace</text>
+  <text x="648" y="492" class="body">• Motion for newly accepted material</text>
+
+  <rect x="616" y="558" width="520" height="176" rx="18" class="card"/>
+  <text x="648" y="600" class="h2">Checkpoint rule</text>
+  <text x="648" y="638" class="body">Critique hierarchy and flow before polish.</text>
+  <text x="648" y="670" class="small">A Penpot frame does not approve a command, privacy change,</text>
+  <text x="648" y="693" class="small">publication, model selection, or implementation.</text>
+</svg>
+

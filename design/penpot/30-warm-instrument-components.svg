@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 11px; font-weight: 750; letter-spacing: 1.8px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 10px; font-weight: 750; letter-spacing: 1.6px; fill: #aeb8b2; }
+    .title { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 14px; font-weight: 700; }
+    .body { font-size: 13px; }
+    .small { font-size: 11px; fill: #6c6b63; }
+    .tiny { font-size: 10px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .card { fill: #f3efe6; stroke: #b7b0a2; stroke-width: 1.5; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1.2; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1.2; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1.2; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1.2; }
+    .danger { fill: #f0dcd8; stroke: #a95449; stroke-width: 1.2; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1.2; }
+    .disabled { fill: #e9e6de; stroke: #d2cdc2; stroke-width: 1.2; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .dangerText { fill: #6a302b; }
+    .infoText { fill: #354f63; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <text x="56" y="54" class="eyebrow">30 / WARM INSTRUMENT / COMPONENTS</text>
+  <text x="56" y="101" class="title">Reusable pieces carry the same safety rhythm</text>
+  <text x="56" y="130" class="body">Context → evidence → impact → action → durable result.</text>
+
+  <rect x="56" y="160" width="1328" height="186" rx="20" class="card"/>
+  <text x="80" y="194" class="eyebrow">SHELL &amp; CONTEXT</text>
+  <rect x="80" y="216" width="412" height="102" rx="14" fill="#26302d"/>
+  <circle cx="108" cy="244" r="13" fill="#c56f42"/>
+  <text x="100" y="249" class="small onDark">SQ</text>
+  <rect x="138" y="226" width="88" height="36" rx="9" fill="#3b4843"/>
+  <rect x="142" y="234" width="4" height="20" rx="2" fill="#c56f42"/>
+  <text x="158" y="249" class="small onDark">Home</text>
+  <text x="245" y="249" class="small mutedDark">Prepare</text>
+  <text x="315" y="249" class="small mutedDark">Live</text>
+  <text x="358" y="249" class="small mutedDark">Review</text>
+  <text x="98" y="291" class="tiny mutedDark">ACTIVE NAV: label + ember rule + surface change</text>
+
+  <rect x="512" y="216" width="488" height="102" rx="14" class="surface"/>
+  <text x="532" y="244" class="eyebrow">SELECTED CONTEXT</text>
+  <text x="532" y="274" class="h3">S02 · The Weather Library</text>
+  <rect x="751" y="231" width="145" height="26" rx="8" class="good"/>
+  <text x="765" y="248" class="tiny goodText">RUNNING · PRIVATE</text>
+  <circle cx="783" cy="283" r="5" fill="#6e8e73"/>
+  <text x="796" y="287" class="small">Worker healthy · queue 2</text>
+  <text x="532" y="303" class="tiny mono">snapshot v106 · checked 14:06:12</text>
+
+  <rect x="1020" y="216" width="340" height="102" rx="14" class="surface"/>
+  <text x="1040" y="244" class="eyebrow">FRESHNESS</text>
+  <rect x="1040" y="260" width="132" height="32" rx="9" class="good"/>
+  <text x="1055" y="280" class="tiny goodText">✓ DURABLE · FRESH</text>
+  <rect x="1184" y="260" width="152" height="32" rx="9" class="warm"/>
+  <text x="1199" y="280" class="tiny warmText">◷ STALE · READABLE</text>
+  <text x="1040" y="310" class="tiny">Status always includes text, time, and meaning.</text>
+
+  <rect x="56" y="370" width="1328" height="190" rx="20" class="card"/>
+  <text x="80" y="404" class="eyebrow">ACTION TIERS &amp; CONTROL STATES</text>
+  <text x="80" y="434" class="h3">Read</text>
+  <rect x="80" y="448" width="124" height="44" rx="9" fill="#26302d"/>
+  <text x="125" y="475" class="small onDark">Open</text>
+  <text x="80" y="516" class="tiny">Immediate · no mutation</text>
+  <text x="236" y="434" class="h3">Light</text>
+  <rect x="236" y="448" width="142" height="44" rx="9" class="surface"/>
+  <text x="270" y="475" class="small">Save draft</text>
+  <text x="236" y="516" class="tiny">Clear result · revise path</text>
+  <text x="410" y="434" class="h3">Workflow</text>
+  <rect x="410" y="448" width="160" height="44" rx="9" class="warm"/>
+  <text x="443" y="475" class="small warmText">Review impact</text>
+  <text x="410" y="516" class="tiny">Effect summary · confirm</text>
+  <text x="602" y="434" class="h3">Consequential</text>
+  <rect x="602" y="448" width="178" height="44" rx="9" class="danger"/>
+  <text x="631" y="475" class="small dangerText">Type intent first</text>
+  <text x="602" y="516" class="tiny">Qualified intent · receipt</text>
+  <line x1="812" y1="414" x2="812" y2="532" class="rule"/>
+  <text x="840" y="434" class="h3">Focus</text>
+  <rect x="840" y="448" width="132" height="44" rx="9" fill="#faf7f0" stroke="#9e4f32" stroke-width="3"/>
+  <text x="874" y="475" class="small">Visible ring</text>
+  <text x="840" y="516" class="tiny">3 px · 2 px offset in code</text>
+  <text x="1004" y="434" class="h3">Disabled</text>
+  <rect x="1004" y="448" width="132" height="44" rx="9" class="disabled"/>
+  <text x="1040" y="475" class="small">Blocked</text>
+  <text x="1004" y="516" class="tiny">Reason remains readable</text>
+  <text x="1168" y="434" class="h3">In progress</text>
+  <rect x="1168" y="448" width="168" height="44" rx="9" class="soft"/>
+  <circle cx="1191" cy="470" r="7" fill="none" stroke="#6c6b63" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="1210" y="475" class="small">Submitting…</text>
+  <text x="1168" y="516" class="tiny">Cannot create duplicate action</text>
+
+  <rect x="56" y="584" width="650" height="384" rx="20" class="card"/>
+  <text x="80" y="618" class="eyebrow">STORY &amp; EVIDENCE</text>
+  <rect x="80" y="640" width="602" height="158" rx="16" class="surface"/>
+  <rect x="80" y="640" width="4" height="158" rx="2" fill="#c56f42"/>
+  <text x="104" y="669" class="eyebrow">LAST ACCEPTED BEAT</text>
+  <text x="104" y="700" class="h2">Run 06 · Evening</text>
+  <text x="104" y="730" class="serif body">The brass vane turned toward a wind no instrument could name.</text>
+  <text x="104" y="754" class="mono tiny">accepted 14:02:40 · artifact v6 · canon</text>
+  <rect x="518" y="680" width="140" height="34" rx="9" fill="#26302d"/>
+  <text x="542" y="702" class="small onDark">Open transcript</text>
+  <text x="104" y="781" class="tiny">The ember seam marks accepted creative material—not generic decoration.</text>
+
+  <rect x="80" y="818" width="294" height="124" rx="14" class="info"/>
+  <text x="100" y="846" class="eyebrow infoText">NEW MATERIAL</text>
+  <text x="100" y="873" class="h3 infoText">2 accepted turns available</text>
+  <text x="100" y="897" class="small infoText">Your reading position is preserved.</text>
+  <rect x="100" y="910" width="118" height="24" rx="7" fill="#faf7f0" stroke="#637e95"/>
+  <text x="116" y="926" class="tiny infoText">Load when ready</text>
+  <rect x="388" y="818" width="294" height="124" rx="14" class="soft"/>
+  <text x="408" y="846" class="eyebrow">EVIDENCE DISCLOSURE</text>
+  <text x="408" y="873" class="h3">Why was this accepted?</text>
+  <text x="408" y="897" class="small">Raw → parsed → validated → accepted</text>
+  <text x="408" y="924" class="tiny">Owner-only · closed by default</text>
+
+  <rect x="730" y="584" width="654" height="384" rx="20" class="card"/>
+  <text x="754" y="618" class="eyebrow">DECISION, RESULT &amp; EXCEPTION</text>
+  <rect x="754" y="640" width="606" height="104" rx="14" class="warm"/>
+  <text x="776" y="668" class="eyebrow warmText">IMPACT BEFORE ACTION</text>
+  <text x="776" y="696" class="h3 warmText">Revising the Opening invalidates 3 later preparation steps.</text>
+  <text x="776" y="720" class="small warmText">Nothing is changed until you save the revision.</text>
+  <rect x="754" y="760" width="290" height="116" rx="14" class="danger"/>
+  <text x="776" y="788" class="eyebrow dangerText">TYPED INTENT</text>
+  <text x="776" y="815" class="h3 dangerText">end S02 privately</text>
+  <rect x="776" y="830" width="244" height="30" rx="8" fill="#faf7f0" stroke="#a95449"/>
+  <text x="790" y="850" class="mono tiny">end S02 privately</text>
+  <rect x="1060" y="760" width="300" height="116" rx="14" class="good"/>
+  <text x="1082" y="788" class="eyebrow goodText">DURABLE RECEIPT</text>
+  <text x="1082" y="815" class="h3 goodText">PRIVATE_COMPLETE</text>
+  <text x="1082" y="838" class="mono tiny goodText">cmd-02F6 · snapshot v107</text>
+  <text x="1082" y="858" class="tiny goodText">Archive verified · publication unchanged</text>
+  <rect x="754" y="892" width="290" height="50" rx="12" class="warm"/>
+  <text x="772" y="922" class="small warmText">◷ Stale · evidence remains readable</text>
+  <rect x="1060" y="892" width="300" height="50" rx="12" class="danger"/>
+  <text x="1078" y="922" class="small dangerText">! Disconnected · remote actions blocked</text>
+</svg>

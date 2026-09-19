@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1700" viewBox="0 0 390 1700">
+  <rect width="390" height="1700" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 1.5; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 1.5; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 1.5; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 1.5; }
+    .active { fill: #e8edf0; stroke: #8fa2ad; stroke-width: 1.5; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 1.5; }
+    .eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 1.1px; fill: #5a645e; }
+    .title { font-size: 24px; font-weight: 700; }
+    .h2 { font-size: 16px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 12px; }
+    .small { font-size: 10px; fill: #5f6862; }
+    .inverse { fill: #ffffff; }
+    .inverse-muted { fill: #c7cec9; }
+    .line { stroke: #c8cec9; stroke-width: 1.5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="64" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="14" y="14" width="90" height="36" rx="18" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="30" y="36" class="eyebrow">SANDBOX</text>
+  <text x="120" y="28" class="small">S02 — Weather Library</text><text x="120" y="46" class="body">Prepare · Step 3 of 8</text>
+  <rect x="338" y="16" width="36" height="32" rx="9" class="soft"/><text x="351" y="36" class="body">3</text>
+
+  <text x="18" y="96" class="eyebrow">PREPARE / CHARACTER CARDS</text>
+  <text x="18" y="128" class="title">Shape the cast.</text>
+  <text x="18" y="151" class="body">All steps stay visible. Navigation changes nothing.</text>
+
+  <rect x="14" y="174" width="362" height="474" rx="16" class="surface"/>
+  <text x="32" y="202" class="h2">Preparation checklist</text>
+  <text x="32" y="224" class="small">Next recommended step opens by default.</text>
+  <rect x="30" y="244" width="330" height="42" rx="8" class="approved"/>
+  <text x="44" y="263" class="h3">1 · Season idea</text><text x="270" y="263" class="small">Approved · v2</text>
+  <text x="44" y="278" class="small">Stable premise</text>
+  <rect x="30" y="294" width="330" height="42" rx="8" class="approved"/>
+  <text x="44" y="313" class="h3">2 · Opening</text><text x="270" y="313" class="small">Approved · v3</text>
+  <text x="44" y="328" class="small">Set, roster, world rules</text>
+  <rect x="30" y="344" width="330" height="48" rx="8" class="active"/>
+  <text x="44" y="364" class="h3">3 · Character cards</text><text x="246" y="364" class="small">Ready for review</text>
+  <text x="44" y="382" class="small">3 of 4 approved · Mara draft v4</text>
+  <rect x="30" y="400" width="330" height="42" rx="8" class="disabled"/>
+  <text x="44" y="419" class="h3">4 · Model assignment</text><text x="234" y="419" class="small">Blocked</text>
+  <text x="44" y="434" class="small">Approve all four cards first</text>
+  <rect x="30" y="450" width="330" height="34" rx="8" class="disabled"/>
+  <text x="44" y="471" class="h3">5 · Preflight</text><text x="270" y="471" class="small">Not started</text>
+  <rect x="30" y="492" width="330" height="34" rx="8" class="disabled"/>
+  <text x="44" y="513" class="h3">6 · Private preparation</text><text x="270" y="513" class="small">Not started</text>
+  <rect x="30" y="534" width="330" height="34" rx="8" class="disabled"/>
+  <text x="44" y="555" class="h3">7 · Schedule preview</text><text x="270" y="555" class="small">Not started</text>
+  <rect x="30" y="576" width="330" height="42" rx="8" class="disabled"/>
+  <text x="44" y="595" class="h3">8 · Green review</text><text x="246" y="595" class="small">Locked</text>
+  <text x="44" y="610" class="small">Prerequisites incomplete</text>
+  <text x="32" y="636" class="small">Every blocked state explains its prerequisite.</text>
+
+  <text x="18" y="684" class="eyebrow">FOCUSED STEP · 3 OF 8</text>
+  <text x="18" y="714" class="h2">Character cards</text>
+  <text x="18" y="737" class="body">Review public identity before private extensions.</text>
+  <rect x="14" y="756" width="362" height="68" rx="12" class="active"/>
+  <text x="32" y="782" class="h2">Mara Venn</text><text x="302" y="782" class="small">Draft v4</text>
+  <text x="32" y="806" class="small">Derived from opening v3 · saved 11:02</text>
+
+  <rect x="14" y="840" width="362" height="426" rx="16" class="surface"/>
+  <text x="32" y="870" class="eyebrow">SPECIFIED PRONOUNS</text>
+  <rect x="32" y="886" width="326" height="40" rx="8" class="soft"/><text x="46" y="911" class="body">she / her</text>
+  <text x="32" y="958" class="eyebrow">PUBLIC BRIEF</text>
+  <rect x="32" y="974" width="326" height="84" rx="8" class="soft"/>
+  <text x="46" y="1000" class="body">Maintenance archivist who hears weather</text>
+  <text x="46" y="1021" class="body">in the library walls before anyone else.</text>
+  <text x="32" y="1090" class="eyebrow">OCCUPATION AND SKILLS</text>
+  <rect x="32" y="1106" width="326" height="60" rx="8" class="soft"/>
+  <text x="46" y="1132" class="body">Archive maintenance · acoustic diagnosis</text>
+  <text x="46" y="1152" class="body">Repair under unstable conditions</text>
+  <text x="32" y="1198" class="eyebrow">VOICE ANCHORS</text>
+  <text x="32" y="1224" class="body">Precise under pressure · names sensations first</text>
+  <text x="32" y="1247" class="body">Dry, protective humor · never explains the joke</text>
+
+  <rect x="14" y="1282" width="362" height="166" rx="16" class="approved"/>
+  <text x="32" y="1312" class="eyebrow">APPROVAL IMPACT</text>
+  <text x="32" y="1340" class="body">Locks Mara card v4 and completes 4 of 4 cards.</text>
+  <text x="32" y="1364" class="body">Unlocks model assignment.</text>
+  <line x1="32" y1="1384" x2="358" y2="1384" class="line"/>
+  <text x="32" y="1408" class="small">Does not green the season, run preflight, choose a</text>
+  <text x="32" y="1427" class="small">model, or generate private role sheets.</text>
+
+  <rect x="14" y="1464" width="174" height="48" rx="10" class="soft"/>
+  <text x="68" y="1494" class="body">Save draft</text>
+  <rect x="202" y="1464" width="174" height="48" rx="10" fill="#1f2421"/>
+  <text x="236" y="1494" class="body inverse">Review approval</text>
+  <text x="18" y="1542" class="small">No generic Next action. Review consequences first.</text>
+
+  <rect x="14" y="1562" width="362" height="56" rx="12" class="attention"/>
+  <text x="32" y="1586" class="h3">If Opening changes later</text>
+  <text x="32" y="1605" class="small">This approval and every dependent result visibly become stale.</text>
+
+  <rect x="0" y="1634" width="390" height="66" fill="#1f2421"/>
+  <text x="17" y="1666" class="small inverse-muted">Home</text><text x="75" y="1666" class="small inverse">Prepare</text><text x="143" y="1666" class="small inverse-muted">Live</text>
+  <text x="192" y="1666" class="small inverse-muted">Review</text><text x="252" y="1666" class="small inverse-muted">Diagnose</text><text x="326" y="1666" class="small inverse-muted">Seasons</text>
+</svg>

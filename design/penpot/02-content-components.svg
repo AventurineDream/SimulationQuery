@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1120" viewBox="0 0 1440 1120">
+  <rect width="1440" height="1120" fill="#f4f4f1"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: #53605a; }
+    .title { font-size: 38px; font-weight: 700; }
+    .subtitle { font-size: 16px; fill: #59615d; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 16px; font-weight: 700; }
+    .body { font-size: 15px; }
+    .small { font-size: 13px; fill: #59615d; }
+    .tiny { font-size: 12px; fill: #59615d; }
+    .card { fill: #ffffff; stroke: #c8cec9; stroke-width: 2; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 2; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 2; }
+    .danger { fill: #f3e2df; stroke: #b17b71; stroke-width: 2; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 2; }
+    .active { fill: #e8edf0; stroke: #8fa2ad; stroke-width: 2; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 2; }
+    .rule { stroke: #c8cec9; stroke-width: 2; }
+  </style>
+
+  <text x="56" y="55" class="eyebrow">02 — CONTENT &amp; COMPONENTS / LOW-FIDELITY SYSTEM</text>
+  <text x="56" y="106" class="title">One interaction grammar across the lifecycle</text>
+  <text x="56" y="138" class="subtitle">Reusable structure for context, reading, evidence, action safety, privacy, and narrow adaptation.</text>
+
+  <rect x="56" y="174" width="1328" height="126" rx="16" class="active"/>
+  <text x="80" y="208" class="h2">Information order inside every task</text>
+  <rect x="80" y="228" width="294" height="48" rx="10" class="card"/>
+  <text x="98" y="258" class="h3">1 · Global truth</text>
+  <text x="388" y="258" class="body">→</text>
+  <rect x="414" y="228" width="294" height="48" rx="10" class="card"/>
+  <text x="432" y="258" class="h3">2 · Task truth</text>
+  <text x="722" y="258" class="body">→</text>
+  <rect x="748" y="228" width="294" height="48" rx="10" class="card"/>
+  <text x="766" y="258" class="h3">3 · Evidence</text>
+  <text x="1056" y="258" class="body">→</text>
+  <rect x="1082" y="228" width="278" height="48" rx="10" class="approved"/>
+  <text x="1100" y="258" class="h3">4 · Valid action</text>
+
+  <rect x="56" y="324" width="318" height="372" rx="16" class="card"/>
+  <text x="80" y="360" class="eyebrow">SHELL &amp; CONTEXT</text>
+  <text x="80" y="398" class="h2">What is true everywhere?</text>
+  <rect x="80" y="424" width="270" height="58" rx="10" class="soft"/>
+  <text x="96" y="448" class="h3">Stable navigation</text>
+  <text x="96" y="468" class="tiny">Six destinations; current place is explicit.</text>
+  <rect x="80" y="494" width="270" height="58" rx="10" class="soft"/>
+  <text x="96" y="518" class="h3">Environment + season</text>
+  <text x="96" y="538" class="tiny">PRIVATE REHEARSAL · S02 selected</text>
+  <rect x="80" y="564" width="270" height="58" rx="10" class="soft"/>
+  <text x="96" y="588" class="h3">Lifecycle + worker</text>
+  <text x="96" y="608" class="tiny">RUNNING · worker healthy · queue 2</text>
+  <rect x="80" y="634" width="270" height="38" rx="10" class="active"/>
+  <text x="96" y="658" class="h3">Freshness · checked 14:06:12</text>
+
+  <rect x="390" y="324" width="318" height="372" rx="16" class="card"/>
+  <text x="414" y="360" class="eyebrow">READING &amp; EVIDENCE</text>
+  <text x="414" y="398" class="h2">What produced this truth?</text>
+  <rect x="414" y="424" width="270" height="58" rx="10" class="approved"/>
+  <text x="430" y="448" class="h3">Last accepted beat</text>
+  <text x="430" y="468" class="tiny">One durable story anchor, never a live blur.</text>
+  <rect x="414" y="494" width="270" height="58" rx="10" class="soft"/>
+  <text x="430" y="518" class="h3">Stable reading pane</text>
+  <text x="430" y="538" class="tiny">Polling cannot replace text while reading.</text>
+  <rect x="414" y="564" width="270" height="58" rx="10" class="soft"/>
+  <text x="430" y="588" class="h3">Causal evidence disclosure</text>
+  <text x="430" y="608" class="tiny">Raw → parsed → validated → accepted</text>
+  <rect x="414" y="634" width="270" height="38" rx="10" class="active"/>
+  <text x="430" y="658" class="h3">Artifact version + provenance</text>
+
+  <rect x="724" y="324" width="318" height="372" rx="16" class="card"/>
+  <text x="748" y="360" class="eyebrow">WORKFLOW &amp; ACTION</text>
+  <text x="748" y="398" class="h2">What may happen next?</text>
+  <rect x="748" y="424" width="270" height="58" rx="10" class="soft"/>
+  <text x="764" y="448" class="h3">Focused checklist step</text>
+  <text x="764" y="468" class="tiny">Read-only navigation; mutation is separate.</text>
+  <rect x="748" y="494" width="270" height="58" rx="10" class="attention"/>
+  <text x="764" y="518" class="h3">Impact summary</text>
+  <text x="764" y="538" class="tiny">Names prerequisites and invalidated work.</text>
+  <rect x="748" y="564" width="270" height="58" rx="10" class="danger"/>
+  <text x="764" y="588" class="h3">Typed intent</text>
+  <text x="764" y="608" class="tiny">Season/run-qualified for consequence.</text>
+  <rect x="748" y="634" width="270" height="38" rx="10" class="approved"/>
+  <text x="764" y="658" class="h3">Durable receipt + resulting state</text>
+
+  <rect x="1058" y="324" width="326" height="372" rx="16" class="card"/>
+  <text x="1082" y="360" class="eyebrow">EXCEPTIONAL STATE</text>
+  <text x="1082" y="398" class="h2">What remains safe now?</text>
+  <rect x="1082" y="424" width="278" height="58" rx="10" class="active"/>
+  <text x="1098" y="448" class="h3">State is named precisely</text>
+  <text x="1098" y="468" class="tiny">Loading ≠ empty ≠ stale ≠ failed.</text>
+  <rect x="1082" y="494" width="278" height="58" rx="10" class="soft"/>
+  <text x="1098" y="518" class="h3">Readable evidence stays put</text>
+  <text x="1098" y="538" class="tiny">Known durable truth is not blanked.</text>
+  <rect x="1082" y="564" width="278" height="58" rx="10" class="attention"/>
+  <text x="1098" y="588" class="h3">One valid recovery action</text>
+  <text x="1098" y="608" class="tiny">Current impact is visible before choice.</text>
+  <rect x="1082" y="634" width="278" height="38" rx="10" class="disabled"/>
+  <text x="1098" y="658" class="h3">Invalid actions remain blocked</text>
+
+  <rect x="56" y="720" width="648" height="330" rx="16" class="card"/>
+  <text x="80" y="756" class="eyebrow">ACTION SAFETY TIERS</text>
+  <text x="80" y="790" class="h2">Friction follows consequence</text>
+  <line x1="80" y1="810" x2="680" y2="810" class="rule"/>
+  <rect x="80" y="832" width="132" height="72" rx="10" class="soft"/>
+  <text x="96" y="858" class="h3">READ</text>
+  <text x="96" y="880" class="tiny">Immediate</text>
+  <text x="96" y="896" class="tiny">No mutation</text>
+  <rect x="224" y="832" width="132" height="72" rx="10" class="active"/>
+  <text x="240" y="858" class="h3">LIGHT</text>
+  <text x="240" y="880" class="tiny">Clear result</text>
+  <text x="240" y="896" class="tiny">Undo/revise</text>
+  <rect x="368" y="832" width="132" height="72" rx="10" class="attention"/>
+  <text x="384" y="858" class="h3">WORKFLOW</text>
+  <text x="384" y="880" class="tiny">Impact summary</text>
+  <text x="384" y="896" class="tiny">Confirm</text>
+  <rect x="512" y="832" width="168" height="72" rx="10" class="danger"/>
+  <text x="528" y="858" class="h3">CONSEQUENTIAL</text>
+  <text x="528" y="880" class="tiny">Typed intent</text>
+  <text x="528" y="896" class="tiny">Receipt + verify</text>
+  <text x="80" y="944" class="body">Consequential actions never hide behind a generic “Confirm.”</text>
+  <text x="80" y="972" class="small">Retry, skip, green, private end, and publication each explain their own effect.</text>
+  <text x="80" y="996" class="small">No action is implied by opening a view, selecting evidence, or navigating away.</text>
+
+  <rect x="720" y="720" width="664" height="330" rx="16" class="card"/>
+  <text x="744" y="756" class="eyebrow">DISCLOSURE &amp; RESPONSIVE RULES</text>
+  <text x="744" y="790" class="h2">Same capability; quieter defaults</text>
+  <rect x="744" y="824" width="296" height="92" rx="10" class="approved"/>
+  <text x="760" y="850" class="h3">Private by default</text>
+  <text x="760" y="874" class="tiny">No raw wellness, hidden plan, role sheet,</text>
+  <text x="760" y="892" class="tiny">model identity, or prompt in ordinary views.</text>
+  <rect x="1056" y="824" width="304" height="92" rx="10" class="active"/>
+  <text x="1072" y="850" class="h3">Deliberate disclosure</text>
+  <text x="1072" y="874" class="tiny">Raw/provenance evidence opens only in</text>
+  <text x="1072" y="892" class="tiny">owner-only Diagnostics or explicit review.</text>
+  <rect x="744" y="932" width="296" height="92" rx="10" class="soft"/>
+  <text x="760" y="958" class="h3">Narrow is complete</text>
+  <text x="760" y="982" class="tiny">Stack hierarchy; keep impact, intent,</text>
+  <text x="760" y="1000" class="tiny">receipt, and exact return path.</text>
+  <rect x="1056" y="932" width="304" height="92" rx="10" class="soft"/>
+  <text x="1072" y="958" class="h3">Keyboard + focus</text>
+  <text x="1072" y="982" class="tiny">Visible focus, logical order, no color-only</text>
+  <text x="1072" y="1000" class="tiny">meaning, and no surprise focus moves.</text>
+
+  <text x="56" y="1090" class="small">SYSTEM CHECK: every frame should answer “what is true, why, what can I safely do, and what will happen?”</text>
+</svg>

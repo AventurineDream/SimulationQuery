@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .nav { fill: #1f2421; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 2; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 2; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 2; }
+    .danger { fill: #f3e2df; stroke: #b17b71; stroke-width: 2; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 2; }
+    .active { fill: #e8edf0; stroke: #8fa2ad; stroke-width: 2; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 2; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: #5a645e; }
+    .title { font-size: 32px; font-weight: 700; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 15px; font-weight: 700; }
+    .body { font-size: 14px; }
+    .small { font-size: 12px; fill: #5f6862; }
+    .navtext { font-size: 15px; fill: #dce2dd; }
+    .navactive { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    .inverse { fill: #ffffff; }
+    .inverse-subtle { fill: #9fb0a6; }
+    .line { stroke: #c8cec9; stroke-width: 2; }
+  </style>
+
+  <rect x="0" y="0" width="232" height="1024" class="nav"/>
+  <text x="28" y="45" class="eyebrow inverse-subtle">AI IMPROV TROUPE</text>
+  <text x="28" y="77" class="h2 inverse">Operator</text>
+  <text x="32" y="147" class="navtext">Home</text>
+  <text x="32" y="199" class="navtext">Prepare</text>
+  <text x="32" y="253" class="navtext">Live</text>
+  <text x="32" y="307" class="navtext">Review</text>
+  <text x="32" y="361" class="navtext">Diagnostics</text>
+  <rect x="16" y="386" width="200" height="46" rx="10" fill="#39423d"/>
+  <text x="32" y="415" class="navactive">Seasons</text>
+  <line x1="24" y1="466" x2="208" y2="466" stroke="#4a554f"/>
+  <text x="32" y="503" class="small inverse-subtle">Private close</text>
+  <text x="32" y="525" class="small inverse-subtle">Publication is separate</text>
+
+  <rect x="232" y="0" width="1208" height="74" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="260" y="18" width="114" height="38" rx="19" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="283" y="42" class="eyebrow">SANDBOX</text>
+  <text x="402" y="34" class="small">Season</text><text x="402" y="54" class="h3">S02 — The Weather Library ▾</text>
+  <text x="808" y="34" class="small">Lifecycle</text><text x="808" y="54" class="body">RECOVERY_REQUIRED</text>
+  <text x="1054" y="34" class="small">Evidence</text><text x="1054" y="54" class="body">Fresh · snapshot v18</text>
+  <rect x="1292" y="18" width="116" height="38" rx="10" class="danger"/><text x="1312" y="42" class="body">Private end</text>
+
+  <text x="272" y="118" class="eyebrow">SEASONS / PRIVATE CLOSE REVIEW</text>
+  <text x="272" y="160" class="title">End S02 privately—without publishing it.</text>
+  <text x="272" y="190" class="body">Inspect the complete snapshot first. The season ID and private intent require explicit confirmation.</text>
+
+  <rect x="272" y="212" width="1116" height="42" rx="12" class="soft"/>
+  <rect x="280" y="220" width="352" height="26" rx="8" class="active"/><text x="376" y="238" class="small">1 · Read-only snapshot</text>
+  <text x="722" y="238" class="small">2 · Type private-end command</text>
+  <text x="1114" y="238" class="small">3 · Durable receipt</text>
+
+  <rect x="272" y="276" width="744" height="324" rx="18" class="surface"/>
+  <text x="300" y="312" class="eyebrow">READ-ONLY CLOSURE SNAPSHOT · VERSION 18</text>
+  <text x="300" y="346" class="h2">What exists now</text>
+  <text x="300" y="380" class="body">Season lifecycle</text><text x="500" y="380" class="h3">RECOVERY_REQUIRED</text>
+  <text x="300" y="412" class="body">Runs</text><text x="500" y="412" class="body">1 completed · 1 partial · 0 skipped · 1 queued</text>
+  <text x="300" y="444" class="body">Accepted story</text><text x="500" y="444" class="body">31 actor turns · 8 director beats</text>
+  <text x="300" y="476" class="body">Model evidence</text><text x="500" y="476" class="body">42 calls · 2 failed attempts · all preserved</text>
+  <text x="300" y="508" class="body">Diaries</text><text x="500" y="508" class="body">4 accepted · 1 missing obligation · 1 held private</text>
+  <text x="300" y="540" class="body">Cast and notifications</text><text x="500" y="540" class="body">4 active · 1 unread operator item</text>
+  <text x="300" y="572" class="body">Database integrity</text><text x="500" y="572" class="h3">PASS · checked 13:14:09</text>
+  <text x="810" y="380" class="small">Schedule root · isolated S02 sandbox</text>
+  <text x="810" y="410" class="small">Archive root · reachable</text>
+  <text x="810" y="440" class="small">Artifact outbox · 1 pending</text>
+  <text x="810" y="470" class="small">Snapshot is evidence only</text>
+  <text x="810" y="500" class="small">Refreshing does not end the season</text>
+
+  <rect x="1040" y="276" width="348" height="324" rx="18" class="approved"/>
+  <text x="1068" y="312" class="eyebrow">PRIVATE CLOSE EFFECT</text>
+  <text x="1068" y="346" class="h2">It will</text>
+  <text x="1068" y="378" class="body">• stop later scheduled attempts</text>
+  <text x="1068" y="406" class="body">• preserve all private evidence</text>
+  <text x="1068" y="434" class="body">• create closure and handoff work</text>
+  <text x="1068" y="462" class="body">• record a terminal private state</text>
+  <line x1="1068" y1="484" x2="1360" y2="484" class="line"/>
+  <text x="1068" y="514" class="h2">It will not</text>
+  <text x="1068" y="544" class="body">• publish or expose anything</text>
+  <text x="1068" y="572" class="body">• delete, rewrite, or clear evidence</text>
+
+  <rect x="272" y="624" width="450" height="178" rx="18" class="attention"/>
+  <text x="300" y="660" class="eyebrow">INCOMPLETE WORK REMAINS VISIBLE</text>
+  <text x="300" y="694" class="h3">Run 2 · Recovery Required</text><text x="628" y="694" class="small">Open</text>
+  <text x="300" y="724" class="h3">Evening run · queued</text><text x="628" y="724" class="small">Will stop</text>
+  <text x="300" y="754" class="h3">Sable diary · missing</text><text x="628" y="754" class="small">Preserved</text>
+  <text x="300" y="784" class="small">Private close records these as unresolved; it does not disguise completion.</text>
+
+  <rect x="272" y="826" width="450" height="138" rx="18" class="surface"/>
+  <text x="300" y="862" class="eyebrow">DURABLE SEASONS</text>
+  <text x="300" y="894" class="h3">S02 · Active · private close review</text>
+  <text x="300" y="922" class="body">S01 · Private complete · unpublished</text>
+  <text x="300" y="948" class="small">P00 · Published v1 · private archive retained</text>
+
+  <rect x="746" y="624" width="642" height="340" rx="18" class="danger"/>
+  <text x="774" y="660" class="eyebrow">CONSEQUENTIAL COMMAND · NOT SUBMITTED</text>
+  <text x="774" y="696" class="h2">Confirm the exact private intent</text>
+  <text x="774" y="726" class="body">Type the season-qualified phrase exactly:</text>
+  <rect x="774" y="746" width="586" height="54" rx="10" class="surface"/>
+  <text x="794" y="779" class="small">Type “end S02 privately”</text>
+  <text x="774" y="830" class="small">This is not `publish S02`. Publication remains unavailable from this command.</text>
+  <rect x="774" y="852" width="274" height="54" rx="10" class="surface"/><text x="882" y="885" class="body">Cancel</text>
+  <rect x="1066" y="852" width="294" height="54" rx="10" class="disabled"/><text x="1131" y="885" class="h3">Execute private end</text>
+  <text x="774" y="934" class="small">Enabled only after an exact phrase and current snapshot-version check.</text>
+  <text x="774" y="954" class="small">After submission: command receipt → closure work → terminal private verification.</text>
+</svg>

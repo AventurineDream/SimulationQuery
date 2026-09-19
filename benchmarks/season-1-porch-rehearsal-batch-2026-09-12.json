@@ -1,0 +1,1458 @@
+{
+  "artifact_type": "rehearsal_batch",
+  "title": "Season 1 Porch Rehearsal Batch — Reliability, Character Consistency, Outcome Variance",
+  "created": "2026-09-12",
+  "seed": 30360912,
+  "scene": "The Porch",
+  "execution_context": {
+    "batch_model": "gpt-5.6-luna",
+    "batch_reasoning_effort": "high",
+    "prior_rehearsal_model": "gpt-5.6-luna",
+    "prior_rehearsal_reasoning_effort": "max",
+    "execution_type": "hand_authored_autonomous_rehearsal",
+    "comparability_note": "This batch is internally comparable, but should not be treated as a clean reasoning-effort comparison with the prior max-effort rehearsals."
+  },
+  "turn_count_per_run": 16,
+  "formula": {
+    "expression": "2d6 + (MAGIC score - 3) + situational modifier",
+    "bands": {
+      "10+": "clean_success",
+      "7-9": "success_with_cost",
+      "6_or_less": "setback"
+    },
+    "roll_policy": "Roll only when the declared action has meaningful uncertainty and consequence. The Orchestrator narrates cheetah responses; the cheetah never receives an independent turn."
+  },
+  "hypotheses": [
+    {
+      "id": "H1_system_reliability",
+      "hypothesis": "The procedure will remain mechanically stable across five 16-turn runs.",
+      "success_criterion": "Every run has 16 turns, exactly 8 recorded formula rolls, complete outcome bands, and zero independent cheetah turns."
+    },
+    {
+      "id": "H2_character_consistency",
+      "hypothesis": "Character choices will remain aligned with established drives and blind spots while still allowing variation.",
+      "success_criterion": "At least 80% of coded key choices per run are aligned with the character profile; no character is reduced to one repeated action."
+    },
+    {
+      "id": "H3_outcome_variance",
+      "hypothesis": "Different strategies and roll sequences will produce materially different trajectories and final states.",
+      "success_criterion": "At least four distinct final-state/outcome profiles appear across five runs, with no identical turn-by-turn strategy."
+    }
+  ],
+  "coding_notes": {
+    "condition": "cheetah condition; higher is better",
+    "trust": "cheetah trust state; higher is warmer, but not domestication",
+    "secrecy": "household secrecy; official/public states indicate lower secrecy",
+    "twin_cohesion": "relationship state between Sage and Rory",
+    "result_codes": "clean_success, success_with_cost, setback",
+    "character_consistency_score": "qualitative 0-1 score against established drives/blind spots; provisional coding field"
+  },
+  "runs": [
+    {
+      "run_id": "R1",
+      "strategy": "cautious_disclosure",
+      "strategy_description": "Adults prioritize safe observation and professional help early.",
+      "final_state": {
+        "condition": "stable",
+        "trust": "cautious",
+        "secrecy": "official_case",
+        "twin_cohesion": "cooperative"
+      },
+      "outcome": "Temporary supervised recovery is approved; the transport clue is preserved.",
+      "consistency_score": 0.94,
+      "alignment_notes": "Mara takes bounded field risk; Eli protects and comforts; Sage seeks shared procedure; Rory investigates but shares the clue.",
+      "turns": [
+        {
+          "turn": 1,
+          "actor": "Sage",
+          "action_code": "boundary",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 2,
+          "actor": "Mara",
+          "action_code": "assess",
+          "cheetah_response_code": "retreats_under_porch",
+          "state_delta": "access_lost",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            5,
+            3
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 4,
+          "modifier": 0,
+          "modifier_basis": "safari_tag+1;frightened_animal-2",
+          "total": 8,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 3,
+          "actor": "Eli",
+          "action_code": "water",
+          "cheetah_response_code": "drinks_at_distance",
+          "state_delta": "condition_stabilizes",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            3
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "patient_tag+1;distance-1",
+          "total": 9,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 4,
+          "actor": "Mara",
+          "action_code": "early_call",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            2,
+            2
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 3,
+          "modifier": 1,
+          "modifier_basis": "field_tag+1",
+          "total": 5,
+          "result": "setback"
+        },
+        {
+          "turn": 5,
+          "actor": "Eli",
+          "action_code": "family_roles",
+          "cheetah_response_code": "waits_and_watches",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 6,
+          "actor": "Mara",
+          "action_code": "make_camp",
+          "cheetah_response_code": "shade_and_roles_established",
+          "state_delta": "safety+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            6
+          ],
+          "magic_stat": "Gusto",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "signature+1;setup_risk-1",
+          "total": 14,
+          "result": "clean_success"
+        },
+        {
+          "turn": 7,
+          "actor": "Sage",
+          "action_code": "treehouse_watch",
+          "cheetah_response_code": "tracks_children",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            3,
+            5
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "twin_rules+1;adult_boundary-1",
+          "total": 9,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 8,
+          "actor": "Rory",
+          "action_code": "track_clue",
+          "cheetah_response_code": "moves_to_yard",
+          "state_delta": "clue+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            5,
+            2
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "route_tag+1;animal_distance-1",
+          "total": 8,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 9,
+          "actor": "Rory",
+          "action_code": "share_clue",
+          "cheetah_response_code": "remains_near_shelter",
+          "state_delta": "twin_cohesion+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 10,
+          "actor": "WildlifeResponse",
+          "action_code": "response_perimeter",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "official_contact",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 11,
+          "actor": "Eli",
+          "action_code": "trust_wait",
+          "cheetah_response_code": "retreats_after_noise",
+          "state_delta": "trust-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            1,
+            2
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "patient_tag+1;distance-1",
+          "total": 5,
+          "result": "setback"
+        },
+        {
+          "turn": 12,
+          "actor": "Sage/Rory",
+          "action_code": "twin_cooperate",
+          "cheetah_response_code": "observes_from_treehouse",
+          "state_delta": "twin_cohesion+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 13,
+          "actor": "Mara",
+          "action_code": "pen_setup",
+          "cheetah_response_code": "accepts_shaded_recovery_area",
+          "state_delta": "custody+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 14,
+          "actor": "WildlifeResponse",
+          "action_code": "professional_assess",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "condition_monitored",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 15,
+          "actor": "Parents",
+          "action_code": "custody_negotiation",
+          "cheetah_response_code": "enters_recovery_area",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            5,
+            6
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "care_plan+1;official_scrutiny-1",
+          "total": 12,
+          "result": "clean_success"
+        },
+        {
+          "turn": 16,
+          "actor": "Orchestrator",
+          "action_code": "invalid_registry",
+          "cheetah_response_code": "rests_in_recovery_area",
+          "state_delta": "hook+1",
+          "cheetah_turn": false,
+          "rolled": false
+        }
+      ],
+      "rolls": [
+        [
+          5,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "roll_count": 8,
+      "result_counts": {
+        "clean_success": 2,
+        "success_with_cost": 4,
+        "setback": 2
+      }
+    },
+    {
+      "run_id": "R2",
+      "strategy": "secretive_kids",
+      "strategy_description": "The family tries to conceal the animal long enough to understand and keep it.",
+      "final_state": {
+        "condition": "fragile",
+        "trust": "wary",
+        "secrecy": "official_hold",
+        "twin_cohesion": "tense"
+      },
+      "outcome": "Officials impose a formal hold; the family loses independent access.",
+      "consistency_score": 0.88,
+      "alignment_notes": "Rory's independence and secrecy dominate; Sage tries to coordinate but becomes controlling; Mara accepts too much risk; Eli raises concerns but yields.",
+      "turns": [
+        {
+          "turn": 1,
+          "actor": "Rory",
+          "action_code": "keep_secret",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "secrecy+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 2,
+          "actor": "Mara",
+          "action_code": "assess",
+          "cheetah_response_code": "remains_on_porch",
+          "state_delta": "information+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            5,
+            5
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 4,
+          "modifier": 0,
+          "modifier_basis": "safari_tag+1;frightened_animal-2",
+          "total": 10,
+          "result": "clean_success"
+        },
+        {
+          "turn": 3,
+          "actor": "Rory",
+          "action_code": "camera_loop",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "secrecy+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            3
+          ],
+          "magic_stat": "Intellect",
+          "magic_score": 3,
+          "modifier": 2,
+          "modifier_basis": "junk_tech+1;preparation+1",
+          "total": 11,
+          "result": "clean_success"
+        },
+        {
+          "turn": 4,
+          "actor": "Sage",
+          "action_code": "conceal_call",
+          "cheetah_response_code": "chirps_at_voices",
+          "state_delta": "twin_cohesion-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            2
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 0,
+          "modifier_basis": "twin_rules+1;adult_boundary-2",
+          "total": 8,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 5,
+          "actor": "Eli",
+          "action_code": "water",
+          "cheetah_response_code": "drinks_little",
+          "state_delta": "condition-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            3,
+            3
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "patient_tag+1;distance-1",
+          "total": 8,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 6,
+          "actor": "Mara",
+          "action_code": "make_camp",
+          "cheetah_response_code": "canopy_visible_from_road",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            2
+          ],
+          "magic_stat": "Gusto",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "signature+1;setup_risk-1",
+          "total": 8,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 7,
+          "actor": "Sage",
+          "action_code": "watch_plan",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 8,
+          "actor": "Rory",
+          "action_code": "windup_toy",
+          "cheetah_response_code": "retreats_to_treehouse_fence",
+          "state_delta": "trust-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            2
+          ],
+          "magic_stat": "Gusto",
+          "magic_score": 4,
+          "modifier": 0,
+          "modifier_basis": "improviser+1;proximity_risk-2",
+          "total": 6,
+          "result": "setback"
+        },
+        {
+          "turn": 9,
+          "actor": "Sage",
+          "action_code": "call_argument",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            1
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "twin_rules+1;family_tension-1",
+          "total": 8,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 10,
+          "actor": "Mara",
+          "action_code": "dispatch",
+          "cheetah_response_code": "response_delayed",
+          "state_delta": "official_case",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 11,
+          "actor": "Eli",
+          "action_code": "hard_boundary",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "twin_cohesion-1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 12,
+          "actor": "Orchestrator",
+          "action_code": "moves_to_treehouse_shade",
+          "cheetah_response_code": "uses_shade",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 13,
+          "actor": "WildlifeResponse",
+          "action_code": "response_arrives",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "official_contact",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 14,
+          "actor": "Mara",
+          "action_code": "negotiate",
+          "cheetah_response_code": "recovery_area_required",
+          "state_delta": "custody-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            3,
+            2
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 3,
+          "modifier": 0,
+          "modifier_basis": "field_tag+1;official_scrutiny-1",
+          "total": 5,
+          "result": "setback"
+        },
+        {
+          "turn": 15,
+          "actor": "Sage/Rory",
+          "action_code": "ownership_decision",
+          "cheetah_response_code": "remains_wary",
+          "state_delta": "twin_cohesion-1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 16,
+          "actor": "Orchestrator",
+          "action_code": "official_hold",
+          "cheetah_response_code": "rests_under_supervision",
+          "state_delta": "hook+1",
+          "cheetah_turn": false,
+          "rolled": false
+        }
+      ],
+      "rolls": [
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "roll_count": 8,
+      "result_counts": {
+        "clean_success": 2,
+        "success_with_cost": 4,
+        "setback": 2
+      }
+    },
+    {
+      "run_id": "R3",
+      "strategy": "twin_alliance",
+      "strategy_description": "The twins work together to investigate while adults manage safety.",
+      "final_state": {
+        "condition": "stable",
+        "trust": "cautious",
+        "secrecy": "compromised",
+        "twin_cohesion": "united"
+      },
+      "outcome": "The twins uncover the clearest transport trail and earn supervised observation access.",
+      "consistency_score": 0.97,
+      "alignment_notes": "Sage consistently builds shared plans; Rory repeatedly pursues distinct discoveries but accepts collaboration; parents preserve adult safety roles.",
+      "turns": [
+        {
+          "turn": 1,
+          "actor": "Sage",
+          "action_code": "shared_plan",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "twin_cohesion+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            2,
+            4
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "twin_rules+1;adult_boundary-1",
+          "total": 7,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 2,
+          "actor": "Mara",
+          "action_code": "assess",
+          "cheetah_response_code": "retreats_under_porch",
+          "state_delta": "access_lost",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            5
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 4,
+          "modifier": 0,
+          "modifier_basis": "safari_tag+1;frightened_animal-2",
+          "total": 9,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 3,
+          "actor": "Rory",
+          "action_code": "trace_route",
+          "cheetah_response_code": "moves_to_yard",
+          "state_delta": "trust-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            1,
+            4
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "route_tag+1;animal_distance-1",
+          "total": 6,
+          "result": "setback"
+        },
+        {
+          "turn": 4,
+          "actor": "Eli",
+          "action_code": "water",
+          "cheetah_response_code": "drinks_at_distance",
+          "state_delta": "condition_stabilizes",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            3,
+            6
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "patient_tag+1;distance-1",
+          "total": 11,
+          "result": "clean_success"
+        },
+        {
+          "turn": 5,
+          "actor": "Sage",
+          "action_code": "treehouse_watch",
+          "cheetah_response_code": "retreats_after_movement",
+          "state_delta": "access_lost",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            1,
+            4
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "twin_rules+1;adult_boundary-1",
+          "total": 6,
+          "result": "setback"
+        },
+        {
+          "turn": 6,
+          "actor": "Rory",
+          "action_code": "follow_trail",
+          "cheetah_response_code": "activates_service_beacon",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            1,
+            2
+          ],
+          "magic_stat": "Gusto",
+          "magic_score": 4,
+          "modifier": -1,
+          "modifier_basis": "independent_action+1;danger-2",
+          "total": 2,
+          "result": "setback"
+        },
+        {
+          "turn": 7,
+          "actor": "Sage/Rory",
+          "action_code": "repair_rivalry",
+          "cheetah_response_code": "shares_transport_fiber",
+          "state_delta": "twin_cohesion+2",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 8,
+          "actor": "Mara",
+          "action_code": "make_camp",
+          "cheetah_response_code": "safe_observation_area",
+          "state_delta": "safety+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            4
+          ],
+          "magic_stat": "Gusto",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "signature+1;setup_risk-1",
+          "total": 10,
+          "result": "clean_success"
+        },
+        {
+          "turn": 9,
+          "actor": "Eli",
+          "action_code": "call_response",
+          "cheetah_response_code": "response_dispatched",
+          "state_delta": "official_case",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            5,
+            5
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "care_plan+1;family_delay-1",
+          "total": 11,
+          "result": "clean_success"
+        },
+        {
+          "turn": 10,
+          "actor": "WildlifeResponse",
+          "action_code": "arrival_wait",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 11,
+          "actor": "Eli",
+          "action_code": "no_chase",
+          "cheetah_response_code": "remains_in_shade",
+          "state_delta": "trust+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 12,
+          "actor": "Sage/Rory",
+          "action_code": "map_clue",
+          "cheetah_response_code": "clue+1",
+          "state_delta": "twin_cohesion+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 13,
+          "actor": "WildlifeResponse",
+          "action_code": "response_arrives",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "official_contact",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 14,
+          "actor": "WildlifeResponse",
+          "action_code": "professional_assess",
+          "cheetah_response_code": "condition_monitored",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 15,
+          "actor": "Parents",
+          "action_code": "temporary_custody",
+          "cheetah_response_code": "enters_recovery_area",
+          "state_delta": "custody+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 16,
+          "actor": "Orchestrator",
+          "action_code": "shared_clue_hook",
+          "cheetah_response_code": "rests_near_treehouse",
+          "state_delta": "hook+1",
+          "cheetah_turn": false,
+          "rolled": false
+        }
+      ],
+      "rolls": [
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "roll_count": 8,
+      "result_counts": {
+        "clean_success": 3,
+        "success_with_cost": 2,
+        "setback": 3
+      }
+    },
+    {
+      "run_id": "R4",
+      "strategy": "mara_adventure",
+      "strategy_description": "Mara follows her field instincts and tests proximity before professional help arrives.",
+      "final_state": {
+        "condition": "fragile",
+        "trust": "frightened",
+        "secrecy": "public_incident",
+        "twin_cohesion": "mixed"
+      },
+      "outcome": "The cheetah leaves the property during the escalation and is transferred to professional care.",
+      "consistency_score": 0.91,
+      "alignment_notes": "Mara is strongly consistent but overcommits; Eli remains protective; Sage resists risk; Rory imitates the exploratory behavior.",
+      "turns": [
+        {
+          "turn": 1,
+          "actor": "Mara",
+          "action_code": "open_storm_door",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "risk+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 2,
+          "actor": "Mara",
+          "action_code": "assess",
+          "cheetah_response_code": "tracks_mara",
+          "state_delta": "information+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            2
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 4,
+          "modifier": 0,
+          "modifier_basis": "safari_tag+1;frightened_animal-2",
+          "total": 8,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 3,
+          "actor": "Mara",
+          "action_code": "step_onto_porch",
+          "cheetah_response_code": "retreats_to_yard",
+          "state_delta": "trust-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            5
+          ],
+          "magic_stat": "Gusto",
+          "magic_score": 5,
+          "modifier": 1,
+          "modifier_basis": "field_tag+1;proximity_risk-2",
+          "total": 12,
+          "result": "clean_success"
+        },
+        {
+          "turn": 4,
+          "actor": "Eli",
+          "action_code": "water",
+          "cheetah_response_code": "drinks_at_distance",
+          "state_delta": "condition_stabilizes",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            1,
+            4
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "patient_tag+1;distance-1",
+          "total": 7,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 5,
+          "actor": "Mara",
+          "action_code": "make_camp",
+          "cheetah_response_code": "route_is_conspicuous",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            3
+          ],
+          "magic_stat": "Gusto",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "signature+1;setup_risk-1",
+          "total": 9,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 6,
+          "actor": "Rory",
+          "action_code": "trace_route",
+          "cheetah_response_code": "finds_transport_sling",
+          "state_delta": "clue+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            5,
+            4
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "route_tag+1;animal_distance-1",
+          "total": 10,
+          "result": "clean_success"
+        },
+        {
+          "turn": 7,
+          "actor": "Mara/Rory",
+          "action_code": "family_splits",
+          "cheetah_response_code": "moves_behind_garage",
+          "state_delta": "twin_cohesion-1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 8,
+          "actor": "Sage",
+          "action_code": "persuade_call",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            1
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "twin_rules+1;family_tension-1",
+          "total": 6,
+          "result": "setback"
+        },
+        {
+          "turn": 9,
+          "actor": "Orchestrator",
+          "action_code": "short_bolt",
+          "cheetah_response_code": "leaves_porch",
+          "state_delta": "condition-1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 10,
+          "actor": "Mara",
+          "action_code": "official_call",
+          "cheetah_response_code": "public_alert",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            1,
+            5
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 3,
+          "modifier": 0,
+          "modifier_basis": "field_tag+1;delay-1",
+          "total": 6,
+          "result": "setback"
+        },
+        {
+          "turn": 11,
+          "actor": "Eli",
+          "action_code": "no_chase",
+          "cheetah_response_code": "remains_near_children",
+          "state_delta": "safety+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 12,
+          "actor": "WildlifeResponse",
+          "action_code": "response_arrives",
+          "cheetah_response_code": "tracks_movement",
+          "state_delta": "official_contact",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 13,
+          "actor": "WildlifeResponse",
+          "action_code": "perimeter",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 14,
+          "actor": "Mara",
+          "action_code": "negotiate",
+          "cheetah_response_code": "professional_transfer",
+          "state_delta": "custody-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            3,
+            4
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 3,
+          "modifier": 0,
+          "modifier_basis": "field_tag+1;official_scrutiny-1",
+          "total": 7,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 15,
+          "actor": "Parents",
+          "action_code": "transfer_decision",
+          "cheetah_response_code": "enters_transport_crate",
+          "state_delta": "custody-1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 16,
+          "actor": "Orchestrator",
+          "action_code": "relocation_hook",
+          "cheetah_response_code": "leaves_property",
+          "state_delta": "hook+1",
+          "cheetah_turn": false,
+          "rolled": false
+        }
+      ],
+      "rolls": [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "roll_count": 8,
+      "result_counts": {
+        "clean_success": 2,
+        "success_with_cost": 4,
+        "setback": 2
+      }
+    },
+    {
+      "run_id": "R5",
+      "strategy": "eli_care",
+      "strategy_description": "Eli establishes calm, distance, and care while the others investigate within boundaries.",
+      "final_state": {
+        "condition": "recovering",
+        "trust": "cautious_attachment",
+        "secrecy": "official_case",
+        "twin_cohesion": "cooperative"
+      },
+      "outcome": "A temporary recovery arrangement succeeds; the cheetah tolerates the family at a distance.",
+      "consistency_score": 0.96,
+      "alignment_notes": "Eli consistently prioritizes comfort and boundaries; Mara channels adventure into logistics; Sage coordinates; Rory investigates but is corrected safely.",
+      "turns": [
+        {
+          "turn": 1,
+          "actor": "Eli",
+          "action_code": "safe_boundary",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "safety+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 2,
+          "actor": "Eli",
+          "action_code": "assess",
+          "cheetah_response_code": "remains_visible",
+          "state_delta": "information+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            1
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "patient_tag+1;distance-1",
+          "total": 9,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 3,
+          "actor": "Eli",
+          "action_code": "water",
+          "cheetah_response_code": "drinks_at_distance",
+          "state_delta": "condition+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            3
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "patient_tag+1;distance-1",
+          "total": 11,
+          "result": "clean_success"
+        },
+        {
+          "turn": 4,
+          "actor": "Mara",
+          "action_code": "call_attempt",
+          "cheetah_response_code": "communication_delayed",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            2,
+            1
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 3,
+          "modifier": 1,
+          "modifier_basis": "field_tag+1",
+          "total": 4,
+          "result": "setback"
+        },
+        {
+          "turn": 5,
+          "actor": "Eli",
+          "action_code": "comfort_from_glass",
+          "cheetah_response_code": "rests_near_porch",
+          "state_delta": "trust+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            6
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "patient_tag+1;steady_presence-1",
+          "total": 14,
+          "result": "clean_success"
+        },
+        {
+          "turn": 6,
+          "actor": "Sage",
+          "action_code": "treehouse_watch",
+          "cheetah_response_code": "tracks_children",
+          "state_delta": "twin_cohesion+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            2
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "twin_rules+1;adult_boundary-1",
+          "total": 7,
+          "result": "success_with_cost"
+        },
+        {
+          "turn": 7,
+          "actor": "Rory",
+          "action_code": "track_route",
+          "cheetah_response_code": "activates_service_beacon",
+          "state_delta": "secrecy-1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            2,
+            1
+          ],
+          "magic_stat": "Cool",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "route_tag+1;urgency-1",
+          "total": 4,
+          "result": "setback"
+        },
+        {
+          "turn": 8,
+          "actor": "Eli",
+          "action_code": "parent_correction",
+          "cheetah_response_code": "returns_inside",
+          "state_delta": "safety+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 9,
+          "actor": "Mara",
+          "action_code": "make_camp",
+          "cheetah_response_code": "safe_observation_area",
+          "state_delta": "safety+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            6,
+            6
+          ],
+          "magic_stat": "Gusto",
+          "magic_score": 5,
+          "modifier": 2,
+          "modifier_basis": "signature+1;setup_risk-1",
+          "total": 14,
+          "result": "clean_success"
+        },
+        {
+          "turn": 10,
+          "actor": "WildlifeResponse",
+          "action_code": "response_arrives",
+          "cheetah_response_code": "holds_position",
+          "state_delta": "official_contact",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 11,
+          "actor": "Eli",
+          "action_code": "hold_line",
+          "cheetah_response_code": "remains_in_shade",
+          "state_delta": "trust+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 12,
+          "actor": "Orchestrator",
+          "action_code": "rests_in_shade",
+          "cheetah_response_code": "uses_shade",
+          "state_delta": "condition_stabilizes",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 13,
+          "actor": "WildlifeResponse",
+          "action_code": "professional_assess",
+          "cheetah_response_code": "condition_monitored",
+          "state_delta": "none",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 14,
+          "actor": "Eli",
+          "action_code": "negotiate",
+          "cheetah_response_code": "temporary_recovery_approved",
+          "state_delta": "custody+1",
+          "cheetah_turn": false,
+          "rolled": true,
+          "dice": [
+            4,
+            1
+          ],
+          "magic_stat": "Authority",
+          "magic_score": 4,
+          "modifier": 1,
+          "modifier_basis": "care_plan+1;official_scrutiny-1",
+          "total": 6,
+          "result": "setback"
+        },
+        {
+          "turn": 15,
+          "actor": "Sage/Rory",
+          "action_code": "ownership_decision",
+          "cheetah_response_code": "remains_cautious",
+          "state_delta": "twin_cohesion+1",
+          "cheetah_turn": false,
+          "rolled": false
+        },
+        {
+          "turn": 16,
+          "actor": "Orchestrator",
+          "action_code": "trust_hook",
+          "cheetah_response_code": "chirps_from_recovery_area",
+          "state_delta": "hook+1",
+          "cheetah_turn": false,
+          "rolled": false
+        }
+      ],
+      "rolls": [
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "roll_count": 8,
+      "result_counts": {
+        "clean_success": 3,
+        "success_with_cost": 2,
+        "setback": 3
+      }
+    }
+  ],
+  "batch_findings": {
+    "system_reliability": "supported within this batch",
+    "character_consistency": "provisionally supported within this batch",
+    "outcome_variance": "supported within this batch",
+    "caution": "This is a hand-authored rehearsal batch from gpt-5.6-luna at high reasoning effort, not evidence of general model reliability. Next test should use an independent Orchestrator or blind replay rubric."
+  }
+}

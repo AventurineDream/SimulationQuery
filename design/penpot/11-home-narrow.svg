@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="980" viewBox="0 0 390 980">
+  <rect width="390" height="980" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 1.5; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 1.5; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 1.5; }
+    .eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 1.1px; fill: #5a645e; }
+    .title { font-size: 25px; font-weight: 700; }
+    .h2 { font-size: 16px; font-weight: 700; }
+    .body { font-size: 12px; }
+    .small { font-size: 10px; fill: #5f6862; }
+    .inverse { fill: #ffffff; }
+    .inverse-muted { fill: #c7cec9; }
+    .inverse-subtle { fill: #9fb0a6; }
+  </style>
+  <rect x="0" y="0" width="390" height="64" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="14" y="14" width="90" height="36" rx="18" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="30" y="36" class="eyebrow">SANDBOX</text>
+  <text x="120" y="28" class="small">S02 — Weather Library</text><text x="120" y="46" class="body">Recovery required</text>
+  <rect x="338" y="16" width="36" height="32" rx="9" class="attention"/><text x="351" y="36" class="body">2</text>
+
+  <text x="18" y="96" class="eyebrow">HOME / GUIDED BRIEFING</text>
+  <text x="18" y="128" class="title">One thing needs you.</text>
+  <text x="18" y="151" class="body">The afternoon rehearsal is paused safely.</text>
+
+  <rect x="14" y="174" width="362" height="174" rx="16" class="attention"/>
+  <text x="32" y="200" class="eyebrow">NEXT SAFE ACTION</text>
+  <text x="32" y="229" class="h2">Review Run 2 schema failure</text>
+  <text x="32" y="254" class="body">The stream completed, but nothing entered canon.</text>
+  <text x="32" y="278" class="small">15 accepted turns · delayed +00:18:42</text>
+  <rect x="32" y="296" width="326" height="38" rx="10" fill="#1f2421"/><text x="137" y="320" class="body inverse">Open recovery</text>
+
+  <rect x="14" y="364" width="362" height="146" rx="16" class="surface"/>
+  <text x="32" y="391" class="h2">Current truth</text>
+  <text x="32" y="421" class="body">Day 1 · Afternoon · Run 2</text>
+  <text x="32" y="447" class="body">Worker: waiting safely</text>
+  <text x="32" y="473" class="body">Evidence: fresh at 10:42</text>
+  <text x="32" y="497" class="small">SANDBOX remains visible on every screen.</text>
+
+  <rect x="14" y="526" width="362" height="174" rx="16" class="surface"/>
+  <text x="32" y="553" class="h2">Season progress</text>
+  <text x="32" y="584" class="body">Morning</text><text x="278" y="584" class="small">Complete · 16</text>
+  <line x1="32" y1="598" x2="358" y2="598" stroke="#c8cec9"/>
+  <text x="32" y="625" class="body">Afternoon</text><text x="245" y="625" class="small">Recovery · 15</text>
+  <line x1="32" y1="639" x2="358" y2="639" stroke="#c8cec9"/>
+  <text x="32" y="666" class="body">Evening</text><text x="288" y="666" class="small">Queued</text>
+  <text x="32" y="688" class="small">Execution count is not a quality score.</text>
+
+  <rect x="14" y="716" width="362" height="174" rx="16" class="surface"/>
+  <text x="32" y="743" class="h2">Attention</text>
+  <rect x="32" y="762" width="326" height="48" rx="9" class="attention"/>
+  <text x="46" y="783" class="body">Run 2 requires recovery</text><text x="46" y="801" class="small">Blocks later work · unread</text>
+  <rect x="32" y="822" width="326" height="48" rx="9" class="soft"/>
+  <text x="46" y="843" class="body">Artifact projection pending</text><text x="46" y="861" class="small">Story work will not rerun</text>
+
+  <rect x="0" y="914" width="390" height="66" fill="#1f2421"/>
+  <text x="17" y="946" class="small inverse">Home</text><text x="75" y="946" class="small inverse-muted">Prepare</text><text x="143" y="946" class="small inverse-muted">Live</text>
+  <text x="192" y="946" class="small inverse-muted">Review</text><text x="252" y="946" class="small inverse-muted">Diagnose</text><text x="326" y="946" class="small inverse-muted">Seasons</text>
+  <text x="98" y="970" class="eyebrow inverse-subtle">NAVIGATION HYPOTHESIS A · BOTTOM BAR</text>
+</svg>

@@ -1,0 +1,24 @@
+[Unit]
+Description=AI Improv Troupe isolated S02 test-season worker
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=improv
+Group=improv
+WorkingDirectory=/opt/improv-troupe-test
+Environment=PYTHONUNBUFFERED=1
+ExecStartPre=/opt/improv-troupe-test/.venv/bin/python -m improv_troupe.cli migrate --config /etc/improv-troupe-test/config.yaml
+ExecStart=/opt/improv-troupe-test/.venv/bin/python -m improv_troupe.cli serve --config /etc/improv-troupe-test/config.yaml
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/improv-troupe-test
+
+[Install]
+WantedBy=multi-user.target

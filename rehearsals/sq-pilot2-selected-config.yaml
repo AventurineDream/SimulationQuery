@@ -1,0 +1,19 @@
+# Selected model-combination preflight only. This does not implement research
+# checkpoints, passive detection, coding, or forked probes. Do not launch the
+# research pilot until the critical fixes in research/reviews/SQ_PRE_PILOT_REVIEW_2026-09-05.md pass.
+service:
+  data_root: /Users/aven/Software/Github/AI-improv-troupe/.rehearsal-data/sq-pilot2-selected-preflight-20260906
+  poll_interval_seconds: 5
+  recovery_wait_seconds: 1800
+  auto_retry_timeouts: false
+  timeout_retry_max_attempts: 1
+  worker_id: sq-pilot2-selected-preflight
+backends:
+  local:
+    base_url: http://10.0.0.103:11434
+    kind: ollama
+    timeout_seconds: 1800
+    models:
+      - gpt-oss:20b
+      - qwen3:30b-instruct
+default_backend: local

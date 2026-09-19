@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <defs>
+    <radialGradient id="emberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(438 210) rotate(35) scale(560 330)">
+      <stop offset="0" stop-color="#ef9b59" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#ef9b59" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1440" height="1024" fill="#0d1216"/>
+  <rect width="980" height="420" fill="url(#emberGlow)"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #f3eee5; }
+    .muted { fill: #aaa69e; }
+    .faint { fill: #747c80; }
+    .darkInk { fill: #11171c; }
+    .eyebrow { font-size: 11px; font-weight: 750; letter-spacing: 1.8px; fill: #ef9b59; }
+    .eyebrowMuted { font-size: 10px; font-weight: 750; letter-spacing: 1.6px; fill: #8e9698; }
+    .title { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
+    .screenTitle { font-size: 29px; font-weight: 700; letter-spacing: -.6px; }
+    .h2 { font-size: 18px; font-weight: 700; }
+    .h3 { font-size: 14px; font-weight: 700; }
+    .body { font-size: 13px; }
+    .small { font-size: 11px; fill: #aaa69e; }
+    .tiny { font-size: 10px; fill: #8e9698; }
+    .serif { font-family: Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #182026; stroke: #3d484f; stroke-width: 1.5; }
+    .panel { fill: #141b20; stroke: #344047; stroke-width: 1.5; }
+    .spec { fill: #12181d; stroke: #39434a; stroke-width: 1.5; }
+    .good { fill: #203b32; stroke: #76c6a2; stroke-width: 1.2; }
+    .warm { fill: #3a321f; stroke: #e5c36e; stroke-width: 1.2; }
+    .danger { fill: #3b2424; stroke: #e78278; stroke-width: 1.2; }
+    .info { fill: #202f3d; stroke: #82aee5; stroke-width: 1.2; }
+    .rule { stroke: #344047; stroke-width: 1; }
+    .small.darkInk, .tiny.darkInk { fill: #11171c; }
+  </style>
+
+  <text x="56" y="54" class="eyebrow">DIRECTION B / EVOLVE THE CURRENT CONSOLE</text>
+  <text x="56" y="101" class="title">Molten Observatory</text>
+  <text x="390" y="99" class="body muted">A night laboratory where geologic light appears only at meaningful thresholds.</text>
+
+  <rect x="56" y="138" width="900" height="830" rx="24" fill="#11171c" stroke="#465159" stroke-width="2"/>
+  <path d="M80 138H261V968H80C66.7 968 56 957.3 56 944V162C56 148.7 66.7 138 80 138Z" fill="#080c0f"/>
+  <circle cx="88" cy="177" r="16" fill="#ef9b59"/>
+  <text x="80" y="182" class="h3 darkInk">SQ</text>
+  <text x="116" y="174" class="h3">Simulation Query</text>
+  <text x="116" y="193" class="tiny">PRIVATE OBSERVATORY</text>
+
+  <text x="80" y="241" class="eyebrowMuted">WORKSPACE</text>
+  <rect x="72" y="258" width="173" height="40" rx="9" fill="#202a30" stroke="#ef9b59" stroke-opacity=".65"/>
+  <rect x="76" y="268" width="4" height="20" rx="2" fill="#ef9b59"/>
+  <text x="94" y="283" class="body">Home</text>
+  <text x="80" y="329" class="body muted">Prepare</text>
+  <text x="80" y="373" class="body muted">Live</text>
+  <text x="80" y="417" class="body muted">Review</text>
+  <text x="80" y="461" class="body muted">Diagnostics</text>
+  <text x="80" y="505" class="body muted">Seasons</text>
+
+  <line x1="80" y1="550" x2="227" y2="550" class="rule"/>
+  <text x="80" y="581" class="eyebrowMuted">SELECTED SIGNAL</text>
+  <text x="80" y="610" class="h3">S02</text>
+  <text x="80" y="630" class="small">The Weather Library</text>
+  <rect x="80" y="651" width="126" height="27" rx="8" class="good"/>
+  <text x="92" y="669" class="tiny">RUNNING · PRIVATE</text>
+  <text x="80" y="716" class="tiny">WORKER</text>
+  <circle cx="85" cy="740" r="5" fill="#76c6a2"/>
+  <text x="98" y="744" class="small">Healthy · queue 2</text>
+  <text x="80" y="784" class="tiny">FRESHNESS</text>
+  <text x="80" y="807" class="small">Checked 14:06:12</text>
+  <rect x="80" y="897" width="145" height="38" rx="9" fill="#11171c" stroke="#39434a"/>
+  <text x="96" y="921" class="small">Owner-only console</text>
+
+  <text x="293" y="182" class="eyebrow">HOME / DAY 2</text>
+  <text x="293" y="218" class="screenTitle">Keep the troupe in view.</text>
+  <text x="293" y="244" class="body muted">The season is healthy. Nothing needs intervention right now.</text>
+  <rect x="778" y="172" width="150" height="31" rx="9" class="good"/>
+  <text x="795" y="192" class="tiny">DURABLE · FRESH</text>
+
+  <rect x="293" y="278" width="407" height="264" rx="16" class="surface"/>
+  <rect x="293" y="278" width="5" height="264" rx="2" fill="#ef9b59"/>
+  <text x="317" y="310" class="eyebrowMuted">LAST ACCEPTED BEAT</text>
+  <text x="317" y="345" class="h2">Run 06 · Evening</text>
+  <text x="317" y="373" class="serif body">The brass vane turned toward a wind no</text>
+  <text x="317" y="395" class="serif body">instrument could name. Ivy watched the dust</text>
+  <text x="317" y="417" class="serif body">lift from the shelves in a single silver ribbon.</text>
+  <line x1="317" y1="441" x2="676" y2="441" class="rule"/>
+  <text x="317" y="470" class="tiny mono">ACCEPTED 14:02:40 · ARTIFACT v6</text>
+  <rect x="317" y="490" width="132" height="31" rx="9" fill="#ef9b59"/>
+  <text x="335" y="510" class="small darkInk">Open transcript</text>
+  <text x="465" y="510" class="small">Reading stays still during polling</text>
+
+  <rect x="716" y="278" width="212" height="264" rx="16" class="panel"/>
+  <text x="738" y="310" class="eyebrowMuted">TODAY</text>
+  <text x="738" y="345" class="h2">6 / 6 runs</text>
+  <text x="738" y="369" class="small">Day complete</text>
+  <line x1="738" y1="394" x2="906" y2="394" class="rule"/>
+  <text x="738" y="421" class="tiny">DIARIES</text>
+  <text x="738" y="446" class="h3">4 private · 0 due</text>
+  <text x="738" y="474" class="tiny">NEXT SCHEDULE</text>
+  <text x="738" y="499" class="h3">Tomorrow · Morning</text>
+  <rect x="738" y="512" width="125" height="22" rx="7" class="good"/>
+  <text x="750" y="527" class="tiny">NO ATTENTION DUE</text>
+
+  <rect x="293" y="560" width="635" height="202" rx="16" class="surface"/>
+  <text x="317" y="592" class="eyebrowMuted">STABLE READING PANE</text>
+  <text x="317" y="626" class="h2">End-of-day review</text>
+  <text x="317" y="652" class="serif body">Luna closed the west shutters one at a time. “If the library</text>
+  <text x="317" y="674" class="serif body">is listening,” she said, “we should decide what we want it to hear.”</text>
+  <text x="317" y="710" class="small">Open text never redraws until you choose “Load new material.”</text>
+  <rect x="317" y="724" width="144" height="26" rx="8" class="info"/>
+  <text x="331" y="742" class="tiny">NEW MATERIAL AVAILABLE</text>
+
+  <rect x="293" y="782" width="635" height="151" rx="16" class="panel"/>
+  <text x="317" y="814" class="eyebrowMuted">ACTION LANGUAGE</text>
+  <rect x="317" y="841" width="102" height="36" rx="9" fill="#ef9b59"/>
+  <text x="345" y="864" class="small darkInk">Open</text>
+  <rect x="431" y="841" width="118" height="36" rx="9" fill="#182026" stroke="#465159"/>
+  <text x="455" y="864" class="small">Save draft</text>
+  <rect x="561" y="841" width="132" height="36" rx="9" class="warm"/>
+  <text x="581" y="864" class="small">Review impact</text>
+  <rect x="705" y="841" width="155" height="36" rx="9" class="danger"/>
+  <text x="723" y="864" class="small">Type intent first</text>
+  <text x="317" y="907" class="small">Read · Light · Workflow · Consequential</text>
+
+  <rect x="980" y="138" width="404" height="830" rx="22" class="spec"/>
+  <text x="1006" y="174" class="eyebrow">VISUAL CONTRACT</text>
+  <text x="1006" y="210" class="h2">Dark, not theatrical fog</text>
+  <text x="1006" y="234" class="small">Glow marks thresholds; long-form reading stays matte.</text>
+
+  <text x="1006" y="280" class="eyebrowMuted">CORE PALETTE</text>
+  <rect x="1006" y="300" width="62" height="44" rx="8" fill="#0d1216" stroke="#39434a"/>
+  <rect x="1078" y="300" width="62" height="44" rx="8" fill="#1b2329"/>
+  <rect x="1150" y="300" width="62" height="44" rx="8" fill="#ef9b59"/>
+  <rect x="1222" y="300" width="62" height="44" rx="8" fill="#76c6a2"/>
+  <rect x="1294" y="300" width="62" height="44" rx="8" fill="#e78278"/>
+  <text x="1006" y="363" class="tiny mono">NIGHT</text>
+  <text x="1078" y="363" class="tiny mono">PANEL</text>
+  <text x="1150" y="363" class="tiny mono">EMBER</text>
+  <text x="1222" y="363" class="tiny mono">MINT</text>
+  <text x="1294" y="363" class="tiny mono">CORAL</text>
+
+  <line x1="1006" y1="392" x2="1358" y2="392" class="rule"/>
+  <text x="1006" y="424" class="eyebrowMuted">TYPE ROLES</text>
+  <text x="1006" y="456" class="h2">Inter / system</text>
+  <text x="1006" y="487" class="serif h2">Georgia / reading voice</text>
+  <text x="1006" y="516" class="mono small">SF Mono / signal trace v06</text>
+  <text x="1006" y="542" class="small">Reading serif and warm ink prevent a generic developer-console feel.</text>
+
+  <line x1="1006" y1="570" x2="1358" y2="570" class="rule"/>
+  <text x="1006" y="602" class="eyebrowMuted">SHAPE &amp; RHYTHM</text>
+  <text x="1006" y="632" class="body">8 px base grid · 9–16 px radii</text>
+  <text x="1006" y="657" class="body">1 px cool borders · no glass behind reading</text>
+  <text x="1006" y="682" class="body">Single glow source per screen at most</text>
+  <text x="1006" y="707" class="body">Orange means focus or boundary—not generic health</text>
+
+  <line x1="1006" y1="737" x2="1358" y2="737" class="rule"/>
+  <text x="1006" y="769" class="eyebrowMuted">STATE PALETTE</text>
+  <rect x="1006" y="790" width="162" height="36" rx="9" class="good"/>
+  <text x="1022" y="813" class="small">Success / durable</text>
+  <rect x="1180" y="790" width="176" height="36" rx="9" class="warm"/>
+  <text x="1196" y="813" class="small">Attention / decision</text>
+  <rect x="1006" y="838" width="162" height="36" rx="9" class="danger"/>
+  <text x="1022" y="861" class="small">Danger / blocked</text>
+  <rect x="1180" y="838" width="176" height="36" rx="9" class="info"/>
+  <text x="1196" y="861" class="small">Info / new material</text>
+
+  <text x="1006" y="910" class="h3">Signature gesture</text>
+  <text x="1006" y="934" class="small">A narrow ember seam appears only where a new</text>
+  <text x="1006" y="951" class="small">signal crosses from observation into consequence.</text>
+</svg>

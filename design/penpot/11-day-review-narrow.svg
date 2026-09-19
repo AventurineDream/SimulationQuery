@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1320" viewBox="0 0 390 1320">
+  <rect width="390" height="1320" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 1.5; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 1.5; }
+    .warn { fill: #f5ead7; stroke: #b4965a; stroke-width: 1.5; }
+    .stage { fill: #e8edf0; stroke: #aab5bb; stroke-width: 1.5; }
+    .eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 1.1px; fill: #5a645e; }
+    .title { font-size: 23px; font-weight: 700; }
+    .h2 { font-size: 16px; font-weight: 700; }
+    .body { font-size: 12px; }
+    .small { font-size: 10px; fill: #5f6862; }
+    .inverse { fill: #ffffff; }
+    .inverse-muted { fill: #c7cec9; }
+  </style>
+  <rect x="0" y="0" width="390" height="64" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="14" y="14" width="90" height="36" rx="18" fill="#dfeee6" stroke="#6f9c82"/><text x="30" y="36" class="eyebrow">SANDBOX</text>
+  <text x="120" y="28" class="small">S02 — Weather Library</text><text x="120" y="46" class="body">Review · Day 1</text>
+  <text x="18" y="96" class="eyebrow">REVIEW / DAY</text>
+  <text x="18" y="126" class="title">The labels changed</text><text x="18" y="152" class="title">overnight</text>
+  <text x="18" y="176" class="small">Original date Aug 25 · stable snapshot 10:42</text>
+  <rect x="14" y="194" width="362" height="42" rx="10" class="soft"/><text x="97" y="220" class="body">1 new beat available · load when ready</text>
+
+  <text x="18" y="270" class="eyebrow">DAY RUNS</text>
+  <rect x="14" y="286" width="112" height="76" rx="10" class="soft"/><text x="26" y="309" class="eyebrow">MORNING</text><text x="26" y="333" class="body">Complete</text><text x="26" y="351" class="small">16 turns</text>
+  <rect x="139" y="286" width="112" height="76" rx="10" class="warn"/><text x="151" y="309" class="eyebrow">AFTERNOON</text><text x="151" y="333" class="body">Recovery</text><text x="151" y="351" class="small">15 turns</text>
+  <rect x="264" y="286" width="112" height="76" rx="10" class="surface"/><text x="276" y="309" class="eyebrow">EVENING</text><text x="276" y="333" class="body">Queued</text><text x="276" y="351" class="small">18:00</text>
+
+  <rect x="14" y="380" width="362" height="104" rx="14" class="warn"/>
+  <text x="32" y="408" class="eyebrow">AFTERNOON COMPLETION EVIDENCE</text>
+  <text x="32" y="436" class="body">Recovery required · schema_failure</text>
+  <text x="32" y="461" class="body">15 accepted turns · delay +00:18:42</text>
+
+  <rect x="14" y="500" width="362" height="144" rx="14" class="surface"/>
+  <text x="32" y="528" class="h2">Run state</text>
+  <text x="32" y="557" class="eyebrow">FICTION CLOCK</text><text x="32" y="578" class="body">Day 1 · Afternoon · six hours later</text>
+  <text x="32" y="605" class="eyebrow">ACCEPTED CHANGES</text><text x="32" y="626" class="body">Corridor sealed · label altered · rain sampled</text>
+
+  <text x="18" y="681" class="eyebrow">CAUSAL TRANSCRIPT</text>
+  <rect x="14" y="697" width="362" height="110" rx="12" class="stage"/>
+  <text x="32" y="723" class="eyebrow">DIRECTOR · ACCEPTED #11</text>
+  <text x="32" y="750" class="body">The archive lights dim as the storm</text><text x="32" y="769" class="body">relabels Chamber Seven “DO NOT REMEMBER.”</text>
+  <text x="32" y="793" class="small">Corridor sealed · mystery +1</text>
+  <rect x="30" y="821" width="346" height="86" rx="12" class="surface"/>
+  <text x="46" y="847" class="eyebrow">MARA · ACCEPTED #12</text><text x="46" y="874" class="body">She silences the alarm and listens</text><text x="46" y="893" class="body">for the chamber’s new resonance.</text>
+  <rect x="30" y="921" width="346" height="94" rx="12" class="surface"/>
+  <text x="46" y="947" class="eyebrow">TAVI · ACCEPTED #13 · CORRECTED</text><text x="46" y="974" class="body">They anchor a repair line and test</text><text x="46" y="993" class="body">the altered latch from the threshold.</text>
+  <rect x="30" y="1029" width="346" height="86" rx="12" class="surface"/>
+  <text x="46" y="1055" class="eyebrow">OREN · ACCEPTED #14</text><text x="46" y="1082" class="body">He recognizes rain that has never</text><text x="46" y="1101" class="body">fallen in this orbit.</text>
+  <rect x="30" y="1129" width="346" height="86" rx="12" class="surface"/>
+  <text x="46" y="1155" class="eyebrow">SABLE · ACCEPTED #15</text><text x="46" y="1182" class="body">She records the forbidden label</text><text x="46" y="1201" class="body">without saying it aloud.</text>
+  <text x="18" y="1244" class="small">Failed output is absent here. Open the selected call in Diagnostics.</text>
+
+  <rect x="0" y="1254" width="390" height="66" fill="#1f2421"/>
+  <text x="17" y="1286" class="small inverse-muted">Home</text><text x="75" y="1286" class="small inverse-muted">Prepare</text><text x="143" y="1286" class="small inverse-muted">Live</text>
+  <text x="192" y="1286" class="small inverse">Review</text><text x="252" y="1286" class="small inverse-muted">Diagnose</text><text x="326" y="1286" class="small inverse-muted">Seasons</text>
+</svg>

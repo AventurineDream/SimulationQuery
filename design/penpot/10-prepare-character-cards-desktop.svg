@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1120" viewBox="0 0 1440 1120">
+  <rect width="1440" height="1120" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .nav { fill: #1f2421; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 2; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 2; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 2; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 2; }
+    .active { fill: #e8edf0; stroke: #8fa2ad; stroke-width: 2; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 2; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: #5a645e; }
+    .title { font-size: 32px; font-weight: 700; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 15px; font-weight: 700; }
+    .body { font-size: 14px; }
+    .small { font-size: 12px; fill: #5f6862; }
+    .navtext { font-size: 15px; fill: #dce2dd; }
+    .navactive { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    .inverse { fill: #ffffff; }
+    .inverse-subtle { fill: #9fb0a6; }
+    .line { stroke: #c8cec9; stroke-width: 2; }
+  </style>
+
+  <rect x="0" y="0" width="232" height="1120" class="nav"/>
+  <text x="28" y="45" class="eyebrow inverse-subtle">AI IMPROV TROUPE</text>
+  <text x="28" y="77" class="h2 inverse">Operator</text>
+  <text x="32" y="147" class="navtext">Home</text>
+  <rect x="16" y="170" width="200" height="46" rx="10" fill="#39423d"/>
+  <text x="32" y="199" class="navactive">Prepare</text>
+  <text x="32" y="252" class="navtext">Live</text>
+  <text x="32" y="306" class="navtext">Review</text>
+  <text x="32" y="360" class="navtext">Diagnostics</text>
+  <text x="32" y="414" class="navtext">Seasons</text>
+
+  <rect x="232" y="0" width="1208" height="74" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="260" y="18" width="114" height="38" rx="19" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="283" y="42" class="eyebrow">SANDBOX</text>
+  <text x="402" y="34" class="small">Season</text><text x="402" y="54" class="h3">S02 — The Weather Library ▾</text>
+  <text x="870" y="34" class="small">Preparation</text><text x="870" y="54" class="body">Draft · Step 3 of 8</text>
+  <text x="1138" y="34" class="small">Evidence</text><text x="1138" y="54" class="body">Fresh · checked 11:06</text>
+
+  <text x="272" y="120" class="eyebrow">PREPARE / CHARACTER CARDS</text>
+  <text x="272" y="164" class="title">Shape the cast before anything becomes operational.</text>
+  <text x="272" y="194" class="body">Checklist navigation is read-only. Saving, approval, generation, preflight, and green are separate actions.</text>
+
+  <rect x="272" y="222" width="300" height="838" rx="18" class="surface"/>
+  <text x="296" y="258" class="h2">Preparation checklist</text>
+  <text x="296" y="282" class="small">All eight steps remain visible and revisable.</text>
+
+  <rect x="288" y="304" width="268" height="60" rx="10" class="approved"/>
+  <text x="306" y="330" class="h3">1 · Season idea</text><text x="306" y="350" class="small">Approved · v2</text>
+  <rect x="288" y="374" width="268" height="60" rx="10" class="approved"/>
+  <text x="306" y="400" class="h3">2 · Opening</text><text x="306" y="420" class="small">Approved · v3</text>
+  <rect x="288" y="444" width="268" height="70" rx="10" class="active"/>
+  <text x="306" y="470" class="h3">3 · Character cards</text><text x="306" y="491" class="small">Ready for review · 3 of 4 approved</text>
+  <rect x="288" y="524" width="268" height="60" rx="10" class="disabled"/>
+  <text x="306" y="550" class="h3">4 · Model assignment</text><text x="306" y="570" class="small">Blocked · approve all cards</text>
+  <rect x="288" y="594" width="268" height="60" rx="10" class="disabled"/>
+  <text x="306" y="620" class="h3">5 · Preflight</text><text x="306" y="640" class="small">Not started</text>
+  <rect x="288" y="664" width="268" height="60" rx="10" class="disabled"/>
+  <text x="306" y="690" class="h3">6 · Private preparation</text><text x="306" y="710" class="small">Not started</text>
+  <rect x="288" y="734" width="268" height="60" rx="10" class="disabled"/>
+  <text x="306" y="760" class="h3">7 · Schedule preview</text><text x="306" y="780" class="small">Not started</text>
+  <rect x="288" y="804" width="268" height="60" rx="10" class="disabled"/>
+  <text x="306" y="830" class="h3">8 · Green review</text><text x="306" y="850" class="small">Locked · prerequisites incomplete</text>
+  <line x1="296" y1="890" x2="548" y2="890" class="line"/>
+  <text x="296" y="920" class="eyebrow">NEXT RECOMMENDED</text>
+  <text x="296" y="948" class="body">Review Mara Venn draft v4.</text>
+  <text x="296" y="972" class="small">Opening another step does not change state.</text>
+
+  <rect x="596" y="222" width="792" height="838" rx="18" class="surface"/>
+  <text x="620" y="258" class="eyebrow">FOCUSED STEP · 3 OF 8</text>
+  <text x="620" y="292" class="h2">Character cards</text>
+  <text x="620" y="318" class="body">Approve stable public identity before model assignment or private extensions.</text>
+
+  <rect x="620" y="344" width="170" height="54" rx="10" class="active"/>
+  <text x="638" y="368" class="h3">Mara Venn</text><text x="638" y="387" class="small">Draft v4</text>
+  <rect x="802" y="344" width="170" height="54" rx="10" class="approved"/>
+  <text x="820" y="368" class="h3">Tavi North</text><text x="820" y="387" class="small">Approved v3</text>
+  <rect x="984" y="344" width="170" height="54" rx="10" class="approved"/>
+  <text x="1002" y="368" class="h3">Oren Vale</text><text x="1002" y="387" class="small">Approved v2</text>
+  <rect x="1166" y="344" width="198" height="54" rx="10" class="approved"/>
+  <text x="1184" y="368" class="h3">Sable Reed</text><text x="1184" y="387" class="small">Approved v3</text>
+
+  <rect x="620" y="422" width="492" height="540" rx="14" class="soft"/>
+  <text x="644" y="456" class="h2">Mara Venn · draft v4</text>
+  <text x="644" y="480" class="small">Derived from opening v3 · last saved 11:02</text>
+  <text x="644" y="520" class="eyebrow">SPECIFIED PRONOUNS</text>
+  <rect x="644" y="536" width="210" height="42" rx="8" class="surface"/><text x="660" y="562" class="body">she / her</text>
+  <text x="644" y="610" class="eyebrow">PUBLIC BRIEF</text>
+  <rect x="644" y="626" width="444" height="76" rx="8" class="surface"/>
+  <text x="660" y="653" class="body">Maintenance archivist who hears weather in</text>
+  <text x="660" y="676" class="body">the library walls before anyone else does.</text>
+  <text x="644" y="738" class="eyebrow">OCCUPATION AND SKILLS</text>
+  <rect x="644" y="754" width="444" height="58" rx="8" class="surface"/>
+  <text x="660" y="780" class="body">Archive maintenance · acoustic diagnosis · repair</text>
+  <text x="644" y="848" class="eyebrow">VOICE ANCHORS</text>
+  <rect x="644" y="864" width="214" height="66" rx="8" class="surface"/>
+  <text x="660" y="890" class="body">Precise under pressure</text><text x="660" y="912" class="small">Names sensations first</text>
+  <rect x="874" y="864" width="214" height="66" rx="8" class="surface"/>
+  <text x="890" y="890" class="body">Dry, protective humor</text><text x="890" y="912" class="small">Never explains the joke</text>
+
+  <rect x="1132" y="422" width="232" height="252" rx="14" class="approved"/>
+  <text x="1154" y="454" class="eyebrow">APPROVAL IMPACT</text>
+  <text x="1154" y="486" class="body">Locks this public identity</text>
+  <text x="1154" y="514" class="body">Records card v4</text>
+  <text x="1154" y="542" class="body">Completes 4 of 4 cards</text>
+  <text x="1154" y="570" class="body">Unlocks model assignment</text>
+  <line x1="1154" y1="596" x2="1340" y2="596" class="line"/>
+  <text x="1154" y="624" class="small">Does not green the season or</text>
+  <text x="1154" y="644" class="small">generate private role sheets.</text>
+
+  <rect x="1132" y="694" width="232" height="166" rx="14" class="surface"/>
+  <text x="1154" y="726" class="eyebrow">VERSION HISTORY</text>
+  <text x="1154" y="758" class="body">v4 · current draft</text>
+  <text x="1154" y="786" class="body">v3 · replaced 10:18</text>
+  <text x="1154" y="814" class="body">v2 · replaced yesterday</text>
+  <text x="1154" y="840" class="small">Prior versions remain durable.</text>
+
+  <rect x="1132" y="880" width="108" height="50" rx="10" class="soft"/>
+  <text x="1158" y="911" class="body">Save draft</text>
+  <rect x="1252" y="880" width="112" height="50" rx="10" fill="#1f2421"/>
+  <text x="1263" y="910" class="small inverse">Review approval</text>
+  <text x="1132" y="954" class="small">No generic Next action.</text>
+  <text x="1132" y="974" class="small">Review consequences before approval.</text>
+  <text x="620" y="1022" class="small">Private role sheets, prompts, and model identities remain outside this step.</text>
+</svg>

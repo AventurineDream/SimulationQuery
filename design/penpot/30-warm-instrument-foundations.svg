@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .eyebrow { font-size: 11px; font-weight: 750; letter-spacing: 1.8px; fill: #6c6b63; }
+    .title { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 14px; font-weight: 700; }
+    .body { font-size: 13px; }
+    .small { font-size: 11px; fill: #6c6b63; }
+    .tiny { font-size: 10px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .card { fill: #f3efe6; stroke: #b7b0a2; stroke-width: 1.5; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1.2; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1.2; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1.2; }
+    .danger { fill: #f0dcd8; stroke: #a95449; stroke-width: 1.2; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1.2; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .dangerText { fill: #6a302b; }
+    .infoText { fill: #354f63; }
+  </style>
+
+  <text x="56" y="54" class="eyebrow">30 / WARM INSTRUMENT / FOUNDATIONS</text>
+  <text x="56" y="101" class="title">Warmth for reading. Precision for consequence.</text>
+  <text x="56" y="130" class="body">Exact values proposed for approval; interaction architecture remains frozen.</text>
+
+  <rect x="56" y="160" width="1328" height="220" rx="20" class="card"/>
+  <text x="80" y="194" class="eyebrow">CORE COLOR ROLES</text>
+
+  <rect x="80" y="216" width="164" height="138" rx="12" class="surface"/>
+  <rect x="94" y="230" width="136" height="58" rx="8" fill="#e7e1d5" stroke="#c2bbaf"/>
+  <text x="94" y="313" class="h3">Canvas</text>
+  <text x="94" y="333" class="tiny mono">#E7E1D5</text>
+  <text x="94" y="348" class="tiny">page surround</text>
+
+  <rect x="260" y="216" width="164" height="138" rx="12" class="surface"/>
+  <rect x="274" y="230" width="136" height="58" rx="8" fill="#f3efe6" stroke="#c2bbaf"/>
+  <text x="274" y="313" class="h3">Paper</text>
+  <text x="274" y="333" class="tiny mono">#F3EFE6</text>
+  <text x="274" y="348" class="tiny">primary workspace</text>
+
+  <rect x="440" y="216" width="164" height="138" rx="12" class="surface"/>
+  <rect x="454" y="230" width="136" height="58" rx="8" fill="#faf7f0" stroke="#c9c1b3"/>
+  <text x="454" y="313" class="h3">Surface</text>
+  <text x="454" y="333" class="tiny mono">#FAF7F0</text>
+  <text x="454" y="348" class="tiny">reading cards</text>
+
+  <rect x="620" y="216" width="164" height="138" rx="12" class="surface"/>
+  <rect x="634" y="230" width="136" height="58" rx="8" fill="#26302d"/>
+  <text x="634" y="313" class="h3">Charcoal</text>
+  <text x="634" y="333" class="tiny mono">#26302D</text>
+  <text x="634" y="348" class="tiny">rail + primary action</text>
+
+  <rect x="800" y="216" width="164" height="138" rx="12" class="surface"/>
+  <rect x="814" y="230" width="136" height="58" rx="8" fill="#222724"/>
+  <text x="814" y="313" class="h3">Ink</text>
+  <text x="814" y="333" class="tiny mono">#222724</text>
+  <text x="814" y="348" class="tiny">all essential text</text>
+
+  <rect x="980" y="216" width="164" height="138" rx="12" class="surface"/>
+  <rect x="994" y="230" width="136" height="58" rx="8" fill="#6c6b63"/>
+  <text x="994" y="313" class="h3">Muted</text>
+  <text x="994" y="333" class="tiny mono">#6C6B63</text>
+  <text x="994" y="348" class="tiny">secondary text only</text>
+
+  <rect x="1160" y="216" width="200" height="138" rx="12" class="surface"/>
+  <rect x="1174" y="230" width="172" height="58" rx="8" fill="#c56f42"/>
+  <text x="1174" y="313" class="h3">Ember</text>
+  <text x="1174" y="333" class="tiny mono">#C56F42</text>
+  <text x="1174" y="348" class="tiny">selection + creative boundary</text>
+
+  <rect x="56" y="404" width="650" height="266" rx="20" class="card"/>
+  <text x="80" y="438" class="eyebrow">TYPE ROLES</text>
+  <text x="80" y="476" class="h2">Inter / system interface</text>
+  <text x="80" y="500" class="small">Fallback: system UI stack</text>
+  <text x="80" y="542" class="serif h2">Charter / authored reading voice</text>
+  <text x="80" y="568" class="small">Fallback: Georgia · scripts and diaries only</text>
+  <text x="80" y="610" class="mono h3">SF Mono / operational evidence v06</text>
+  <text x="80" y="634" class="small">Fallback: Menlo, Consolas · versions and receipts</text>
+  <line x1="420" y1="452" x2="420" y2="644" class="rule"/>
+  <text x="448" y="478" class="eyebrow">SCALE</text>
+  <text x="448" y="506" class="body">Display · 32 / 38 · 700</text>
+  <text x="448" y="533" class="body">Section · 18 / 24 · 700</text>
+  <text x="448" y="560" class="body">UI body · 14 / 20 · 400</text>
+  <text x="448" y="587" class="body">Reading · 16 / 26 · 400</text>
+  <text x="448" y="614" class="body">Evidence · 12 / 18 · 500</text>
+  <text x="448" y="641" class="body">Eyebrow · 11 / 16 · 750</text>
+
+  <rect x="730" y="404" width="654" height="266" rx="20" class="card"/>
+  <text x="754" y="438" class="eyebrow">SEMANTIC STATES</text>
+  <rect x="754" y="462" width="284" height="78" rx="12" class="good"/>
+  <text x="772" y="488" class="h3 goodText">Durable / success</text>
+  <text x="772" y="510" class="small goodText">BG #DCE7DE · text #334D39 · 7.31:1</text>
+  <text x="772" y="528" class="tiny goodText">Never color-only: ✓ + label</text>
+  <rect x="1054" y="462" width="306" height="78" rx="12" class="warm"/>
+  <text x="1072" y="488" class="h3 warmText">Attention / decision</text>
+  <text x="1072" y="510" class="small warmText">BG #F3E5C9 · text #5E4520 · 7.18:1</text>
+  <text x="1072" y="528" class="tiny warmText">Names what is due and why</text>
+  <rect x="754" y="556" width="284" height="78" rx="12" class="danger"/>
+  <text x="772" y="582" class="h3 dangerText">Blocked / dangerous</text>
+  <text x="772" y="604" class="small dangerText">BG #F0DCD8 · text #6A302B · 7.70:1</text>
+  <text x="772" y="622" class="tiny dangerText">Names impact; no generic red alarm</text>
+  <rect x="1054" y="556" width="306" height="78" rx="12" class="info"/>
+  <text x="1072" y="582" class="h3 infoText">Information / new material</text>
+  <text x="1072" y="604" class="small infoText">BG #DFE7EC · text #354F63 · 6.85:1</text>
+  <text x="1072" y="622" class="tiny infoText">Creator chooses when to load it</text>
+
+  <rect x="56" y="694" width="650" height="274" rx="20" class="card"/>
+  <text x="80" y="728" class="eyebrow">SPACE, SHAPE &amp; DEPTH</text>
+  <text x="80" y="762" class="h3">Spacing scale</text>
+  <rect x="80" y="782" width="4" height="34" fill="#c56f42"/>
+  <rect x="98" y="782" width="8" height="34" fill="#c56f42"/>
+  <rect x="120" y="782" width="12" height="34" fill="#c56f42"/>
+  <rect x="146" y="782" width="16" height="34" fill="#c56f42"/>
+  <rect x="176" y="782" width="24" height="34" fill="#c56f42"/>
+  <rect x="214" y="782" width="32" height="34" fill="#c56f42"/>
+  <rect x="260" y="782" width="48" height="34" fill="#c56f42"/>
+  <text x="80" y="838" class="small mono">4 · 8 · 12 · 16 · 24 · 32 · 48</text>
+  <text x="80" y="878" class="h3">Radius roles</text>
+  <rect x="80" y="896" width="84" height="46" rx="8" class="surface"/>
+  <rect x="178" y="896" width="84" height="46" rx="12" class="surface"/>
+  <rect x="276" y="896" width="84" height="46" rx="16" class="surface"/>
+  <rect x="374" y="896" width="84" height="46" rx="23" class="surface"/>
+  <text x="116" y="925" class="h3">8</text>
+  <text x="211" y="925" class="h3">12</text>
+  <text x="309" y="925" class="h3">16</text>
+  <text x="407" y="925" class="h3">24</text>
+  <text x="99" y="959" class="tiny">control</text>
+  <text x="200" y="959" class="tiny">card</text>
+  <text x="296" y="959" class="tiny">pane</text>
+  <text x="392" y="959" class="tiny">shell</text>
+  <line x1="486" y1="746" x2="486" y2="944" class="rule"/>
+  <text x="514" y="762" class="h3">Depth</text>
+  <text x="514" y="790" class="body">1 px warm-gray borders</text>
+  <text x="514" y="816" class="body">No shadow on reading cards</text>
+  <text x="514" y="842" class="body">One soft shell shadow at most</text>
+  <text x="514" y="884" class="h3">Ember rule</text>
+  <rect x="514" y="902" width="4" height="40" rx="2" fill="#c56f42"/>
+  <text x="530" y="918" class="small">Marks the exact boundary between</text>
+  <text x="530" y="936" class="small">creative material and consequence.</text>
+
+  <rect x="730" y="694" width="654" height="274" rx="20" class="card"/>
+  <text x="754" y="728" class="eyebrow">ACCESSIBILITY &amp; BEHAVIOR</text>
+  <text x="754" y="762" class="h3">Verified contrast pairs</text>
+  <text x="754" y="789" class="body">Ink / Paper · 13.23:1</text>
+  <text x="754" y="814" class="body">Muted / Paper · 4.67:1</text>
+  <text x="754" y="839" class="body">Light / Charcoal · 11.88:1</text>
+  <text x="754" y="864" class="body">Focus #9E4F32 / Paper · 5.06:1</text>
+  <rect x="754" y="886" width="182" height="44" rx="9" fill="#faf7f0" stroke="#9e4f32" stroke-width="3"/>
+  <text x="776" y="913" class="small">Visible focus · 3 px</text>
+  <line x1="968" y1="746" x2="968" y2="944" class="rule"/>
+  <text x="996" y="762" class="h3">Rules</text>
+  <text x="996" y="789" class="body">No essential meaning in color alone</text>
+  <text x="996" y="814" class="body">Minimum 44 px touch target</text>
+  <text x="996" y="839" class="body">Icons retain labels for consequence</text>
+  <text x="996" y="864" class="body">160 ms feedback; no ambient motion</text>
+  <text x="996" y="889" class="body">No automatic scroll or reading-pane redraw</text>
+  <text x="996" y="914" class="body">Reduced motion removes translation</text>
+  <text x="996" y="939" class="small">Contrast values are calculated, not implementation evidence.</text>
+</svg>

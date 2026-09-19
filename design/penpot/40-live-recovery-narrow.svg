@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1840" viewBox="0 0 390 1840">
+  <rect width="390" height="1840" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 8px; font-weight: 750; letter-spacing: 1.2px; fill: #aeb8b2; }
+    .title { font-size: 25px; font-weight: 700; letter-spacing: -0.7px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 11px; }
+    .small { font-size: 9px; fill: #6c6b63; }
+    .tiny { font-size: 8px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1; }
+    .danger { fill: #f0dcd8; stroke: #aa6157; stroke-width: 1; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .infoText { fill: #354f63; }
+    .dangerText { fill: #6a302b; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="84" fill="#26302d"/>
+  <circle cx="27" cy="25" r="13" fill="#c56f42"/>
+  <text x="20" y="29" class="h3 onDark">SQ</text>
+  <text x="49" y="23" class="h3 onDark">Simulation Query</text>
+  <text x="49" y="40" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="260" y="20" class="eyebrowDark">RECOVERY</text>
+  <text x="260" y="40" class="h3 onDark">S02 · Run 02</text>
+  <circle cx="263" cy="58" r="3.5" fill="#cf7f73"/>
+  <text x="272" y="61" class="tiny onDark">ACTION REQUIRED</text>
+
+  <text x="16" y="111" class="eyebrow dangerText">LIVE / RECOVERY REQUIRED</text>
+  <text x="16" y="143" class="title">Stopped before canon.</text>
+  <text x="16" y="166" class="body">Nothing advances until you submit one explicit choice.</text>
+
+  <rect x="16" y="182" width="358" height="204" rx="15" class="danger"/>
+  <text x="32" y="210" class="eyebrow dangerText">CURRENT DURABLE TRUTH</text>
+  <text x="32" y="239" class="h2 dangerText">Round 4 · after accepted turn 15</text>
+  <text x="32" y="270" class="body dangerText">Director call 16 completed its stream but</text>
+  <text x="32" y="293" class="body dangerText">failed schema validation twice.</text>
+  <text x="32" y="324" class="body dangerText">The invalid attempt did not enter canon,</text>
+  <text x="32" y="347" class="body dangerText">the transcript, or the accepted turn count.</text>
+  <text x="32" y="373" class="tiny dangerText">Recorded 13:10:44 · worker lease healthy · later work blocked</text>
+
+  <rect x="16" y="402" width="358" height="136" rx="15" class="good"/>
+  <rect x="16" y="402" width="4" height="136" rx="2" fill="#c56f42"/>
+  <text x="32" y="430" class="eyebrow goodText">LAST ACCEPTED BEAT · TURN 15</text>
+  <text x="32" y="459" class="h2 goodText">Mara Venn</text>
+  <text x="32" y="488" class="serif body goodText">Mara places her palm against the chamber</text>
+  <text x="32" y="510" class="serif body goodText">door. The new label vibrates like a held note.</text>
+  <text x="32" y="529" class="tiny goodText">Every recovery path starts here.</text>
+
+  <rect x="16" y="554" width="358" height="126" rx="15" class="surface"/>
+  <text x="32" y="582" class="eyebrow">FAILURE EVIDENCE</text>
+  <text x="32" y="613" class="body">Transport · Completed</text>
+  <text x="214" y="613" class="body">Parse · Created</text>
+  <text x="32" y="642" class="body dangerText">Validation · Failed</text>
+  <rect x="32" y="652" width="326" height="22" rx="7" class="soft"/>
+  <text x="105" y="667" class="tiny">Explain call 16 in Diagnostics →</text>
+
+  <rect x="16" y="696" width="358" height="88" rx="13" class="soft"/>
+  <text x="32" y="724" class="eyebrow">QUEUE EFFECT</text>
+  <text x="32" y="752" class="body">Current run · Blocked</text>
+  <text x="202" y="752" class="body">Evening · Queued</text>
+  <text x="32" y="773" class="tiny">Original schedule positions remain durable.</text>
+
+  <text x="16" y="815" class="eyebrow">CHOOSE A RECOVERY PATH</text>
+  <text x="16" y="837" class="small">No choice is selected. Every path opens an impact review.</text>
+
+  <rect x="16" y="853" width="358" height="204" rx="15" class="surface"/>
+  <text x="32" y="883" class="h2">Retry</text>
+  <text x="32" y="916" class="body">Preserve both failed attempts and enqueue</text>
+  <text x="32" y="939" class="body">a new attempt from accepted turn 15.</text>
+  <text x="32" y="974" class="small">Story · unchanged until a result validates</text>
+  <text x="32" y="997" class="small">Schedule · later work remains queued</text>
+  <rect x="32" y="1010" width="326" height="32" rx="9" class="surface"/>
+  <text x="161" y="1030" class="small">Review retry</text>
+
+  <rect x="16" y="1073" width="358" height="214" rx="15" class="warm"/>
+  <text x="32" y="1103" class="h2 warmText">Skip this run</text>
+  <text x="32" y="1136" class="body warmText">Close Run 02 as skipped at this ledger</text>
+  <text x="32" y="1159" class="body warmText">position and allow later scheduled work.</text>
+  <text x="32" y="1194" class="small warmText">Story · turn 15 remains the final beat</text>
+  <text x="32" y="1217" class="small warmText">Schedule · Evening may proceed in order</text>
+  <rect x="32" y="1236" width="326" height="36" rx="9" class="surface"/>
+  <text x="161" y="1258" class="small">Review skip</text>
+
+  <rect x="16" y="1303" width="358" height="230" rx="15" class="danger"/>
+  <text x="32" y="1333" class="h2 dangerText">End season privately</text>
+  <text x="32" y="1366" class="body dangerText">Begin a separate private-close journey</text>
+  <text x="32" y="1389" class="body dangerText">with a complete read-only snapshot.</text>
+  <text x="32" y="1424" class="small dangerText">Story · no later runs are attempted</text>
+  <text x="32" y="1447" class="small dangerText">Privacy · publishes and deletes nothing</text>
+  <text x="32" y="1470" class="small dangerText">Confirmation · season-qualified phrase later</text>
+  <rect x="32" y="1484" width="326" height="34" rx="9" class="surface"/>
+  <text x="139" y="1505" class="small">Review private end</text>
+
+  <rect x="16" y="1549" width="358" height="112" rx="15" class="soft"/>
+  <text x="32" y="1578" class="eyebrow">NO CHOICE SELECTED</text>
+  <text x="32" y="1607" class="body">Opening evidence or navigating away does</text>
+  <text x="32" y="1630" class="body">not resolve recovery.</text>
+  <text x="32" y="1651" class="tiny">Submission returns a durable receipt.</text>
+
+  <rect x="16" y="1677" width="358" height="50" rx="11" class="info"/>
+  <text x="32" y="1700" class="h3 infoText">Safe stop remains active</text>
+  <text x="32" y="1718" class="tiny infoText">Raw invalid output and wellness text stay outside this view.</text>
+
+  <rect x="0" y="1752" width="390" height="88" fill="#26302d"/>
+  <circle cx="43" cy="1788" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="31" y="1812" class="tiny mutedDark">Home</text>
+  <circle cx="121" cy="1788" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="104" y="1812" class="tiny mutedDark">Prepare</text>
+  <rect x="164" y="1762" width="70" height="61" rx="12" fill="#3b4843"/>
+  <rect x="181" y="1768" width="36" height="3" rx="1.5" fill="#c56f42"/>
+  <circle cx="199" cy="1788" r="7" fill="none" stroke="#f4efe5" stroke-width="1.4"/>
+  <text x="190" y="1812" class="tiny onDark">Live</text>
+  <circle cx="277" cy="1788" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="262" y="1812" class="tiny mutedDark">Review</text>
+  <circle cx="355" cy="1788" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="344" y="1812" class="tiny mutedDark">More</text>
+</svg>

@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1180" viewBox="0 0 1440 1180">
+  <rect width="1440" height="1180" fill="#f4f4f1"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: #53605a; }
+    .title { font-size: 38px; font-weight: 700; }
+    .subtitle { font-size: 16px; fill: #59615d; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 15px; font-weight: 700; }
+    .body { font-size: 14px; }
+    .small { font-size: 12px; fill: #59615d; }
+    .tiny { font-size: 11px; fill: #59615d; }
+    .card { fill: #ffffff; stroke: #c8cec9; stroke-width: 2; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 2; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 2; }
+    .danger { fill: #f3e2df; stroke: #b17b71; stroke-width: 2; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 2; }
+    .active { fill: #e8edf0; stroke: #8fa2ad; stroke-width: 2; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 2; }
+    .arrow { font-size: 18px; font-weight: 700; fill: #6e7772; }
+  </style>
+
+  <text x="56" y="55" class="eyebrow">20 — PROTOTYPE FLOWS / APPROVED PATH CONTRACTS</text>
+  <text x="56" y="106" class="title">Seven journeys worth connecting before polish</text>
+  <text x="56" y="138" class="subtitle">Each path begins in durable truth, preserves evidence, and stops before any unapproved live mutation.</text>
+
+  <rect x="56" y="170" width="1328" height="60" rx="14" class="card"/>
+  <rect x="78" y="187" width="152" height="28" rx="8" class="soft"/>
+  <text x="91" y="206" class="small">READ / NAVIGATE</text>
+  <rect x="246" y="187" width="168" height="28" rx="8" class="attention"/>
+  <text x="259" y="206" class="small">IMPACT / DECISION</text>
+  <rect x="430" y="187" width="190" height="28" rx="8" class="danger"/>
+  <text x="443" y="206" class="small">MUTATION BOUNDARY</text>
+  <rect x="636" y="187" width="180" height="28" rx="8" class="approved"/>
+  <text x="649" y="206" class="small">DURABLE RESULT</text>
+  <text x="844" y="206" class="small">Arrows show intended prototype connections, not executed commands.</text>
+
+  <rect x="56" y="250" width="1328" height="112" rx="16" class="card"/>
+  <text x="78" y="280" class="eyebrow">PATH 1 · HOME</text>
+  <text x="78" y="309" class="h2">Attention to evidence</text>
+  <text x="78" y="334" class="small">Orient before acting</text>
+  <rect x="284" y="272" width="228" height="66" rx="10" class="active"/>
+  <text x="300" y="296" class="h3">Home attention item</text>
+  <text x="300" y="318" class="tiny">Named season · state · freshness</text>
+  <text x="525" y="311" class="arrow">→</text>
+  <rect x="552" y="272" width="228" height="66" rx="10" class="soft"/>
+  <text x="568" y="296" class="h3">Linked evidence</text>
+  <text x="568" y="318" class="tiny">Exact call, artifact, or workflow step</text>
+  <text x="793" y="311" class="arrow">→</text>
+  <rect x="820" y="272" width="242" height="66" rx="10" class="attention"/>
+  <text x="836" y="296" class="h3">Valid next workflow</text>
+  <text x="836" y="318" class="tiny">Impact is visible before mutation</text>
+  <text x="1075" y="311" class="arrow">→</text>
+  <rect x="1102" y="272" width="254" height="66" rx="10" class="disabled"/>
+  <text x="1118" y="296" class="h3">STOP · before submission</text>
+  <text x="1118" y="318" class="tiny">No command in this prototype</text>
+
+  <rect x="56" y="374" width="1328" height="112" rx="16" class="card"/>
+  <text x="78" y="404" class="eyebrow">PATH 2 · PREPARE</text>
+  <text x="78" y="433" class="h2">Revision to green</text>
+  <text x="78" y="458" class="small">Reversible until lock</text>
+  <rect x="284" y="396" width="228" height="66" rx="10" class="soft"/>
+  <text x="300" y="420" class="h3">Revise earlier artifact</text>
+  <text x="300" y="442" class="tiny">Current + replaced version remain</text>
+  <text x="525" y="435" class="arrow">→</text>
+  <rect x="552" y="396" width="228" height="66" rx="10" class="attention"/>
+  <text x="568" y="420" class="h3">Preview invalidation</text>
+  <text x="568" y="442" class="tiny">Downstream steps named pre-save</text>
+  <text x="793" y="435" class="arrow">→</text>
+  <rect x="820" y="396" width="242" height="66" rx="10" class="approved"/>
+  <text x="836" y="420" class="h3">Preflight evidence</text>
+  <text x="836" y="442" class="tiny">Each prerequisite passes by name</text>
+  <text x="1075" y="435" class="arrow">→</text>
+  <rect x="1102" y="396" width="254" height="66" rx="10" class="disabled"/>
+  <text x="1118" y="420" class="h3">STOP · green review</text>
+  <text x="1118" y="442" class="tiny">Season is not armed</text>
+
+  <rect x="56" y="498" width="1328" height="112" rx="16" class="card"/>
+  <text x="78" y="528" class="eyebrow">PATH 3 · LIVE</text>
+  <text x="78" y="557" class="h2">Accepted material</text>
+  <text x="78" y="582" class="small">Reading never jumps</text>
+  <rect x="284" y="520" width="228" height="66" rx="10" class="approved"/>
+  <text x="300" y="544" class="h3">Last accepted beat</text>
+  <text x="300" y="566" class="tiny">One current durable anchor</text>
+  <text x="525" y="559" class="arrow">→</text>
+  <rect x="552" y="520" width="228" height="66" rx="10" class="soft"/>
+  <text x="568" y="544" class="h3">Open stable transcript</text>
+  <text x="568" y="566" class="tiny">Polling updates only status chrome</text>
+  <text x="793" y="559" class="arrow">→</text>
+  <rect x="820" y="520" width="242" height="66" rx="10" class="attention"/>
+  <text x="836" y="544" class="h3">New material available</text>
+  <text x="836" y="566" class="tiny">Creator chooses when to load it</text>
+  <text x="1075" y="559" class="arrow">→</text>
+  <rect x="1102" y="520" width="254" height="66" rx="10" class="active"/>
+  <text x="1118" y="544" class="h3">Refresh + retain position</text>
+  <text x="1118" y="566" class="tiny">No automatic scroll or rewrite</text>
+
+  <rect x="56" y="622" width="1328" height="112" rx="16" class="card"/>
+  <text x="78" y="652" class="eyebrow">PATH 4 · DIAGNOSTICS</text>
+  <text x="78" y="681" class="h2">Explain partial</text>
+  <text x="78" y="706" class="small">Causal round trip</text>
+  <rect x="284" y="644" width="228" height="66" rx="10" class="active"/>
+  <text x="300" y="668" class="h3">Review position</text>
+  <text x="300" y="690" class="tiny">Partial scene · exact artifact anchor</text>
+  <text x="525" y="683" class="arrow">→</text>
+  <rect x="552" y="644" width="228" height="66" rx="10" class="soft"/>
+  <text x="568" y="668" class="h3">Selected model call</text>
+  <text x="568" y="690" class="tiny">Identity, binding, timing, versions</text>
+  <text x="793" y="683" class="arrow">→</text>
+  <rect x="820" y="644" width="242" height="66" rx="10" class="attention"/>
+  <text x="836" y="668" class="h3">Schema failure explained</text>
+  <text x="836" y="690" class="tiny">Raw → parsed → validated → corrected</text>
+  <text x="1075" y="683" class="arrow">↩</text>
+  <rect x="1102" y="644" width="254" height="66" rx="10" class="approved"/>
+  <text x="1118" y="668" class="h3">Exact Review return</text>
+  <text x="1118" y="690" class="tiny">Same reading pane and position</text>
+
+  <rect x="56" y="746" width="1328" height="112" rx="16" class="card"/>
+  <text x="78" y="776" class="eyebrow">PATH 5 · RECOVERY</text>
+  <text x="78" y="805" class="h2">Safe recovery choice</text>
+  <text x="78" y="830" class="small">No default choice</text>
+  <rect x="284" y="768" width="228" height="66" rx="10" class="danger"/>
+  <text x="300" y="792" class="h3">Recovery Required</text>
+  <text x="300" y="814" class="tiny">Freeze at Last accepted beat</text>
+  <text x="525" y="807" class="arrow">→</text>
+  <rect x="552" y="768" width="228" height="66" rx="10" class="soft"/>
+  <text x="568" y="792" class="h3">Inspect failure evidence</text>
+  <text x="568" y="814" class="tiny">Transport ≠ validation ≠ acceptance</text>
+  <text x="793" y="807" class="arrow">→</text>
+  <rect x="820" y="768" width="242" height="66" rx="10" class="attention"/>
+  <text x="836" y="792" class="h3">Retry · Skip · Private end</text>
+  <text x="836" y="814" class="tiny">Compare story + schedule impact</text>
+  <text x="1075" y="807" class="arrow">→</text>
+  <rect x="1102" y="768" width="254" height="66" rx="10" class="disabled"/>
+  <text x="1118" y="792" class="h3">STOP · before submit</text>
+  <text x="1118" y="814" class="tiny">Choice stays unselected</text>
+
+  <rect x="56" y="870" width="1328" height="112" rx="16" class="card"/>
+  <text x="78" y="900" class="eyebrow">PATH 6 · SEASONS</text>
+  <text x="78" y="929" class="h2">Private close</text>
+  <text x="78" y="954" class="small">Preserve unfinished truth</text>
+  <rect x="284" y="892" width="228" height="66" rx="10" class="soft"/>
+  <text x="300" y="916" class="h3">Versioned snapshot</text>
+  <text x="300" y="938" class="tiny">Runs, story, diaries, integrity</text>
+  <text x="525" y="931" class="arrow">→</text>
+  <rect x="552" y="892" width="228" height="66" rx="10" class="attention"/>
+  <text x="568" y="916" class="h3">Effect + unresolved work</text>
+  <text x="568" y="938" class="tiny">Cannot publish, delete, or rewrite</text>
+  <text x="793" y="931" class="arrow">→</text>
+  <rect x="820" y="892" width="242" height="66" rx="10" class="danger"/>
+  <text x="836" y="916" class="h3">end S02 privately</text>
+  <text x="836" y="938" class="tiny">Season-qualified mutation boundary</text>
+  <text x="1075" y="931" class="arrow">→</text>
+  <rect x="1102" y="892" width="254" height="66" rx="10" class="approved"/>
+  <text x="1118" y="916" class="h3">Receipt · PRIVATE_COMPLETE</text>
+  <text x="1118" y="938" class="tiny">Publication remains a later path</text>
+
+  <rect x="56" y="994" width="1328" height="112" rx="16" class="card"/>
+  <text x="78" y="1024" class="eyebrow">PATH 7 · PUBLICATION</text>
+  <text x="78" y="1053" class="h2">Public projection</text>
+  <text x="78" y="1078" class="small">Optional and separate</text>
+  <rect x="284" y="1016" width="228" height="66" rx="10" class="approved"/>
+  <text x="300" y="1040" class="h3">Select S02 explicitly</text>
+  <text x="300" y="1062" class="tiny">PRIVATE_COMPLETE · explicit choice</text>
+  <text x="525" y="1055" class="arrow">→</text>
+  <rect x="552" y="1016" width="228" height="66" rx="10" class="attention"/>
+  <text x="568" y="1040" class="h3">Repeat release checks</text>
+  <text x="568" y="1062" class="tiny">Privacy · consent · held diaries · paths</text>
+  <text x="793" y="1055" class="arrow">→</text>
+  <rect x="820" y="1016" width="242" height="66" rx="10" class="active"/>
+  <text x="836" y="1040" class="h3">Preview exact allowlist</text>
+  <text x="836" y="1062" class="tiny">Show structural exclusions beside it</text>
+  <text x="1075" y="1055" class="arrow">→</text>
+  <rect x="1102" y="1016" width="254" height="66" rx="10" class="disabled"/>
+  <text x="1118" y="1040" class="h3">STOP · before publish S02</text>
+  <text x="1118" y="1062" class="tiny">No release is created</text>
+
+  <text x="56" y="1148" class="small">PROTOTYPE ACCEPTANCE: all paths preserve season context, exact return position, privacy boundaries, and a visible stop before live consequence.</text>
+</svg>

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#efeee9"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #1b201d; }
+    .eyebrow { font-size: 12px; font-weight: 750; letter-spacing: 2px; fill: #59615d; }
+    .title { font-size: 38px; font-weight: 700; letter-spacing: -1px; }
+    .subtitle { font-size: 16px; fill: #626963; }
+    .h2 { font-size: 25px; font-weight: 700; }
+    .h3 { font-size: 15px; font-weight: 700; }
+    .body { font-size: 14px; }
+    .small { font-size: 12px; fill: #626963; }
+    .tiny { font-size: 11px; }
+    .serif { font-family: Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .card { fill: #ffffff; stroke: #c9ceca; stroke-width: 2; }
+    .aCard { fill: #f3efe6; stroke: #b7b0a2; stroke-width: 2; }
+    .aInk { fill: #222724; }
+    .aMuted { fill: #6c6b63; }
+    .aOnDark { fill: #f4efe5; }
+    .bCard { fill: #11171c; stroke: #39434a; stroke-width: 2; }
+    .bPanel { fill: #1b2329; stroke: #465159; stroke-width: 1.5; }
+    .bInk { fill: #f3eee5; }
+    .bMuted { fill: #aaa69e; }
+    .cCard { fill: #f7f7f2; stroke: #bdc5c1; stroke-width: 2; }
+    .cInk { fill: #1c2224; }
+    .cMuted { fill: #697274; }
+    .cOnBlue { fill: #ffffff; }
+    .recommended { fill: #e2ece4; stroke: #7f9e86; stroke-width: 2; }
+  </style>
+
+  <text x="56" y="54" class="eyebrow">30 — VISUAL SYSTEM / DIRECTION ROUND 1</text>
+  <text x="56" y="105" class="title">Three visual languages, one frozen interaction model</text>
+  <text x="56" y="137" class="subtitle">Choose the emotional register first. Typography, tokens, and high-fidelity screens follow the selected direction.</text>
+
+  <rect x="56" y="174" width="424" height="724" rx="22" class="aCard"/>
+  <rect x="76" y="194" width="150" height="28" rx="14" class="recommended"/>
+  <text x="91" y="213" class="tiny aInk">RECOMMENDED START</text>
+  <text x="76" y="267" class="h2 aInk">A · Warm Instrument</text>
+  <text x="76" y="294" class="body aMuted">Studio field notebook + dependable instrument panel.</text>
+  <rect x="76" y="324" width="384" height="222" rx="16" fill="#e8e2d6" stroke="#c5bdaf" stroke-width="1.5"/>
+  <rect x="76" y="324" width="92" height="222" rx="16" fill="#26302d"/>
+  <circle cx="100" cy="352" r="11" fill="#c56f42"/>
+  <text x="121" y="357" class="tiny aOnDark">SQ</text>
+  <rect x="90" y="382" width="64" height="22" rx="6" fill="#3c4944"/>
+  <rect x="90" y="414" width="52" height="7" rx="4" fill="#75847d"/>
+  <rect x="90" y="434" width="62" height="7" rx="4" fill="#75847d"/>
+  <rect x="90" y="454" width="45" height="7" rx="4" fill="#75847d"/>
+  <rect x="90" y="474" width="58" height="7" rx="4" fill="#75847d"/>
+  <text x="188" y="356" class="eyebrow aMuted">DAY 2 REVIEW</text>
+  <text x="188" y="385" class="h3 aInk">The Weather Library</text>
+  <rect x="188" y="406" width="250" height="82" rx="10" fill="#faf7f0" stroke="#c9c1b3"/>
+  <text x="204" y="430" class="tiny aMuted">LAST ACCEPTED BEAT</text>
+  <text x="204" y="452" class="serif body aInk">The brass vane turned toward</text>
+  <text x="204" y="472" class="serif body aInk">a wind no instrument could name.</text>
+  <rect x="188" y="502" width="108" height="24" rx="8" fill="#dce7de"/>
+  <text x="202" y="519" class="tiny aInk">DURABLE · FRESH</text>
+  <rect x="76" y="570" width="66" height="44" rx="9" fill="#f3efe6" stroke="#b7b0a2"/>
+  <rect x="150" y="570" width="66" height="44" rx="9" fill="#26302d"/>
+  <rect x="224" y="570" width="66" height="44" rx="9" fill="#c56f42"/>
+  <rect x="298" y="570" width="66" height="44" rx="9" fill="#6e8e73"/>
+  <rect x="372" y="570" width="66" height="44" rx="9" fill="#a95449"/>
+  <text x="76" y="642" class="h3 aInk">Type</text>
+  <text x="76" y="666" class="body aInk">Inter/system UI · Georgia/Charter reading</text>
+  <text x="76" y="690" class="small aMuted mono">SF Mono for provenance and receipts</text>
+  <text x="76" y="728" class="h3 aInk">Best at</text>
+  <text x="76" y="752" class="body aInk">Long reading · calm supervision · creative warmth</text>
+  <text x="76" y="790" class="h3 aInk">Watch</text>
+  <text x="76" y="814" class="body aMuted">Keep the cream from becoming nostalgic or precious.</text>
+  <text x="76" y="844" class="small aMuted">Dark rail anchors the operator context.</text>
+
+  <rect x="508" y="174" width="424" height="724" rx="22" class="bCard"/>
+  <text x="528" y="222" class="eyebrow bMuted">EVOLVE THE CURRENT CONSOLE</text>
+  <text x="528" y="267" class="h2 bInk">B · Molten Observatory</text>
+  <text x="528" y="294" class="body bMuted">Night laboratory + restrained geologic glow.</text>
+  <rect x="528" y="324" width="384" height="222" rx="16" fill="#0d1216" stroke="#39434a" stroke-width="1.5"/>
+  <rect x="528" y="324" width="92" height="222" rx="16" fill="#080c0f"/>
+  <circle cx="552" cy="352" r="11" fill="#ef9b59"/>
+  <text x="573" y="357" class="tiny bInk">SQ</text>
+  <rect x="542" y="382" width="64" height="22" rx="6" fill="#2a353b" stroke="#ef9b59" stroke-width="1"/>
+  <rect x="542" y="414" width="52" height="7" rx="4" fill="#566269"/>
+  <rect x="542" y="434" width="62" height="7" rx="4" fill="#566269"/>
+  <rect x="542" y="454" width="45" height="7" rx="4" fill="#566269"/>
+  <rect x="542" y="474" width="58" height="7" rx="4" fill="#566269"/>
+  <text x="640" y="356" class="eyebrow bMuted">DAY 2 REVIEW</text>
+  <text x="640" y="385" class="h3 bInk">The Weather Library</text>
+  <rect x="640" y="406" width="250" height="82" rx="10" class="bPanel"/>
+  <text x="656" y="430" class="tiny bMuted">LAST ACCEPTED BEAT</text>
+  <text x="656" y="452" class="serif body bInk">The brass vane turned toward</text>
+  <text x="656" y="472" class="serif body bInk">a wind no instrument could name.</text>
+  <rect x="640" y="502" width="108" height="24" rx="8" fill="#203b32"/>
+  <text x="654" y="519" class="tiny bInk">DURABLE · FRESH</text>
+  <rect x="528" y="570" width="66" height="44" rx="9" fill="#101419" stroke="#39434a"/>
+  <rect x="602" y="570" width="66" height="44" rx="9" fill="#1b2329"/>
+  <rect x="676" y="570" width="66" height="44" rx="9" fill="#ef9b59"/>
+  <rect x="750" y="570" width="66" height="44" rx="9" fill="#76c6a2"/>
+  <rect x="824" y="570" width="66" height="44" rx="9" fill="#e78278"/>
+  <text x="528" y="642" class="h3 bInk">Type</text>
+  <text x="528" y="666" class="body bInk">Inter/system UI · Georgia/Literata reading</text>
+  <text x="528" y="690" class="small bMuted mono">SF Mono for diagnostic evidence</text>
+  <text x="528" y="728" class="h3 bInk">Best at</text>
+  <text x="528" y="752" class="body bInk">Live drama · diagnostics · continuity with today</text>
+  <text x="528" y="790" class="h3 bInk">Watch</text>
+  <text x="528" y="814" class="body bMuted">Dark panels can tire long diary and script reading.</text>
+  <text x="528" y="844" class="small bMuted">Glow must indicate focus, never generic atmosphere.</text>
+
+  <rect x="960" y="174" width="424" height="724" rx="22" class="cCard"/>
+  <text x="980" y="222" class="eyebrow cMuted">REDUCE THE THEATRICAL SIGNAL</text>
+  <text x="980" y="267" class="h2 cInk">C · Quiet Archive</text>
+  <text x="980" y="294" class="body cMuted">Editorial research desk + durable records room.</text>
+  <rect x="980" y="324" width="384" height="222" rx="8" fill="#ffffff" stroke="#c6cdca" stroke-width="1.5"/>
+  <rect x="980" y="324" width="92" height="222" rx="8" fill="#e5e9e7"/>
+  <rect x="996" y="342" width="60" height="26" rx="4" fill="#496d83"/>
+  <text x="1012" y="360" class="tiny cOnBlue">SQ / 02</text>
+  <rect x="994" y="386" width="64" height="22" rx="4" fill="#d5dcda"/>
+  <rect x="994" y="418" width="52" height="6" fill="#9aa5a2"/>
+  <rect x="994" y="438" width="62" height="6" fill="#9aa5a2"/>
+  <rect x="994" y="458" width="45" height="6" fill="#9aa5a2"/>
+  <rect x="994" y="478" width="58" height="6" fill="#9aa5a2"/>
+  <text x="1076" y="356" class="eyebrow cMuted">DAY 2 / REVIEW</text>
+  <text x="1076" y="385" class="h3 cInk">The Weather Library</text>
+  <rect x="1076" y="406" width="266" height="82" rx="4" fill="#f7f7f2" stroke="#c6cdca"/>
+  <text x="1092" y="430" class="tiny cMuted">LAST ACCEPTED BEAT</text>
+  <text x="1092" y="452" class="serif body cInk">The brass vane turned toward</text>
+  <text x="1092" y="472" class="serif body cInk">a wind no instrument could name.</text>
+  <rect x="1076" y="502" width="108" height="24" rx="4" fill="#e1e8e2"/>
+  <text x="1090" y="519" class="tiny cInk">DURABLE · FRESH</text>
+  <rect x="980" y="570" width="66" height="44" rx="4" fill="#f7f7f2" stroke="#bdc5c1"/>
+  <rect x="1054" y="570" width="66" height="44" rx="4" fill="#1c2224"/>
+  <rect x="1128" y="570" width="66" height="44" rx="4" fill="#496d83"/>
+  <rect x="1202" y="570" width="66" height="44" rx="4" fill="#718371"/>
+  <rect x="1276" y="570" width="66" height="44" rx="4" fill="#a15851"/>
+  <text x="980" y="642" class="h3 cInk">Type</text>
+  <text x="980" y="666" class="body cInk">Inter/system UI · Georgia/Source Serif reading</text>
+  <text x="980" y="690" class="small cMuted mono">SF Mono for audit references</text>
+  <text x="980" y="728" class="h3 cInk">Best at</text>
+  <text x="980" y="752" class="body cInk">Archive scan · precision · print-like sustained reading</text>
+  <text x="980" y="790" class="h3 cInk">Watch</text>
+  <text x="980" y="814" class="body cMuted">May feel administrative and flatten the living show.</text>
+  <text x="980" y="844" class="small cMuted">Needs one odd, unmistakably authored gesture.</text>
+
+  <rect x="56" y="924" width="1328" height="60" rx="15" class="recommended"/>
+  <text x="78" y="950" class="h3">Suggested starting point: A · Warm Instrument</text>
+  <text x="78" y="972" class="small">It keeps the project warm and strange while giving scripts and diaries the calmest long-reading surface. B and C remain meaningful alternatives.</text>
+</svg>

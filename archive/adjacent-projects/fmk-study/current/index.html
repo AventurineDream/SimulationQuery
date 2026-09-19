@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f2eee7" />
+  <title>FMK Field Study</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#" data-route="home">FMK / FIELD STUDY <span>BETA</span></a>
+    <nav>
+      <button class="nav-link" data-route="play">play</button>
+      <button class="nav-link" data-route="results">results</button>
+      <button class="nav-link" data-route="profile">your profile</button>
+      <button class="nav-link" data-route="about">about</button>
+    </nav>
+  </header>
+
+  <main id="app" aria-live="polite"></main>
+
+  <footer>
+    <span>18+ · opt-in profiles only · demo data stored locally</span>
+    <button id="resetData" class="text-button">reset demo</button>
+  </footer>
+
+  <template id="homeTemplate">
+    <section class="hero page">
+      <div class="eyebrow">An unscientific card game</div>
+      <h1>Fuck.<br>Marry.<br>Kill.</h1>
+      <p class="lede">Bad data from not good people, but this time it's a game.</p>
+      <div class="hero-actions">
+        <button class="primary" data-route="play">draw a round →</button>
+        <button class="secondary" data-route="results">inspect the damage</button>
+      </div>
+      <div class="stat-strip">
+        <div><strong id="homeVotes">0</strong><span>demo decisions</span></div>
+        <div><strong>18+</strong><span>adults only</span></div>
+        <div><strong>3</strong><span>choices per round</span></div>
+      </div>
+    </section>
+  </template>
+
+  <template id="playTemplate">
+    <section class="page play-page">
+      <div class="section-head">
+        <div class="prompt-card">
+          <div class="eyebrow">Round card · <span id="roundNumber">1</span></div>
+          <h2>Assign each fate once.</h2>
+        </div>
+        <button class="text-button" id="skipRound">draw again</button>
+      </div>
+      <div class="choice-grid" id="choiceGrid"></div>
+      <div class="assignment-tray">
+        <div class="assignment" data-role="fuck"><span>F</span><b>fuck</b><small>tap a person</small></div>
+        <div class="assignment" data-role="marry"><span>M</span><b>marry</b><small>tap a person</small></div>
+        <div class="assignment" data-role="kill"><span>K</span><b>kill</b><small>tap a person</small></div>
+      </div>
+      <button id="submitRound" class="primary full" disabled>submit your terrible judgment →</button>
+      <p class="microcopy">No correct answers. No objective score. Just three cards, one bad decision per category, and a growing pile of data nobody should cite.</p>
+    </section>
+  </template>
+
+  <template id="resultsTemplate">
+    <section class="page results-page">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Live-ish demo aggregate</div>
+          <h2>Who survives the pool?</h2>
+        </div>
+        <div class="filter-row">
+          <button class="chip active" data-filter="all">all</button>
+          <button class="chip" data-filter="user">users</button>
+          <button class="chip" data-filter="celebrity">celebs</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>person</th><th>source</th><th>fuck</th><th>marry</th><th>kill</th><th>desirability</th></tr></thead>
+          <tbody id="leaderboard"></tbody>
+        </table>
+      </div>
+      <section class="insight-grid" id="insights"></section>
+    </section>
+  </template>
+
+  <template id="profileTemplate">
+    <section class="page profile-page">
+      <div class="eyebrow">Your demo profile</div>
+      <h2>Put yourself in the pool.</h2>
+      <div class="profile-layout">
+        <form id="profileForm" class="panel form-panel">
+          <label>Display name<input id="displayName" maxlength="40" placeholder="Aven" /></label>
+          <label>One-line bio<textarea id="bio" maxlength="120" placeholder="artist, menace, surprisingly marriageable"></textarea></label>
+          <label>Age<input id="age" inputmode="numeric" type="number" min="18" max="120" placeholder="18+" required /></label>
+          <label class="check"><input id="optIn" type="checkbox" required /> <span>I am 18+ and I explicitly opt in to appearing in FMK rounds.</span></label>
+          <label class="check"><input id="privacyAck" type="checkbox" required /> <span>I have read and acknowledge the <a href="#about" data-route="about">privacy policy</a>.</span></label>
+          <label class="check"><input id="perspectiveAck" type="checkbox" required /> <span>I agree that playing this game means that I am at best a neutral force in this world and very few people, if any, should take me seriously.</span></label>
+          <button class="primary" type="submit">save local profile</button>
+          <p class="microcopy">No image upload in this prototype. Nothing leaves this browser.</p>
+        </form>
+        <div class="panel preview-panel">
+          <div class="eyebrow">Preview</div>
+          <div class="portrait preview-avatar" id="profileAvatar"><span>?</span></div>
+          <h3 id="previewName">anonymous coward</h3>
+          <p id="previewBio">your bio appears here.</p>
+          <div class="score-card">
+            <span>once enough people rate you:</span>
+            <strong>You rank between Zendaya and Demo User 07.</strong>
+            <small>That sentence is the entire product thesis.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template id="aboutTemplate">
+    <section class="page about-page">
+      <div class="eyebrow">The house rules</div>
+      <h2>Self-discovery through a deranged forced-choice instrument.</h2>
+      <div class="prose-grid">
+        <p>Every round shows three adults. Exactly one gets each label: fuck, marry, kill. Repeated choices create relative rankings rather than asking anyone to invent an absolute score.</p>
+        <p>The celebrity pool acts as a calibration layer. Instead of learning that you are a 7.3, you learn that your marriage rate sits around a recognizable set of public figures.</p>
+        <p>A real launch needs consent controls, reporting, removal, fraud resistance, minimum sample thresholds, and careful handling of public-figure images and likeness rights.</p>
+        <p>The interesting research layer is not merely attractiveness. Fuck vs. marry separates short-term desire from perceived long-term desirability, while kill creates a forced negative signal.</p>
+        <p id="privacy-policy"><strong>Privacy policy.</strong> This static build stores profile fields and vote counts in your browser. It does not upload images or send profile data to a server. Clearing this site's data removes the local profile and votes.</p>
+      </div>
+    </section>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+run_id,strategy,turn_count,roll_count,clean_success,success_with_cost,setback,final_condition,final_trust,final_secrecy,final_twin_cohesion,consistency_score,model,reasoning_effort,execution_type,outcome
+R1,cautious_disclosure,16,8,2,4,2,stable,cautious,official_case,cooperative,0.94,gpt-5.6-luna,high,hand_authored_autonomous_rehearsal,"Temporary supervised recovery is approved; the transport clue is preserved."
+R2,secretive_kids,16,8,2,4,2,fragile,wary,official_hold,tense,0.88,gpt-5.6-luna,high,hand_authored_autonomous_rehearsal,"Officials impose a formal hold; the family loses independent access."
+R3,twin_alliance,16,8,3,2,3,stable,cautious,compromised,united,0.97,gpt-5.6-luna,high,hand_authored_autonomous_rehearsal,"The twins uncover the clearest transport trail and earn supervised observation access."
+R4,mara_adventure,16,8,2,4,2,fragile,frightened,public_incident,mixed,0.91,gpt-5.6-luna,high,hand_authored_autonomous_rehearsal,"The cheetah leaves the property during the escalation and is transferred to professional care."
+R5,eli_care,16,8,3,2,3,recovering,cautious_attachment,official_case,cooperative,0.96,gpt-5.6-luna,high,hand_authored_autonomous_rehearsal,"A temporary recovery arrangement succeeds; the cheetah tolerates the family at a distance."

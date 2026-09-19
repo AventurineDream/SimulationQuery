@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1640" viewBox="0 0 390 1640">
+  <rect width="390" height="1640" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 8px; font-weight: 750; letter-spacing: 1.2px; fill: #aeb8b2; }
+    .title { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 11px; }
+    .small { font-size: 9px; fill: #6c6b63; }
+    .tiny { font-size: 8px; fill: #6c6b63; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1; }
+    .danger { fill: #f0dcd8; stroke: #aa6157; stroke-width: 1; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .infoText { fill: #354f63; }
+    .dangerText { fill: #6a302b; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="84" fill="#26302d"/>
+  <circle cx="27" cy="25" r="13" fill="#c56f42"/>
+  <text x="20" y="29" class="h3 onDark">SQ</text>
+  <text x="49" y="23" class="h3 onDark">Simulation Query</text>
+  <text x="49" y="40" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="264" y="20" class="eyebrowDark">IMPACT REVIEW</text>
+  <text x="264" y="40" class="h3 onDark">S02 · Opening</text>
+  <text x="264" y="59" class="tiny mutedDark">nothing stale yet</text>
+
+  <text x="16" y="111" class="eyebrow">PREPARE / OPENING REVISION</text>
+  <text x="16" y="143" class="title">Opening v4 changes later evidence.</text>
+  <text x="16" y="166" class="body">Review every dependency before the explicit save action.</text>
+  <rect x="16" y="181" width="358" height="34" rx="10" class="warm"/>
+  <text x="31" y="202" class="h3 warmText">6 steps affected</text>
+  <text x="131" y="202" class="small warmText">Opening v3 remains approved until save</text>
+
+  <rect x="16" y="231" width="358" height="460" rx="15" class="soft"/>
+  <text x="32" y="259" class="h2">Preparation checklist</text>
+  <text x="32" y="280" class="small">Future effects are visible without changing state.</text>
+  <rect x="30" y="297" width="330" height="40" rx="9" class="good"/>
+  <text x="44" y="322" class="h3 goodText">1 · Season idea</text>
+  <text x="273" y="322" class="tiny goodText">UNAFFECTED</text>
+  <rect x="28" y="345" width="334" height="52" rx="10" fill="#fffaf2" stroke="#c56f42" stroke-width="2"/>
+  <rect x="32" y="354" width="3" height="34" rx="1.5" fill="#c56f42"/>
+  <text x="44" y="363" class="eyebrow">SELECTED</text>
+  <text x="44" y="386" class="h3">2 · Opening</text>
+  <text x="259" y="386" class="tiny">DRAFT v4 · REVIEW</text>
+  <rect x="30" y="405" width="330" height="40" rx="9" class="warm"/>
+  <text x="44" y="430" class="h3 warmText">3 · Character cards</text>
+  <text x="259" y="430" class="tiny warmText">4 APPROVALS</text>
+  <rect x="30" y="453" width="330" height="40" rx="9" class="warm"/>
+  <text x="44" y="478" class="h3 warmText">4 · Model assignment</text>
+  <text x="289" y="478" class="tiny warmText">STALE</text>
+  <rect x="30" y="501" width="330" height="40" rx="9" class="warm"/>
+  <text x="44" y="526" class="h3 warmText">5 · Preflight</text>
+  <text x="284" y="526" class="tiny warmText">8 CHECKS</text>
+  <rect x="30" y="549" width="330" height="40" rx="9" class="warm"/>
+  <text x="44" y="574" class="h3 warmText">6 · Private preparation</text>
+  <text x="258" y="574" class="tiny warmText">REGENERATE</text>
+  <rect x="30" y="597" width="330" height="40" rx="9" class="warm"/>
+  <text x="44" y="622" class="h3 warmText">7 · Schedule preview</text>
+  <text x="272" y="622" class="tiny warmText">REVIEW</text>
+  <rect x="30" y="645" width="330" height="32" rx="9" class="danger"/>
+  <text x="44" y="666" class="h3 dangerText">8 · Green review</text>
+  <text x="294" y="666" class="tiny dangerText">RELOCK</text>
+
+  <text x="16" y="723" class="eyebrow">IMPACT BEFORE SAVE</text>
+  <text x="16" y="752" class="h2">Opening v3 → draft v4</text>
+  <rect x="16" y="769" width="358" height="102" rx="13" class="info"/>
+  <text x="32" y="797" class="eyebrow infoText">WHAT CHANGED</text>
+  <text x="32" y="824" class="body infoText">Mara becomes the maintenance archivist.</text>
+  <text x="32" y="846" class="body infoText">The library relabels chambers after every storm.</text>
+  <text x="32" y="862" class="tiny infoText">Opening v3 remains the approved source.</text>
+
+  <rect x="16" y="887" width="358" height="62" rx="11" class="warm"/>
+  <text x="32" y="912" class="h3 warmText">Character cards · approvals invalidated</text>
+  <text x="32" y="934" class="small warmText">All four return to review; prior versions remain readable.</text>
+  <rect x="16" y="957" width="358" height="62" rx="11" class="warm"/>
+  <text x="32" y="982" class="h3 warmText">Model assignments · stale</text>
+  <text x="32" y="1004" class="small warmText">Bindings remain recorded; no model is replaced.</text>
+  <rect x="16" y="1027" width="358" height="62" rx="11" class="warm"/>
+  <text x="32" y="1052" class="h3 warmText">Preflight · eight results invalidated</text>
+  <text x="32" y="1074" class="small warmText">Checks rerun; the former receipt remains in history.</text>
+  <rect x="16" y="1097" width="358" height="62" rx="11" class="warm"/>
+  <text x="32" y="1122" class="h3 warmText">Private preparation · regenerate</text>
+  <text x="32" y="1144" class="small warmText">Role sheets become stale; none are overwritten.</text>
+  <rect x="16" y="1167" width="358" height="62" rx="11" class="warm"/>
+  <text x="32" y="1192" class="h3 warmText">Schedule preview · review required</text>
+  <text x="32" y="1214" class="small warmText">Original dates do not silently move.</text>
+  <rect x="16" y="1237" width="358" height="62" rx="11" class="danger"/>
+  <text x="32" y="1262" class="h3 dangerText">Green review · relocked</text>
+  <text x="32" y="1284" class="small dangerText">No queued season state changes now.</text>
+
+  <rect x="16" y="1315" width="358" height="102" rx="13" class="soft"/>
+  <text x="32" y="1343" class="eyebrow">DURABLE RESULT IF SAVED</text>
+  <text x="32" y="1371" class="h3">Create Opening v4 and invalidation events</text>
+  <text x="32" y="1394" class="small">Replaced approvals remain auditable.</text>
+  <rect x="16" y="1433" width="132" height="42" rx="10" class="surface"/>
+  <text x="64" y="1459" class="small">Cancel</text>
+  <rect x="160" y="1433" width="214" height="42" rx="10" fill="#26302d"/>
+  <text x="218" y="1459" class="small onDark">Save Opening v4</text>
+  <rect x="16" y="1491" width="358" height="36" rx="9" class="info"/>
+  <text x="31" y="1513" class="tiny infoText">Saving does not green, publish, delete, or replace bindings.</text>
+
+  <rect x="0" y="1552" width="390" height="88" fill="#26302d"/>
+  <circle cx="43" cy="1588" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="31" y="1612" class="tiny mutedDark">Home</text>
+  <rect x="86" y="1562" width="70" height="61" rx="12" fill="#3b4843"/>
+  <rect x="103" y="1568" width="36" height="3" rx="1.5" fill="#c56f42"/>
+  <circle cx="121" cy="1588" r="7" fill="none" stroke="#f4efe5" stroke-width="1.4"/>
+  <text x="104" y="1612" class="tiny onDark">Prepare</text>
+  <circle cx="199" cy="1588" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="190" y="1612" class="tiny mutedDark">Live</text>
+  <circle cx="277" cy="1588" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="262" y="1612" class="tiny mutedDark">Review</text>
+  <circle cx="355" cy="1588" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="344" y="1612" class="tiny mutedDark">More</text>
+</svg>

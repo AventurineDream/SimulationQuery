@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .nav { fill: #1f2421; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 2; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 2; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 2; }
+    .danger { fill: #f3e2df; stroke: #b17b71; stroke-width: 2; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 2; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 2; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: #5a645e; }
+    .title { font-size: 32px; font-weight: 700; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 15px; font-weight: 700; }
+    .body { font-size: 14px; }
+    .script { font-family: Georgia, serif; font-size: 15px; }
+    .small { font-size: 12px; fill: #5f6862; }
+    .navtext { font-size: 15px; fill: #dce2dd; }
+    .navactive { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    .inverse { fill: #ffffff; }
+    .inverse-subtle { fill: #9fb0a6; }
+    .line { stroke: #c8cec9; stroke-width: 2; }
+  </style>
+
+  <rect x="0" y="0" width="232" height="1024" class="nav"/>
+  <text x="28" y="45" class="eyebrow inverse-subtle">AI IMPROV TROUPE</text>
+  <text x="28" y="77" class="h2 inverse">Operator</text>
+  <text x="32" y="147" class="navtext">Home</text>
+  <text x="32" y="199" class="navtext">Prepare</text>
+  <rect x="16" y="224" width="200" height="46" rx="10" fill="#39423d"/>
+  <text x="32" y="253" class="navactive">Live</text>
+  <text x="32" y="306" class="navtext">Review</text>
+  <text x="32" y="360" class="navtext">Diagnostics</text>
+  <text x="32" y="414" class="navtext">Seasons</text>
+  <line x1="24" y1="456" x2="208" y2="456" stroke="#4a554f"/>
+  <text x="32" y="493" class="small inverse-subtle">Worker stopped safely</text>
+  <text x="32" y="515" class="small inverse-subtle">Creator decision required</text>
+
+  <rect x="232" y="0" width="1208" height="74" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="260" y="18" width="114" height="38" rx="19" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="283" y="42" class="eyebrow">SANDBOX</text>
+  <text x="402" y="34" class="small">Season</text><text x="402" y="54" class="h3">S02 — The Weather Library ▾</text>
+  <text x="806" y="34" class="small">Lifecycle</text><text x="806" y="54" class="body">RECOVERY_REQUIRED</text>
+  <text x="1054" y="34" class="small">Evidence</text><text x="1054" y="54" class="body">Fresh · checked 13:11:02</text>
+  <rect x="1300" y="18" width="108" height="38" rx="10" class="danger"/><text x="1323" y="42" class="body">Attention 1</text>
+
+  <text x="272" y="118" class="eyebrow">LIVE / RECOVERY REQUIRED</text>
+  <text x="272" y="160" class="title">The story is stopped safely before canon.</text>
+  <text x="272" y="190" class="body">Review the evidence and consequences. Nothing advances until you submit one explicit choice.</text>
+
+  <rect x="272" y="216" width="760" height="174" rx="18" class="danger"/>
+  <text x="300" y="252" class="eyebrow">CURRENT DURABLE TRUTH</text>
+  <text x="300" y="286" class="h2">Run 2 · Round 4 · stopped after accepted turn 15</text>
+  <text x="300" y="318" class="body">Director call 16 completed its stream but failed schema validation twice.</text>
+  <text x="300" y="346" class="body">The invalid attempt did not enter canon, the transcript, or the accepted turn count.</text>
+  <text x="300" y="372" class="small">Recovery request recovery:S02:run2:1 · recorded 13:10:44 · worker lease healthy</text>
+  <rect x="836" y="244" width="168" height="50" rx="12" class="surface"/><text x="865" y="275" class="h3">SAFE STOP</text>
+  <text x="836" y="326" class="small">Later story work is blocked</text>
+  <text x="836" y="350" class="small">Evidence remains readable</text>
+
+  <rect x="1056" y="216" width="332" height="174" rx="18" class="surface"/>
+  <text x="1084" y="252" class="eyebrow">FAILURE EVIDENCE</text>
+  <text x="1084" y="284" class="body">Transport</text><text x="1278" y="284" class="small">Completed</text>
+  <text x="1084" y="312" class="body">Parse</text><text x="1290" y="312" class="small">Created</text>
+  <text x="1084" y="340" class="body">Validation</text><text x="1284" y="340" class="small">Failed</text>
+  <rect x="1084" y="352" width="276" height="30" rx="8" class="soft"/><text x="1132" y="372" class="small">Explain call 16 in Diagnostics →</text>
+
+  <rect x="272" y="414" width="760" height="142" rx="18" class="approved"/>
+  <text x="300" y="450" class="eyebrow">LAST ACCEPTED BEAT · TURN 15</text>
+  <text x="300" y="482" class="h2">Mara Venn · accepted at 13:09:58</text>
+  <text x="300" y="514" class="script">Mara places her palm against the chamber door. The rewritten label vibrates like a held note.</text>
+  <text x="300" y="538" class="small">This is the exact story position every recovery choice starts from.</text>
+
+  <rect x="1056" y="414" width="332" height="142" rx="18" class="surface"/>
+  <text x="1084" y="450" class="eyebrow">QUEUE EFFECT</text>
+  <text x="1084" y="482" class="body">Current run</text><text x="1266" y="482" class="small">Blocked</text>
+  <text x="1084" y="510" class="body">Evening run</text><text x="1268" y="510" class="small">Queued</text>
+  <text x="1084" y="538" class="small">Original schedule positions remain durable.</text>
+
+  <text x="272" y="600" class="eyebrow">CHOOSE A RECOVERY PATH</text>
+  <rect x="272" y="620" width="356" height="230" rx="18" class="surface"/>
+  <text x="300" y="656" class="h2">Retry</text>
+  <text x="300" y="688" class="body">Preserve both failed attempts and enqueue</text>
+  <text x="300" y="712" class="body">a new director attempt from accepted turn 15.</text>
+  <text x="300" y="744" class="small">Story effect · none until a new result validates</text>
+  <text x="300" y="768" class="small">Schedule effect · later work remains queued</text>
+  <rect x="300" y="786" width="300" height="44" rx="10" fill="#1f2421"/><text x="400" y="814" class="navactive">Review retry</text>
+
+  <rect x="646" y="620" width="356" height="230" rx="18" class="attention"/>
+  <text x="674" y="656" class="h2">Skip this run</text>
+  <text x="674" y="688" class="body">Close Run 2 as skipped at this ledger</text>
+  <text x="674" y="712" class="body">position and allow later scheduled work.</text>
+  <text x="674" y="744" class="small">Story effect · turn 15 remains the final beat</text>
+  <text x="674" y="768" class="small">Schedule effect · Evening may proceed in order</text>
+  <rect x="674" y="786" width="300" height="44" rx="10" class="surface"/><text x="772" y="814" class="h3">Review skip</text>
+
+  <rect x="1020" y="620" width="368" height="230" rx="18" class="danger"/>
+  <text x="1048" y="656" class="h2">End season privately</text>
+  <text x="1048" y="688" class="body">Begin the separate private-close journey</text>
+  <text x="1048" y="712" class="body">with a complete read-only snapshot.</text>
+  <text x="1048" y="744" class="small">Story effect · no later runs are attempted</text>
+  <text x="1048" y="768" class="small">Privacy · publishes and deletes nothing</text>
+  <rect x="1048" y="786" width="312" height="44" rx="10" class="surface"/><text x="1134" y="814" class="h3">Review private end</text>
+
+  <rect x="272" y="874" width="1116" height="90" rx="18" class="soft"/>
+  <text x="300" y="908" class="eyebrow">NO CHOICE SELECTED</text>
+  <text x="300" y="938" class="body">Opening evidence or navigating away does not resolve recovery. The chosen review shows exact impact before submission.</text>
+  <text x="1118" y="910" class="small">After submission</text><text x="1118" y="936" class="h3">Durable receipt →</text>
+</svg>

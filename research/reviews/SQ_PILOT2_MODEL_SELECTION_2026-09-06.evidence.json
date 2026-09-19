@@ -1,0 +1,1044 @@
+{
+  "captured_at_utc": "2026-09-06T15:26:39.956297+00:00",
+  "interpretation": "Diagnostic task-attempt summaries across heterogeneous development rehearsals; not independent samples, controlled model ranking, or proof of semantic compliance. Partial auditions retained as partial. No H1 outcomes used for selection.",
+  "source_manifest_root": ".rehearsal-data/actor-audition-v14-20260903",
+  "selected_manifest": {
+    "orchestrator": {
+      "backend": "local",
+      "model": "qwen3:30b-instruct",
+      "prompt_profile": "general",
+      "params": {
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "repeat_penalty": 1.12,
+        "num_predict": 768,
+        "num_ctx": 8192
+      }
+    },
+    "actors": {
+      "boson-reefer": {
+        "backend": "local",
+        "model": "gpt-oss:20b",
+        "prompt_profile": "general",
+        "params": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repeat_penalty": 1.08,
+          "num_predict": 1536,
+          "num_ctx": 8192,
+          "thinking": true
+        }
+      },
+      "chrysanthemum-ballad": {
+        "backend": "local",
+        "model": "gpt-oss:20b",
+        "prompt_profile": "general",
+        "params": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repeat_penalty": 1.08,
+          "num_predict": 1536,
+          "num_ctx": 8192,
+          "thinking": true
+        }
+      },
+      "click-tourmaline": {
+        "backend": "local",
+        "model": "gpt-oss:20b",
+        "prompt_profile": "general",
+        "params": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "repeat_penalty": 1.08,
+          "num_predict": 1536,
+          "num_ctx": 8192,
+          "thinking": true
+        }
+      }
+    }
+  },
+  "totals": [
+    {
+      "model": "gpt-oss:20b",
+      "task": "ordinary_actor",
+      "attempts": 127,
+      "accepted": 127,
+      "transport_failures": 0
+    },
+    {
+      "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+      "task": "ordinary_actor",
+      "attempts": 106,
+      "accepted": 104,
+      "transport_failures": 0
+    },
+    {
+      "model": "qwen3.8:27b",
+      "task": "ordinary_actor",
+      "attempts": 85,
+      "accepted": 80,
+      "transport_failures": 1
+    },
+    {
+      "model": "qwen3:30b-instruct",
+      "task": "director_plan",
+      "attempts": 68,
+      "accepted": 64,
+      "transport_failures": 0
+    },
+    {
+      "model": "qwen3:30b-instruct",
+      "task": "director_render",
+      "attempts": 64,
+      "accepted": 64,
+      "transport_failures": 0
+    },
+    {
+      "model": "gpt-oss:20b",
+      "task": "diary",
+      "attempts": 14,
+      "accepted": 10,
+      "transport_failures": 1
+    },
+    {
+      "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+      "task": "diary",
+      "attempts": 18,
+      "accepted": 4,
+      "transport_failures": 1
+    },
+    {
+      "model": "qwen3.8:27b",
+      "task": "diary",
+      "attempts": 9,
+      "accepted": 8,
+      "transport_failures": 1
+    },
+    {
+      "model": "qwen3:30b-instruct",
+      "task": "other",
+      "attempts": 13,
+      "accepted": 5,
+      "transport_failures": 1
+    },
+    {
+      "model": "qwen3.8:27b",
+      "task": "actor_correction",
+      "attempts": 4,
+      "accepted": 1,
+      "transport_failures": 0
+    },
+    {
+      "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+      "task": "actor_correction",
+      "attempts": 2,
+      "accepted": 2,
+      "transport_failures": 0
+    },
+    {
+      "model": "qwen3.8:27b",
+      "task": "director_plan",
+      "attempts": 47,
+      "accepted": 43,
+      "transport_failures": 0
+    },
+    {
+      "model": "qwen3.8:27b",
+      "task": "director_render",
+      "attempts": 44,
+      "accepted": 42,
+      "transport_failures": 0
+    },
+    {
+      "model": "qwen3.8:27b",
+      "task": "other",
+      "attempts": 4,
+      "accepted": 3,
+      "transport_failures": 1
+    },
+    {
+      "model": "qwen3:30b-instruct",
+      "task": "diary",
+      "attempts": 6,
+      "accepted": 3,
+      "transport_failures": 1
+    },
+    {
+      "model": "qwen3:30b-instruct",
+      "task": "ordinary_actor",
+      "attempts": 63,
+      "accepted": 60,
+      "transport_failures": 0
+    },
+    {
+      "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+      "task": "director_plan",
+      "attempts": 25,
+      "accepted": 22,
+      "transport_failures": 1
+    },
+    {
+      "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+      "task": "director_render",
+      "attempts": 22,
+      "accepted": 21,
+      "transport_failures": 0
+    },
+    {
+      "model": "qwen3:30b-instruct",
+      "task": "actor_correction",
+      "attempts": 3,
+      "accepted": 3,
+      "transport_failures": 0
+    },
+    {
+      "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+      "task": "other",
+      "attempts": 2,
+      "accepted": 1,
+      "transport_failures": 0
+    }
+  ],
+  "roots": [
+    {
+      "root": ".rehearsal-data/actor-audition-v10-20260902",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 5,
+          "accepted": 5,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 5,
+          "accepted": 5,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 5,
+          "accepted": 5,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_plan",
+          "attempts": 6,
+          "accepted": 5,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_render",
+          "attempts": 5,
+          "accepted": 5,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 1,
+        "INTERRUPTED": 1,
+        "QUEUED": 2
+      },
+      "diaries": {},
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v11-20260902",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 2,
+          "transport_failures": 0
+        },
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "diary",
+          "attempts": 4,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 2,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_plan",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_render",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "other",
+          "attempts": 4,
+          "accepted": 1,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 4
+      },
+      "diaries": {
+        "PRIVATE": 2,
+        "WRITTEN": 4
+      },
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v12-20260902",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 8,
+          "accepted": 8,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 8,
+          "accepted": 8,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "actor_correction",
+          "attempts": 1,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "diary",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 8,
+          "accepted": 7,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_plan",
+          "attempts": 9,
+          "accepted": 8,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_render",
+          "attempts": 8,
+          "accepted": 8,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 2,
+        "QUEUED": 2
+      },
+      "diaries": {
+        "PRIVATE": 2,
+        "WRITTEN": 1
+      },
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v13-rotated-20260902",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 3,
+          "accepted": 3,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 3,
+          "accepted": 3,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 3,
+          "accepted": 3,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_plan",
+          "attempts": 5,
+          "accepted": 3,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_render",
+          "attempts": 3,
+          "accepted": 3,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "INTERRUPTED": 1,
+        "QUEUED": 3
+      },
+      "diaries": {},
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v14-20260903",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 2,
+          "transport_failures": 0
+        },
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "actor_correction",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "diary",
+          "attempts": 3,
+          "accepted": 2,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 15,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "actor_correction",
+          "attempts": 1,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 2,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 15,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_plan",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_render",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "other",
+          "attempts": 4,
+          "accepted": 2,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 4
+      },
+      "diaries": {
+        "WRITTEN": 6
+      },
+      "resolution_records": 1
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v15-rotated-20260903",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "diary",
+          "attempts": 3,
+          "accepted": 2,
+          "transport_failures": 1
+        },
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "diary",
+          "attempts": 4,
+          "accepted": 1,
+          "transport_failures": 1
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "actor_correction",
+          "attempts": 1,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "diary",
+          "attempts": 3,
+          "accepted": 2,
+          "transport_failures": 1
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 16,
+          "accepted": 15,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_plan",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "director_render",
+          "attempts": 16,
+          "accepted": 16,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "other",
+          "attempts": 5,
+          "accepted": 2,
+          "transport_failures": 1
+        }
+      ],
+      "runs": {
+        "COMPLETED": 4
+      },
+      "diaries": {
+        "PRIVATE": 1,
+        "WRITTEN": 5
+      },
+      "resolution_records": 1
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v16-director-rotation-20260903",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "diary",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "director_plan",
+          "attempts": 16,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "director_render",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "other",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 3,
+        "INTERRUPTED": 1
+      },
+      "diaries": {
+        "PRIVATE": 1,
+        "WRITTEN": 2
+      },
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v17-director-rotation-20260903",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 5,
+          "accepted": 5,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "director_plan",
+          "attempts": 6,
+          "accepted": 6,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "director_render",
+          "attempts": 6,
+          "accepted": 5,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "actor_correction",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 5,
+          "accepted": 4,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "ordinary_actor",
+          "attempts": 5,
+          "accepted": 5,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 1,
+        "INTERRUPTED": 1,
+        "QUEUED": 2
+      },
+      "diaries": {},
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v18-director-rotation-20260904",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "diary",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "actor_correction",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 13,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "director_plan",
+          "attempts": 16,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "director_render",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "other",
+          "attempts": 2,
+          "accepted": 1,
+          "transport_failures": 1
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 1,
+          "transport_failures": 1
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 3,
+        "INTERRUPTED": 1
+      },
+      "diaries": {
+        "PRIVATE": 1,
+        "WRITTEN": 2
+      },
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v19-director-rotation-20260904",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 4,
+          "accepted": 4,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "director_plan",
+          "attempts": 6,
+          "accepted": 4,
+          "transport_failures": 1
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "director_render",
+          "attempts": 4,
+          "accepted": 4,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 4,
+          "accepted": 4,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "ordinary_actor",
+          "attempts": 4,
+          "accepted": 4,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 1,
+        "QUEUED": 3
+      },
+      "diaries": {},
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v20-director-rotation-20260904",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "diary",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "diary",
+          "attempts": 2,
+          "accepted": 0,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "director_plan",
+          "attempts": 15,
+          "accepted": 15,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "director_render",
+          "attempts": 16,
+          "accepted": 14,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "other",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "actor_correction",
+          "attempts": 3,
+          "accepted": 3,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "diary",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "ordinary_actor",
+          "attempts": 14,
+          "accepted": 11,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 3,
+        "INTERRUPTED": 1
+      },
+      "diaries": {
+        "PRIVATE": 1,
+        "WRITTEN": 2
+      },
+      "resolution_records": 0
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v21-director-rotation-20260904",
+      "by_model_task": [
+        {
+          "model": "gpt-oss:20b",
+          "task": "diary",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "gpt-oss:20b",
+          "task": "ordinary_actor",
+          "attempts": 12,
+          "accepted": 12,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "director_plan",
+          "attempts": 13,
+          "accepted": 12,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "director_render",
+          "attempts": 12,
+          "accepted": 12,
+          "transport_failures": 0
+        },
+        {
+          "model": "hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M",
+          "task": "other",
+          "attempts": 2,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "diary",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3.8:27b",
+          "task": "ordinary_actor",
+          "attempts": 12,
+          "accepted": 11,
+          "transport_failures": 1
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "diary",
+          "attempts": 1,
+          "accepted": 1,
+          "transport_failures": 0
+        },
+        {
+          "model": "qwen3:30b-instruct",
+          "task": "ordinary_actor",
+          "attempts": 12,
+          "accepted": 12,
+          "transport_failures": 0
+        }
+      ],
+      "runs": {
+        "COMPLETED": 2,
+        "INTERRUPTED": 1,
+        "QUEUED": 1
+      },
+      "diaries": {
+        "WRITTEN": 3
+      },
+      "resolution_records": 0
+    }
+  ]
+}

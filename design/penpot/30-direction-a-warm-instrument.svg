@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 11px; font-weight: 750; letter-spacing: 1.8px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 10px; font-weight: 750; letter-spacing: 1.6px; fill: #aeb8b2; }
+    .title { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
+    .screenTitle { font-size: 29px; font-weight: 700; letter-spacing: -.6px; }
+    .h2 { font-size: 18px; font-weight: 700; }
+    .h3 { font-size: 14px; font-weight: 700; }
+    .body { font-size: 13px; }
+    .small { font-size: 11px; fill: #6c6b63; }
+    .tiny { font-size: 10px; fill: #6c6b63; }
+    .serif { font-family: Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1.5; }
+    .panel { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1.5; }
+    .spec { fill: #f3efe6; stroke: #b7b0a2; stroke-width: 1.5; }
+    .good { fill: #dce7de; stroke: #89a08d; stroke-width: 1.2; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1.2; }
+    .danger { fill: #f0dcd8; stroke: #a95449; stroke-width: 1.2; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1.2; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <text x="56" y="54" class="eyebrow">DIRECTION A / RECOMMENDED START</text>
+  <text x="56" y="101" class="title">Warm Instrument</text>
+  <text x="380" y="99" class="body">A creative field notebook held inside a dependable private instrument panel.</text>
+
+  <rect x="56" y="138" width="900" height="830" rx="24" fill="#f3efe6" stroke="#aaa294" stroke-width="2"/>
+  <path d="M80 138H261V968H80C66.7 968 56 957.3 56 944V162C56 148.7 66.7 138 80 138Z" fill="#26302d"/>
+  <circle cx="88" cy="177" r="16" fill="#c56f42"/>
+  <text x="80" y="182" class="h3 onDark">SQ</text>
+  <text x="116" y="174" class="h3 onDark">Simulation Query</text>
+  <text x="116" y="193" class="tiny mutedDark">PRIVATE OPERATOR</text>
+
+  <text x="80" y="241" class="eyebrowDark">WORKSPACE</text>
+  <rect x="72" y="258" width="173" height="40" rx="9" fill="#3b4843"/>
+  <rect x="76" y="268" width="4" height="20" rx="2" fill="#c56f42"/>
+  <text x="94" y="283" class="body onDark">Home</text>
+  <text x="80" y="329" class="body mutedDark">Prepare</text>
+  <text x="80" y="373" class="body mutedDark">Live</text>
+  <text x="80" y="417" class="body mutedDark">Review</text>
+  <text x="80" y="461" class="body mutedDark">Diagnostics</text>
+  <text x="80" y="505" class="body mutedDark">Seasons</text>
+
+  <line x1="80" y1="550" x2="227" y2="550" stroke="#46544e"/>
+  <text x="80" y="581" class="eyebrowDark">SELECTED CONTEXT</text>
+  <text x="80" y="610" class="h3 onDark">S02</text>
+  <text x="80" y="630" class="small mutedDark">The Weather Library</text>
+  <rect x="80" y="651" width="126" height="27" rx="8" fill="#32453c" stroke="#6e8e73"/>
+  <text x="92" y="669" class="tiny onDark">RUNNING · PRIVATE</text>
+  <text x="80" y="716" class="tiny mutedDark">WORKER</text>
+  <circle cx="85" cy="740" r="5" fill="#7fa487"/>
+  <text x="98" y="744" class="small onDark">Healthy · queue 2</text>
+  <text x="80" y="784" class="tiny mutedDark">FRESHNESS</text>
+  <text x="80" y="807" class="small onDark">Checked 14:06:12</text>
+  <rect x="80" y="897" width="145" height="38" rx="9" fill="#1f2724" stroke="#53615b"/>
+  <text x="96" y="921" class="small onDark">Owner-only console</text>
+
+  <text x="293" y="182" class="eyebrow">HOME / DAY 2</text>
+  <text x="293" y="218" class="screenTitle">Keep the troupe in view.</text>
+  <text x="293" y="244" class="body">The season is healthy. Nothing needs intervention right now.</text>
+  <rect x="778" y="172" width="150" height="31" rx="9" class="good"/>
+  <text x="795" y="192" class="tiny">DURABLE · FRESH</text>
+
+  <rect x="293" y="278" width="407" height="264" rx="16" class="surface"/>
+  <text x="317" y="310" class="eyebrow">LAST ACCEPTED BEAT</text>
+  <text x="317" y="345" class="h2">Run 06 · Evening</text>
+  <text x="317" y="373" class="serif body">The brass vane turned toward a wind no</text>
+  <text x="317" y="395" class="serif body">instrument could name. Ivy watched the dust</text>
+  <text x="317" y="417" class="serif body">lift from the shelves in a single silver ribbon.</text>
+  <line x1="317" y1="441" x2="676" y2="441" class="rule"/>
+  <text x="317" y="470" class="tiny">ACCEPTED 14:02:40 · ARTIFACT v6</text>
+  <rect x="317" y="490" width="132" height="31" rx="9" fill="#26302d"/>
+  <text x="335" y="510" class="small onDark">Open transcript</text>
+  <text x="465" y="510" class="small">Reading stays still during polling</text>
+
+  <rect x="716" y="278" width="212" height="264" rx="16" class="panel"/>
+  <text x="738" y="310" class="eyebrow">TODAY</text>
+  <text x="738" y="345" class="h2">6 / 6 runs</text>
+  <text x="738" y="369" class="small">Day complete</text>
+  <line x1="738" y1="394" x2="906" y2="394" class="rule"/>
+  <text x="738" y="421" class="tiny">DIARIES</text>
+  <text x="738" y="446" class="h3">4 private · 0 due</text>
+  <text x="738" y="474" class="tiny">NEXT SCHEDULE</text>
+  <text x="738" y="499" class="h3">Tomorrow · Morning</text>
+  <rect x="738" y="512" width="125" height="22" rx="7" class="good"/>
+  <text x="750" y="527" class="tiny">NO ATTENTION DUE</text>
+
+  <rect x="293" y="560" width="635" height="202" rx="16" class="surface"/>
+  <text x="317" y="592" class="eyebrow">STABLE READING PANE</text>
+  <text x="317" y="626" class="h2">End-of-day review</text>
+  <text x="317" y="652" class="serif body">Luna closed the west shutters one at a time. “If the library</text>
+  <text x="317" y="674" class="serif body">is listening,” she said, “we should decide what we want it to hear.”</text>
+  <text x="317" y="710" class="small">Open script and diary text never redraws until you choose “Load new material.”</text>
+  <rect x="317" y="724" width="144" height="26" rx="8" class="info"/>
+  <text x="331" y="742" class="tiny">NEW MATERIAL AVAILABLE</text>
+
+  <rect x="293" y="782" width="635" height="151" rx="16" class="panel"/>
+  <text x="317" y="814" class="eyebrow">ACTION LANGUAGE</text>
+  <rect x="317" y="841" width="102" height="36" rx="9" fill="#26302d"/>
+  <text x="345" y="864" class="small onDark">Open</text>
+  <rect x="431" y="841" width="118" height="36" rx="9" fill="#faf7f0" stroke="#aaa294"/>
+  <text x="455" y="864" class="small">Save draft</text>
+  <rect x="561" y="841" width="132" height="36" rx="9" class="warm"/>
+  <text x="581" y="864" class="small">Review impact</text>
+  <rect x="705" y="841" width="155" height="36" rx="9" class="danger"/>
+  <text x="723" y="864" class="small">Type intent first</text>
+  <text x="317" y="907" class="small">Read · Light · Workflow · Consequential</text>
+
+  <rect x="980" y="138" width="404" height="830" rx="22" class="spec"/>
+  <text x="1006" y="174" class="eyebrow">VISUAL CONTRACT</text>
+  <text x="1006" y="210" class="h2">Warm, not nostalgic</text>
+  <text x="1006" y="234" class="small">Soft paper grounds reading; charcoal holds operational truth.</text>
+
+  <text x="1006" y="280" class="eyebrow">CORE PALETTE</text>
+  <rect x="1006" y="300" width="62" height="44" rx="8" fill="#f3efe6" stroke="#b7b0a2"/>
+  <rect x="1078" y="300" width="62" height="44" rx="8" fill="#26302d"/>
+  <rect x="1150" y="300" width="62" height="44" rx="8" fill="#c56f42"/>
+  <rect x="1222" y="300" width="62" height="44" rx="8" fill="#6e8e73"/>
+  <rect x="1294" y="300" width="62" height="44" rx="8" fill="#a95449"/>
+  <text x="1006" y="363" class="tiny mono">PAPER</text>
+  <text x="1078" y="363" class="tiny mono">CHARCOAL</text>
+  <text x="1150" y="363" class="tiny mono">EMBER</text>
+  <text x="1222" y="363" class="tiny mono">LICHEN</text>
+  <text x="1294" y="363" class="tiny mono">RUST</text>
+
+  <line x1="1006" y1="392" x2="1358" y2="392" class="rule"/>
+  <text x="1006" y="424" class="eyebrow">TYPE ROLES</text>
+  <text x="1006" y="456" class="h2">Inter / system</text>
+  <text x="1006" y="487" class="serif h2">Georgia / reading voice</text>
+  <text x="1006" y="516" class="mono small">SF Mono / evidence v06</text>
+  <text x="1006" y="542" class="small">Implementation may substitute bundled metric-compatible fonts.</text>
+
+  <line x1="1006" y1="570" x2="1358" y2="570" class="rule"/>
+  <text x="1006" y="602" class="eyebrow">SHAPE &amp; RHYTHM</text>
+  <text x="1006" y="632" class="body">8 px base grid · 9–16 px radii</text>
+  <text x="1006" y="657" class="body">1 px warm-gray borders · almost no shadow</text>
+  <text x="1006" y="682" class="body">Serif only for authored fiction and diaries</text>
+  <text x="1006" y="707" class="body">Ember only for focus, selection, and authored spark</text>
+
+  <line x1="1006" y1="737" x2="1358" y2="737" class="rule"/>
+  <text x="1006" y="769" class="eyebrow">STATE PALETTE</text>
+  <rect x="1006" y="790" width="162" height="36" rx="9" class="good"/>
+  <text x="1022" y="813" class="small">Success / durable</text>
+  <rect x="1180" y="790" width="176" height="36" rx="9" class="warm"/>
+  <text x="1196" y="813" class="small">Attention / decision</text>
+  <rect x="1006" y="838" width="162" height="36" rx="9" class="danger"/>
+  <text x="1022" y="861" class="small">Danger / blocked</text>
+  <rect x="1180" y="838" width="176" height="36" rx="9" class="info"/>
+  <text x="1196" y="861" class="small">Info / new material</text>
+
+  <text x="1006" y="910" class="h3">Signature gesture</text>
+  <text x="1006" y="934" class="small">A thin ember rule marks the exact place where</text>
+  <text x="1006" y="951" class="small">creative material meets operator consequence.</text>
+</svg>

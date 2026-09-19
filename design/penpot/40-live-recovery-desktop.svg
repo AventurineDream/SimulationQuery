@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 11px; font-weight: 750; letter-spacing: 1.8px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 10px; font-weight: 750; letter-spacing: 1.6px; fill: #aeb8b2; }
+    .title { font-size: 32px; font-weight: 700; letter-spacing: -1px; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 14px; font-weight: 700; }
+    .body { font-size: 13px; }
+    .small { font-size: 11px; fill: #6c6b63; }
+    .tiny { font-size: 10px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1.2; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1.2; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1.1; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1.1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1.1; }
+    .danger { fill: #f0dcd8; stroke: #aa6157; stroke-width: 1.1; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .infoText { fill: #354f63; }
+    .dangerText { fill: #6a302b; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="240" height="1024" fill="#26302d"/>
+  <circle cx="38" cy="42" r="17" fill="#c56f42"/>
+  <text x="29" y="47" class="h3 onDark">SQ</text>
+  <text x="68" y="37" class="h3 onDark">Simulation Query</text>
+  <text x="68" y="56" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="28" y="112" class="eyebrowDark">WORKSPACE</text>
+  <circle cx="45" cy="155" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="66" y="160" class="body mutedDark">Home</text>
+  <circle cx="45" cy="210" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="66" y="215" class="body mutedDark">Prepare</text>
+  <rect x="16" y="242" width="208" height="46" rx="11" fill="#3b4843"/>
+  <rect x="20" y="252" width="4" height="26" rx="2" fill="#c56f42"/>
+  <circle cx="45" cy="265" r="7" fill="none" stroke="#f4efe5" stroke-width="1.5"/>
+  <text x="66" y="270" class="body onDark">Live</text>
+  <circle cx="45" cy="320" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="66" y="325" class="body mutedDark">Review</text>
+  <circle cx="45" cy="375" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="66" y="380" class="body mutedDark">Diagnostics</text>
+  <circle cx="45" cy="430" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="66" y="435" class="body mutedDark">Seasons</text>
+  <line x1="28" y1="484" x2="212" y2="484" stroke="#46544e"/>
+  <text x="28" y="520" class="eyebrowDark">SELECTED CONTEXT</text>
+  <text x="28" y="553" class="h2 onDark">S02 · Run 02</text>
+  <text x="28" y="576" class="small mutedDark">Round 4 · turn 16</text>
+  <rect x="28" y="598" width="166" height="29" rx="8" fill="#573b37" stroke="#aa6157"/>
+  <text x="41" y="617" class="tiny onDark">RECOVERY REQUIRED</text>
+  <text x="28" y="670" class="eyebrowDark">SAFE STOP</text>
+  <text x="28" y="698" class="small onDark">Worker lease healthy</text>
+  <text x="28" y="721" class="tiny mutedDark">Creator decision required</text>
+  <text x="28" y="764" class="eyebrowDark">FRESHNESS</text>
+  <text x="28" y="791" class="small onDark">Checked 13:11:02</text>
+  <text x="28" y="812" class="mono tiny mutedDark">recovery snapshot v45</text>
+  <rect x="20" y="944" width="200" height="52" rx="11" fill="#1f2724" stroke="#53615b"/>
+  <circle cx="44" cy="970" r="11" fill="#49554f"/>
+  <text x="66" y="966" class="small onDark">Aven</text>
+  <text x="66" y="983" class="tiny mutedDark">Owner-only console</text>
+
+  <text x="280" y="55" class="eyebrow dangerText">LIVE / RECOVERY REQUIRED</text>
+  <text x="280" y="99" class="title">The story is stopped safely before canon.</text>
+  <text x="280" y="130" class="body">Review the evidence and consequences. Nothing advances until you submit one explicit choice.</text>
+  <rect x="1240" y="43" width="158" height="38" rx="10" class="danger"/>
+  <text x="1270" y="67" class="small dangerText">ATTENTION · 1</text>
+
+  <rect x="280" y="162" width="750" height="208" rx="17" class="danger"/>
+  <text x="304" y="198" class="eyebrow dangerText">CURRENT DURABLE TRUTH</text>
+  <text x="304" y="232" class="h2 dangerText">Run 02 · Round 4 · stopped after accepted turn 15</text>
+  <text x="304" y="266" class="body dangerText">Director call 16 completed its stream but failed schema validation twice.</text>
+  <text x="304" y="300" class="body dangerText">The invalid attempt did not enter canon, transcript, or accepted turn count.</text>
+  <text x="304" y="336" class="mono tiny dangerText">recovery:S02:run2:1 · recorded 13:10:44 · worker lease healthy</text>
+  <rect x="830" y="184" width="174" height="54" rx="12" class="good"/>
+  <text x="872" y="217" class="h3 goodText">SAFE STOP</text>
+  <text x="830" y="270" class="small dangerText">Later story work is blocked</text>
+  <text x="830" y="296" class="small dangerText">Evidence remains readable</text>
+
+  <rect x="1054" y="162" width="344" height="208" rx="17" class="soft"/>
+  <text x="1078" y="198" class="eyebrow">FAILURE EVIDENCE</text>
+  <text x="1078" y="232" class="body">Transport</text>
+  <text x="1300" y="232" class="small goodText">COMPLETED</text>
+  <text x="1078" y="262" class="body">Parse</text>
+  <text x="1315" y="262" class="small goodText">CREATED</text>
+  <text x="1078" y="292" class="body">Validation</text>
+  <text x="1315" y="292" class="small dangerText">FAILED</text>
+  <rect x="1078" y="315" width="296" height="36" rx="9" class="surface"/>
+  <text x="1115" y="338" class="small">Explain call 16 in Diagnostics →</text>
+
+  <rect x="280" y="394" width="750" height="150" rx="17" class="good"/>
+  <rect x="280" y="394" width="5" height="150" rx="3" fill="#c56f42"/>
+  <text x="306" y="429" class="eyebrow goodText">LAST ACCEPTED BEAT · TURN 15</text>
+  <text x="306" y="463" class="h2 goodText">Mara Venn · accepted at 13:09:58</text>
+  <text x="306" y="495" class="serif body goodText">Mara places her palm against the chamber door. The rewritten label vibrates like a held note.</text>
+  <text x="306" y="522" class="small goodText">This is the exact story position every recovery choice starts from.</text>
+
+  <rect x="1054" y="394" width="344" height="150" rx="17" class="soft"/>
+  <text x="1078" y="429" class="eyebrow">QUEUE EFFECT</text>
+  <text x="1078" y="463" class="body">Current run</text>
+  <text x="1308" y="463" class="small dangerText">BLOCKED</text>
+  <text x="1078" y="493" class="body">Evening run</text>
+  <text x="1306" y="493" class="small">QUEUED</text>
+  <text x="1078" y="522" class="small">Original schedule positions remain durable.</text>
+
+  <text x="280" y="583" class="eyebrow">CHOOSE A RECOVERY PATH</text>
+  <text x="506" y="583" class="small">No choice is selected. Each path opens a separate impact review.</text>
+  <rect x="280" y="602" width="354" height="248" rx="17" class="surface"/>
+  <text x="304" y="639" class="h2">Retry</text>
+  <text x="304" y="674" class="body">Preserve both failed attempts and enqueue</text>
+  <text x="304" y="699" class="body">a new director attempt from accepted turn 15.</text>
+  <text x="304" y="735" class="small">Story · unchanged until a result validates</text>
+  <text x="304" y="761" class="small">Schedule · later work remains queued</text>
+  <rect x="304" y="788" width="306" height="42" rx="10" class="surface"/>
+  <text x="416" y="814" class="small">Review retry</text>
+
+  <rect x="650" y="602" width="354" height="248" rx="17" class="warm"/>
+  <text x="674" y="639" class="h2 warmText">Skip this run</text>
+  <text x="674" y="674" class="body warmText">Close Run 02 as skipped at this ledger</text>
+  <text x="674" y="699" class="body warmText">position and allow later scheduled work.</text>
+  <text x="674" y="735" class="small warmText">Story · turn 15 remains the final beat</text>
+  <text x="674" y="761" class="small warmText">Schedule · Evening may proceed in order</text>
+  <rect x="674" y="788" width="306" height="42" rx="10" class="surface"/>
+  <text x="786" y="814" class="small">Review skip</text>
+
+  <rect x="1020" y="602" width="378" height="248" rx="17" class="danger"/>
+  <text x="1044" y="639" class="h2 dangerText">End season privately</text>
+  <text x="1044" y="674" class="body dangerText">Begin the separate private-close journey</text>
+  <text x="1044" y="699" class="body dangerText">with a complete read-only snapshot.</text>
+  <text x="1044" y="735" class="small dangerText">Story · no later runs are attempted</text>
+  <text x="1044" y="761" class="small dangerText">Privacy · publishes and deletes nothing</text>
+  <rect x="1044" y="788" width="330" height="42" rx="10" class="surface"/>
+  <text x="1152" y="814" class="small">Review private end</text>
+
+  <rect x="280" y="874" width="1118" height="88" rx="15" class="soft"/>
+  <text x="304" y="907" class="eyebrow">NO CHOICE SELECTED</text>
+  <text x="304" y="937" class="body">Opening evidence or navigating away does not resolve recovery. Submission returns a durable receipt.</text>
+  <text x="1190" y="908" class="small">After submission</text>
+  <text x="1190" y="937" class="h3">Durable receipt →</text>
+</svg>

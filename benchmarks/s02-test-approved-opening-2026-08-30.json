@@ -1,0 +1,33 @@
+{
+  "status": "APPROVED_FOR_PREFLIGHT",
+  "season_id": "S02",
+  "approval": {
+    "approved_by": "creator",
+    "approved_at": "2026-08-28",
+    "greenlit": false
+  },
+  "opening": {
+    "set": "Submarine \"Aether\"",
+    "setting": "Inside the molten heart of Yellowstone's caldera, a sleek, heat-shielded vessel moves through rivers of magma and ash clouds, its hull humming with advanced but fallible thermal shielding.",
+    "cast": [
+      "Luna Planck",
+      "Mason Curie",
+      "Higgs Sierra",
+      "Ivy Fermion"
+    ],
+    "world_rules": [
+      "Fusion output can be modulated but is never guaranteed to survive extreme heat.",
+      "Crew choices influence danger but never determine a required outcome.",
+      "Each actor retains full agency over dialogue and actions.",
+      "The environment is dangerous; speculative science stays TV-14."
+    ]
+  },
+  "cast_ids": [
+    "luna-planck",
+    "mason-curie",
+    "higgs-sierra",
+    "ivy-fermion"
+  ],
+  "model_manifest_ref": "s02-test-model-manifest-2026-08-30.json",
+  "next_gate": "sandbox Linux preflight, then a separately recorded Green approval after Saturday 06:00 Pacific so Day 1 begins Sunday 06:00 Pacific"
+}

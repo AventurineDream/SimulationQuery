@@ -1,0 +1,22 @@
+# Dedicated S02 test-season configuration. Keep separate from S01's
+# /etc/improv-troupe/config.yaml and /var/lib/improv-troupe data root.
+
+service:
+  data_root: /var/lib/improv-troupe-test
+  poll_interval_seconds: 5
+  recovery_wait_seconds: 14400
+  auto_retry_timeouts: true
+  timeout_retry_max_attempts: 3
+  worker_id: improv-test-worker
+
+backends:
+  local:
+    base_url: http://10.0.0.103:11434
+    kind: ollama
+    timeout_seconds: 600
+    models:
+      - ministral-3:8b
+      - qwen3:8b
+      - richardyoung/qwen3-8b-abliterated:Q4_K_M
+
+default_backend: local

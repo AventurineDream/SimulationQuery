@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="2110" viewBox="0 0 390 2110">
+  <rect width="390" height="2110" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 8px; font-weight: 750; letter-spacing: 1.2px; fill: #aeb8b2; }
+    .title { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 11px; }
+    .small { font-size: 9px; fill: #6c6b63; }
+    .tiny { font-size: 8px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1; }
+    .danger { fill: #f0dcd8; stroke: #aa6157; stroke-width: 1; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .infoText { fill: #354f63; }
+    .dangerText { fill: #6a302b; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="84" fill="#26302d"/>
+  <circle cx="27" cy="25" r="13" fill="#c56f42"/>
+  <text x="20" y="29" class="h3 onDark">SQ</text>
+  <text x="49" y="23" class="h3 onDark">Simulation Query</text>
+  <text x="49" y="40" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="264" y="20" class="eyebrowDark">SEASONS</text>
+  <text x="264" y="40" class="h3 onDark">S02 · Release</text>
+  <text x="264" y="59" class="tiny mutedDark">PRIVATE_COMPLETE</text>
+
+  <text x="16" y="111" class="eyebrow warmText">SEASONS / PUBLICATION REVIEW</text>
+  <text x="16" y="143" class="title">Separate public release.</text>
+  <text x="16" y="166" class="body">The private archive stays authoritative and unchanged.</text>
+  <rect x="16" y="183" width="358" height="68" rx="13" class="soft"/>
+  <rect x="26" y="193" width="338" height="26" rx="8" class="info"/>
+  <text x="42" y="210" class="h3 infoText">1 · Privacy</text>
+  <text x="156" y="210" class="small infoText">2 · Preview</text>
+  <text x="271" y="210" class="small infoText">3 · Receipt</text>
+  <text x="32" y="238" class="tiny">Closed S02 selected explicitly · projection v1</text>
+
+  <rect x="16" y="269" width="358" height="382" rx="15" class="surface"/>
+  <text x="32" y="297" class="eyebrow">RELEASE GATES · S02 ONLY</text>
+  <text x="32" y="329" class="h2">Review before projection</text>
+  <rect x="32" y="347" width="326" height="58" rx="11" class="good"/>
+  <text x="48" y="371" class="h3 goodText">✓ Privately complete</text>
+  <text x="48" y="392" class="tiny goodText">Closure receipt S02-close-01 verified</text>
+  <rect x="32" y="417" width="326" height="58" rx="11" class="good"/>
+  <text x="48" y="441" class="h3 goodText">✓ Consent ledger resolved</text>
+  <text x="48" y="462" class="tiny goodText">Four participants · current at closure</text>
+  <rect x="32" y="487" width="326" height="72" rx="11" class="warm"/>
+  <text x="48" y="511" class="h3 warmText">! One held diary excluded</text>
+  <text x="48" y="532" class="tiny warmText">Status reviewed; raw wellness remains private.</text>
+  <text x="48" y="548" class="tiny warmText">No public placeholder is created.</text>
+  <rect x="32" y="571" width="326" height="58" rx="11" class="good"/>
+  <text x="48" y="595" class="h3 goodText">✓ Allowlist and paths valid</text>
+  <text x="48" y="616" class="tiny goodText">No private-root or escaped artifact path</text>
+
+  <rect x="16" y="669" width="358" height="472" rx="15" class="surface"/>
+  <text x="32" y="697" class="eyebrow">EXACT PUBLIC PREVIEW · V1</text>
+  <text x="32" y="729" class="h2">Simulation Query · S02</text>
+  <text x="32" y="753" class="body">The Weather Library</text>
+  <text x="32" y="778" class="tiny">Generated from closure snapshot v18 · public fields only</text>
+  <line x1="32" y1="798" x2="358" y2="798" class="rule"/>
+  <text x="32" y="829" class="eyebrow">EPISODE 1 · MORNING</text>
+  <text x="32" y="861" class="serif body">The archive receives a storm whose label</text>
+  <text x="32" y="885" class="serif body">changes whenever no one is looking.</text>
+  <text x="32" y="915" class="serif body">Mara listens to the chamber wall. Tavi</text>
+  <text x="32" y="939" class="serif body">knots a safety line around the latch.</text>
+  <text x="32" y="977" class="eyebrow">ACCEPTED DIARIES</text>
+  <text x="32" y="1009" class="serif body">Mara · “The note behind the door was</text>
+  <text x="32" y="1033" class="serif body">almost a question.”</text>
+  <text x="32" y="1063" class="serif body">Oren · “The archive tasted like rain</text>
+  <text x="32" y="1087" class="serif body">trapped in copper.”</text>
+  <rect x="210" y="1095" width="148" height="32" rx="9" class="soft"/>
+  <text x="252" y="1115" class="tiny">Full preview</text>
+
+  <rect x="16" y="1159" width="358" height="300" rx="15" class="danger"/>
+  <text x="32" y="1187" class="eyebrow dangerText">NEVER IN THIS EXPORT</text>
+  <text x="32" y="1221" class="body dangerText">Private role sheets and orientation</text>
+  <text x="32" y="1254" class="body dangerText">Prompts, raw output, model identities</text>
+  <text x="32" y="1287" class="body dangerText">Hidden direction and actor-local memory</text>
+  <text x="32" y="1320" class="body dangerText">Raw wellness and held attempts</text>
+  <text x="32" y="1353" class="body dangerText">Missing, withheld, or revoked diaries</text>
+  <line x1="32" y1="1375" x2="358" y2="1375" stroke="#c78c84"/>
+  <text x="32" y="1402" class="small dangerText">Exclusion is validated, not visually hidden.</text>
+  <text x="32" y="1427" class="tiny dangerText">Reading this card exposes none of the source data.</text>
+
+  <rect x="16" y="1477" width="358" height="340" rx="15" class="warm"/>
+  <rect x="16" y="1477" width="4" height="340" rx="2" fill="#c56f42"/>
+  <text x="32" y="1505" class="eyebrow warmText">CONSEQUENTIAL · NOT SUBMITTED</text>
+  <text x="32" y="1539" class="h2 warmText">Confirm the separate release</text>
+  <text x="32" y="1573" class="body warmText">Type the season-qualified phrase:</text>
+  <rect x="32" y="1592" width="326" height="56" rx="11" class="surface"/>
+  <text x="48" y="1626" class="small">Type “publish S02”</text>
+  <rect x="32" y="1671" width="326" height="48" rx="10" fill="#dddeda" stroke="#bfc5c0"/>
+  <text x="162" y="1701" class="h3">Publish v1</text>
+  <text x="32" y="1753" class="small warmText">Enabled after exact intent and projection check.</text>
+  <text x="32" y="1777" class="tiny warmText">This command cannot alter the private archive.</text>
+  <text x="32" y="1799" class="tiny warmText">Reading or navigating away never publishes.</text>
+
+  <rect x="16" y="1835" width="358" height="157" rx="15" class="soft"/>
+  <text x="32" y="1863" class="eyebrow">IMMUTABLE RESULT AFTER SUBMISSION</text>
+  <text x="32" y="1899" class="h3">Release version · S02-public-v1</text>
+  <text x="32" y="1935" class="h3">Manifest hash · generated and displayed</text>
+  <text x="32" y="1971" class="h3">Durable publication receipt</text>
+  <text x="32" y="1987" class="tiny">Private archive remains independently auditable.</text>
+
+  <rect x="0" y="2022" width="390" height="88" fill="#26302d"/>
+  <circle cx="43" cy="2058" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="31" y="2082" class="tiny mutedDark">Home</text>
+  <circle cx="121" cy="2058" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="104" y="2082" class="tiny mutedDark">Prepare</text>
+  <circle cx="199" cy="2058" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="190" y="2082" class="tiny mutedDark">Live</text>
+  <circle cx="277" cy="2058" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="262" y="2082" class="tiny mutedDark">Review</text>
+  <rect x="320" y="2032" width="62" height="61" rx="12" fill="#3b4843"/>
+  <rect x="333" y="2038" width="36" height="3" rx="1.5" fill="#c56f42"/>
+  <circle cx="351" cy="2058" r="7" fill="none" stroke="#f4efe5" stroke-width="1.4"/>
+  <text x="340" y="2082" class="tiny onDark">More</text>
+</svg>

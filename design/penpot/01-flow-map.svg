@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960">
+  <rect width="1600" height="960" fill="#f4f4f1"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#59615d"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: #53605a; }
+    .title { font-size: 38px; font-weight: 700; }
+    .lane { fill: #e9ebe8; stroke: #c8ccc8; stroke-width: 2; }
+    .step { fill: #ffffff; stroke: #9da59f; stroke-width: 2; }
+    .decision { fill: #f4ecd9; stroke: #a78d52; stroke-width: 2; }
+    .evidence { fill: #e7f0ec; stroke: #789b87; stroke-width: 2; stroke-dasharray: 7 5; }
+    .label { font-size: 17px; font-weight: 700; }
+    .small { font-size: 13px; fill: #59615d; }
+    .arrow { stroke: #59615d; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+  </style>
+  <text x="56" y="58" class="eyebrow">01 — FLOW MAP / SYNTHETIC REHEARSAL</text>
+  <text x="56" y="108" class="title">One stable map through the season lifecycle</text>
+  <text x="56" y="140" class="small">Solid paths mutate through typed commands. Dashed evidence views never advance the lifecycle.</text>
+
+  <rect x="56" y="186" width="1488" height="170" rx="20" class="lane"/>
+  <text x="82" y="220" class="eyebrow">PREPARE</text>
+  <rect x="82" y="246" width="150" height="72" rx="12" class="step"/><text x="121" y="288" class="label">Idea</text>
+  <rect x="266" y="246" width="150" height="72" rx="12" class="step"/><text x="303" y="288" class="label">Opening</text>
+  <rect x="450" y="246" width="170" height="72" rx="12" class="step"/><text x="473" y="277" class="label">Character</text><text x="500" y="299" class="label">cards</text>
+  <rect x="654" y="246" width="170" height="72" rx="12" class="step"/><text x="680" y="277" class="label">Model</text><text x="671" y="299" class="label">assignment</text>
+  <rect x="858" y="246" width="150" height="72" rx="12" class="step"/><text x="895" y="288" class="label">Preflight</text>
+  <rect x="1042" y="246" width="170" height="72" rx="12" class="step"/><text x="1064" y="277" class="label">Private prep</text><text x="1082" y="299" class="small">roles + orientation</text>
+  <rect x="1246" y="246" width="140" height="72" rx="12" class="step"/><text x="1273" y="277" class="label">Schedule</text><text x="1290" y="299" class="small">preview</text>
+  <rect x="1420" y="246" width="96" height="72" rx="12" class="decision"/><text x="1437" y="277" class="label">Green</text><text x="1438" y="299" class="small">separate</text>
+  <path d="M232 282 H258" class="arrow"/><path d="M416 282 H442" class="arrow"/><path d="M620 282 H646" class="arrow"/><path d="M824 282 H850" class="arrow"/><path d="M1008 282 H1034" class="arrow"/><path d="M1212 282 H1238" class="arrow"/><path d="M1386 282 H1412" class="arrow"/>
+  <path d="M534 318 V338 H337 V326" class="arrow"/><text x="400" y="347" class="small">revision invalidates downstream evidence</text>
+
+  <rect x="56" y="386" width="1488" height="206" rx="20" class="lane"/>
+  <text x="82" y="420" class="eyebrow">LIVE + RECOVERY</text>
+  <rect x="112" y="466" width="160" height="76" rx="12" class="step"/><text x="160" y="509" class="label">Armed</text>
+  <rect x="348" y="466" width="180" height="76" rx="12" class="step"/><text x="400" y="509" class="label">Running</text>
+  <rect x="604" y="466" width="180" height="76" rx="12" class="step"/><text x="658" y="509" class="label">Paused</text>
+  <rect x="860" y="452" width="200" height="104" rx="12" class="decision"/><text x="888" y="493" class="label">Waiting for model</text><text x="900" y="521" class="small">timer remains visible</text>
+  <rect x="1136" y="452" width="210" height="104" rx="12" class="decision"/><text x="1161" y="493" class="label">Recovery required</text><text x="1172" y="521" class="small">retry · skip · end</text>
+  <rect x="1412" y="466" width="104" height="76" rx="12" class="decision"/><text x="1444" y="499" class="label">End</text><text x="1435" y="521" class="small">private</text>
+  <path d="M272 504 H340" class="arrow"/><path d="M528 504 H596" class="arrow"/><path d="M784 504 H852" class="arrow"/><path d="M1060 504 H1128" class="arrow"/><path d="M1346 504 H1404" class="arrow"/>
+  <path d="M694 466 V438 H438 V458" class="arrow"/><text x="533" y="432" class="small">resume</text>
+  <path d="M1241 556 V576 H438 V550" class="arrow"/><text x="787" y="571" class="small">retry or skip returns to running; all attempts remain</text>
+
+  <rect x="56" y="622" width="1488" height="170" rx="20" class="lane"/>
+  <text x="82" y="656" class="eyebrow">PRIVATE CLOSE + OPTIONAL RELEASE</text>
+  <rect x="112" y="694" width="220" height="68" rx="12" class="step"/><text x="136" y="723" class="label">Close snapshot</text><text x="151" y="746" class="small">read-only evidence</text>
+  <rect x="420" y="694" width="220" height="68" rx="12" class="decision"/><text x="441" y="723" class="label">Typed private end</text><text x="472" y="746" class="small">no publication</text>
+  <rect x="728" y="694" width="220" height="68" rx="12" class="step"/><text x="767" y="723" class="label">Private archive</text><text x="780" y="746" class="small">handoff + receipt</text>
+  <rect x="1036" y="694" width="220" height="68" rx="12" class="decision"/><text x="1056" y="723" class="label">Publication review</text><text x="1084" y="746" class="small">separate journey</text>
+  <rect x="1344" y="694" width="172" height="68" rx="12" class="decision"/><text x="1364" y="723" class="label">Publish Sxx</text><text x="1381" y="746" class="small">immutable</text>
+  <path d="M332 728 H412" class="arrow"/><path d="M640 728 H720" class="arrow"/><path d="M948 728 H1028" class="arrow"/><path d="M1256 728 H1336" class="arrow"/>
+
+  <rect x="56" y="822" width="1488" height="92" rx="20" class="evidence"/>
+  <text x="82" y="854" class="eyebrow">READ-ONLY EVIDENCE LAYER</text>
+  <text x="82" y="886" class="label">Review</text><text x="170" y="886" class="small">causal story · diaries · cast · continuity</text>
+  <text x="594" y="886" class="label">Diagnostics</text><text x="718" y="886" class="small">one call · raw → rendered · no reruns</text>
+  <text x="1135" y="886" class="label">Activity</text><text x="1222" y="886" class="small">durable commands and receipts</text>
+</svg>
