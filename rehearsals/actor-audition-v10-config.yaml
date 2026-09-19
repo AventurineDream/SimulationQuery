@@ -1,0 +1,20 @@
+service:
+  data_root: /Users/aven/Software/Github/AI-improv-troupe/.rehearsal-data/actor-audition-v10-20260902
+  poll_interval_seconds: 5
+  recovery_wait_seconds: 1800
+  auto_retry_timeouts: true
+  timeout_retry_max_attempts: 3
+  worker_id: actor-audition-v10-worker
+
+backends:
+  local:
+    base_url: http://10.0.0.103:11434
+    kind: ollama
+    timeout_seconds: 1800
+    models:
+      - gpt-oss:20b
+      - hf.co/mradermacher/spoomplesmaxx-thrasher-24B-i1-GGUF:Q4_K_M
+      - qwen3.8:27b
+      - qwen3:30b-instruct
+
+default_backend: local

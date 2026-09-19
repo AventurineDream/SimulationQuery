@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .nav { fill: #1f2421; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 2; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 2; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 2; }
+    .sandbox { fill: #dfeee6; stroke: #6f9c82; stroke-width: 2; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: #5a645e; }
+    .title { font-size: 34px; font-weight: 700; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 16px; font-weight: 700; }
+    .body { font-size: 15px; }
+    .small { font-size: 12px; fill: #5f6862; }
+    .navtext { font-size: 15px; fill: #dce2dd; }
+    .navactive { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    .inverse { fill: #ffffff; }
+    .inverse-muted { fill: #aab6af; }
+    .inverse-subtle { fill: #9fb0a6; }
+    .line { stroke: #c8cec9; stroke-width: 2; }
+  </style>
+
+  <rect x="0" y="0" width="232" height="1024" class="nav"/>
+  <text x="28" y="45" class="eyebrow inverse-subtle">AI IMPROV TROUPE</text>
+  <text x="28" y="77" class="h2 inverse">Operator</text>
+  <rect x="16" y="118" width="200" height="46" rx="10" fill="#39423d"/>
+  <text x="32" y="147" class="navactive">Home</text>
+  <text x="32" y="204" class="navtext">Prepare</text>
+  <text x="32" y="252" class="navtext">Live</text>
+  <text x="32" y="300" class="navtext">Review</text>
+  <text x="32" y="348" class="navtext">Diagnostics</text>
+  <text x="32" y="396" class="navtext">Seasons</text>
+  <line x1="24" y1="438" x2="208" y2="438" stroke="#4a554f"/>
+  <text x="32" y="477" class="small inverse-muted">Navigation hypothesis A</text>
+  <text x="32" y="499" class="small inverse-muted">Stable left rail</text>
+
+  <rect x="232" y="0" width="1208" height="74" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="260" y="18" width="114" height="38" rx="19" class="sandbox"/>
+  <text x="283" y="42" class="eyebrow">SANDBOX</text>
+  <text x="402" y="34" class="small">Season</text><text x="402" y="54" class="h3">S02 — The Weather Library ▾</text>
+  <text x="790" y="34" class="small">Worker</text><text x="790" y="54" class="body">● Running independently</text>
+  <text x="1040" y="34" class="small">Evidence</text><text x="1040" y="54" class="body">Fresh · checked 10:42</text>
+  <rect x="1300" y="18" width="108" height="38" rx="10" class="soft"/><text x="1320" y="42" class="body">Attention 2</text>
+
+  <text x="272" y="126" class="eyebrow">HOME / GUIDED STUDIO BRIEFING</text>
+  <text x="272" y="174" class="title">Good morning. One thing needs you.</text>
+  <text x="272" y="204" class="body">The afternoon rehearsal is paused before canon acceptance. The worker is waiting safely.</text>
+
+  <rect x="272" y="240" width="760" height="174" rx="18" class="attention"/>
+  <text x="300" y="276" class="eyebrow">NEXT SAFE ACTION</text>
+  <text x="300" y="316" class="h2">Review the schema failure in Run 2</text>
+  <text x="300" y="346" class="body">A completed stream failed validation. Nothing from that attempt entered canon.</text>
+  <text x="300" y="374" class="small">Evidence available: model call · raw output · parser finding · recovery choices</text>
+  <rect x="824" y="332" width="176" height="50" rx="12" fill="#1f2421"/><text x="852" y="363" class="navactive">Open recovery</text>
+
+  <rect x="1056" y="240" width="332" height="174" rx="18" class="surface"/>
+  <text x="1084" y="276" class="eyebrow">CURRENT TRUTH</text>
+  <text x="1084" y="312" class="h3">Day 1 · Afternoon</text>
+  <text x="1084" y="339" class="body">Run 2 · Recovery required</text>
+  <text x="1084" y="366" class="body">15 accepted turns</text>
+  <text x="1084" y="393" class="small">Scheduled 12:00 · delayed +00:18:42</text>
+
+  <rect x="272" y="438" width="516" height="242" rx="18" class="surface"/>
+  <text x="300" y="476" class="h2">Season progress</text>
+  <text x="300" y="510" class="body">Morning</text><text x="695" y="510" class="small">Completed · 16 turns</text>
+  <line x1="300" y1="526" x2="758" y2="526" class="line"/>
+  <text x="300" y="558" class="body">Afternoon</text><text x="655" y="558" class="small">Recovery required · 15 turns</text>
+  <line x1="300" y1="574" x2="758" y2="574" class="line"/>
+  <text x="300" y="606" class="body">Evening</text><text x="689" y="606" class="small">Queued · 18:00</text>
+  <line x1="300" y1="632" x2="758" y2="632" class="line"/>
+  <text x="300" y="658" class="small">Completion counts are evidence of execution, not creative quality.</text>
+
+  <rect x="812" y="438" width="576" height="242" rx="18" class="surface"/>
+  <text x="840" y="476" class="h2">Attention inbox</text>
+  <rect x="840" y="504" width="520" height="66" rx="10" class="attention"/>
+  <text x="858" y="531" class="h3">Run 2 requires recovery</text><text x="858" y="553" class="small">Blocks later scene work · unread</text>
+  <rect x="840" y="584" width="520" height="66" rx="10" class="soft"/>
+  <text x="858" y="611" class="h3">Artifact projection pending</text><text x="858" y="633" class="small">Does not rerun story work · unread</text>
+
+  <rect x="272" y="704" width="760" height="260" rx="18" class="surface"/>
+  <text x="300" y="742" class="h2">Recent durable activity</text>
+  <line x1="320" y1="778" x2="320" y2="925" class="line"/>
+  <circle cx="320" cy="790" r="7" fill="#557963"/><text x="344" y="795" class="body">10:39 · Actor turn 15 accepted after correction</text>
+  <circle cx="320" cy="836" r="7" fill="#9a7740"/><text x="344" y="841" class="body">10:40 · Director stream completed; schema validation failed</text>
+  <circle cx="320" cy="882" r="7" fill="#9a7740"/><text x="344" y="887" class="body">10:41 · RecoveryRequired recorded</text>
+  <circle cx="320" cy="928" r="7" fill="#557963"/><text x="344" y="933" class="body">10:42 · Dashboard evidence refreshed</text>
+
+  <rect x="1056" y="704" width="332" height="260" rx="18" class="surface"/>
+  <text x="1084" y="742" class="h2">System health</text>
+  <text x="1084" y="786" class="body">Database integrity</text><text x="1298" y="786" class="small">OK</text>
+  <text x="1084" y="824" class="body">Worker lease</text><text x="1262" y="824" class="small">Healthy</text>
+  <text x="1084" y="862" class="body">Model backend</text><text x="1250" y="862" class="small">Reachable</text>
+  <text x="1084" y="900" class="body">Artifact outbox</text><text x="1282" y="900" class="small">1 pending</text>
+  <text x="1084" y="938" class="small">Details live in Diagnostics, not Home.</text>
+</svg>

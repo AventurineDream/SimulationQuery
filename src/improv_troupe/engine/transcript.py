@@ -26,15 +26,23 @@ class Transcript:
         self.turns.append(turn)
         return turn
 
+    def add_audit(self, text: str) -> Turn:
+        """Operator-only evidence; never part of a model's accepted scene."""
+        turn = Turn(speaker="AUDIT", text=text, kind="audit")
+        self.turns.append(turn)
+        return turn
+
     @property
     def line_count(self) -> int:
         return sum(1 for t in self.turns if t.kind == "line")
 
-    def script_view(self) -> str:
+    def script_view(self, *, include_audit: bool = True) -> str:
         """Plain-text script the actors read as context each turn."""
         out: list[str] = []
         for turn in self.turns:
-            if turn.kind == "direction":
+            if turn.kind == "audit" and not include_audit:
+                continue
+            if turn.kind in {"direction", "audit"}:
                 out.append(f"[{turn.text}]")
             else:
                 out.append(f"{turn.speaker}: {turn.text}")

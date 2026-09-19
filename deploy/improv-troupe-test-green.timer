@@ -1,0 +1,10 @@
+[Unit]
+Description=Schedule S02 test-season Green for Saturday 29 August 2026 after 06:00 Pacific
+
+[Timer]
+OnCalendar=2026-08-29 13:05:00 UTC
+Persistent=true
+Unit=improv-troupe-test-green.service
+
+[Install]
+WantedBy=timers.target

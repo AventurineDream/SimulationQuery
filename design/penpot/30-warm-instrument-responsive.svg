@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 11px; font-weight: 750; letter-spacing: 1.8px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #aeb8b2; }
+    .title { font-size: 36px; font-weight: 700; letter-spacing: -1px; }
+    .screenTitle { font-size: 24px; font-weight: 700; letter-spacing: -.4px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 13px; font-weight: 700; }
+    .body { font-size: 12px; }
+    .small { font-size: 10px; fill: #6c6b63; }
+    .tiny { font-size: 9px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1.2; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1.2; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1.1; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1.1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1.1; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <text x="56" y="54" class="eyebrow">30 / WARM INSTRUMENT / RESPONSIVE</text>
+  <text x="56" y="101" class="title">Same capability. Different composition.</text>
+  <text x="56" y="130" class="body">Desktop keeps context beside the work; narrow stacks it without hiding evidence, impact, or action.</text>
+
+  <text x="56" y="166" class="eyebrow">DESKTOP · 1440 REFERENCE</text>
+  <rect x="56" y="184" width="700" height="760" rx="20" fill="#f3efe6" stroke="#aaa294" stroke-width="2"/>
+  <path d="M76 184H206V944H76C65 944 56 935 56 924V204C56 193 65 184 76 184Z" fill="#26302d"/>
+  <circle cx="82" cy="216" r="12" fill="#c56f42"/>
+  <text x="75" y="220" class="tiny onDark">SQ</text>
+  <text x="103" y="214" class="h3 onDark">Simulation</text>
+  <text x="103" y="231" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="76" y="277" class="eyebrowDark">WORKSPACE</text>
+  <rect x="68" y="292" width="122" height="34" rx="8" fill="#3b4843"/>
+  <rect x="72" y="299" width="4" height="20" rx="2" fill="#c56f42"/>
+  <text x="88" y="314" class="small onDark">Home</text>
+  <text x="76" y="356" class="small mutedDark">Prepare</text>
+  <text x="76" y="392" class="small mutedDark">Live</text>
+  <text x="76" y="428" class="small mutedDark">Review</text>
+  <text x="76" y="464" class="small mutedDark">Diagnostics</text>
+  <text x="76" y="500" class="small mutedDark">Seasons</text>
+  <line x1="76" y1="532" x2="186" y2="532" stroke="#46544e"/>
+  <text x="76" y="560" class="eyebrowDark">CONTEXT</text>
+  <text x="76" y="586" class="h3 onDark">S02</text>
+  <text x="76" y="604" class="tiny mutedDark">The Weather Library</text>
+  <rect x="76" y="622" width="104" height="24" rx="7" fill="#32453c" stroke="#6e8e73"/>
+  <text x="87" y="638" class="tiny onDark">RUNNING · PRIVATE</text>
+  <circle cx="81" cy="690" r="4" fill="#6e8e73"/>
+  <text x="92" y="694" class="tiny onDark">Worker healthy</text>
+  <text x="76" y="726" class="tiny mutedDark">CHECKED 14:06:12</text>
+
+  <text x="232" y="224" class="eyebrow">HOME / DAY 2</text>
+  <text x="232" y="258" class="screenTitle">Keep the troupe in view.</text>
+  <text x="232" y="281" class="body">Nothing needs intervention right now.</text>
+  <rect x="593" y="213" width="135" height="28" rx="8" class="good"/>
+  <text x="608" y="231" class="tiny">✓ DURABLE · FRESH</text>
+
+  <rect x="232" y="312" width="312" height="210" rx="14" class="surface"/>
+  <rect x="232" y="312" width="4" height="210" rx="2" fill="#c56f42"/>
+  <text x="252" y="341" class="eyebrow">LAST ACCEPTED BEAT</text>
+  <text x="252" y="372" class="h2">Run 06 · Evening</text>
+  <text x="252" y="401" class="serif body">The brass vane turned toward a wind no</text>
+  <text x="252" y="421" class="serif body">instrument could name. The shelves answered</text>
+  <text x="252" y="441" class="serif body">with a single silver ribbon of dust.</text>
+  <text x="252" y="473" class="mono tiny">accepted 14:02:40 · artifact v6</text>
+  <rect x="252" y="487" width="112" height="25" rx="7" fill="#26302d"/>
+  <text x="270" y="504" class="tiny onDark">Open transcript</text>
+  <rect x="560" y="312" width="168" height="210" rx="14" class="soft"/>
+  <text x="580" y="341" class="eyebrow">TODAY</text>
+  <text x="580" y="372" class="h2">6 / 6 runs</text>
+  <text x="580" y="397" class="small">Day complete</text>
+  <line x1="580" y1="420" x2="708" y2="420" class="rule"/>
+  <text x="580" y="446" class="tiny">DIARIES</text>
+  <text x="580" y="469" class="h3">4 private · 0 due</text>
+  <rect x="580" y="486" width="116" height="24" rx="7" class="good"/>
+  <text x="592" y="502" class="tiny">NO ATTENTION DUE</text>
+
+  <rect x="232" y="540" width="496" height="196" rx="14" class="surface"/>
+  <text x="252" y="569" class="eyebrow">STABLE READING PANE</text>
+  <text x="252" y="600" class="h2">End-of-day review</text>
+  <text x="252" y="627" class="serif body">Luna closed the west shutters one at a time.</text>
+  <text x="252" y="647" class="serif body">“If the library is listening, we should decide</text>
+  <text x="252" y="667" class="serif body">what we want it to hear.”</text>
+  <rect x="252" y="691" width="136" height="26" rx="7" class="info"/>
+  <text x="266" y="708" class="tiny">NEW MATERIAL AVAILABLE</text>
+  <text x="410" y="708" class="tiny">Creator-controlled refresh</text>
+
+  <rect x="232" y="754" width="496" height="158" rx="14" class="soft"/>
+  <text x="252" y="783" class="eyebrow">ATTENTION PREVIEW</text>
+  <text x="252" y="812" class="h3">Opening revision affects 3 later steps</text>
+  <text x="252" y="836" class="small">Review impact before saving. Existing versions remain durable.</text>
+  <rect x="252" y="856" width="118" height="38" rx="9" class="warm"/>
+  <text x="272" y="879" class="small">Review impact</text>
+  <rect x="382" y="856" width="118" height="38" rx="9" class="surface"/>
+  <text x="411" y="879" class="small">Not now</text>
+
+  <text x="780" y="166" class="eyebrow">NARROW · 390 REFERENCE</text>
+  <rect x="780" y="184" width="360" height="760" rx="28" fill="#f3efe6" stroke="#aaa294" stroke-width="2"/>
+  <rect x="780" y="184" width="360" height="72" rx="28" fill="#26302d"/>
+  <circle cx="810" cy="217" r="12" fill="#c56f42"/>
+  <text x="803" y="221" class="tiny onDark">SQ</text>
+  <text x="832" y="214" class="h3 onDark">S02 · The Weather Library</text>
+  <text x="832" y="232" class="tiny mutedDark">RUNNING · PRIVATE · FRESH</text>
+  <text x="806" y="291" class="eyebrow">HOME / DAY 2</text>
+  <text x="806" y="322" class="screenTitle">Keep the troupe in view.</text>
+  <text x="806" y="344" class="small">Nothing needs intervention.</text>
+  <rect x="806" y="368" width="308" height="198" rx="14" class="surface"/>
+  <rect x="806" y="368" width="4" height="198" rx="2" fill="#c56f42"/>
+  <text x="826" y="396" class="eyebrow">LAST ACCEPTED BEAT</text>
+  <text x="826" y="425" class="h2">Run 06 · Evening</text>
+  <text x="826" y="454" class="serif body">The brass vane turned toward a wind</text>
+  <text x="826" y="474" class="serif body">no instrument could name. The shelves</text>
+  <text x="826" y="494" class="serif body">answered with a ribbon of silver dust.</text>
+  <text x="826" y="524" class="mono tiny">artifact v6 · accepted</text>
+  <rect x="826" y="534" width="116" height="24" rx="7" fill="#26302d"/>
+  <text x="844" y="550" class="tiny onDark">Open transcript</text>
+  <rect x="806" y="582" width="308" height="116" rx="14" class="info"/>
+  <text x="826" y="610" class="eyebrow">NEW MATERIAL</text>
+  <text x="826" y="638" class="h3">2 accepted turns available</text>
+  <text x="826" y="661" class="small">Your reading position stays fixed.</text>
+  <rect x="826" y="670" width="118" height="22" rx="7" fill="#faf7f0" stroke="#637e95"/>
+  <text x="842" y="685" class="tiny">Load when ready</text>
+  <rect x="806" y="714" width="308" height="124" rx="14" class="warm"/>
+  <text x="826" y="742" class="eyebrow">IMPACT PREVIEW</text>
+  <text x="826" y="769" class="h3">3 later steps become invalid</text>
+  <text x="826" y="791" class="small">Nothing changes until you save.</text>
+  <rect x="826" y="801" width="128" height="29" rx="8" fill="#26302d"/>
+  <text x="844" y="820" class="tiny onDark">Continue to review</text>
+  <rect x="780" y="856" width="360" height="88" rx="28" fill="#26302d"/>
+  <rect x="794" y="868" width="56" height="60" rx="10" fill="#3b4843"/>
+  <rect x="799" y="878" width="4" height="20" rx="2" fill="#c56f42"/>
+  <circle cx="822" cy="886" r="6" fill="#f4efe5"/>
+  <circle cx="883" cy="886" r="6" fill="none" stroke="#aeb8b2"/>
+  <circle cx="954" cy="886" r="6" fill="none" stroke="#aeb8b2"/>
+  <circle cx="1015" cy="886" r="6" fill="none" stroke="#aeb8b2"/>
+  <circle cx="1071" cy="886" r="6" fill="none" stroke="#aeb8b2"/>
+  <text x="811" y="917" class="tiny onDark">Home</text>
+  <text x="858" y="917" class="tiny mutedDark">Prepare</text>
+  <text x="937" y="917" class="tiny mutedDark">Live</text>
+  <text x="979" y="917" class="tiny mutedDark">Review</text>
+  <text x="1044" y="917" class="tiny mutedDark">More</text>
+
+  <rect x="1164" y="184" width="220" height="760" rx="20" fill="#f3efe6" stroke="#b7b0a2" stroke-width="1.5"/>
+  <text x="1186" y="218" class="eyebrow">RESPONSIVE RULES</text>
+  <text x="1186" y="256" class="h3">Context compresses</text>
+  <text x="1186" y="279" class="small">Season, privacy, lifecycle,</text>
+  <text x="1186" y="297" class="small">worker, and freshness remain.</text>
+  <line x1="1186" y1="322" x2="1362" y2="322" class="rule"/>
+  <text x="1186" y="354" class="h3">Hierarchy stacks</text>
+  <text x="1186" y="377" class="small">Truth before evidence;</text>
+  <text x="1186" y="395" class="small">impact before action.</text>
+  <line x1="1186" y1="420" x2="1362" y2="420" class="rule"/>
+  <text x="1186" y="452" class="h3">Capability stays</text>
+  <text x="1186" y="475" class="small">No desktop-only evidence,</text>
+  <text x="1186" y="493" class="small">confirmation, or receipt.</text>
+  <line x1="1186" y1="518" x2="1362" y2="518" class="rule"/>
+  <text x="1186" y="550" class="h3">Reading stays still</text>
+  <text x="1186" y="573" class="small">Polling cannot redraw text,</text>
+  <text x="1186" y="591" class="small">move focus, or jump scroll.</text>
+  <line x1="1186" y1="616" x2="1362" y2="616" class="rule"/>
+  <text x="1186" y="648" class="h3">Actions stay clear</text>
+  <text x="1186" y="671" class="small">Bottom navigation never</text>
+  <text x="1186" y="689" class="small">covers the active action.</text>
+  <line x1="1186" y1="714" x2="1362" y2="714" class="rule"/>
+  <text x="1186" y="746" class="h3">Targets stay usable</text>
+  <text x="1186" y="769" class="small">44 px minimum; visible focus;</text>
+  <text x="1186" y="787" class="small">labels beside consequence.</text>
+  <line x1="1186" y1="812" x2="1362" y2="812" class="rule"/>
+  <text x="1186" y="844" class="h3">Breakpoint proposal</text>
+  <text x="1186" y="867" class="small">Rail ≥ 920 px</text>
+  <text x="1186" y="885" class="small">Bottom nav &lt; 920 px</text>
+  <text x="1186" y="917" class="tiny">Final breakpoint follows real</text>
+  <text x="1186" y="934" class="tiny">content testing, not device names.</text>
+
+  <text x="56" y="988" class="small">RESPONSIVE ACCEPTANCE: narrow changes composition only; safety, privacy, evidence, and consequence remain complete.</text>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1840" viewBox="0 0 390 1840">
+  <rect width="390" height="1840" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 1.5; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 1.5; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 1.5; }
+    .danger { fill: #f3e2df; stroke: #b17b71; stroke-width: 1.5; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 1.5; }
+    .eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 1.1px; fill: #5a645e; }
+    .title { font-size: 23px; font-weight: 700; }
+    .h2 { font-size: 16px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 12px; }
+    .script { font-family: Georgia, serif; font-size: 13px; }
+    .small { font-size: 10px; fill: #5f6862; }
+    .inverse { fill: #ffffff; }
+    .inverse-muted { fill: #c7cec9; }
+    .line { stroke: #c8cec9; stroke-width: 1.5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="64" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="14" y="14" width="90" height="36" rx="18" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="30" y="36" class="eyebrow">SANDBOX</text>
+  <text x="120" y="28" class="small">S02 — Weather Library</text><text x="120" y="46" class="body">Run 2 · RECOVERY REQUIRED</text>
+  <rect x="338" y="16" width="36" height="32" rx="9" class="danger"/><text x="351" y="36" class="body">!</text>
+
+  <text x="18" y="96" class="eyebrow">LIVE / RECOVERY REQUIRED</text>
+  <text x="18" y="128" class="title">Stopped before canon.</text>
+  <text x="18" y="151" class="body">Nothing advances until you submit one choice.</text>
+
+  <rect x="14" y="174" width="362" height="222" rx="14" class="danger"/>
+  <text x="32" y="202" class="eyebrow">CURRENT DURABLE TRUTH</text>
+  <text x="32" y="230" class="h2">Round 4 · after accepted turn 15</text>
+  <text x="32" y="258" class="body">Director call 16 completed its stream but</text>
+  <text x="32" y="280" class="body">failed schema validation twice.</text>
+  <text x="32" y="308" class="body">The invalid attempt did not enter canon,</text>
+  <text x="32" y="330" class="body">the transcript, or the accepted count.</text>
+  <text x="32" y="358" class="small">Recorded 13:10:44 · worker lease healthy</text>
+  <text x="32" y="378" class="small">Later story work remains safely blocked</text>
+
+  <rect x="14" y="412" width="362" height="152" rx="14" class="approved"/>
+  <text x="32" y="440" class="eyebrow">LAST ACCEPTED BEAT · TURN 15</text>
+  <text x="32" y="468" class="h2">Mara Venn</text>
+  <text x="32" y="496" class="script">Mara places her palm against the chamber</text>
+  <text x="32" y="518" class="script">door. The new label vibrates like a held note.</text>
+  <text x="32" y="544" class="small">Every recovery path starts here.</text>
+
+  <rect x="14" y="580" width="362" height="142" rx="14" class="surface"/>
+  <text x="32" y="608" class="eyebrow">FAILURE EVIDENCE</text>
+  <text x="32" y="636" class="body">Transport · Completed</text><text x="216" y="636" class="body">Parse · Created</text>
+  <text x="32" y="664" class="body">Validation · Failed</text>
+  <rect x="32" y="678" width="326" height="30" rx="8" class="soft"/><text x="94" y="698" class="small">Explain call 16 in Diagnostics →</text>
+
+  <text x="18" y="766" class="eyebrow">CHOOSE A RECOVERY PATH</text>
+  <rect x="14" y="784" width="362" height="220" rx="14" class="surface"/>
+  <text x="32" y="814" class="h2">Retry</text>
+  <text x="32" y="842" class="body">Preserve both failed attempts and enqueue</text>
+  <text x="32" y="864" class="body">a new attempt from accepted turn 15.</text>
+  <text x="32" y="892" class="small">Story · unchanged until a result validates</text>
+  <text x="32" y="914" class="small">Schedule · later work remains queued</text>
+  <rect x="32" y="940" width="326" height="44" rx="10" fill="#1f2421"/><text x="152" y="968" class="small inverse">Review retry</text>
+
+  <rect x="14" y="1020" width="362" height="220" rx="14" class="attention"/>
+  <text x="32" y="1050" class="h2">Skip this run</text>
+  <text x="32" y="1078" class="body">Close Run 2 as skipped at this durable</text>
+  <text x="32" y="1100" class="body">ledger position and allow later work.</text>
+  <text x="32" y="1128" class="small">Story · turn 15 remains the final beat</text>
+  <text x="32" y="1150" class="small">Schedule · Evening may proceed in order</text>
+  <rect x="32" y="1176" width="326" height="44" rx="10" class="surface"/><text x="150" y="1204" class="h3">Review skip</text>
+
+  <rect x="14" y="1256" width="362" height="242" rx="14" class="danger"/>
+  <text x="32" y="1286" class="h2">End season privately</text>
+  <text x="32" y="1314" class="body">Begin a separate private-close journey</text>
+  <text x="32" y="1336" class="body">with a complete read-only snapshot.</text>
+  <text x="32" y="1364" class="small">Story · no later runs are attempted</text>
+  <text x="32" y="1386" class="small">Privacy · publishes and deletes nothing</text>
+  <text x="32" y="1408" class="small">Confirmation · season-qualified typed phrase</text>
+  <rect x="32" y="1434" width="326" height="44" rx="10" class="surface"/><text x="128" y="1462" class="h3">Review private end</text>
+
+  <rect x="14" y="1514" width="362" height="112" rx="14" class="soft"/>
+  <text x="32" y="1542" class="eyebrow">NO CHOICE SELECTED</text>
+  <text x="32" y="1570" class="body">Opening evidence or navigating away does</text>
+  <text x="32" y="1592" class="body">not resolve recovery.</text>
+  <text x="32" y="1614" class="small">Every submitted choice returns a durable receipt.</text>
+
+  <rect x="14" y="1642" width="362" height="112" rx="14" class="surface"/>
+  <text x="32" y="1670" class="eyebrow">QUEUE EFFECT</text>
+  <text x="32" y="1698" class="body">Current run · Blocked</text>
+  <text x="32" y="1722" class="body">Evening run · Queued at original position</text>
+  <text x="32" y="1744" class="small">Evidence checked 13:11:02</text>
+
+  <rect x="0" y="1774" width="390" height="66" fill="#1f2421"/>
+  <text x="17" y="1806" class="small inverse-muted">Home</text><text x="75" y="1806" class="small inverse-muted">Prepare</text><text x="143" y="1806" class="small inverse">Live</text>
+  <text x="192" y="1806" class="small inverse-muted">Review</text><text x="252" y="1806" class="small inverse-muted">Diagnose</text><text x="326" y="1806" class="small inverse-muted">Seasons</text>
+</svg>

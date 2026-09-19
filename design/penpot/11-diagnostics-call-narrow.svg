@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1770" viewBox="0 0 390 1770">
+  <rect width="390" height="1770" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 1.5; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 1.5; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 1.5; }
+    .danger { fill: #f3e2df; stroke: #b17b71; stroke-width: 1.5; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 1.5; }
+    .active { fill: #e8edf0; stroke: #8fa2ad; stroke-width: 1.5; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 1.5; }
+    .eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 1.1px; fill: #5a645e; }
+    .title { font-size: 23px; font-weight: 700; }
+    .h2 { font-size: 16px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 12px; }
+    .small { font-size: 10px; fill: #5f6862; }
+    .inverse { fill: #ffffff; }
+    .inverse-muted { fill: #c7cec9; }
+    .line { stroke: #c8cec9; stroke-width: 1.5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="64" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="14" y="14" width="90" height="36" rx="18" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="30" y="36" class="eyebrow">SANDBOX</text>
+  <text x="120" y="28" class="small">S02 — Weather Library</text><text x="120" y="46" class="body">Diagnostics · Call 16</text>
+  <rect x="338" y="16" width="36" height="32" rx="9" class="danger"/><text x="351" y="36" class="body">!</text>
+
+  <text x="18" y="96" class="eyebrow">DIAGNOSTICS / MODEL CALL</text>
+  <text x="18" y="128" class="title">Explain one call.</text>
+  <text x="18" y="151" class="body">Read-only evidence. Nothing here reruns or accepts.</text>
+
+  <rect x="14" y="174" width="362" height="94" rx="14" class="attention"/>
+  <text x="32" y="202" class="eyebrow">PRIVATE OWNER MODE</text>
+  <text x="32" y="228" class="body">Model identity and raw artifacts require deliberate</text>
+  <text x="32" y="248" class="body">disclosure. Raw wellness text is excluded.</text>
+
+  <rect x="14" y="284" width="362" height="132" rx="14" class="surface"/>
+  <text x="32" y="312" class="eyebrow">FILTERS</text>
+  <rect x="32" y="328" width="150" height="32" rx="8" class="soft"/><text x="46" y="349" class="small">Day 1 · Afternoon</text>
+  <rect x="194" y="328" width="164" height="32" rx="8" class="soft"/><text x="208" y="349" class="small">Run 2 · Round 4</text>
+  <rect x="32" y="370" width="150" height="32" rx="8" class="soft"/><text x="46" y="391" class="small">Purpose: director</text>
+  <rect x="194" y="370" width="164" height="32" rx="8" class="danger"/><text x="208" y="391" class="small">Status: schema failure</text>
+
+  <text x="18" y="458" class="eyebrow">SELECTED CALL · 16</text>
+  <text x="18" y="488" class="h2">Completed stream / schema failure</text>
+  <rect x="14" y="506" width="362" height="148" rx="14" class="surface"/>
+  <text x="32" y="534" class="eyebrow">CALL IDENTITY</text>
+  <text x="32" y="562" class="body">Director · attempt 2 · NATIVE_SCHEMA</text>
+  <text x="32" y="586" class="body">director-candidate-12b-a · manifest m-07</text>
+  <text x="32" y="610" class="small">Warm · 42.8 s · finish stop · 1,462 tokens</text>
+  <text x="32" y="632" class="small">No transport error · recovery required</text>
+
+  <text x="18" y="698" class="eyebrow">RAW-TO-RENDERED SEQUENCE</text>
+  <rect x="14" y="716" width="362" height="74" rx="12" class="approved"/>
+  <text x="32" y="744" class="h3">1 · Raw output · available</text>
+  <text x="32" y="768" class="small">Owner-only excerpt remains collapsed.</text>
+  <rect x="258" y="730" width="100" height="38" rx="8" class="soft"/>
+  <text x="276" y="754" class="small">Reveal raw</text>
+  <rect x="14" y="804" width="362" height="66" rx="12" class="approved"/>
+  <text x="32" y="832" class="h3">2 · Parsed output · available</text>
+  <text x="32" y="854" class="small">Object created; no creative rewrite.</text>
+  <rect x="14" y="884" width="362" height="122" rx="12" class="danger"/>
+  <text x="32" y="912" class="h3">3 · Validation · failed</text>
+  <text x="32" y="940" class="body">state_changes expected an array.</text>
+  <text x="32" y="963" class="body">Received a string.</text>
+  <text x="32" y="986" class="small">director-beat-v4 · property type</text>
+  <rect x="14" y="1020" width="362" height="58" rx="12" class="disabled"/>
+  <text x="32" y="1048" class="h3">4 · Accepted output · absent</text>
+  <text x="32" y="1068" class="small">Canon and causal Review did not advance.</text>
+  <rect x="14" y="1092" width="362" height="58" rx="12" class="disabled"/>
+  <text x="32" y="1120" class="h3">5 · Rendered output · absent</text>
+  <text x="32" y="1140" class="small">Nothing from call 16 appears as story text.</text>
+
+  <rect x="14" y="1172" width="362" height="108" rx="14" class="attention"/>
+  <text x="32" y="1200" class="eyebrow">CORRECTION ATTEMPT 1</text>
+  <text x="32" y="1228" class="body">Returned the same invalid property type.</text>
+  <text x="32" y="1252" class="small">Original and correction artifacts remain linked.</text>
+
+  <rect x="14" y="1296" width="362" height="136" rx="14" class="surface"/>
+  <text x="32" y="1324" class="eyebrow">VERSION PROVENANCE</text>
+  <text x="32" y="1352" class="body">Prompt · scene-director-v6</text>
+  <text x="32" y="1376" class="body">Context · run2-r3-v15</text>
+  <text x="32" y="1400" class="body">Schema · director-beat-v4</text>
+  <text x="32" y="1422" class="small">Role sheet director-v2 · deliberately closed</text>
+
+  <rect x="14" y="1448" width="362" height="104" rx="14" class="approved"/>
+  <text x="32" y="1476" class="eyebrow">RETURN TO REVIEW</text>
+  <text x="32" y="1504" class="body">Afternoon · after accepted #15</text>
+  <text x="32" y="1528" class="small">Return to the exact causal position →</text>
+
+  <rect x="14" y="1568" width="362" height="94" rx="14" class="soft"/>
+  <text x="32" y="1596" class="eyebrow">DEFERRED FROM THIS SLICE</text>
+  <text x="32" y="1624" class="body">Reruns · benchmarks · bulk comparison</text>
+  <text x="32" y="1646" class="small">Diagnostics explains evidence; it does not operate the story.</text>
+
+  <rect x="0" y="1704" width="390" height="66" fill="#1f2421"/>
+  <text x="17" y="1736" class="small inverse-muted">Home</text><text x="75" y="1736" class="small inverse-muted">Prepare</text><text x="143" y="1736" class="small inverse-muted">Live</text>
+  <text x="192" y="1736" class="small inverse-muted">Review</text><text x="252" y="1736" class="small inverse">Diagnose</text><text x="326" y="1736" class="small inverse-muted">Seasons</text>
+</svg>

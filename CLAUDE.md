@@ -24,34 +24,67 @@ plan can drive the troupe. Defined in `src/improv_troupe/domain/plan.py`; the
 exported JSON Schema lives at `schema/production_plan.schema.json` (regenerate with
 `improv schema -o schema/production_plan.schema.json`).
 
-## ⚠️ Environment gotcha (read before running anything)
+## ⚠️ Environment setup (read before running anything)
 
-This machine's system `python3` (3.12) has **no pip**, and `venv` cannot bootstrap
-it (`ensurepip` missing). A working venv already exists at `.venv/` (created via
-`python3 -m venv --without-pip` + a bootstrapped `get-pip.py`). **Use it:**
+The project requires Python 3.11+. On macOS, prefer the Homebrew interpreter
+and use the reproducible setup script:
+
+```bash
+brew install python@3.14
+bash scripts/setup_macos.sh
+```
+
+Once `.venv/` exists, use it:
 
 ```bash
 .venv/bin/improv ...          # the CLI
 .venv/bin/python -m pytest -q # tests
 ```
 
-If `.venv/` is ever missing, recreate it:
-
-```bash
-python3 -m venv --without-pip .venv
-python3 -c "import urllib.request; urllib.request.urlretrieve('https://bootstrap.pypa.io/get-pip.py','/tmp/get-pip.py')"
-.venv/bin/python /tmp/get-pip.py
-.venv/bin/python -m pip install -e ".[dev]"
-```
-
-On the user's **real** machines the normal path works after `apt install python3.12-venv`.
+If `.venv/` is stale or was copied from another machine, move it aside and run
+`bash scripts/setup_macos.sh` again. Do not copy virtual environments between
+machines.
 
 `.venv/` and generated output (`transcripts/`, `*.script.md`) are gitignored.
+
+The Linux runtime is a separate installation. Its deployed checkout is
+`/opt/improv-troupe`, its virtual environment is
+`/opt/improv-troupe/.venv`, and its real service data is
+`/var/lib/improv-troupe`. The current private target is `aven@10.0.0.103`.
+The guest does not have `rsync`; use [DEPLOYMENT_HANDOFF.md](DEPLOYMENT_HANDOFF.md)
+for the `tar` over SSH transfer and dashboard restart procedure. Never copy the
+macOS `.venv` to Linux or point the real dashboard at a temporary data root.
+
+The authenticated dashboard has an **End-of-day review** for one original
+season day: opening snapshot, accepted shared script, run state, and every diary
+attempt. It polls operational status every 60 seconds without reloading reading
+panes. A wellness-held diary can be explicitly read by the owner while remaining
+private, noncanon, and nonpublishable.
+
+However, the S01 Day 2 review found that the dashboard's script projector orders
+rows lexically and can place actor responses before the orchestrator beat that
+prompted them. It also hides turn count and completion reason already returned
+by the API. Do not use the current rendered script as production-trustworthy
+chronology until Gate 12 repairs it.
+
+The creator has decided to end S01 privately after Day 2 and overhaul the
+operator workflow. Do not restart the worker to continue S01. Do not infer live
+state from this checkout, run a dry worker against `/var/lib/improv-troupe`,
+publish, delete artifacts, repair another diary, or issue a season command
+without first reading [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) and
+inspecting the authoritative Linux records. The private review and model
+assessment are in
+[benchmarks/s01-day-2-model-review-2026-08-24.md](benchmarks/s01-day-2-model-review-2026-08-24.md).
+
+The active implementation sequence is: truthful dashboard and diagnostics,
+manual pre-season rehearsal in a separate data root, then one isolated day with
+live models. Final templates, round structure, 12B candidates, and model swaps
+remain creator decisions after that evidence.
 
 ## Common commands
 
 ```bash
-.venv/bin/python -m pytest -q                                  # 8 tests, all passing
+.venv/bin/python -m pytest -q                                  # full local suite
 .venv/bin/improv run examples/the_last_train.plan.json --dry-run   # full pipeline, no servers
 .venv/bin/improv validate examples/the_last_train.plan.json
 .venv/bin/improv schema -o schema/production_plan.schema.json
@@ -79,6 +112,10 @@ test engine changes without any models.
 | Export | `engine/export.py` | renders `script.md` |
 | CLI | `cli.py` | `validate | schema | backends | run` |
 | Claude skill | `skills/scene-architect/SKILL.md` | desktop skill that emits a ProductionPlan |
+| Long-form live runner | `application/scene_runner.py` | checkpointed four-actor scenes, durable mission clock, GM/actor contexts |
+| Long-form context loader | `application/live_runtime.py` | schedule, prior canon/outcome, actor-local memory, hidden day direction |
+| Day closure/direction | `application/season_days.py`, `application/daily.py` | closed-day transcript/canon review and private next-day plan |
+| Private dashboard | `web/dashboard.py` | owner-only operations, stable diary and end-of-day reading |
 
 ## Design decisions to respect
 
@@ -88,7 +125,23 @@ test engine changes without any models.
   those events, not reach into the orchestrator. This keeps a web UI possible later.
 - **Per-turn calls are stateless.** A different model may play each character, so we
   do not keep a chat history per model — we rebuild context (the script so far) each
-  turn. Keep it that way unless you deliberately redesign around single-model casts.
+  turn. The long-form runtime now also rebuilds prior accepted canon and only that
+  actor's memory from durable events; this is not a shared model chat history.
+- **Fictional time follows the immutable schedule.** Slots 1/2/3 are morning,
+  afternoon, and evening. A sleep interval separates one day's evening from the
+  next morning even when delayed work executes at another wall-clock time.
+- **Hidden direction stays orchestrator-only.** Actors may receive revealed canon
+  and a shared prior outcome, but never the private next-day direction or peer
+  memory.
+- **Preserve approved character cards.** A generated role sheet extends the
+  creator-reviewed identity; it must not replace a profession, pronoun, public
+  brief, voice anchor, or habit that disappeared between draft and green in S01.
+- **Review order is causal order.** Projectors must show the orchestrator beat
+  before the actor responses it prompted and must expose completion reason and
+  accepted turn count.
+- **Prefer native schemas.** The capability protocol alone is not evidence that
+  live structured output is enforced. Capable backends use provider-native JSON
+  Schema and record any tagged fallback explicitly.
 - **Plans stay portable.** They reference backends by *handle* or *hint*, never raw
   URLs. Network topology lives only in `backends.yaml`.
 

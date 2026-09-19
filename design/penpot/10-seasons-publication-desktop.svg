@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <rect width="1440" height="1024" fill="#eef0ed"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #171a17; }
+    .nav { fill: #1f2421; }
+    .surface { fill: #ffffff; stroke: #c8cec9; stroke-width: 2; }
+    .soft { fill: #e7ece8; stroke: #b8c0ba; stroke-width: 2; }
+    .attention { fill: #f5ead7; stroke: #b4965a; stroke-width: 2; }
+    .danger { fill: #f3e2df; stroke: #b17b71; stroke-width: 2; }
+    .approved { fill: #e3eee7; stroke: #91aa9a; stroke-width: 2; }
+    .active { fill: #e8edf0; stroke: #8fa2ad; stroke-width: 2; }
+    .disabled { fill: #f1f2f0; stroke: #d7dbd8; stroke-width: 2; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: #5a645e; }
+    .title { font-size: 32px; font-weight: 700; }
+    .h2 { font-size: 20px; font-weight: 700; }
+    .h3 { font-size: 15px; font-weight: 700; }
+    .body { font-size: 14px; }
+    .script { font-family: Georgia, serif; font-size: 14px; }
+    .small { font-size: 12px; fill: #5f6862; }
+    .navtext { font-size: 15px; fill: #dce2dd; }
+    .navactive { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    .inverse { fill: #ffffff; }
+    .inverse-subtle { fill: #9fb0a6; }
+    .line { stroke: #c8cec9; stroke-width: 2; }
+  </style>
+
+  <rect x="0" y="0" width="232" height="1024" class="nav"/>
+  <text x="28" y="45" class="eyebrow inverse-subtle">AI IMPROV TROUPE</text>
+  <text x="28" y="77" class="h2 inverse">Operator</text>
+  <text x="32" y="147" class="navtext">Home</text>
+  <text x="32" y="199" class="navtext">Prepare</text>
+  <text x="32" y="253" class="navtext">Live</text>
+  <text x="32" y="307" class="navtext">Review</text>
+  <text x="32" y="361" class="navtext">Diagnostics</text>
+  <rect x="16" y="386" width="200" height="46" rx="10" fill="#39423d"/>
+  <text x="32" y="415" class="navactive">Seasons</text>
+  <line x1="24" y1="466" x2="208" y2="466" stroke="#4a554f"/>
+  <text x="32" y="503" class="small inverse-subtle">Closed season selected</text>
+  <text x="32" y="525" class="small inverse-subtle">Separate release review</text>
+
+  <rect x="232" y="0" width="1208" height="74" fill="#ffffff" stroke="#c8cec9"/>
+  <rect x="260" y="18" width="114" height="38" rx="19" fill="#dfeee6" stroke="#6f9c82"/>
+  <text x="283" y="42" class="eyebrow">SANDBOX</text>
+  <text x="402" y="34" class="small">Season</text><text x="402" y="54" class="h3">S02 — The Weather Library ▾</text>
+  <text x="808" y="34" class="small">Lifecycle</text><text x="808" y="54" class="body">PRIVATE_COMPLETE</text>
+  <text x="1054" y="34" class="small">Private archive</text><text x="1054" y="54" class="body">Verified · unchanged</text>
+  <rect x="1278" y="18" width="130" height="38" rx="10" class="attention"/><text x="1298" y="42" class="body">Release review</text>
+
+  <text x="272" y="118" class="eyebrow">SEASONS / PUBLICATION REVIEW</text>
+  <text x="272" y="160" class="title">Publish S02 through a separate immutable projection.</text>
+  <text x="272" y="190" class="body">The private archive remains authoritative and unchanged. Only the exact allowlisted preview can become public.</text>
+
+  <rect x="272" y="212" width="1116" height="42" rx="12" class="soft"/>
+  <rect x="280" y="220" width="352" height="26" rx="8" class="active"/><text x="363" y="238" class="small">1 · Privacy and consent</text>
+  <text x="715" y="238" class="small">2 · Exact public preview</text>
+  <text x="1082" y="238" class="small">3 · Publish receipt</text>
+
+  <rect x="272" y="276" width="420" height="462" rx="18" class="surface"/>
+  <text x="300" y="312" class="eyebrow">RELEASE GATES · S02 ONLY</text>
+  <text x="300" y="346" class="h2">Review before projection</text>
+  <rect x="300" y="368" width="364" height="62" rx="10" class="approved"/>
+  <text x="320" y="394" class="h3">✓ Season is privately complete</text><text x="320" y="416" class="small">Closure receipt S02-close-01 verified</text>
+  <rect x="300" y="442" width="364" height="62" rx="10" class="approved"/>
+  <text x="320" y="468" class="h3">✓ Consent ledger resolved</text><text x="320" y="490" class="small">Four participants · current at closure</text>
+  <rect x="300" y="516" width="364" height="74" rx="10" class="attention"/>
+  <text x="320" y="542" class="h3">! One held diary excluded</text>
+  <text x="320" y="564" class="small">Status reviewed; raw wellness remains private.</text>
+  <text x="320" y="582" class="small">No placeholder enters the public projection.</text>
+  <rect x="300" y="602" width="364" height="62" rx="10" class="approved"/>
+  <text x="320" y="628" class="h3">✓ Allowlist and paths validated</text><text x="320" y="650" class="small">No private-root or escaped artifact paths</text>
+  <text x="300" y="692" class="small">Reading or refreshing this review does not publish.</text>
+  <text x="300" y="716" class="small">Every gate is season-qualified and version-guarded.</text>
+
+  <rect x="716" y="276" width="672" height="462" rx="18" class="surface"/>
+  <text x="744" y="312" class="eyebrow">EXACT PUBLIC PREVIEW · PROJECTION V1</text>
+  <text x="744" y="346" class="h2">Simulation Query · S02 — The Weather Library</text>
+  <text x="744" y="378" class="small">Public fields only · generated from closure snapshot v18</text>
+  <line x1="744" y1="396" x2="1360" y2="396" class="line"/>
+  <text x="744" y="428" class="eyebrow">EPISODE 1 · MORNING</text>
+  <text x="744" y="458" class="script">The archive receives a storm whose label changes whenever no one is looking.</text>
+  <text x="744" y="488" class="script">Mara listens to the chamber wall. Tavi knots a safety line around the latch.</text>
+  <text x="744" y="524" class="eyebrow">ACCEPTED DIARIES</text>
+  <text x="744" y="554" class="script">Mara Venn · “The note behind the door was almost a question.”</text>
+  <text x="744" y="582" class="script">Oren Vale · “The archive tasted like rain trapped in copper.”</text>
+  <text x="744" y="618" class="eyebrow">PUBLIC RECORD</text>
+  <text x="744" y="648" class="body">2 runs represented · 31 actor turns · 4 consented diary entries</text>
+  <text x="744" y="678" class="small">No hidden direction, raw calls, role sheets, held attempts, or wellness text.</text>
+  <rect x="1178" y="686" width="182" height="34" rx="9" class="soft"/><text x="1217" y="708" class="small">Open full preview</text>
+
+  <rect x="272" y="762" width="420" height="202" rx="18" class="danger"/>
+  <text x="300" y="798" class="eyebrow">NEVER IN THIS EXPORT</text>
+  <text x="300" y="830" class="body">Private role sheets and orientation</text>
+  <text x="300" y="858" class="body">Prompts, raw output, model identities</text>
+  <text x="300" y="886" class="body">Hidden direction and actor-local memory</text>
+  <text x="300" y="914" class="body">Raw wellness, held, missing, or revoked diaries</text>
+  <text x="300" y="944" class="small">Exclusion is validated, not merely hidden by styling.</text>
+
+  <rect x="716" y="762" width="672" height="202" rx="18" class="attention"/>
+  <text x="744" y="798" class="eyebrow">CONSEQUENTIAL COMMAND · NOT SUBMITTED</text>
+  <text x="744" y="830" class="body">Type the separate season-qualified phrase exactly:</text>
+  <rect x="744" y="846" width="392" height="48" rx="10" class="surface"/><text x="764" y="876" class="small">Type “publish S02”</text>
+  <rect x="1154" y="846" width="206" height="48" rx="10" class="disabled"/><text x="1202" y="876" class="h3">Publish v1</text>
+  <text x="744" y="918" class="small">After submission: immutable release version + manifest hash + durable publication receipt.</text>
+  <text x="744" y="942" class="small">Private archive S02 remains unchanged and may be audited independently.</text>
+</svg>

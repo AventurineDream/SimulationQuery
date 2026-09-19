@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <rect width="390" height="844" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 8px; font-weight: 750; letter-spacing: 1.2px; fill: #aeb8b2; }
+    .title { font-size: 25px; font-weight: 700; letter-spacing: -0.7px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 11px; }
+    .small { font-size: 9px; fill: #6c6b63; }
+    .tiny { font-size: 8px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1; }
+    .goodText { fill: #334d39; }
+    .infoText { fill: #354f63; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="72" fill="#26302d"/>
+  <circle cx="27" cy="25" r="13" fill="#c56f42"/>
+  <text x="20" y="29" class="h3 onDark">SQ</text>
+  <text x="49" y="23" class="h3 onDark">Simulation Query</text>
+  <text x="49" y="40" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="275" y="22" class="eyebrowDark">SELECTED</text>
+  <text x="275" y="42" class="h3 onDark">S02 · Day 2</text>
+  <circle cx="278" cy="58" r="3.5" fill="#7fa487"/>
+  <text x="287" y="61" class="tiny onDark">FRESH · 14:06</text>
+
+  <text x="16" y="98" class="eyebrow">HOME / THE WEATHER LIBRARY</text>
+  <text x="16" y="130" class="title">Keep the troupe in view.</text>
+  <text x="16" y="153" class="body">The season is healthy. Nothing needs intervention.</text>
+  <rect x="16" y="171" width="358" height="34" rx="10" class="good"/>
+  <text x="31" y="192" class="h3 goodText">✓ Nothing due</text>
+  <text x="123" y="192" class="small goodText">Autonomous work may continue</text>
+
+  <rect x="16" y="221" width="171" height="78" rx="13" class="surface"/>
+  <text x="31" y="246" class="eyebrow">TODAY</text>
+  <text x="31" y="273" class="h2">6 / 6 runs</text>
+  <text x="31" y="290" class="tiny">all slots durable</text>
+  <rect x="203" y="221" width="171" height="78" rx="13" class="surface"/>
+  <text x="218" y="246" class="eyebrow">DIARIES</text>
+  <text x="218" y="273" class="h2">4 private</text>
+  <text x="218" y="290" class="tiny">0 due · held privately</text>
+
+  <rect x="16" y="315" width="358" height="182" rx="15" class="surface"/>
+  <rect x="16" y="315" width="4" height="182" rx="2" fill="#c56f42"/>
+  <text x="36" y="342" class="eyebrow">LAST ACCEPTED BEAT</text>
+  <rect x="260" y="329" width="96" height="23" rx="7" class="good"/>
+  <text x="271" y="344" class="tiny goodText">CANON · v6</text>
+  <text x="36" y="375" class="h2">Run 06 · Evening</text>
+  <text x="36" y="403" class="serif body">The brass vane turned toward a wind no</text>
+  <text x="36" y="422" class="serif body">instrument could name. Ivy watched the dust</text>
+  <text x="36" y="441" class="serif body">lift in a single silver ribbon.</text>
+  <line x1="36" y1="458" x2="354" y2="458" class="rule"/>
+  <text x="36" y="478" class="mono tiny">accepted 14:02 · 16 turns · receipt beat-06F</text>
+
+  <rect x="16" y="513" width="358" height="90" rx="14" class="soft"/>
+  <text x="32" y="539" class="eyebrow">NEXT UP</text>
+  <text x="32" y="565" class="h2">Day 3 · Morning</text>
+  <text x="32" y="586" class="small">Tomorrow at 09:00 Pacific · Higgs, Ivy, Luna, Mason</text>
+
+  <rect x="16" y="619" width="358" height="113" rx="15" class="surface"/>
+  <text x="32" y="646" class="eyebrow">DAY 2 REVIEW</text>
+  <text x="32" y="671" class="h3">Ready when you are</text>
+  <text x="32" y="692" class="serif small">Read accepted script and private diaries without live redraws.</text>
+  <rect x="32" y="704" width="132" height="28" rx="8" fill="#26302d"/>
+  <text x="52" y="722" class="small onDark">Open Day Review</text>
+  <text x="184" y="722" class="tiny infoText">new material loads only when asked</text>
+
+  <rect x="0" y="756" width="390" height="88" fill="#26302d"/>
+  <rect x="8" y="766" width="70" height="61" rx="12" fill="#3b4843"/>
+  <rect x="25" y="772" width="36" height="3" rx="1.5" fill="#c56f42"/>
+  <circle cx="43" cy="792" r="7" fill="none" stroke="#f4efe5" stroke-width="1.4"/>
+  <text x="31" y="816" class="tiny onDark">Home</text>
+  <circle cx="121" cy="792" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="104" y="816" class="tiny mutedDark">Prepare</text>
+  <circle cx="199" cy="792" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="190" y="816" class="tiny mutedDark">Live</text>
+  <circle cx="277" cy="792" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="262" y="816" class="tiny mutedDark">Review</text>
+  <circle cx="355" cy="792" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="344" y="816" class="tiny mutedDark">More</text>
+</svg>

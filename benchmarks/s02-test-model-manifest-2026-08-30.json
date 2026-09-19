@@ -1,0 +1,52 @@
+{
+  "orchestrator": {
+    "backend": "local",
+    "model": "qwen3:8b",
+    "params": {
+      "reasoning_effort": "none",
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "max_tokens": 384
+    }
+  },
+  "actors": {
+    "luna-planck": {
+      "backend": "local",
+      "model": "ministral-3:8b",
+      "params": {
+        "temperature": 0.7,
+        "top_p": 0.9,
+        "max_tokens": 640
+      }
+    },
+    "mason-curie": {
+      "backend": "local",
+      "model": "ministral-3:8b",
+      "params": {
+        "temperature": 0.7,
+        "top_p": 0.9,
+        "max_tokens": 640
+      }
+    },
+    "higgs-sierra": {
+      "backend": "local",
+      "model": "qwen3:8b",
+      "params": {
+        "reasoning_effort": "none",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "max_tokens": 640
+      }
+    },
+    "ivy-fermion": {
+      "backend": "local",
+      "model": "richardyoung/qwen3-8b-abliterated:Q4_K_M",
+      "params": {
+        "reasoning_effort": "none",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "max_tokens": 640
+      }
+    }
+  }
+}

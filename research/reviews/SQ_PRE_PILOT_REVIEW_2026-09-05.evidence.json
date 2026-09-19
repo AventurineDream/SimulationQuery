@@ -1,0 +1,226 @@
+{
+  "captured_at_utc": "2026-09-06T02:08:16.535874+00:00",
+  "scope": "Local principal audition DBs, not backup DBs or remote production state. Diagnostic counts scan saved actor prompt.md files. No H1 coding performed.",
+  "head": "7128aa12ad6977f3a703cb4d4c28c644d52a6e28",
+  "head_is_complete_source_snapshot": false,
+  "source_sha256": {
+    "src/improv_troupe/application/actor_audition_rehearsal.py": "52b2986af14554d45fcaa5530b5c49389e1c8b54fa0ecb73c00d8f7976438a0e",
+    "src/improv_troupe/application/scene_runner.py": "2374a035f4a10ae7ae1746786b12655a964801377180b3cd13593131fd919840",
+    "src/improv_troupe/application/live_runtime.py": "8a12bb508c2128e8cbf738c41b7b2dea3726f06654f6093acbc345cbbb46d755",
+    "src/improv_troupe/application/model_calls.py": "562735101c7f59927f18c046147bfcbce74321eb156a9e3dbcd8e19732e0d693",
+    "src/improv_troupe/application/season_days.py": "bb2c81ddbd6b8d05c7927c0d8a3744323847b74a9b484024cbf9be38b0c4ae0d",
+    "src/improv_troupe/application/daily.py": "9311906a877895c495dfa1d68de4718db4407e6b7b35434939fdb3b2dbccf7bb",
+    "src/improv_troupe/application/diaries.py": "6291b34d8da71e8c0e9d8bd1adce585af478fa2ce059427b8c540f3edb103f9d",
+    "src/improv_troupe/application/worker.py": "1dd682ab7ccb1e3eca51fe16fa30cba4bc8a74c190bd4b939cab78435dbc922b",
+    "src/improv_troupe/llm/context.py": "c562ebc457e72964d860529a5e4fe2e23b6fd07c6b630f3f7a42db7dbabcef08",
+    "src/improv_troupe/llm/client.py": "82c56e66f1d27a736b8ac3e4e519b8cb605930c9d98da00631b7e317b4696f3e",
+    "src/improv_troupe/llm/adapter.py": "bf4c0318720756d330ca9a1997cdd6630049241338475b8664c6214acb37df59",
+    "src/improv_troupe/llm/capabilities.py": "cb267f57187a5ecc211f58eadf0bffdb831be36e2ae8075b3d1f36841199eda3",
+    "src/improv_troupe/infrastructure/repositories.py": "886f8a0e5acc5fe25e46a32fd811cecac1550e306e7023ab26051979fafa41c4",
+    "src/improv_troupe/infrastructure/db.py": "85ffb8d7b2c8abf00b0232104b646697be0ab12f0b3270fbc68f5c0c9a87d058",
+    "tests/test_scene_runner.py": "3aff3faafe213885ec4a89b9ad8433ea206fe945e0cd1f36863eee622239bbf6"
+  },
+  "pytest": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 269,
+    "duration_seconds": 11.62
+  },
+  "offline_fault_checks": {
+    "correction_reason_rehydrated": true,
+    "rejected_text_map_after_rehydrate": {},
+    "rejected_text_in_scene_input": true,
+    "crash_before_TurnAccepted_event": {
+      "accepted_actor_rows": 1,
+      "TurnAccepted_events": 0,
+      "rehydrate_treats_turn_as_accepted": true
+    }
+  },
+  "roots": [
+    {
+      "root": ".rehearsal-data/actor-audition-v10-20260902",
+      "logical_calls": 26,
+      "null_usage": 26,
+      "null_finish_reason": 26,
+      "zero_latency": 26,
+      "actor_prompts_containing_review_diagnostics": 0,
+      "example_prompt_paths": [],
+      "run_status_counts": {
+        "COMPLETED": 1,
+        "INTERRUPTED": 1,
+        "QUEUED": 2
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v11-20260902",
+      "logical_calls": 92,
+      "null_usage": 92,
+      "null_finish_reason": 92,
+      "zero_latency": 92,
+      "actor_prompts_containing_review_diagnostics": 0,
+      "example_prompt_paths": [],
+      "run_status_counts": {
+        "COMPLETED": 4
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v12-20260902",
+      "logical_calls": 47,
+      "null_usage": 47,
+      "null_finish_reason": 47,
+      "zero_latency": 46,
+      "actor_prompts_containing_review_diagnostics": 2,
+      "example_prompt_paths": [
+        ".rehearsal-data/actor-audition-v12-20260902/private/model-calls/S02-ACTOR-AUDITION-run-01:actor:turn:ivy-fermion:r4:a1/prompt.md",
+        ".rehearsal-data/actor-audition-v12-20260902/private/model-calls/S02-ACTOR-AUDITION-run-01:actor:correction:mason-curie:r4:a1/prompt.md"
+      ],
+      "run_status_counts": {
+        "COMPLETED": 2,
+        "QUEUED": 2
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v13-rotated-20260902",
+      "logical_calls": 17,
+      "null_usage": 17,
+      "null_finish_reason": 17,
+      "zero_latency": 17,
+      "actor_prompts_containing_review_diagnostics": 0,
+      "example_prompt_paths": [],
+      "run_status_counts": {
+        "INTERRUPTED": 1,
+        "QUEUED": 3
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v14-20260903",
+      "logical_calls": 93,
+      "null_usage": 93,
+      "null_finish_reason": 93,
+      "zero_latency": 93,
+      "actor_prompts_containing_review_diagnostics": 11,
+      "example_prompt_paths": [
+        ".rehearsal-data/actor-audition-v14-20260903/private/model-calls/S02-ACTOR-AUDITION-run-02:actor:turn:mason-curie:r4:a1/prompt.md",
+        ".rehearsal-data/actor-audition-v14-20260903/private/model-calls/S02-ACTOR-AUDITION-run-01:actor:turn:mason-curie:r4:a1/prompt.md"
+      ],
+      "run_status_counts": {
+        "COMPLETED": 4
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v15-rotated-20260903",
+      "logical_calls": 96,
+      "null_usage": 96,
+      "null_finish_reason": 96,
+      "zero_latency": 96,
+      "actor_prompts_containing_review_diagnostics": 2,
+      "example_prompt_paths": [
+        ".rehearsal-data/actor-audition-v15-rotated-20260903/private/model-calls/S02-ACTOR-AUDITION-run-01:actor:turn:mason-curie:r4:a1/prompt.md",
+        ".rehearsal-data/actor-audition-v15-rotated-20260903/private/model-calls/S02-ACTOR-AUDITION-run-01:actor:correction:luna-planck:r4:a1/prompt.md"
+      ],
+      "run_status_counts": {
+        "COMPLETED": 4
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v16-director-rotation-20260903",
+      "logical_calls": 78,
+      "null_usage": 78,
+      "null_finish_reason": 78,
+      "zero_latency": 78,
+      "actor_prompts_containing_review_diagnostics": 0,
+      "example_prompt_paths": [],
+      "run_status_counts": {
+        "COMPLETED": 3,
+        "INTERRUPTED": 1
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v17-director-rotation-20260903",
+      "logical_calls": 28,
+      "null_usage": 28,
+      "null_finish_reason": 28,
+      "zero_latency": 28,
+      "actor_prompts_containing_review_diagnostics": 3,
+      "example_prompt_paths": [
+        ".rehearsal-data/actor-audition-v17-director-rotation-20260903/private/model-calls/S02-ACTOR-AUDITION-run-02:actor:turn:ivy-fermion:r1:a1/prompt.md",
+        ".rehearsal-data/actor-audition-v17-director-rotation-20260903/private/model-calls/S02-ACTOR-AUDITION-run-02:actor:correction:mason-curie:r1:a1/prompt.md"
+      ],
+      "run_status_counts": {
+        "COMPLETED": 1,
+        "INTERRUPTED": 1,
+        "QUEUED": 2
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v18-director-rotation-20260904",
+      "logical_calls": 80,
+      "null_usage": 80,
+      "null_finish_reason": 80,
+      "zero_latency": 80,
+      "actor_prompts_containing_review_diagnostics": 2,
+      "example_prompt_paths": [
+        ".rehearsal-data/actor-audition-v18-director-rotation-20260904/private/model-calls/S02-ACTOR-AUDITION-run-03:actor:correction:mason-curie:r4:a1/prompt.md",
+        ".rehearsal-data/actor-audition-v18-director-rotation-20260904/private/model-calls/S02-ACTOR-AUDITION-run-03:actor:turn:ivy-fermion:r4:a1/prompt.md"
+      ],
+      "run_status_counts": {
+        "COMPLETED": 3,
+        "INTERRUPTED": 1
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v19-director-rotation-20260904",
+      "logical_calls": 22,
+      "null_usage": 22,
+      "null_finish_reason": 22,
+      "zero_latency": 22,
+      "actor_prompts_containing_review_diagnostics": 0,
+      "example_prompt_paths": [],
+      "run_status_counts": {
+        "COMPLETED": 1,
+        "QUEUED": 3
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v20-director-rotation-20260904",
+      "logical_calls": 81,
+      "null_usage": 81,
+      "null_finish_reason": 81,
+      "zero_latency": 81,
+      "actor_prompts_containing_review_diagnostics": 20,
+      "example_prompt_paths": [
+        ".rehearsal-data/actor-audition-v20-director-rotation-20260904/private/model-calls/S02-ACTOR-AUDITION-run-01:actor:turn:luna-planck:r2:a1/prompt.md",
+        ".rehearsal-data/actor-audition-v20-director-rotation-20260904/private/model-calls/S02-ACTOR-AUDITION-run-02:actor:turn:luna-planck:r3:a1/prompt.md"
+      ],
+      "run_status_counts": {
+        "COMPLETED": 3,
+        "INTERRUPTED": 1
+      },
+      "sqlite_quick_check": "ok"
+    },
+    {
+      "root": ".rehearsal-data/actor-audition-v21-director-rotation-20260904",
+      "logical_calls": 66,
+      "null_usage": 66,
+      "null_finish_reason": 66,
+      "zero_latency": 66,
+      "actor_prompts_containing_review_diagnostics": 0,
+      "example_prompt_paths": [],
+      "run_status_counts": {
+        "COMPLETED": 2,
+        "INTERRUPTED": 1,
+        "QUEUED": 1
+      },
+      "sqlite_quick_check": "ok"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "orchestrator": {
+    "backend": "local",
+    "model": "REPLACE_WITH_ORCHESTRATOR_MODEL"
+  },
+  "actor_default": {
+    "backend": "local",
+    "model": "REPLACE_WITH_ACTOR_MODEL"
+  },
+  "actors": {}
+}

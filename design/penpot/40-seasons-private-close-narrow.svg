@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1920" viewBox="0 0 390 1920">
+  <rect width="390" height="1920" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 8px; font-weight: 750; letter-spacing: 1.2px; fill: #aeb8b2; }
+    .title { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 11px; }
+    .small { font-size: 9px; fill: #6c6b63; }
+    .tiny { font-size: 8px; fill: #6c6b63; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1; }
+    .warm { fill: #f3e5c9; stroke: #b98943; stroke-width: 1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1; }
+    .danger { fill: #f0dcd8; stroke: #aa6157; stroke-width: 1; }
+    .goodText { fill: #334d39; }
+    .warmText { fill: #5e4520; }
+    .infoText { fill: #354f63; }
+    .dangerText { fill: #6a302b; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="84" fill="#26302d"/>
+  <circle cx="27" cy="25" r="13" fill="#c56f42"/>
+  <text x="20" y="29" class="h3 onDark">SQ</text>
+  <text x="49" y="23" class="h3 onDark">Simulation Query</text>
+  <text x="49" y="40" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="264" y="20" class="eyebrowDark">SEASONS</text>
+  <text x="264" y="40" class="h3 onDark">S02 · Private close</text>
+  <text x="264" y="59" class="tiny mutedDark">snapshot v18</text>
+
+  <text x="16" y="111" class="eyebrow dangerText">SEASONS / PRIVATE CLOSE</text>
+  <text x="16" y="143" class="title">End privately.</text>
+  <text x="16" y="166" class="body">This cannot publish, expose, delete, or rewrite S02.</text>
+  <rect x="16" y="183" width="358" height="68" rx="13" class="soft"/>
+  <rect x="26" y="193" width="338" height="26" rx="8" class="info"/>
+  <text x="42" y="210" class="h3 infoText">1 · Snapshot</text>
+  <text x="156" y="210" class="small infoText">2 · Intent</text>
+  <text x="271" y="210" class="small infoText">3 · Receipt</text>
+  <text x="32" y="238" class="tiny">Read-only · fresh 13:14:09 · evidence version 18</text>
+
+  <rect x="16" y="269" width="358" height="382" rx="15" class="surface"/>
+  <text x="32" y="297" class="eyebrow">CLOSURE SNAPSHOT · VERSION 18</text>
+  <text x="32" y="329" class="h2">What exists now</text>
+  <text x="32" y="364" class="body">Lifecycle · RECOVERY_REQUIRED</text>
+  <text x="32" y="397" class="body">Runs · 1 complete · 1 partial · 1 queued</text>
+  <text x="32" y="430" class="body">Accepted story · 31 turns · 8 beats</text>
+  <text x="32" y="463" class="body">Model calls · 42 · two failures preserved</text>
+  <text x="32" y="496" class="body">Diaries · 4 accepted · 1 missing · 1 held</text>
+  <text x="32" y="529" class="body">Cast · 4 active · notifications · 1 unread</text>
+  <text x="32" y="562" class="h3 goodText">Database integrity · PASS</text>
+  <line x1="32" y1="584" x2="358" y2="584" class="rule"/>
+  <text x="32" y="610" class="small">Archive reachable · artifact outbox 1 pending</text>
+  <text x="32" y="632" class="tiny">Refreshing this snapshot does not end the season.</text>
+
+  <rect x="16" y="669" width="358" height="218" rx="15" class="warm"/>
+  <text x="32" y="697" class="eyebrow warmText">INCOMPLETE WORK STAYS VISIBLE</text>
+  <text x="32" y="731" class="h3 warmText">Run 02 · Recovery Required</text>
+  <text x="322" y="731" class="tiny warmText">OPEN</text>
+  <text x="32" y="766" class="h3 warmText">Evening run · queued</text>
+  <text x="310" y="766" class="tiny warmText">STOPS</text>
+  <text x="32" y="801" class="h3 warmText">Sable diary · missing</text>
+  <text x="314" y="801" class="tiny warmText">KEPT</text>
+  <line x1="32" y1="824" x2="358" y2="824" stroke="#c8a366"/>
+  <text x="32" y="851" class="small warmText">Closure records these as unresolved.</text>
+  <text x="32" y="873" class="tiny warmText">Partial work is never disguised as completion.</text>
+
+  <rect x="16" y="905" width="358" height="272" rx="15" class="good"/>
+  <text x="32" y="933" class="eyebrow goodText">PRIVATE CLOSE EFFECT</text>
+  <text x="32" y="967" class="h2 goodText">It will</text>
+  <text x="32" y="1001" class="body goodText">• stop later scheduled attempts</text>
+  <text x="32" y="1031" class="body goodText">• preserve every private artifact and event</text>
+  <text x="32" y="1061" class="body goodText">• create closure and handoff work</text>
+  <text x="32" y="1091" class="body goodText">• record a terminal private state</text>
+  <line x1="32" y1="1112" x2="358" y2="1112" stroke="#96ac9a"/>
+  <text x="32" y="1143" class="h2 goodText">It will not publish, delete, or rewrite.</text>
+  <text x="32" y="1164" class="tiny goodText">Publication begins only from a closed season later.</text>
+
+  <rect x="16" y="1195" width="358" height="338" rx="15" class="danger"/>
+  <rect x="16" y="1195" width="4" height="338" rx="2" fill="#c56f42"/>
+  <text x="32" y="1223" class="eyebrow dangerText">CONSEQUENTIAL · NOT SUBMITTED</text>
+  <text x="32" y="1257" class="h2 dangerText">Confirm exact private intent</text>
+  <text x="32" y="1291" class="body dangerText">Type the season-qualified phrase:</text>
+  <rect x="32" y="1310" width="326" height="56" rx="11" class="surface"/>
+  <text x="48" y="1344" class="small">Type “end S02 privately”</text>
+  <text x="32" y="1400" class="small dangerText">This is not “publish S02.”</text>
+  <text x="32" y="1424" class="tiny dangerText">Publication is unavailable from this command.</text>
+  <rect x="32" y="1447" width="326" height="48" rx="10" fill="#dddeda" stroke="#bfc5c0"/>
+  <text x="128" y="1477" class="h3">Execute private end</text>
+  <text x="32" y="1518" class="tiny dangerText">Enabled after exact intent and snapshot-version check.</text>
+
+  <rect x="16" y="1551" width="358" height="190" rx="15" class="soft"/>
+  <text x="32" y="1579" class="eyebrow">AFTER SUBMISSION</text>
+  <text x="32" y="1615" class="h3">1 · Command receipt recorded</text>
+  <text x="32" y="1653" class="h3">2 · Closure and handoff work completes</text>
+  <text x="32" y="1691" class="h3">3 · PRIVATE_COMPLETE verified</text>
+  <text x="32" y="1723" class="small">Private evidence stays readable and auditable.</text>
+
+  <rect x="16" y="1759" width="358" height="54" rx="11" class="surface"/>
+  <text x="32" y="1784" class="eyebrow">DURABLE SEASONS</text>
+  <text x="32" y="1803" class="tiny">S02 active · S01 private complete · P00 published v1</text>
+
+  <rect x="0" y="1832" width="390" height="88" fill="#26302d"/>
+  <circle cx="43" cy="1868" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="31" y="1892" class="tiny mutedDark">Home</text>
+  <circle cx="121" cy="1868" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="104" y="1892" class="tiny mutedDark">Prepare</text>
+  <circle cx="199" cy="1868" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="190" y="1892" class="tiny mutedDark">Live</text>
+  <circle cx="277" cy="1868" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="262" y="1892" class="tiny mutedDark">Review</text>
+  <rect x="320" y="1842" width="62" height="61" rx="12" fill="#3b4843"/>
+  <rect x="333" y="1848" width="36" height="3" rx="1.5" fill="#c56f42"/>
+  <circle cx="351" cy="1868" r="7" fill="none" stroke="#f4efe5" stroke-width="1.4"/>
+  <text x="340" y="1892" class="tiny onDark">More</text>
+</svg>

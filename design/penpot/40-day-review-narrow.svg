@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <rect width="390" height="844" fill="#e7e1d5"/>
+  <style>
+    text { font-family: Inter, Arial, sans-serif; fill: #222724; }
+    .onDark { fill: #f4efe5; }
+    .mutedDark { fill: #aeb8b2; }
+    .eyebrow { font-size: 9px; font-weight: 750; letter-spacing: 1.4px; fill: #6c6b63; }
+    .eyebrowDark { font-size: 8px; font-weight: 750; letter-spacing: 1.2px; fill: #aeb8b2; }
+    .title { font-size: 23px; font-weight: 700; letter-spacing: -0.6px; }
+    .h2 { font-size: 17px; font-weight: 700; }
+    .h3 { font-size: 12px; font-weight: 700; }
+    .body { font-size: 11px; }
+    .small { font-size: 9px; fill: #6c6b63; }
+    .tiny { font-size: 8px; fill: #6c6b63; }
+    .serif { font-family: Charter, Georgia, 'Times New Roman', serif; }
+    .mono { font-family: 'SFMono-Regular', Menlo, monospace; }
+    .surface { fill: #faf7f0; stroke: #c9c1b3; stroke-width: 1; }
+    .soft { fill: #f5f0e7; stroke: #c9c1b3; stroke-width: 1; }
+    .good { fill: #dce7de; stroke: #6e8e73; stroke-width: 1; }
+    .info { fill: #dfe7ec; stroke: #637e95; stroke-width: 1; }
+    .goodText { fill: #334d39; }
+    .infoText { fill: #354f63; }
+    .rule { stroke: #d3ccbf; stroke-width: 1; }
+    .small.onDark, .tiny.onDark { fill: #f4efe5; }
+  </style>
+
+  <rect x="0" y="0" width="390" height="72" fill="#26302d"/>
+  <circle cx="27" cy="25" r="13" fill="#c56f42"/>
+  <text x="20" y="29" class="h3 onDark">SQ</text>
+  <text x="49" y="23" class="h3 onDark">Simulation Query</text>
+  <text x="49" y="40" class="tiny mutedDark">PRIVATE OPERATOR</text>
+  <text x="275" y="22" class="eyebrowDark">READING</text>
+  <text x="275" y="42" class="h3 onDark">S02 · Day 2</text>
+  <text x="275" y="59" class="tiny mutedDark">loaded 14:04 · v106</text>
+
+  <text x="16" y="98" class="eyebrow">REVIEW / DAY 2</text>
+  <text x="16" y="127" class="title">Read what actually happened.</text>
+  <text x="16" y="149" class="body">Accepted story stays still until you load newer material.</text>
+  <rect x="16" y="165" width="140" height="28" rx="8" class="good"/>
+  <text x="31" y="183" class="small goodText">✓ POSITION SAVED</text>
+  <text x="170" y="183" class="mono tiny">Turn 9 of 16 · local</text>
+
+  <rect x="16" y="209" width="358" height="42" rx="11" class="soft"/>
+  <rect x="23" y="216" width="78" height="28" rx="8" fill="#26302d"/>
+  <text x="48" y="234" class="small onDark">Script</text>
+  <text x="117" y="234" class="small">Diaries</text>
+  <text x="191" y="234" class="small">Cast</text>
+  <text x="251" y="234" class="small">Summary</text>
+
+  <text x="16" y="273" class="eyebrow">DAY 2 RUNS</text>
+  <rect x="16" y="285" width="101" height="42" rx="10" class="surface"/>
+  <text x="28" y="304" class="h3">04 · Morning</text>
+  <text x="28" y="319" class="tiny">accepted · v4</text>
+  <rect x="126" y="285" width="114" height="42" rx="10" class="surface"/>
+  <text x="138" y="304" class="h3">05 · Afternoon</text>
+  <text x="138" y="319" class="tiny">accepted · v5</text>
+  <rect x="249" y="283" width="125" height="46" rx="10" fill="#fffaf2" stroke="#c56f42" stroke-width="2"/>
+  <rect x="253" y="291" width="3" height="30" rx="1.5" fill="#c56f42"/>
+  <text x="266" y="303" class="eyebrow">SELECTED</text>
+  <text x="266" y="319" class="h3">06 · Evening</text>
+
+  <rect x="16" y="344" width="358" height="390" rx="15" class="surface"/>
+  <text x="34" y="370" class="eyebrow">RUN 06 · EVENING · ACCEPTED</text>
+  <text x="34" y="397" class="h2">The vane answers</text>
+  <text x="34" y="416" class="mono tiny">artifact v6 · canon · accepted 14:02:40</text>
+  <line x1="34" y1="431" x2="356" y2="431" class="rule"/>
+  <text x="34" y="454" class="eyebrow">IVY</text>
+  <text x="34" y="477" class="serif body">“That isn’t north.” Ivy steadied the brass vane,</text>
+  <text x="34" y="496" class="serif body">but the needle pulled toward the sealed atlas room.</text>
+  <text x="34" y="524" class="eyebrow">HIGGS</text>
+  <text x="34" y="547" class="serif body">“The instruments agree with each other. They simply</text>
+  <text x="34" y="566" class="serif body">disagree with the building.”</text>
+
+  <rect x="34" y="587" width="322" height="61" rx="11" class="info"/>
+  <text x="49" y="610" class="h3 infoText">2 newer accepted turns are available</text>
+  <text x="49" y="630" class="small infoText">This text and your scroll position have not changed.</text>
+  <rect x="34" y="661" width="139" height="32" rx="9" fill="#26302d"/>
+  <text x="54" y="681" class="small onDark">Load new material</text>
+  <rect x="182" y="661" width="137" height="32" rx="9" class="surface"/>
+  <text x="204" y="681" class="small">Keep reading here</text>
+  <rect x="34" y="705" width="163" height="20" rx="7" class="good"/>
+  <text x="46" y="718" class="tiny goodText">POSITION SAVED · TURN 9</text>
+  <text x="211" y="718" class="tiny">raw wellness remains private</text>
+
+  <rect x="0" y="756" width="390" height="88" fill="#26302d"/>
+  <circle cx="43" cy="792" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="31" y="816" class="tiny mutedDark">Home</text>
+  <circle cx="121" cy="792" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="104" y="816" class="tiny mutedDark">Prepare</text>
+  <circle cx="199" cy="792" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="190" y="816" class="tiny mutedDark">Live</text>
+  <rect x="242" y="766" width="70" height="61" rx="12" fill="#3b4843"/>
+  <rect x="259" y="772" width="36" height="3" rx="1.5" fill="#c56f42"/>
+  <circle cx="277" cy="792" r="7" fill="none" stroke="#f4efe5" stroke-width="1.4"/>
+  <text x="262" y="816" class="tiny onDark">Review</text>
+  <circle cx="355" cy="792" r="7" fill="none" stroke="#8f9a94"/>
+  <text x="344" y="816" class="tiny mutedDark">More</text>
+</svg>

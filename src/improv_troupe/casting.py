@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from .config import AppConfig
 from .domain import Actor, ProductionPlan
 from .engine.orchestrator import ActorRuntime
-from .llm.client import ChatClient, LLMClient
+from .llm.client import ChatClient, make_client
 
 
 class CastingError(Exception):
@@ -115,6 +115,11 @@ def build_runtimes(
 def _default_client_factory(config: AppConfig):
     def factory(handle: str) -> ChatClient:
         backend = config.backend(handle)
-        return LLMClient(base_url=backend.base_url, api_key=backend.api_key)
+        return make_client(
+            kind=backend.kind,
+            base_url=backend.base_url,
+            api_key=backend.api_key,
+            timeout=backend.timeout_seconds,
+        )
 
     return factory

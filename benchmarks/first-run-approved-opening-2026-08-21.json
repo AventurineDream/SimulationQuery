@@ -1,0 +1,34 @@
+{
+  "status": "APPROVED_FOR_PREFLIGHT",
+  "season_id": "S01",
+  "approval": {
+    "approved_by": "creator",
+    "approved_at": "2026-08-21",
+    "greenlit": false
+  },
+  "opening": {
+    "set": "Submarine \"Aether\"",
+    "setting": "Inside the molten heart of Yellowstone's caldera, a sleek, heat-shielded vessel glides through rivers of magma and ash clouds, its hull humming with advanced thermal shielding.",
+    "cast": [
+      "Luna Planck",
+      "Mason Curie",
+      "Higgs Sierra",
+      "Ivy Fermion"
+    ],
+    "world_rules": [
+      "The submarine operates on speculative fusion-based power that can be modulated but never guaranteed to survive extreme temperatures.",
+      "Mission success is uncertain; the crew's decisions directly influence whether the eruption is delayed, accelerated, or avoided entirely.",
+      "Each actor retains full agency over dialogue and actions—no predetermined outcomes are scripted.",
+      "The environment is intrinsically dangerous: sudden magma surges, seismic tremors, and unpredictable thermal gradients pose constant threats to life and equipment.",
+      "All speculative science remains within a TV-14 boundary; no explicit depiction of lethal radiation or graphic destruction is allowed."
+    ]
+  },
+  "cast_ids": [
+    "luna-planck",
+    "mason-curie",
+    "higgs-sierra",
+    "ivy-fermion"
+  ],
+  "model_manifest_ref": "first-run-model-manifest.draft.json",
+  "next_gate": "live Linux preflight against the selected model manifest"
+}

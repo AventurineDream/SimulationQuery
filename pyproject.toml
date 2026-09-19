@@ -25,6 +25,13 @@ improv = "improv_troupe.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+improv_troupe = [
+  "infrastructure/migrations/*.sql",
+  "web/static/*.css",
+  "web/static/*.js",
+]
+
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]

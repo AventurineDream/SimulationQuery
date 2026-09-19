@@ -1,0 +1,51 @@
+{
+  "status": "DRAFT_REVIEW_REQUIRED",
+  "generated_by": {
+    "backend": "local",
+    "model": "gpt-oss:20b"
+  },
+  "creator_visible_opening_cast": [
+    {
+      "character_id": "luna-planck",
+      "name": "Luna Planck",
+      "opening_brief": "A quiet botanist who always brings a pot of succulents to rehearsals."
+    },
+    {
+      "character_id": "mason-curie",
+      "name": "Mason Curie",
+      "opening_brief": "A rugged marine biologist who insists on using seaweed as stage props."
+    },
+    {
+      "character_id": "higgs-sierra",
+      "name": "Higgs Sierra",
+      "opening_brief": "An energetic stunt double with a passion for wildfire safety training."
+    },
+    {
+      "character_id": "ivy-fermion",
+      "name": "Ivy Fermion",
+      "opening_brief": "A serious playwright who grows his own herbs in the green room."
+    }
+  ],
+  "private_cast_seeds": [
+    {
+      "character_id": "luna-planck",
+      "private_voice_note": "She has a habit of humming old folk songs while she waters plants.",
+      "name_association": "Luna evokes the moon, while Planck nods to Max Planck and quantum theory."
+    },
+    {
+      "character_id": "mason-curie",
+      "private_voice_note": "He speaks in a calm, measured tone that mirrors ocean waves.",
+      "name_association": "Curie nods to Marie and Pierre Curie and the scientific unit named for their work."
+    },
+    {
+      "character_id": "higgs-sierra",
+      "private_voice_note": "She always checks the fire escape routes before every rehearsal.",
+      "name_association": "Higgs evokes the Higgs boson, while Sierra references a mountain range."
+    },
+    {
+      "character_id": "ivy-fermion",
+      "private_voice_note": "He prefers to write in the early morning when dew is still on the grass.",
+      "name_association": "Ivy is botanical, while a fermion is a fundamental class of particle."
+    }
+  ]
+}

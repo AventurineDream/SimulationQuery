@@ -1,0 +1,28 @@
+# Copy to /etc/improv-troupe/config.yaml and fill in the private model
+# endpoints/model manifest when the live scene runtime is selected.
+
+service:
+  data_root: /var/lib/improv-troupe
+  poll_interval_seconds: 5
+  recovery_wait_seconds: 14400
+  # A transient network/model read timeout is retried twice (three total worker
+  # attempts) before the normal creator-controlled recovery path takes over.
+  auto_retry_timeouts: true
+  timeout_retry_max_attempts: 3
+  worker_id: improv-worker
+
+backends:
+  # The selected first-run models are served by Ollama on the private LAN.
+  local:
+    # A root URL or /v1 URL both work. `kind: ollama` selects native /api/chat
+    # so output envelopes can use Ollama's JSON-schema constraint.
+    base_url: http://10.0.0.103:11434
+    kind: ollama
+    timeout_seconds: 600
+    models:
+      - gpt-oss:20b
+      - ministral-3:8b
+      - qwen3:8b
+      - richardyoung/qwen3-8b-abliterated:Q4_K_M
+
+default_backend: local
