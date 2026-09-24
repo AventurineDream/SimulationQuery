@@ -89,7 +89,10 @@ ACTOR_PROSE_GUIDE = (
     "neatly. Avoid stock imagery (hearts pounding, eyes widening, silence "
     "stretching, air growing thick) and never use out-of-world language. Your "
     "character's vocabulary, rhythm, and blind spots come from their brief and "
-    "voice notes: two characters must not sound interchangeable."
+    "voice notes: two characters must not sound interchangeable. Never restate "
+    "the narration's imagery or another character's move: if the narration showed "
+    "the scuff marks, your character notices what the narration did not. Add one "
+    "sensory detail of your own, from your own vantage."
 )
 
 DIRECTOR_PROSE_GUIDE = (
@@ -120,6 +123,54 @@ SCENE_PROSE_GUIDE: list[str] = [
 _REPEATED_OPENER_MIN_RUN = 3
 
 
+_ECHO_NGRAM_MIN = 3
+_ECHO_MIN_CONTENT_WORDS = 2
+
+_STEM_SUFFIXES = ("ing", "ers", "er", "es", "ed", "s")
+
+
+def _stem(word: str) -> str:
+    # Naive suffix strip so inflected echoes (deepen/deeper) still match.
+    for suffix in _STEM_SUFFIXES:
+        if word.endswith(suffix) and len(word) - len(suffix) >= 3:
+            return word[: -len(suffix)]
+    return word
+
+
+def _word_tokens(text: str) -> list[str]:
+    return [_stem(w) for w in re.findall(r"[A-Za-z']+", text.casefold())]
+
+
+def _ngrams(words: list[str], n: int) -> set[tuple[str, ...]]:
+    return {tuple(words[i : i + n]) for i in range(len(words) - n + 1)}
+
+
+def _content_words(gram: tuple[str, ...]) -> int:
+    # Cheap content-word proxy: words of four or more letters carry the imagery.
+    return sum(1 for word in gram if len(word) >= 4)
+
+
+def _echo_runs(text: str, reference: str) -> list[str]:
+    # Walk the text's token stream; wherever a shared n-gram opens, extend the
+    # run while consecutive windows stay shared. One echoed span, one issue.
+    tokens = _word_tokens(text)
+    ref_grams = _ngrams(_word_tokens(reference), _ECHO_NGRAM_MIN)
+    runs: list[str] = []
+    i = 0
+    while i <= len(tokens) - _ECHO_NGRAM_MIN:
+        if tuple(tokens[i : i + _ECHO_NGRAM_MIN]) in ref_grams:
+            j = i + _ECHO_NGRAM_MIN
+            while j < len(tokens) and tuple(tokens[j - _ECHO_NGRAM_MIN + 1 : j + 1]) in ref_grams:
+                j += 1
+            run = tuple(tokens[i:j])
+            if _content_words(run) >= _ECHO_MIN_CONTENT_WORDS:
+                runs.append(" ".join(run))
+            i = j
+        else:
+            i += 1
+    return runs
+
+
 @dataclass(frozen=True)
 class ProseIssue:
     """One deterministic prose finding; code names are stable for tests."""
@@ -132,12 +183,18 @@ def _sentences(text: str) -> list[str]:
     return [s.strip() for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s.strip()]
 
 
-def lint_prose(text: str, *, cast_names: tuple[str, ...] = ()) -> list[ProseIssue]:
-    """Deterministically flag stock, meta, and monotonous prose.
+def lint_prose(
+    text: str, *, cast_names: tuple[str, ...] = (), reference: str = ""
+) -> list[ProseIssue]:
+    """Deterministically flag stock, meta, monotonous, and echoing prose.
 
     Advisory only. ``cast_names`` lets a caller suppress false cliché hits on
     character names (none of the stock phrases should collide, but keep the
-    hook for callers that lint director narration).
+    hook for callers that lint director narration). ``reference`` is optional
+    comparison text (usually the scene's current narration or adjudication);
+    when given, any reused run of three or more stem-normalized words with at
+    least two content words is flagged as ECHO_PHRASE - the failure mode where
+    an actor parrots the shared text's imagery instead of adding detail.
     """
 
     issues: list[ProseIssue] = []
@@ -162,6 +219,11 @@ def lint_prose(text: str, *, cast_names: tuple[str, ...] = ()) -> list[ProseIssu
                     "MONOTONOUS_OPENERS",
                     f"{_REPEATED_OPENER_MIN_RUN} consecutive sentences start with {current!r}",
                 )
+            )
+    if reference:
+        for run in _echo_runs(text, reference):
+            issues.append(
+                ProseIssue("ECHO_PHRASE", f"reuses reference phrasing: {run!r}")
             )
     return issues
 

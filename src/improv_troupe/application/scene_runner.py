@@ -2121,7 +2121,7 @@ class SceneRunner:
                 "<MAGIC_STAT>optional: Might|Authority|Gusto|Intellect|Cool</MAGIC_STAT>"
             ),
             character_id=actor.character_id,
-            prompt_version_id="scene-actor-v7-prose-craft",
+            prompt_version_id="scene-actor-v7-prose-craft-2",
             context_version_id=f"scene:{self.run_id}:round:{round_number}:v4",
             role_sheet_version_id=f"{actor.character_id}:v{actor.role_sheet.version}",
             correction_of_call_id=(

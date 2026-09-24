@@ -119,3 +119,46 @@ def test_standalone_scene_prompt_carries_scene_craft_rules():
 def test_guides_are_non_empty_strings():
     for guide in (ACTOR_PROSE_GUIDE, DIRECTOR_PROSE_GUIDE, DIARY_VOICE_GUIDE):
         assert isinstance(guide, str) and len(guide) > 100
+
+
+def test_actor_guide_forbids_restating_narration():
+    assert "Never restate" in ACTOR_PROSE_GUIDE
+    assert "narration" in ACTOR_PROSE_GUIDE
+
+
+def test_lint_flags_echo_of_reference_narration():
+    narration = (
+        "Sunlight slants across the worn wooden porch steps, catching dust "
+        "motes - two parallel grooves deepen near the edge where shadow pools."
+    )
+    turn = (
+        "I tell the dispatcher the cheetah left two parallel grooves deeper "
+        "than before and keep watching the yard."
+    )
+    codes = [issue.code for issue in lint_prose(turn, reference=narration)]
+    assert "ECHO_PHRASE" in codes
+
+
+def test_lint_reports_echo_as_single_merged_run():
+    adjudication = (
+        "A new set of faint scuff marks appears in the dirt near the porch "
+        "edge, partially obscured by shadow and debris."
+    )
+    turn = (
+        "I explain that the cheetah left fresh scuff marks in the dirt near "
+        "the porch edge and request help faster."
+    )
+    issues = [i for i in lint_prose(turn, reference=adjudication) if i.code == "ECHO_PHRASE"]
+    assert len(issues) == 1
+    assert "porch edge" in issues[0].detail
+
+
+def test_lint_without_reference_never_echoes():
+    turn = "I press the red button and describe the two parallel grooves again."
+    assert all(issue.code != "ECHO_PHRASE" for issue in lint_prose(turn))
+
+
+def test_lint_ignores_distinct_prose_against_reference():
+    narration = "Sunlight slants across the worn wooden porch steps."
+    turn = "I circle the fence line, counting fresh tracks in the wet grass."
+    assert all(issue.code != "ECHO_PHRASE" for issue in lint_prose(turn, reference=narration))
