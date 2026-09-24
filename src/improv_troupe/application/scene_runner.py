@@ -830,7 +830,7 @@ class SceneRunner:
                 "<MAGIC_MODIFIER>-2..2</MAGIC_MODIFIER>"
             ),
             character_id=_STAGE_CHARACTER_ID,
-            prompt_version_id="scene-director-v9-magic-success-criteria",
+            prompt_version_id="scene-director-v10-prose-craft",
             context_version_id=f"scene:{self.run_id}:round:{round_number}:v1",
             role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
         )
@@ -994,7 +994,7 @@ class SceneRunner:
                 "<MAGIC_EFFECT_DETAIL>none or one short observable consequence</MAGIC_EFFECT_DETAIL>"
             ),
             character_id=_STAGE_CHARACTER_ID,
-            prompt_version_id="scene-director-plan-v6-magic-plan-contract",
+            prompt_version_id="scene-director-plan-v7-prose-craft",
             context_version_id=f"scene:{self.run_id}:round:{round_number}:game:v5",
             role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
         )
@@ -1112,7 +1112,7 @@ class SceneRunner:
                 "<MAGIC_EFFECT_DETAIL>none or concise visible result/cost/opening</MAGIC_EFFECT_DETAIL>"
                 ),
                 character_id=_STAGE_CHARACTER_ID,
-                prompt_version_id="scene-director-plan-correction-v3-magic-plan-contract",
+                prompt_version_id="scene-director-plan-correction-v4-prose-craft",
                 context_version_id=f"scene:{self.run_id}:round:{round_number}:game:correction:v2",
                 role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
                 correction_of_call_id=rejected_plan_call_id,
@@ -1227,7 +1227,7 @@ class SceneRunner:
             schema_name="director_render",
             tagged_format_instructions="<NARRATION>...</NARRATION>",
             character_id=_STAGE_CHARACTER_ID,
-            prompt_version_id="scene-director-render-v1",
+            prompt_version_id="scene-director-render-v2-prose-craft",
             context_version_id=f"scene:{self.run_id}:round:{round_number}:game:v1",
             role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
         )
@@ -1347,7 +1347,7 @@ class SceneRunner:
                 schema_name="director_render",
                 tagged_format_instructions="<NARRATION>...</NARRATION>",
                 character_id=_STAGE_CHARACTER_ID,
-                prompt_version_id="scene-director-render-correction-v1",
+                prompt_version_id="scene-director-render-correction-v2-prose-craft",
                 context_version_id=f"scene:{self.run_id}:round:{round_number}:render-correction:v1",
                 role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
                 correction_of_call_id=rejected_call_id,
@@ -2121,7 +2121,7 @@ class SceneRunner:
                 "<MAGIC_STAT>optional: Might|Authority|Gusto|Intellect|Cool</MAGIC_STAT>"
             ),
             character_id=actor.character_id,
-            prompt_version_id="scene-actor-v6-magic-attempt",
+            prompt_version_id="scene-actor-v7-prose-craft",
             context_version_id=f"scene:{self.run_id}:round:{round_number}:v4",
             role_sheet_version_id=f"{actor.character_id}:v{actor.role_sheet.version}",
             correction_of_call_id=(

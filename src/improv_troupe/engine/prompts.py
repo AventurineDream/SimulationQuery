@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from ..domain import Actor, ProductionPlan
 from ..llm.client import Message
+from ..llm.prose import SCENE_PROSE_GUIDE
 from .transcript import Transcript
 
 
@@ -39,7 +40,7 @@ def build_system_prompt(plan: ProductionPlan, actor: Actor) -> str:
         "- Do NOT prefix your name. Use [square brackets] for brief stage directions only.",
         "- React to what was just said and push the scene forward.",
         "- Never break character, narrate the whole scene, or mention being an AI.",
-    ]
+    ] + SCENE_PROSE_GUIDE
     if c.content:
         lines.append("- Content limits: " + "; ".join(c.content) + ".")
     if c.objective:

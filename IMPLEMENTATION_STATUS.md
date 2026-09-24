@@ -4,6 +4,28 @@
 **Updated:** 2026-09-17
 **Contract:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md)
 
+## Branch note — Amaranth prose-craft patch — 2026-09-23
+
+This branch (`Amaranth`) carries a prompt-layer patch aimed at narrative and
+prose quality, prepared for cross-review against the `codex` branch:
+
+- New `improv_troupe.llm.prose` module: shared craft guidance blocks (actor,
+  director, diary voice, standalone scene) plus a deterministic, advisory
+  `lint_prose` checker (stock imagery, out-of-world leaks, monotonous sentence
+  openers). The lint is intentionally **not** wired into scene acceptance;
+  gating on it needs its own rehearsal-validated experiment.
+- Craft guidance injected into the actor, orchestrator, director-render, diary,
+  and standalone-scene prompts. Structure, privacy boundaries, MAGIC
+  adjudication, and evidence contracts are unchanged.
+- Prompt version ids bumped at the changed call sites (`scene-actor-v7`,
+  `scene-director-v10`, plan/render and correction ids, all suffixed
+  `-prose-craft`) so receipts distinguish the new text.
+- `skills/scene-architect` gains a prose-oriented brief-writing step.
+
+No rehearsal or simulation run was executed for this patch, per the creator's
+standing hold on runs until she prompts. Validation is static only: the full
+local test suite plus new prose tests.
+
 ## Current handoff — porch MAGIC diary reliability and repository consolidation — 2026-09-17
 
 The current experimental line is the isolated one-day porch-season rehearsal,

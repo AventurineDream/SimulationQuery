@@ -9,6 +9,7 @@ from typing import Mapping, Sequence
 
 from ..domain import ActorSheet, CharacterCard, HiddenSeasonPlan, OpeningSnapshot, RoleSheet
 from .client import Message
+from .prose import ACTOR_PROSE_GUIDE, DIARY_VOICE_GUIDE, DIRECTOR_PROSE_GUIDE
 
 
 _MAGIC_ATTRIBUTE_GUIDE = (
@@ -106,6 +107,7 @@ def build_actor_messages(context: ActorContext) -> list[Message]:
             "Keep performer identity private and "
             "use the wellness channel only for an explicit out-of-world pause or stop request."
         )
+    system += ACTOR_PROSE_GUIDE
     system += (
         " MAGIC rules: "
         + _MAGIC_ATTRIBUTE_GUIDE
@@ -235,6 +237,7 @@ def build_orchestrator_messages(
                 "narration. Do not resolve a pending challenge in narration before its roll. "
                 + _MAGIC_OUTCOME_GUIDE
                 + " Never reverse a recorded roll. Use a situational modifier only from -2 to +2."
+                + DIRECTOR_PROSE_GUIDE
             ),
         },
         {"role": "user", "content": json.dumps(payload, sort_keys=True)},
@@ -403,6 +406,7 @@ def build_director_render_messages(
                 "after your lead-in. Do not name, describe, speak for, or assign an inner state to "
                 "any cast member. Do not use more than two terms from spent_director_imagery. Use "
                 "no response-envelope markup inside narration."
+                + DIRECTOR_PROSE_GUIDE
             ),
         },
         {"role": "user", "content": json.dumps(payload, sort_keys=True)},
@@ -490,6 +494,7 @@ def build_diary_messages(
             "one cited ID; use an empty list only for a deferred choice or an explicit wellness "
             "request. Do not put evidence IDs inside diary text. "
             + _DIARY_FIDELITY_GUIDE
+            + DIARY_VOICE_GUIDE
         ),
     }
     return [

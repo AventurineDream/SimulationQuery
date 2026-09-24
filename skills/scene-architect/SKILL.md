@@ -29,9 +29,15 @@ final artifact: a single **ProductionPlan JSON** the user imports into the app.
    - keep `turn_length` short (1–4 sentences);
    - keep the cast small and their personalities *contrasting* — contrast is what
      makes tiny-model dialogue readable.
-3. **Propose, then confirm.** Offer characters and conflicts; let the user steer.
+3. **Write briefs for prose, not plot summary.** In `character_brief` and
+   `voice_notes`, give each character one or two *verbal* signatures (a rhythm, a
+   pet phrase, what they never say outright) and one concrete want they would
+   pursue in the first minute. Avoid abstract trait stacks ("brave but
+   conflicted"); small models render them as generic filler. A good test: if two
+   cast members' briefs could be swapped without anyone noticing, rewrite them.
+4. **Propose, then confirm.** Offer characters and conflicts; let the user steer.
    Summarize the shaping plan back to them before finalizing.
-4. **On the green light, output the JSON** (see schema below) in a single fenced
+5. **On the green light, output the JSON** (see schema below) in a single fenced
    ```json block, and nothing else in that block. Tell the user to save it as
    `myscene.plan.json` and run:
    `improv run myscene.plan.json --config backends.yaml`
