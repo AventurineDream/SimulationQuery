@@ -1215,3 +1215,6 @@ continuity, and model-size configuration. It is not a production deployment,
 browser/accessibility acceptance, S01 operation, or final model-selection
 decision. The full local regression suite passed (`193 passed`) and
 `git diff --check` passed.
+
+## Amaranth branch notes
+- Amaranth addendum: anti-echo actor rule (never restate narration imagery; add one sensory detail from your own vantage) plus advisory ECHO_PHRASE lint (stem-normalized 3-word overlap vs a reference narration/adjudication, one merged run per span); actor prompt version bumped to scene-actor-v7-prose-craft-2.
