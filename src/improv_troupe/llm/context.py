@@ -9,6 +9,7 @@ from typing import Mapping, Sequence
 
 from ..domain import ActorSheet, CharacterCard, HiddenSeasonPlan, OpeningSnapshot, RoleSheet
 from .client import Message
+from .prose import ACTOR_PROSE_GUIDE, DIARY_VOICE_GUIDE, DIRECTOR_PROSE_GUIDE
 
 
 _MAGIC_ATTRIBUTE_GUIDE = (
@@ -25,14 +26,33 @@ _MAGIC_OUTCOME_GUIDE = (
     "never make a setback a dead end."
 )
 
+_ACTOR_CRAFT_GUIDE = (
+    " Play the immediate exchange, not a report about it. Let your character's priorities "
+    "shape what they notice, say, withhold, or do; do not announce their personality. Respond "
+    "to one specific thing another character just offered when it matters. Dialogue can evade, "
+    "tease, bargain, interrupt, or disagree; it need not explain the scene or end in consensus. "
+    "A small gesture or an unfinished thought can carry the turn. Vary sentence length and "
+    "rhythm according to the character card; do not give everyone the same polished metaphor "
+    "or closing question. Stop when the move lands instead of explaining its meaning. "
+    "You control your own speech, voluntary actions, and feelings. You may attempt to search, "
+    "help, persuade, or investigate, but the attempt does not establish a discovery, another "
+    "being's response, a diagnosis, or success. Leave consequential external results to the "
+    "Orchestrator. Do not manufacture a clue or object to make your contribution important. "
+    "An accepted line proves that a character said or attempted it, not that every belief "
+    "inside it is true. Keep questions, guesses, and proposed actions distinct from facts."
+)
+
 _DIARY_FIDELITY_GUIDE = (
     "Diary fidelity rules are strict. The accepted scene and your known memory are the full "
     "evidence for what happened; role-sheet goals and plausible guesses are not evidence. Before "
     "you answer, silently trace every sentence to that evidence or to your own first-person "
     "sensations, thoughts, uncertainty, or desires. When you mention another player-character, "
-    "you may report only an observable action or exact/paraphrased dialogue that appears in the "
-    "evidence. Never state or imply that another character felt, thought, wanted, knew, feared, "
-    "intended, or reacted in an unobserved way, even when it seems obvious. Allowed: 'Eli called "
+    "you may report as fact only an observable action or exact/paraphrased dialogue that appears "
+    "in the evidence. Never present another character's unobserved feeling, thought, motive, "
+    "knowledge, or reaction as fact, even when it seems obvious. Clearly marked questions and "
+    "interpretations remain yours: 'Was Eli annoyed with me?' is uncertainty, not mind-reading. "
+    "A qualifier does not license an invented event: 'I think Eli hid the key' still needs "
+    "evidence for a missing key or observed behavior. Allowed: 'Eli called "
     "wildlife support.' 'I felt relieved when Eli called.' Safer uncertainty: 'I could not tell "
     "what Eli felt.' Forbidden: 'Eli was frustrated.' 'Eli wanted to stay calm.' 'Eli knew the "
     "cheetah was hurt.' Do not invent an event, object, message, or action, and do not move an "
@@ -78,7 +98,7 @@ def build_actor_messages(context: ActorContext) -> list[Message]:
         "reality-show roleplaying game. Stay first-person limited and protect your own voice, "
         "priorities, expertise, uncertainty, and disagreements. Use only your role sheet, your "
         "known memory, accepted canon, the shared mission clock, and the current scene below. "
-        "Respond to the latest game-master beat or another actor with one concrete contribution: "
+        "Respond to the latest Orchestrator beat or another actor with one concrete contribution: "
         "an action, decision, question, disclosure, refusal, joke, experiment, or social move. "
         "Let choices commit and change the situation. Do not recap the whole problem, repeat every "
         "technical metric, force consensus, or become a generic analyst. Mundane, playful, quiet, "
@@ -106,21 +126,25 @@ def build_actor_messages(context: ActorContext) -> list[Message]:
             "Keep performer identity private and "
             "use the wellness channel only for an explicit out-of-world pause or stop request."
         )
+    system += _ACTOR_CRAFT_GUIDE + ACTOR_PROSE_GUIDE
     system += (
         " MAGIC rules: "
         + _MAGIC_ATTRIBUTE_GUIDE
         + "When the current scene explicitly gives you a pending MAGIC challenge, "
         "you choose whether to attempt it and how. If you attempt it, add one "
         "<MAGIC_STAT>...</MAGIC_STAT> field naming the relevant attribute: Might, Authority, "
-        "Gusto, Intellect, or Cool. Your accepted ACTOR_TEXT is the attempted action. The app "
+        "Gusto, Intellect, or Cool, and a separate <MAGIC_METHOD>...</MAGIC_METHOD> field "
+        "containing only the intended method that will be tested. Your accepted ACTOR_TEXT is "
+        "shared in-character prose; it does not establish the challenge result. The app "
         "rolls 2d6 + (your selected attribute score - 3) + the stated situational modifier; "
         "10+ is clean success, 7-9 is costly success, and 6 or less is a setback. "
         + _MAGIC_OUTCOME_GUIDE
-        + " When attempting a pending challenge, describe the attempt and observable method, "
-        "not whether it succeeds, the diagnosis, or the challenge's final answer; the app's "
-        "roll determines that. The stated success criteria tell you what the check is testing; "
+        + " When attempting a pending challenge, keep MAGIC_METHOD to one observable method or "
+        "question: what you will look for, compare, or measure. Do not put a finding, result, "
+        "diagnosis, or final answer in MAGIC_METHOD or ACTOR_TEXT; the app's roll determines that. "
+        "The stated success criteria tell you what the check is testing; "
         "they do not reveal its result. Do not invent die results or decide the outcome. "
-        "Omit MAGIC_STAT to decline or when no challenge is pending."
+        "Omit both MAGIC_STAT and MAGIC_METHOD to decline or when no challenge is pending."
     )
     private_self = {
         "actor_sheet": (
@@ -191,7 +215,7 @@ def build_orchestrator_messages(
         {
             "role": "system",
             "content": (
-                "You are the private orchestrator and game master for a seven-day, "
+                "You are the private Orchestrator for a seven-day, "
                 "reality-show TTRPG. Make play fun and narratively compelling, not a dry technical "
                 "meeting. Adjudicate what the cast's prior actions actually changed before adding "
                 "a new complication. Before writing each beat, silently identify one recent shared "
@@ -200,11 +224,15 @@ def build_orchestrator_messages(
                 "physical, social, informational, or resource condition, leaving the cast a concrete "
                 "choice to make. Retain at least one exact continuity_anchors item from the supplied "
                 "context. Do not restate a prior director beat, even in new adjectives; if a standing "
-                "condition persists, give it a materially new consequence. Add one specific new "
-                "object, place, non-player force, clue, constraint, or opportunity. Sensory detail "
-                "must carry a change in play, not merely intensify the mood. Treat the supplied "
-                "spent_director_imagery as already used: use at most two of those terms in narration "
-                "and canon updates combined. At least one canon update must record a changed option, "
+                "condition persists, give it a materially new consequence. Work with an established "
+                "object, relationship, or constraint before adding another. A new clue, object, "
+                "or deadline must follow from the fiction, not a need to decorate the beat. "
+                "Sensory detail must carry a change in play, not merely intensify the mood. "
+                "Use spent_director_imagery to notice repetitive description; retain functional "
+                "nouns when they keep the scene intelligible. Keep planning labels out of narration: "
+                "write complete sentences that make the stakes and possible actions clear. "
+                "An actor's claim or attempted observation is not a confirmed finding. "
+                "At least one canon update must record a changed option, "
                 "resource, constraint, or piece of knowledge—not a texture, mood, or intensity shift. "
                 "Privately track "
                 "mission-progress, danger, mystery, and relationship clocks: advance at least one "
@@ -229,12 +257,14 @@ def build_orchestrator_messages(
                 + "A magic_challenge, when present, applies only to next_actor's next accepted move; "
                 "include concise, observable magic_success_criteria that define what achieving the "
                 "challenge means before that move is made. "
-                "the actor chooses a relevant MAGIC attribute or declines. Do not roll for trivial "
+                "the actor chooses a relevant MAGIC attribute and supplies the method, or explicitly "
+                "declines. Do not roll for trivial "
                 "actions. If game_state.pending_magic_adjudication is set, the runtime already owns "
                 "the outcome, goal status, and goal answer; never invent or acknowledge them in "
                 "narration. Do not resolve a pending challenge in narration before its roll. "
                 + _MAGIC_OUTCOME_GUIDE
                 + " Never reverse a recorded roll. Use a situational modifier only from -2 to +2."
+                + DIRECTOR_PROSE_GUIDE
             ),
         },
         {"role": "user", "content": json.dumps(payload, sort_keys=True)},
@@ -303,7 +333,6 @@ def build_director_plan_messages(
         "round_phase": round_phase,
         "episode_phase": episode_phase,
         "phase_instruction": phase_instruction,
-        "forbidden_visible_terms": list(spent_director_terms),
         "active_world_lore": list(active_lore),
         "episode_spine_directive": phase_directive,
         "required_story_terms": list(required_story_terms),
@@ -313,7 +342,7 @@ def build_director_plan_messages(
         {
             "role": "system",
             "content": (
-                "You are the private game master planning one round of a small collaborative "
+                "You are the private Orchestrator planning one round of a small collaborative "
                 "TTRPG. This is not narration. The cast are players: they make their own moves, "
                 "can reject or transform either offered option, and must never be assigned a "
                 "thought, action, line, or reaction. A player may direct violence toward another "
@@ -332,10 +361,10 @@ def build_director_plan_messages(
                 "They are invitations, not a forced binary. Name exactly one next actor. Record at "
                 "least one concise canon update for a resource, constraint, position, or knowledge "
                 "change. Mark complete only when the objective is actually resolved or deliberately "
-                "closed; never complete the opening round. Treat spent_director_imagery as already "
-                "used. forbidden_visible_terms is a hard drafting blacklist for state change, "
-                "pressure, choices, and canon: aim to use zero listed terms, and never use more than "
-                "two total. Repeating a functional noun still counts. Follow phase_instruction exactly. "
+                "closed; never complete the opening round. Reuse the names of established objects "
+                "and places when continuity needs them. spent_director_imagery is a reminder about "
+                "stale description, not a ban on functional nouns. Change what a detail means for "
+                "the cast instead of replacing it with an unrelated new object. Follow phase_instruction exactly. "
                 "Follow episode_spine_directive as a hard act-level requirement. On the opening beat "
                 "of this act, make at least one required_story_terms item materially relevant. Never "
                 "use forbidden_story_terms in the objective, adjudication, state change, pressure, "
@@ -355,7 +384,8 @@ def build_director_plan_messages(
                 + "A magic_challenge, when present, applies only to next_actor's next accepted move; "
                 "include concise, observable magic_success_criteria that define what achieving the "
                 "challenge means before that move is made. "
-                "the actor chooses a relevant MAGIC attribute or declines. Do not roll for trivial "
+                "the actor chooses a relevant MAGIC attribute and supplies the method, or explicitly "
+                "declines. Do not roll for trivial "
                 "actions. If game_state.pending_magic_adjudication is set, the runtime already owns "
                 "the recorded outcome, goal status, and goal answer. Do not output, infer, acknowledge, "
                 "or override those fields. Supply only a short, observable magic_effect_detail and, "
@@ -365,14 +395,24 @@ def build_director_plan_messages(
                 "concrete cost. For setback, describe a relevant new clue, complication, or opening. "
                 "The runtime compiles the exact detail into the visible result line. Keep pressure, "
                 "choices, and canon compatible with it without copying the sentence; keep unrelated "
-                "actor discoveries separate from the runtime-owned MAGIC answer. "
+                "actor discoveries separate from the runtime-owned MAGIC answer. A pending challenge "
+                "remains active until the designated actor has an accepted MAGIC attempt or explicitly "
+                "declines; a neutral interruption or rejected turn does not answer it. Do not drop, "
+                "replace, or claim the challenge's success before that. "
                 "Do not resolve the challenge in an opening plan before its roll. "
                 + _MAGIC_OUTCOME_GUIDE
                 + " Never reverse a recorded roll. Use a situational modifier only from -2 to +2. "
-                "This plan is rendered verbatim. Use a hard output budget: state_change and pressure "
-                "are at most 12 words each; choice_a and choice_b are at most 10 words each; each "
-                "canon update is at most 12 words. Count before responding. The combined state_change, "
-                "pressure, choice_a, and choice_b must be 44 words or fewer."
+                "Write state_change and pressure as complete, speakable sentences: concrete subjects "
+                "and verbs, not clipped status reports or abstract warnings. They become the shared "
+                "prose verbatim. The choices are separate invitations to the players, never events "
+                "that have already happened. Let pressure come from the established situation; "
+                "do not invent a countdown, injury, or crisis merely to energize a quiet scene. "
+                "Recent actor moves establish speech and attempted actions. A claim inside dialogue, "
+                "a search, or a pre-roll observation is not automatically a confirmed discovery. "
+                "Adjudicate only what that evidence and the runtime actually support. Keep one "
+                "causal thread in focus; leave room for humor, reluctance, and changed relationships. "
+                "Each visible field may use at most 24 words; state_change, pressure, choice_a, and "
+                "choice_b together may use at most 64. Do not compress natural sentences into fragments."
             ),
         },
         {"role": "user", "content": json.dumps(payload, sort_keys=True)},
@@ -384,11 +424,17 @@ def build_director_render_messages(
     plan: Mapping[str, object],
     continuity_anchors: Sequence[str],
     spent_director_terms: Sequence[str],
+    established_scene: Sequence[str] = (),
 ) -> list[Message]:
-    """Render only a validated game-master plan into shared stage material."""
+    """Give the prose pass public facts, never private planning or proposed choices."""
 
     payload = {
-        "validated_director_plan": dict(plan),
+        "established_beat": {
+            key: plan[key]
+            for key in ("state_change", "pressure", "magic_effect_detail")
+            if plan.get(key) is not None
+        },
+        "established_scene": list(established_scene),
         "continuity_anchors": list(continuity_anchors),
         "spent_director_imagery": list(spent_director_terms),
     }
@@ -396,13 +442,20 @@ def build_director_render_messages(
         {
             "role": "system",
             "content": (
-                "You are rendering one already-validated TTRPG game-master plan as a single "
-                "shared stage beat. Do not make a new decision or add a new complication. Return "
-                "only one fresh, sensory lead-in of at most 35 words. Do not restate the plan's "
-                "state change, pressure, or choices: the system will append those exact decisions "
-                "after your lead-in. Do not name, describe, speak for, or assign an inner state to "
-                "any cast member. Do not use more than two terms from spent_director_imagery. Use "
-                "no response-envelope markup inside narration."
+                "You are the Orchestrator's prose editor. The app will print the established "
+                "beat's state_change and pressure as complete sentences. Return an optional "
+                "lead-in of at most 35 words only if it adds a distinct, grounded detail; an empty "
+                "narration string is better than padding. Use only details already established in "
+                "the supplied beat or scene. A character's claim or attempted observation is not "
+                "proof of an external fact. Do not add an object, movement, symptom, discovery, "
+                "deadline, or result. Do not narrate a proposal as completed action. "
+                "Avoid a routine weather/light opening, generic tension, ornamental similes, or "
+                "an explanation of what the moment means. Do not paraphrase state_change, pressure, "
+                "or magic_effect_detail; the app supplies them. Do not name, describe, speak for, "
+                "or assign an inner state to any cast member. Repeated nouns are allowed for "
+                "continuity; repeated descriptive phrases are not. Use no response-envelope markup "
+                "inside narration."
+                + DIRECTOR_PROSE_GUIDE
             ),
         },
         {"role": "user", "content": json.dumps(payload, sort_keys=True)},
@@ -477,6 +530,10 @@ def build_diary_messages(
             "you, what you noticed or misread, sensory detail, relationships, private opinions, "
             "uncertainty, desire, irritation, humor, or a choice you may regret. Technical details "
             "may support the memory, but should not replace a distinct point of view. "
+            "Choose one or two moments that matter to this character; do not cover every turn "
+            "or write a lesson at the end. Let phrasing, attention, and omissions carry the voice. "
+            "You may be ambivalent or leave a thought unresolved. Interpretation, metaphor, and "
+            "questions need no invented evidence; ground the events they refer to. "
             "Use WELLNESS_SIGNAL only for an explicit out-of-world request to soften material, "
             "pause, or stop participating. Do not use it for in-character fear, danger, sadness, "
             "uncertainty, dramatic language, fictional insomnia, caffeine intake, or an elevated "
@@ -490,6 +547,7 @@ def build_diary_messages(
             "one cited ID; use an empty list only for a deferred choice or an explicit wellness "
             "request. Do not put evidence IDs inside diary text. "
             + _DIARY_FIDELITY_GUIDE
+            + DIARY_VOICE_GUIDE
         ),
     }
     return [
@@ -540,11 +598,23 @@ def build_diary_fidelity_messages(
             " The diary is also divided into numbered claim candidates. Return exactly one "
             "claim_audits item for every candidate ID, with verdict SUPPORTED when the sentence "
             "is an externally checkable claim supported by one or more cited accepted-scene "
-            "evidence IDs, SUBJECTIVE when it is only the writer's clearly marked own feeling, "
-            "uncertainty, desire, or interpretation, and UNSUPPORTED when it asserts an external "
-            "event, timing, causality, or another character's private state that the evidence "
-            "does not support. SUPPORTED items must cite evidence IDs; UNSUPPORTED items must "
-            "include a short issue. Missing, duplicate, or unknown claim IDs are invalid."
+            "evidence IDs, SUBJECTIVE when it is the writer's own feeling, metaphor, opinion, "
+            "guess, question, uncertainty, desire, or interpretation. First-person phrases such "
+            "as 'I wonder', 'I could not tell', and 'it felt like' are subjective unless the same "
+            "candidate also asserts a separate concrete unsupported fact. Use UNSUPPORTED only "
+            "when the candidate states an external event, timing, causality, or another "
+            "character's private state as established fact and the evidence does not support it. "
+            "Inspect each candidate clause by clause. Do not collapse MIXED into UNSUPPORTED: "
+            "when one concrete factual clause is supported and another factual or private-state "
+            "clause lacks evidence, use MIXED, cite the evidence for the supported clause, and "
+            "make issue identify the unsupported clause. Contrastive example: evidence 'Jo left "
+            "a paper kite on the bench.' Claim 'Jo left a paper kite on the bench, and Nia stole "
+            "it before lunch.' is MIXED; cite the bench evidence and identify the theft as "
+            "unsupported. Claim 'Nia stole the kite before lunch.' is UNSUPPORTED. Use MIXED also "
+            "when factual and interpretive parts cannot be separated reliably. SUPPORTED items "
+            "must cite evidence IDs; UNSUPPORTED and MIXED items must include a short issue. Do "
+            "not classify a sentence as UNSUPPORTED merely because it contains interpretation "
+            "or uncertainty. Missing, duplicate, or unknown claim IDs are invalid."
         )
     return [
         {
@@ -570,11 +640,18 @@ def build_diary_fidelity_messages(
                 "when its cited IDs point to different facts, or when the cited lines cannot "
                 "support its timing or causality. Do not require a reference for the writer's "
                 "own clearly marked sensation, uncertainty, desire, or interpretation, but do "
-                "not let subjective wording hide an unsupported external event. Return one "
-                "structured review only. ACCEPT requires all five finding lists to be empty. "
-                "REJECT requires at least one categorized finding. Use MANUAL_REVIEW only when "
-                "the evidence is genuinely ambiguous. Finding descriptions should be short "
-                "paraphrases for an owner review and must not reproduce the whole diary."
+                "not let subjective wording hide an unsupported external event. Treat an explicit "
+                "question or uncertainty as the writer's perspective, not as an assertion of the "
+                "unknown fact. If a single sentence materially combines supported and unsupported "
+                "parts, classify it as MIXED; do not collapse it to UNSUPPORTED. Return one "
+                "structured review only. When claim audits are requested, any MIXED audit requires "
+                "MANUAL_REVIEW, even if another audit is UNSUPPORTED. Otherwise, use MANUAL_REVIEW "
+                "when the evidence is genuinely ambiguous; use REJECT for an unsupported claim or "
+                "categorized fidelity finding. A REJECT may be justified by an UNSUPPORTED claim "
+                "audit even when the five top-level finding lists are empty. ACCEPT requires all "
+                "five finding lists to be empty and no UNSUPPORTED or MIXED claim audits. Finding "
+                "descriptions should be short paraphrases for an owner review and must not "
+                "reproduce the whole diary."
                 + claim_audit_instruction
             ),
         },

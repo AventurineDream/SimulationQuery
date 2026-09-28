@@ -398,6 +398,13 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
         outcome=expected_outcome,
         success_criteria=success_criteria,
     )
+    accepted_magic_actor_text = str(rolls[0].get("actor_text", "")) if len(rolls) == 1 else ""
+    action_recorded_separately = bool(
+        len(rolls) == 1
+        and accepted_magic_action
+        and accepted_magic_actor_text
+        and rolls[0].get("attempt_contract") == "attempted_method_only"
+    )
     second_plan_text = " ".join(
         str(value)
         for value in (
@@ -444,6 +451,7 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
                 and mara_is_next_actor
                 and forced_roll_matches
                 and pre_roll_diagnostic_terms_absent
+                and action_recorded_separately
                 and whole_plan_coherent
             )
         )
@@ -478,6 +486,8 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
         "runtime_adjudication_source": runtime_adjudication_source,
         "pre_roll_diagnostic_terms_absent": pre_roll_diagnostic_terms_absent,
         "accepted_magic_action": accepted_magic_action,
+        "accepted_magic_actor_text": accepted_magic_actor_text,
+        "action_recorded_separately": action_recorded_separately,
         "outcome_contract_valid": outcome_contract_valid,
         "runtime_adjudication_matches_roll": runtime_adjudication_valid,
         "runtime_goal_answer_matches_criteria": (

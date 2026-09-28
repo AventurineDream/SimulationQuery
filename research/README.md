@@ -2,6 +2,8 @@
 
 The active research packet is:
 
+- [`DIARY_CLAIM_CALIBRATION_PROTOCOL_V01.md`](DIARY_CLAIM_CALIBRATION_PROTOCOL_V01.md) —
+  model-blind human calibration for the diary claim-audit boundary.
 - [`PILOT2_PROTOCOL.md`](PILOT2_PROTOCOL.md) — frozen procedure.
 - [`PILOT2_CODEBOOK.md`](PILOT2_CODEBOOK.md) — human coding rules.
 - [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md) — research implementation status.

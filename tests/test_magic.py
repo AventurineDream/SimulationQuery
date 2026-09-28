@@ -112,27 +112,48 @@ def test_runtime_adjudication_requires_a_precommitted_criterion():
 
 def test_actor_can_select_one_magic_attribute_in_json_or_tagged_output():
     native = ActorTurnEnvelope.model_validate(
-        {"kind": "actor_turn", "text": "I read the tracks from the path.", "magic_stat": "Intellect"}
+        {
+            "kind": "actor_turn",
+            "text": "I read the tracks from the path.",
+            "magic_stat": "Intellect",
+            "magic_method": "I compare the track spacing from the path.",
+        }
     )
     tagged = parse_actor_output(
         "<ACTOR_TEXT>I read the tracks from the path.</ACTOR_TEXT>"
         "<MAGIC_STAT>intellect</MAGIC_STAT>"
+        "<MAGIC_METHOD>I compare the track spacing from the path.</MAGIC_METHOD>"
     )
 
     assert native == tagged
     assert tagged.magic_stat is MagicAttribute.INTELLECT
+    assert tagged.magic_method == "I compare the track spacing from the path."
     assert parse_actor_output("<ACTOR_TEXT>I wait and listen.</ACTOR_TEXT>").magic_stat is None
+
+
+def test_actor_magic_attempt_requires_a_separate_method_field():
+    with pytest.raises(StructuredOutputError):
+        parse_actor_output(
+            '{"kind":"actor_turn","text":"I compare the tracks.","magic_stat":"Intellect"}'
+        )
+    with pytest.raises(StructuredOutputError):
+        parse_actor_output(
+            '{"kind":"actor_turn","text":"I compare the tracks.",'
+            '"magic_method":"I compare the tracks."}'
+        )
 
 
 @pytest.mark.parametrize(
     ("text", "expected_text"),
     [
         (
-            "I observe the tracks. <MAGIC_STAT>Intellect</MAGIC_STAT>",
+            "I observe the tracks. <MAGIC_STAT>Intellect</MAGIC_STAT>"
+            "<MAGIC_METHOD>I compare the track spacing.</MAGIC_METHOD>",
             "I observe the tracks.",
         ),
         (
-            "<MAGIC_STAT>Intellect</MAGIC_STAT> I observe the tracks.",
+            "<MAGIC_STAT>Intellect</MAGIC_STAT>"
+            "<MAGIC_METHOD>I compare the track spacing.</MAGIC_METHOD> I observe the tracks.",
             "I observe the tracks.",
         ),
     ],
@@ -144,6 +165,7 @@ def test_actor_parser_moves_a_boundary_magic_tag_from_native_json_text(text, exp
 
     assert parsed.text == expected_text
     assert parsed.magic_stat is MagicAttribute.INTELLECT
+    assert parsed.magic_method == "I compare the track spacing."
 
 
 def test_actor_parser_does_not_normalize_an_unknown_trailing_magic_tag():

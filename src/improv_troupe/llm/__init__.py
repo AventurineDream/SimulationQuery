@@ -39,8 +39,20 @@ from .structured import (
     schema_for,
 )
 from .safety import SafetyIssue, review_actor_text, review_orchestrator_narration
+from .prose import (
+    ACTOR_PROSE_GUIDE,
+    DIARY_VOICE_GUIDE,
+    DIRECTOR_PROSE_GUIDE,
+    SCENE_PROSE_GUIDE,
+    ProseIssue,
+    lint_prose,
+)
 
 __all__ = [
+    "ACTOR_PROSE_GUIDE",
+    "DIARY_VOICE_GUIDE",
+    "DIRECTOR_PROSE_GUIDE",
+    "SCENE_PROSE_GUIDE",
     "ActorContext",
     "ActorTurnEnvelope",
     "DirectorClockChange",
@@ -94,4 +106,6 @@ __all__ = [
     "review_orchestrator_narration",
     "stream_with_schema",
     "supports_native_structured",
+    "ProseIssue",
+    "lint_prose",
 ]
