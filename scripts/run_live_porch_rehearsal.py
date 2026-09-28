@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Run five isolated 16-turn Porch rehearsals against the selected live models.
 
+This is the historical, unforced strategy-variance rehearsal; it does not
+require a MAGIC challenge. Use run_live_magic_dice_rehearsal.py for a controlled
+dice/adjudication check and run_live_magic_diary_rehearsal.py for the diary gate.
+
 This is a private model-quality rehearsal. It creates no production season,
 diaries, or public projection. Each strategy is seeded as an independent
 one-run season so canon and actor memories cannot leak between variants.
@@ -295,12 +299,73 @@ def _run_row(database: SQLiteDatabase, run_id: str) -> dict[str, object]:
         "WHERE run_id = ? GROUP BY purpose,status,acceptance_status ORDER BY purpose,status",
         (run_id,),
     ).fetchall()
+    rolls = [
+        json.loads(event["payload_json"])
+        for event in database.connection.execute(
+            "SELECT payload_json FROM domain_events WHERE aggregate_id = ? "
+            "AND event_type = 'MagicRollResolved' ORDER BY created_at,event_id",
+            (run_id,),
+        )
+    ]
+    diary_count = database.connection.execute(
+        "SELECT COUNT(*) FROM diaries WHERE season_id = "
+        "(SELECT season_id FROM runs WHERE run_id = ?)", (run_id,),
+    ).fetchone()[0]
+    cheetah_turn_count = database.connection.execute(
+        "SELECT COUNT(*) FROM turns WHERE run_id = ? AND lower(character_id) LIKE '%cheetah%'",
+        (run_id,),
+    ).fetchone()[0]
     return {
         "run_id": run_id,
         "status": str(row["status"]),
         "turn_count": int(row["turn_count"]),
         "completion_reason": str(row["completion_reason"] or ""),
         "model_calls": [dict(call) for call in calls],
+        "rolls": rolls,
+        "diary_count": int(diary_count),
+        "cheetah_turn_count": int(cheetah_turn_count),
+    }
+
+
+def _batch_receipt(results: list[dict[str, object]]) -> dict[str, object]:
+    """Separate scene completion from dice coverage using persisted evidence."""
+    checks = {}
+    roll_count = 0
+    accepted_turns = 0
+    diary_count = 0
+    cheetah_turns = 0
+    for result in results:
+        durable = result["durable"]
+        complete = (
+            not result.get("error")
+            and durable["status"] == "COMPLETED"
+            and durable["turn_count"] == 16
+            and durable["completion_reason"] == "turn_limit"
+            and durable["diary_count"] == 0
+            and durable["cheetah_turn_count"] == 0
+        )
+        checks[result["variant_id"]] = "PASS" if complete else "FAIL"
+        accepted_turns += durable["turn_count"]
+        roll_count += len(durable["rolls"])
+        diary_count += durable["diary_count"]
+        cheetah_turns += durable["cheetah_turn_count"]
+    expected = {variant_id for variant_id, _, _ in STRATEGIES}
+    passed = (
+        len(results) == len(expected)
+        and set(checks) == expected
+        and all(status == "PASS" for status in checks.values())
+    )
+    return {
+        "status": "PASS" if passed else "FAIL",
+        "variant_checks": checks,
+        "accepted_actor_turns": accepted_turns,
+        "diary_count": diary_count,
+        "cheetah_turns": cheetah_turns,
+        "dice_coverage": {
+            "status": "ROLLS_OBSERVED" if roll_count else "NOT_EXERCISED",
+            "roll_count": roll_count,
+            "required_by_this_harness": False,
+        },
     }
 
 
@@ -405,13 +470,13 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
             "durable": durable,
         })
     report = {
-        "batch": "season-1-porch-live-20260912",
+        "batch": root.name,
         "execution_type": "isolated_live_model_rehearsal",
         "model_manifest": manifest.model_dump(mode="json"),
         "turns_per_run": 16,
         "diaries": "none",
-        "cheetah_turns": 0,
         "results": results,
+        **_batch_receipt(results),
     }
     (roots.state / "porch-live-rehearsal-report.json").write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n",
@@ -431,8 +496,8 @@ def main() -> int:
         action="store_true",
         help="resume completed or interrupted variants in an existing rehearsal root",
     )
-    asyncio.run(_run(parser.parse_args()))
-    return 0
+    report = asyncio.run(_run(parser.parse_args()))
+    return 0 if report["status"] == "PASS" else 1
 
 
 if __name__ == "__main__":

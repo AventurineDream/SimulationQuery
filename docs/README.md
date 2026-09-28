@@ -10,6 +10,8 @@ The repository root holds the current cross-cutting contracts:
 
 Supporting material is grouped by purpose:
 
+- [`narrative-quality/CODEX_REVIEW_2026-09-23.md`](narrative-quality/CODEX_REVIEW_2026-09-23.md)
+  — Codex prose candidate, implementation tradeoffs, offline evidence, and peer-review handoff.
 - [`dashboard/`](dashboard/) — operator-dashboard product, design, and rehearsal records.
 - [`../research/`](../research/) — Simulation Query protocols, codebook, study status, and reviews.
 - [`../rehearsals/`](../rehearsals/) — model configurations and chronological rehearsal evidence.
