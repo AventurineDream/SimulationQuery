@@ -34,7 +34,14 @@ from ..llm.context import (
     build_orchestrator_messages,
     spent_director_imagery,
 )
-from ..llm.safety import SafetyIssue, review_actor_text, review_correction_scope, review_director_stakes, review_orchestrator_narration
+from ..llm.safety import (
+    SafetyIssue,
+    repeats_shared_phrase,
+    review_actor_text,
+    review_correction_scope,
+    review_director_stakes,
+    review_orchestrator_narration,
+)
 from .world_books import ActiveLoreEntry, WorldBookEngine
 from ..llm.structured import (
     ActorTurnEnvelope,
@@ -100,6 +107,7 @@ class DirectorGameState:
     )
     last_state_change: str | None = None
     last_pressure: str | None = None
+    offered_choices: tuple[str, ...] = ()
     pending_magic_challenge: str | None = None
     pending_magic_success_criteria: str | None = None
     pending_magic_actor: str | None = None
@@ -107,6 +115,7 @@ class DirectorGameState:
     pending_magic_result: str | None = None
     pending_magic_adjudication: MagicAdjudication | None = None
     last_magic_roll: dict[str, object] | None = None
+    last_magic_attempt: dict[str, object] | None = None
     last_magic_adjudication: MagicAdjudication | None = None
 
     def as_payload(self) -> dict[str, object]:
@@ -115,6 +124,7 @@ class DirectorGameState:
             "clocks": dict(self.clocks),
             "last_state_change": self.last_state_change,
             "last_pressure": self.last_pressure,
+            "offered_choices": list(self.offered_choices),
             "pending_magic_challenge": self.pending_magic_challenge,
             "pending_magic_success_criteria": self.pending_magic_success_criteria,
             "pending_magic_actor": self.pending_magic_actor,
@@ -126,6 +136,7 @@ class DirectorGameState:
                 else None
             ),
             "last_magic_roll": self.last_magic_roll,
+            "last_magic_attempt": self.last_magic_attempt,
             "last_magic_adjudication": (
                 self.last_magic_adjudication.model_dump(mode="json")
                 if self.last_magic_adjudication is not None
@@ -144,6 +155,7 @@ class DirectorGameState:
             self.clocks[change.clock] = self.clocks.get(change.clock, 0) + change.change
         self.last_state_change = plan.state_change
         self.last_pressure = plan.pressure
+        self.offered_choices = (plan.choice_a, plan.choice_b)
         if magic_adjudication is not None:
             self.finalize_magic_adjudication(magic_adjudication)
         self.apply_magic_fields(
@@ -168,6 +180,25 @@ class DirectorGameState:
             self.pending_magic_success_criteria = None
         self.pending_magic_actor = next_actor if magic_challenge else None
         self.pending_magic_modifier = magic_modifier if magic_challenge else 0
+
+    def actor_play_state(self) -> dict[str, object]:
+        """Only shared invitations and runtime facts, never private clocks or rationale."""
+
+        adjudication = self.pending_magic_adjudication or self.last_magic_adjudication
+        return {
+            "offered_choices": list(self.offered_choices),
+            "pending_challenge": (
+                {
+                    "actor": self.pending_magic_actor,
+                    "question": self.pending_magic_challenge,
+                    "success_criteria": self.pending_magic_success_criteria,
+                }
+                if self.pending_magic_challenge else None
+            ),
+            "latest_magic_result": (
+                adjudication.model_dump(mode="json") if adjudication is not None else None
+            ),
+        }
 
     def finalize_magic_adjudication(self, adjudication: MagicAdjudication) -> None:
         """Commit the runtime-derived result after its consequence is accepted."""
@@ -203,6 +234,7 @@ class DirectorGameState:
             self.record_magic_roll(roll)
             return
         self.pending_magic_challenge = None
+        self.pending_magic_success_criteria = None
         self.pending_magic_actor = None
         self.pending_magic_modifier = 0
 
@@ -218,6 +250,17 @@ class DirectorGameState:
         )
         adjudication = adjudicate_magic_roll(result, success_criteria=success_criteria)
         self.last_magic_roll = dict(roll)
+        self.last_magic_attempt = {
+            "run_id": roll.get("run_id"),
+            "round_number": roll.get("round_number"),
+            "turn_id": roll.get("turn_id"),
+            "character_id": roll.get("character_id"),
+            "character_name": roll.get("character_name"),
+            "attribute": roll.get("attribute"),
+            "method": roll.get("action"),
+            "actor_text": roll.get("actor_text"),
+            "attempt_contract": roll.get("attempt_contract"),
+        }
         self.pending_magic_result = result.outcome.value
         self.pending_magic_adjudication = adjudication
         self.pending_magic_challenge = None
@@ -517,6 +560,7 @@ class SceneRunner:
                 self._accepted_canon.extend(payload.get("canon_updates", []))
                 magic_state = payload.get("magic_state")
                 if isinstance(magic_state, dict):
+                    self._game_state.offered_choices = ()
                     self._game_state.apply_magic_fields(
                         magic_challenge=magic_state.get("magic_challenge"),
                         magic_success_criteria=magic_state.get("magic_success_criteria"),
@@ -541,7 +585,9 @@ class SceneRunner:
                 self._actor_memory.setdefault(character_id, []).extend(
                     str(note) for note in payload.get("memory_notes", [])
                 )
-                if bool(payload.get("magic_challenge_answered")):
+                if bool(payload.get("magic_challenge_declined")) or bool(
+                    payload.get("magic_challenge_answered")
+                ):
                     self._game_state.answer_magic_challenge(
                         character_id=character_id,
                         name=actor_names.get(character_id, character_id),
@@ -550,7 +596,7 @@ class SceneRunner:
                 self._game_state.record_magic_roll(payload)
             elif event_type == "NeutralInterruptionInserted":
                 character_id = str(payload.get("character_id", ""))
-                if bool(payload.get("magic_challenge_answered")):
+                if bool(payload.get("magic_challenge_declined")):
                     self._game_state.answer_magic_challenge(
                         character_id=character_id,
                         name=actor_names.get(character_id, character_id),
@@ -559,8 +605,8 @@ class SceneRunner:
                 key = (int(payload["round_number"]), str(payload["character_id"]))
                 self._correction_requested.add(key)
                 reason = str(payload.get("reason", "content review"))
-                if payload.get("code") == "MAGIC_ATTEMPT_PREMATURE_RESULT":
-                    reason = f"MAGIC_ATTEMPT_PREMATURE_RESULT: {reason}"
+                if payload.get("code"):
+                    reason = f"{payload['code']}: {reason}"
                 self._correction_reasons[key] = reason
             elif event_type == "TurnDisposition":
                 key = (int(payload["round_number"]), str(payload["character_id"]))
@@ -660,13 +706,24 @@ class SceneRunner:
                     "MAGIC_STAT may be used only for the character's pending challenge",
                 )
             if issue is None and envelope.magic_stat is not None:
-                issue = self._review_magic_attempt_text(text)
+                issue = self._review_magic_attempt_text(
+                    " ".join(part for part in (text, envelope.magic_method or "") if part)
+                )
             if issue is None and correction and correction_rejected_text:
                 is_magic_result_repair = bool(
                     correction_reason
                     and correction_reason.startswith("MAGIC_ATTEMPT_PREMATURE_RESULT:")
                 )
-                if not is_magic_result_repair:
+                is_metadata_repair = bool(
+                    correction_reason
+                    and correction_reason.startswith("MAGIC_STAT_WITHOUT_CHALLENGE:")
+                )
+                if is_metadata_repair and text != correction_rejected_text:
+                    issue = SafetyIssue(
+                        "CORRECTION_SCOPE_DRIFT",
+                        "metadata-only correction changed the character's move",
+                    )
+                elif not is_magic_result_repair:
                     issue = review_correction_scope(correction_rejected_text, text)
             if issue is None:
                 self._persist_actor_turn(
@@ -696,11 +753,7 @@ class SceneRunner:
                     },
                 )
                 self._correction_requested.add(key)
-                next_correction_reason = (
-                    f"{issue.code}: {issue.detail}"
-                    if issue.code == "MAGIC_ATTEMPT_PREMATURE_RESULT"
-                    else issue.detail
-                )
+                next_correction_reason = f"{issue.code}: {issue.detail}"
                 self._correction_reasons[key] = next_correction_reason
                 self._correction_rejected_texts[key] = text
                 correction = True
@@ -801,8 +854,8 @@ class SceneRunner:
                     "Return one complete director response. Narration is required and must be "
                     "shared, sensory scene material only, under 120 words, and must not name "
                     "or describe any cast member. The cast will make their own moves after the "
-                    "beat. This rehearsal rejects narration that uses more than two terms from "
-                    f"this exact spent list: {', '.join(spent_imagery_terms) or '(none)'}. "
+                    "beat. Avoid recycling descriptive phrases; retain functional nouns for "
+                    "continuity. Do not invent a new prop or crisis merely to vary the wording. "
                     f"Use one exact setting anchor from: {', '.join(continuity_anchors)}. "
                     "Make the cast's concrete fork explicit as two possible actions, not merely a "
                     "changed atmosphere. next_actor is optional; if included, it must be exactly one "
@@ -830,7 +883,7 @@ class SceneRunner:
                 "<MAGIC_MODIFIER>-2..2</MAGIC_MODIFIER>"
             ),
             character_id=_STAGE_CHARACTER_ID,
-            prompt_version_id="scene-director-v10-prose-craft",
+            prompt_version_id="scene-director-v10-grounded-prose+craft",
             context_version_id=f"scene:{self.run_id}:round:{round_number}:v1",
             role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
         )
@@ -858,6 +911,13 @@ class SceneRunner:
             modifier=decision.magic_modifier,
             round_number=round_number,
         )
+        if issue is None:
+            issue = self._review_unresolved_magic_challenge(
+                next_actor=decision.next_actor,
+                challenge=decision.magic_challenge,
+                success_criteria=decision.magic_success_criteria,
+                modifier=decision.magic_modifier,
+            )
         if (
             issue is None
             and decision.magic_challenge is not None
@@ -878,9 +938,6 @@ class SceneRunner:
                 actor_names=[actor.name for actor in self.actors],
                 continuity_anchors=(
                     continuity_anchors if self.enforce_narrative_acceptance else ()
-                ),
-                spent_imagery=(
-                    spent_imagery_terms if self.enforce_narrative_acceptance else ()
                 ),
             )
         if (
@@ -994,8 +1051,8 @@ class SceneRunner:
                 "<MAGIC_EFFECT_DETAIL>none or one short observable consequence</MAGIC_EFFECT_DETAIL>"
             ),
             character_id=_STAGE_CHARACTER_ID,
-            prompt_version_id="scene-director-plan-v7-prose-craft",
-            context_version_id=f"scene:{self.run_id}:round:{round_number}:game:v5",
+            prompt_version_id="scene-director-plan-v7-grounded-prose+craft",
+            context_version_id=f"scene:{self.run_id}:round:{round_number}:game:v6",
             role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
         )
         if plan_result.status is not NormalizedCallStatus.COMPLETED:
@@ -1112,8 +1169,8 @@ class SceneRunner:
                 "<MAGIC_EFFECT_DETAIL>none or concise visible result/cost/opening</MAGIC_EFFECT_DETAIL>"
                 ),
                 character_id=_STAGE_CHARACTER_ID,
-                prompt_version_id="scene-director-plan-correction-v4-prose-craft",
-                context_version_id=f"scene:{self.run_id}:round:{round_number}:game:correction:v2",
+                prompt_version_id="scene-director-plan-correction-v4-grounded-prose+craft",
+                context_version_id=f"scene:{self.run_id}:round:{round_number}:game:correction:v3",
                 role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
                 correction_of_call_id=rejected_plan_call_id,
             )
@@ -1223,12 +1280,13 @@ class SceneRunner:
                 plan=plan.model_dump(mode="json"),
                 continuity_anchors=continuity_anchors,
                 spent_director_terms=spent_imagery_terms,
+                established_scene=self._scene_lines(),
             ),
             schema_name="director_render",
             tagged_format_instructions="<NARRATION>...</NARRATION>",
             character_id=_STAGE_CHARACTER_ID,
-            prompt_version_id="scene-director-render-v2-prose-craft",
-            context_version_id=f"scene:{self.run_id}:round:{round_number}:game:v1",
+            prompt_version_id="scene-director-render-v2-grounded-optional-detail+craft",
+            context_version_id=f"scene:{self.run_id}:round:{round_number}:render:v2",
             role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
         )
         if render_result.status is not NormalizedCallStatus.COMPLETED:
@@ -1248,68 +1306,12 @@ class SceneRunner:
                 validator_code="DIRECTOR_RENDER_STRUCTURED_OUTPUT_INVALID",
             )
             return self._raise_interrupt("orchestrator_output_invalid")
-        accepted_spent_terms = tuple(
-            term for term in spent_imagery_terms if term not in set(continuity_anchors)
-        )
-        narration = _compile_director_beat(
+        decision, issue = self._prepare_director_render(
             rendered.narration,
             plan,
-            continuity_anchors[0],
-            magic_adjudication=self._game_state.pending_magic_adjudication,
+            round_number=round_number,
+            call_id=call_id,
         )
-        decision = OrchestratorEnvelope(
-            narration=narration,
-            next_actor=plan.next_actor,
-            complete=plan.complete,
-            canon_updates=plan.canon_updates,
-        )
-        issue = review_orchestrator_narration(
-            rendered.narration,
-            actor_names=[actor.name for actor in self.actors],
-        )
-        if issue is None:
-            # The compiled beat intentionally contains validated choices such
-            # as "Have Eli call...". Review its continuity and imagery without
-            # treating those plan fields as fresh actor-authored actions.
-            issue = review_orchestrator_narration(
-                decision.narration,
-                actor_names=(),
-                continuity_anchors=continuity_anchors,
-                spent_imagery=accepted_spent_terms,
-            ) or self._review_director_render(decision.narration, plan, max_words=160)
-        if issue is not None and issue.code == "SPENT_IMAGERY_REUSED":
-            # The renderer's job is optional scene texture.  The plan has
-            # already passed its own anti-repetition review, so do not let a
-            # decorative echo erase a playable decision.  Preserve the raw
-            # renderer output in its model-call audit and record this drop.
-            narration = _compile_director_beat(
-                "",
-                plan,
-                continuity_anchors[0],
-                magic_adjudication=self._game_state.pending_magic_adjudication,
-            )
-            decision = decision.model_copy(update={"narration": narration})
-            issue = review_orchestrator_narration(
-                decision.narration,
-                actor_names=(),
-                continuity_anchors=continuity_anchors,
-                spent_imagery=accepted_spent_terms,
-            ) or self._review_director_render(decision.narration, plan, max_words=160)
-            if issue is None:
-                self.events.append(
-                    event_id=f"{self.run_id}:director-render-flavor-dropped:{round_number}",
-                    natural_key=f"{self.run_id}:director-render-flavor-dropped:{round_number}",
-                    aggregate_type="run",
-                    aggregate_id=self.run_id,
-                    event_type="DirectorRenderFlavorDropped",
-                    payload={
-                        "round_number": round_number,
-                        "call_id": call_id,
-                        "code": "SPENT_IMAGERY_REUSED",
-                    },
-                )
-        if issue is None and _normalized_story_text(decision.narration) in self._accepted_stage_narrations:
-            issue = SafetyIssue("EXACT_REPEAT", "director narration repeats accepted shared text")
         if issue is not None:
             self.orchestrator.calls.record_diagnostics(
                 call_id=call_id,
@@ -1330,12 +1332,13 @@ class SceneRunner:
                         plan=plan.model_dump(mode="json"),
                         continuity_anchors=continuity_anchors,
                         spent_director_terms=spent_imagery_terms,
+                        established_scene=self._scene_lines(),
                     ),
                     {"role": "system", "content": (
                         "Repair one rejected director narration. Return only the narration envelope. "
                         "The supplied plan is fixed: do not alter its decisions, costs, clocks, "
-                        "canon, next actor, or completion state. Write a fresh short environmental "
-                        "lead-in using only objects, systems, light, sound, or temperature as subjects. "
+                        "canon, next actor, or completion state. Write at most 35 words of grounded "
+                        "detail, or return an empty narration string if no detail is needed. "
                         "Do not name cast members or describe their actions, sensations, thoughts, "
                         "dialogue, reactions, or choices. Do not add a new event or crisis. "
                         "The application will append the unchanged plan.\n"
@@ -1347,8 +1350,8 @@ class SceneRunner:
                 schema_name="director_render",
                 tagged_format_instructions="<NARRATION>...</NARRATION>",
                 character_id=_STAGE_CHARACTER_ID,
-                prompt_version_id="scene-director-render-correction-v2-prose-craft",
-                context_version_id=f"scene:{self.run_id}:round:{round_number}:render-correction:v1",
+                prompt_version_id="scene-director-render-correction-v2-grounded-optional-detail+craft",
+                context_version_id=f"scene:{self.run_id}:round:{round_number}:render-correction:v2",
                 role_sheet_version_id=f"hidden-plan:v{self.private_plan.version}",
                 correction_of_call_id=rejected_call_id,
             )
@@ -1366,29 +1369,12 @@ class SceneRunner:
                     validator_code="DIRECTOR_RENDER_CORRECTION_STRUCTURED_OUTPUT_INVALID",
                 )
                 return self._raise_interrupt("director_render_correction_output_invalid")
-            decision = decision.model_copy(
-                update={
-                    "narration": _compile_director_beat(
-                        corrected_render.narration,
-                        plan,
-                        continuity_anchors[0],
-                        magic_adjudication=self._game_state.pending_magic_adjudication,
-                    )
-                }
-            )
-            issue = review_orchestrator_narration(
+            decision, issue = self._prepare_director_render(
                 corrected_render.narration,
-                actor_names=[actor.name for actor in self.actors],
+                plan,
+                round_number=round_number,
+                call_id=call_id,
             )
-            if issue is None:
-                issue = review_orchestrator_narration(
-                    decision.narration,
-                    actor_names=(),
-                    continuity_anchors=continuity_anchors,
-                    spent_imagery=accepted_spent_terms,
-                ) or self._review_director_render(decision.narration, plan, max_words=160)
-            if issue is None and _normalized_story_text(decision.narration) in self._accepted_stage_narrations:
-                issue = SafetyIssue("EXACT_REPEAT", "director narration repeats accepted shared text")
             if issue is not None:
                 self.orchestrator.calls.record_diagnostics(
                     call_id=call_id, parse_status="PARSED", validation_status="REJECTED",
@@ -1405,6 +1391,70 @@ class SceneRunner:
         )
         self._pending_director_plans[round_number] = plan
         return decision, attempt, call_id
+
+    def _prepare_director_render(
+        self,
+        flavor: str,
+        plan: DirectorPlanEnvelope,
+        *,
+        round_number: int,
+        call_id: str,
+    ) -> tuple[OrchestratorEnvelope, SafetyIssue | None]:
+        """Apply identical acceptance rules to the first render and its retry.
+
+        Only repetitive optional flavor may be dropped. The unchanged plan
+        must still pass every compiled-beat check; actor puppeteering is never
+        converted into an accepted narration by this fallback.
+        """
+        def compile_beat(lead_in: str) -> OrchestratorEnvelope:
+            return OrchestratorEnvelope(
+                narration=_compile_director_beat(
+                    lead_in,
+                    plan,
+                    magic_adjudication=self._game_state.pending_magic_adjudication,
+                ),
+                next_actor=plan.next_actor,
+                complete=plan.complete,
+                canon_updates=plan.canon_updates,
+            )
+
+        def review_beat(decision: OrchestratorEnvelope) -> SafetyIssue | None:
+            # State and runtime results were validated before composition. Options
+            # are delivered separately, so they cannot read as completed actions.
+            issue = self._review_director_render(decision.narration, plan, max_words=160)
+            if issue is None and _normalized_story_text(decision.narration) in self._accepted_stage_narrations:
+                issue = SafetyIssue("EXACT_REPEAT", "director narration repeats accepted shared text")
+            return issue
+
+        decision = compile_beat(flavor)
+        issue = review_orchestrator_narration(
+            flavor, actor_names=[actor.name for actor in self.actors]
+        ) or review_beat(decision)
+        if issue is None and len(flavor.split()) > 35:
+            issue = SafetyIssue("DIRECTOR_LEAD_IN_TOO_VERBOSE", "optional lead-in exceeds 35 words")
+        if issue is None and repeats_shared_phrase(
+            flavor,
+            (*self._accepted_stage_narrations, plan.state_change, plan.pressure,
+             plan.magic_effect_detail or ""),
+        ):
+            issue = SafetyIssue("SPENT_IMAGERY_REUSED", "optional detail repeats an established phrase")
+        if issue is not None and issue.code == "SPENT_IMAGERY_REUSED":
+            decision = compile_beat("")
+            issue = review_beat(decision)
+            if issue is None:
+                self.events.append(
+                    event_id=f"{self.run_id}:director-render-flavor-dropped:{round_number}",
+                    natural_key=f"{self.run_id}:director-render-flavor-dropped:{round_number}",
+                    aggregate_type="run",
+                    aggregate_id=self.run_id,
+                    event_type="DirectorRenderFlavorDropped",
+                    payload={
+                        "round_number": round_number,
+                        "call_id": call_id,
+                        "code": "SPENT_IMAGERY_REUSED",
+                    },
+                )
+        return decision, issue
 
     def _review_director_plan(
         self, plan: DirectorPlanEnvelope, round_number: int
@@ -1440,6 +1490,14 @@ class SceneRunner:
         )
         if magic_setup_issue is not None:
             return magic_setup_issue
+        unresolved_issue = self._review_unresolved_magic_challenge(
+            next_actor=plan.next_actor,
+            challenge=plan.magic_challenge,
+            success_criteria=plan.magic_success_criteria,
+            modifier=plan.magic_modifier,
+        )
+        if unresolved_issue is not None:
+            return unresolved_issue
         if round_number == 1 and self.required_magic_opening_plan is not None:
             expected_opening = self.required_magic_opening_plan.model_dump(mode="json")
             if plan.model_dump(mode="json") != expected_opening:
@@ -1490,18 +1548,67 @@ class SceneRunner:
             return SafetyIssue("DIRECTOR_PLAN_TOO_VERBOSE", "a visible game-state field exceeds 24 words")
         if sum(len(field.split()) for field in visible_fields[:4]) > 64:
             return SafetyIssue("DIRECTOR_PLAN_TOO_VERBOSE", "the visible decision bundle exceeds 64 words")
-        spent = self._active_plan_spent_imagery()
-        reused = [
-            term
-            for term in spent
-            if any(re.search(rf"\b{re.escape(term)}\b", field, flags=re.IGNORECASE) for field in visible_fields)
-        ]
-        if len(reused) > 2:
+        return None
+
+    def _review_unresolved_magic_challenge(
+        self,
+        *,
+        next_actor: str | None,
+        challenge: str | None,
+        success_criteria: str | None,
+        modifier: int,
+    ) -> SafetyIssue | None:
+        """Keep an unanswered challenge sticky until an actor answers it.
+
+        A rejected actor attempt and a neutral interruption are not answers. The
+        next director beat must therefore preserve the exact challenge contract
+        until the designated actor either rolls or explicitly declines.
+        """
+
+        if (
+            self._game_state.pending_magic_challenge is None
+            or self._game_state.pending_magic_adjudication is not None
+        ):
+            return None
+        pending_challenge = self._game_state.pending_magic_challenge
+        if challenge != pending_challenge:
             return SafetyIssue(
-                "PLAN_SPENT_IMAGERY_REUSED",
-                "director plan reuses too many prior-imagery terms: " + ", ".join(reused),
+                "MAGIC_CHALLENGE_UNRESOLVED",
+                "the active MAGIC challenge has no accepted roll or explicit decline; "
+                "preserve it until resolved",
+            )
+        if success_criteria != self._game_state.pending_magic_success_criteria:
+            return SafetyIssue(
+                "MAGIC_CHALLENGE_UNRESOLVED",
+                "preserve the active MAGIC success criteria until the challenge is resolved",
+            )
+        pending_actor = self._game_state.pending_magic_actor
+        if (
+            next_actor is None
+            or pending_actor is None
+            or not self._actor_references_match(next_actor, pending_actor)
+        ):
+            return SafetyIssue(
+                "MAGIC_CHALLENGE_UNRESOLVED",
+                "preserve the designated MAGIC actor until the challenge is resolved",
+            )
+        if modifier != self._game_state.pending_magic_modifier:
+            return SafetyIssue(
+                "MAGIC_CHALLENGE_UNRESOLVED",
+                "preserve the active MAGIC situational modifier until the challenge is resolved",
             )
         return None
+
+    def _actor_references_match(self, left: str, right: str) -> bool:
+        left_value = left.casefold()
+        right_value = right.casefold()
+        if left_value == right_value:
+            return True
+        for actor in self.actors:
+            aliases = {actor.name.casefold(), actor.character_id.casefold()}
+            if left_value in aliases and right_value in aliases:
+                return True
+        return False
 
     def _review_required_magic_setup(
         self,
@@ -1974,8 +2081,6 @@ class SceneRunner:
         required = (
             ("PLAN_STATE_CHANGE_MISSING", plan.state_change),
             ("PLAN_PRESSURE_MISSING", plan.pressure),
-            ("CHOICE_A_MISSING", f"Choice A: {plan.choice_a}"),
-            ("CHOICE_B_MISSING", f"Choice B: {plan.choice_b}"),
         )
         for code, phrase in required:
             if phrase.casefold() not in normalized:
@@ -2021,15 +2126,55 @@ class SceneRunner:
                     "in-character turn under 120 words, with no response-envelope markup, "
                     "private asides, or another actor's line. Include at most two short memory "
                     "notes. Diary intent is a boolean; wellness is only an explicit out-of-world "
-                    "signal. Treat every accepted actor line in CURRENT SCENE as a resolved move. "
+                    "signal. Accepted speech and attempts have happened, but their claims and "
+                    "intended results are not automatically established facts. "
                     "Do not repeat or paraphrase an earlier action, reuse its same procedure on "
-                    "the same target, or turn an earlier decision back into a suggestion. Advance "
-                    "the newest director choice with one unused decision that fits your character. "
+                    "the same target, or turn an earlier decision back into a suggestion. Respond "
+                    "to the latest exchange with a move that fits your character. The offered "
+                    "choices are invitations from the last beat, not a forced menu or canon; "
+                    "you may transform or decline them. Later accepted moves may make an option "
+                    "obsolete. Do not choose an already-completed action again. "
+                    "A pending challenge in SHARED PLAY STATE remains unanswered for everyone, "
+                    "not just its designated actor. Do not settle it through incidental description "
+                    "or someone else's attempted observation. A setback is not a hidden success. "
                     "If and only if the current director beat gives you a pending MAGIC challenge, "
                     "you may include <MAGIC_STAT>Might|Authority|Gusto|Intellect|Cool</MAGIC_STAT> "
-                    "to attempt it; your ACTOR_TEXT is the action being tested. Describe the attempt, "
-                    "not whether it succeeded, a diagnosis, or the final answer; the app resolves "
-                    "that. Omit MAGIC_STAT to decline. Never invent or narrate the dice or their result."
+                    "and a separate <MAGIC_METHOD>one intended method only</MAGIC_METHOD> to attempt it. "
+                    "The runtime tests MAGIC_METHOD; keep both fields free of invented results. "
+                    "ACTOR_TEXT is shared in-character material and cannot establish the challenge result. "
+                    "Describe the attempt, not whether it succeeded, a diagnosis, or the final answer; "
+                    "the app resolves that. Omit both fields to decline. Never invent or narrate the dice "
+                    "or their result."
+                ),
+            }
+        )
+        challenge = self._game_state.challenge_for(
+            character_id=actor.character_id, name=actor.name
+        )
+        messages.append(
+            {
+                "role": "user",
+                "content": "SHARED PLAY STATE (instructions, not additional story events)\n"
+                + json.dumps(self._game_state.actor_play_state(), sort_keys=True),
+            }
+        )
+        messages.append(
+            {
+                "role": "system",
+                "content": (
+                    f"CURRENT MAGIC STATE FOR {actor.name}: "
+                    + (
+                        f"PENDING CHALLENGE: {challenge}\n"
+                        "You may attempt this challenge with one relevant magic_stat and a separate "
+                        "magic_method, or decline by leaving both null. magic_method must contain only "
+                        "the intended method or unanswered question; describe no result."
+                        if challenge is not None
+                        else "NO PENDING CHALLENGE. Return magic_stat as null in JSON, or omit "
+                        "the MAGIC_STAT tag. A suggested action or an earlier challenge in the "
+                        "transcript does not authorize a roll."
+                    )
+                    + " This runtime state is authoritative for this turn. Never embed a "
+                    "MAGIC_STAT or MAGIC_METHOD tag inside the JSON text field."
                 ),
             }
         )
@@ -2062,11 +2207,18 @@ class SceneRunner:
             correction_instruction = (
                 "Your previous attempt was rejected because it stated a result or diagnosis "
                 "before the pending MAGIC roll. Keep the same character choice, expertise, "
-                "observable method, and MAGIC_STAT, but rewrite the move as an attempt only. "
+                "observable method, MAGIC_STAT, and MAGIC_METHOD, but rewrite the move as an "
+                "attempt only. MAGIC_METHOD must contain only the intended method or unanswered "
+                "question; it must not contain a finding. "
                 "Do not state, imply, or name the diagnosis, success, failure, or final answer; "
                 "do not repeat any matched term, inflection, or close medical synonym. Use only "
                 "observation-only language about movement, position, timing, distance, or sound; "
                 "the app's roll determines that. Do not add another character's action or reaction. "
+                "Write one method and one still-unanswered question: what you will look for, "
+                "compare, or measure. Stop before any finding. Use wording such as 'I compare "
+                "the camera frames to see whether the pace changes', not a report of what the "
+                "comparison shows. Do not turn a medical conclusion into a cautionary reason "
+                "for acting; leave medical causes out altogether. "
                 "Return one complete actor response without explaining the correction."
                 if correction_reason.startswith("MAGIC_ATTEMPT_PREMATURE_RESULT:")
                 else (
@@ -2079,11 +2231,25 @@ class SceneRunner:
                     "change the outcome and do not explain the correction."
                 )
             )
+            if correction_reason.startswith("MAGIC_STAT_WITHOUT_CHALLENGE:"):
+                # This retry is an envelope repair, not a second actor turn.
+                # Supplying the entire play context invites an unrelated new
+                # performance instead of preserving the already-reviewed move.
+                messages = []
+                correction_instruction = (
+                    "You are repairing a response envelope, not performing or continuing a scene. "
+                    "The actor selected a MAGIC stat without a pending challenge. This is a "
+                    "metadata-only correction: keep the rejected turn's in-character text unchanged, "
+                    "character for character. Return magic_stat as null in JSON, or omit "
+                    "the MAGIC_STAT tag entirely. Do not put MAGIC_STAT markup in text, invent "
+                    "a challenge, narrate a roll, or add memory notes. Return one complete actor "
+                    "response containing exactly the supplied text."
+                )
             if correction_reason.startswith("MAGIC_ATTEMPT_PREMATURE_RESULT:"):
                 correction_instruction += (
-                    " If you answer with JSON, put MAGIC_STAT in the magic_stat field and "
-                    "memory notes in the memory_notes list; never put <MAGIC_STAT> or "
-                    "[Memory: ...] inside text."
+                    " If you answer with JSON, put MAGIC_STAT in the magic_stat field, the unchanged "
+                    "intended method in magic_method, and memory notes in the memory_notes list; "
+                    "never put <MAGIC_STAT>, <MAGIC_METHOD>, or [Memory: ...] inside text."
                 )
             messages.append(
                 {
@@ -2118,11 +2284,12 @@ class SceneRunner:
                 "<WELLNESS_SIGNAL>optional out-of-world signal</WELLNESS_SIGNAL>\n"
                 "<MEMORY_NOTE>optional private memory note</MEMORY_NOTE>\n"
                 "<DIARY_INTENT>false</DIARY_INTENT>\n"
-                "<MAGIC_STAT>optional: Might|Authority|Gusto|Intellect|Cool</MAGIC_STAT>"
+                "<MAGIC_STAT>optional: Might|Authority|Gusto|Intellect|Cool</MAGIC_STAT>\n"
+                "<MAGIC_METHOD>optional: intended method only</MAGIC_METHOD>"
             ),
             character_id=actor.character_id,
-            prompt_version_id="scene-actor-v7-prose-craft-2",
-            context_version_id=f"scene:{self.run_id}:round:{round_number}:v4",
+            prompt_version_id="scene-actor-v11-grounded-character-voice+craft",
+            context_version_id=f"scene:{self.run_id}:round:{round_number}:v7",
             role_sheet_version_id=f"{actor.character_id}:v{actor.role_sheet.version}",
             correction_of_call_id=(
                 f"{self.run_id}:actor:turn:{actor.character_id}:r{round_number}:a1"
@@ -2180,9 +2347,8 @@ class SceneRunner:
             )
             challenged_name = challenged_actor.name if challenged_actor else decision.next_actor
             visible_narration += (
-                f"\nMAGIC CHALLENGE — {challenged_name}: {magic_challenge} "
-                f"Success criteria: {magic_success_criteria}. "
-                "Choose a relevant MAGIC attribute to attempt it, or omit MAGIC_STAT to decline."
+                f"\nOpen question for {challenged_name}: {magic_challenge}\n"
+                f"A successful attempt would establish: {magic_success_criteria}"
             )
         artifact = self.orchestrator.audit.write_text(
             Path("runs")
@@ -2245,6 +2411,7 @@ class SceneRunner:
                 },
             )
         else:
+            self._game_state.offered_choices = ()
             self._game_state.apply_magic_fields(
                 magic_challenge=magic_challenge,
                 magic_success_criteria=magic_success_criteria,
@@ -2282,6 +2449,9 @@ class SceneRunner:
         )
         roll_payload: dict[str, object] | None = None
         if challenge is not None and envelope.magic_stat is not None:
+            attempted_method = (envelope.magic_method or "").strip()
+            if not attempted_method:
+                raise SceneRunError("magic_method_missing_before_roll")
             score = actor.role_sheet.magic.score_for(envelope.magic_stat)
             die_faces = self._roll_dice()
             result: MagicRollResult = resolve_magic_roll(
@@ -2298,7 +2468,8 @@ class SceneRunner:
                 character_id=actor.character_id,
                 character_name=actor.name,
                 challenge=challenge,
-                action=text,
+                action=attempted_method,
+                actor_text=text,
                 result=result,
                 recorded_at=self.orchestrator.clock.now().isoformat(),
             )
@@ -2341,7 +2512,13 @@ class SceneRunner:
                     "memory_notes": envelope.memory_notes,
                     "accepted_sequence": accepted_sequence,
                     "caused_by_turn_id": caused_by_turn_id,
-                    "magic_challenge_answered": challenge is not None,
+                    "magic_challenge_answered": (
+                        challenge is not None and envelope.magic_stat is not None
+                    ),
+                    "magic_challenge_declined": (
+                        challenge is not None and envelope.magic_stat is None
+                    ),
+                    "magic_method": envelope.magic_method,
                 },
             )
             if roll_payload is not None:
@@ -2470,16 +2647,12 @@ class SceneRunner:
                 "character_id": actor.character_id,
                 "reason": issue.detail,
                 "content_path": str(artifact.path),
-                "magic_challenge_answered": challenge is not None,
+                "magic_challenge_answered": False,
+                "magic_challenge_declined": False,
                 "accepted_sequence": accepted_sequence,
                 "caused_by_turn_id": caused_by_turn_id,
             },
         )
-        if challenge is not None:
-            self._game_state.answer_magic_challenge(
-                character_id=actor.character_id,
-                name=actor.name,
-            )
         key = (round_number, actor.character_id)
         self._neutral_interruptions.add(key)
         self._resolved.add(key)
@@ -2654,6 +2827,14 @@ def _director_plan_correction_instruction(
             "preservation; preserve every unrelated field and do not make the character approach "
             "or touch the cheetah."
         )
+    if rejection_code == "MAGIC_CHALLENGE_UNRESOLVED":
+        return (
+            "The active MAGIC challenge is still unanswered. Preserve its exact challenge text, "
+            "success criteria, designated next_actor, and situational modifier. Do not claim its "
+            "success, drop it, replace it, or advance past it. It remains active until that actor "
+            "makes an accepted MAGIC_METHOD roll or explicitly declines. Change only the unrelated "
+            "director fields required by the validator."
+        )
     if rejection_code == "MAGIC_REHEARSAL_OPENING_LOCKED":
         return (
             "Replace the opening with the supplied locked plan exactly. It is intentionally "
@@ -2741,6 +2922,7 @@ def _magic_roll_summary(payload: dict[str, object]) -> str:
         f"{payload.get('attribute', 'MAGIC')} ({payload.get('attribute_score', '?')}): "
         f"2d6 [{face_text}] + stat {stat_modifier:+d} + situation "
         f"{situational_modifier:+d} = {total} — {str(payload.get('outcome', 'unknown')).upper()}. "
+        f"Method: {payload.get('action', '')}. "
         f"Challenge: {payload.get('challenge', '')}. "
         f"Success criteria: {payload.get('success_criteria', '')}"
     )
@@ -2749,16 +2931,15 @@ def _magic_roll_summary(payload: dict[str, object]) -> str:
 def _compile_director_beat(
     lead_in: str,
     plan: DirectorPlanEnvelope,
-    continuity_anchor: str,
     *,
     magic_adjudication: MagicAdjudication | None = None,
 ) -> str:
     """Make the validated plan and runtime adjudication visible without asking twice.
 
-    The prose model supplies atmosphere only.  The game-master's actual state
-    change and choices are compiled verbatim, which preserves actor agency and
-    prevents a fluent renderer from silently dropping the turn's decision. The
-    MAGIC tier and goal answer come from the runtime, never from the plan.
+    State and pressure are already sentences. Do not manufacture a location
+    from a keyword anchor or print the private planning form as narration.
+    Choices reach actors through shared play state and remain in the accepted
+    plan event. The MAGIC receipt stays exact and runtime-owned.
     """
 
     outcome_line = None
@@ -2785,11 +2966,9 @@ def _compile_director_beat(
         line
         for line in (
             lead_in.strip(),
-            f"At {continuity_anchor}: {plan.state_change}",
+            plan.state_change,
             outcome_line,
-            f"Pressure: {plan.pressure}",
-            f"Choice A: {plan.choice_a}",
-            f"Choice B: {plan.choice_b}",
+            plan.pressure,
         )
         if line
     )

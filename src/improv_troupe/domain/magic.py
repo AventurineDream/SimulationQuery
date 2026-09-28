@@ -174,6 +174,7 @@ def magic_roll_payload(
     character_name: str,
     challenge: str,
     action: str,
+    actor_text: str | None = None,
     result: MagicRollResult,
     recorded_at: str,
 ) -> dict[str, object]:
@@ -187,6 +188,8 @@ def magic_roll_payload(
         "character_name": character_name,
         "challenge": challenge,
         "action": action,
+        "actor_text": actor_text,
+        "attempt_contract": "attempted_method_only",
         "attribute": result.attribute.value,
         "attribute_score": result.attribute_score,
         "die_faces": list(result.die_faces),

@@ -26,6 +26,15 @@ class ActorTurnEnvelope(BaseModel):
     )
     diary_intent: bool = False
     magic_stat: MagicAttribute | None = None
+    magic_method: str | None = Field(default=None, max_length=320)
+
+    @model_validator(mode="after")
+    def magic_method_matches_selected_stat(self) -> "ActorTurnEnvelope":
+        if self.magic_stat is None and self.magic_method is not None:
+            raise ValueError("MAGIC_METHOD requires a selected MAGIC_STAT")
+        if self.magic_stat is not None and not (self.magic_method or "").strip():
+            raise ValueError("a MAGIC attempt requires a separate MAGIC_METHOD")
+        return self
 
     @model_validator(mode="after")
     def shared_text_must_not_contain_envelope_markup(self) -> "ActorTurnEnvelope":
@@ -192,7 +201,13 @@ class DirectorRenderEnvelope(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     kind: Literal["director_render"] = "director_render"
-    narration: str = Field(min_length=1, max_length=720)
+    narration: str = Field(max_length=720)
+
+    @model_validator(mode="after")
+    def narration_has_no_markup(self) -> "DirectorRenderEnvelope":
+        if re.search(r"</?[A-Za-z][A-Za-z0-9_:-]*\b[^>]*>", self.narration):
+            raise ValueError("director narration must not contain envelope markup")
+        return self
 
 
 class EpisodeResolutionEnvelope(BaseModel):
@@ -253,7 +268,7 @@ class DiaryClaimAudit(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     claim_id: StrictInt = Field(ge=1)
-    verdict: Literal["SUPPORTED", "SUBJECTIVE", "UNSUPPORTED"]
+    verdict: Literal["SUPPORTED", "SUBJECTIVE", "UNSUPPORTED", "MIXED"]
     evidence_refs: list[StrictInt] = Field(default_factory=list, max_length=16)
     issue: str | None = Field(default=None, max_length=240)
 
@@ -261,8 +276,8 @@ class DiaryClaimAudit(BaseModel):
     def verdict_requires_the_right_receipt(self) -> "DiaryClaimAudit":
         if self.verdict == "SUPPORTED" and not self.evidence_refs:
             raise ValueError("a supported claim must cite accepted scene evidence")
-        if self.verdict == "UNSUPPORTED" and not self.issue:
-            raise ValueError("an unsupported claim must describe its issue")
+        if self.verdict in {"UNSUPPORTED", "MIXED"} and not self.issue:
+            raise ValueError("an unsupported or mixed claim must describe its issue")
         return self
 
 
@@ -304,10 +319,15 @@ class DiaryFidelityEnvelope(BaseModel):
                 self.evidence_reference_issues,
             )
         )
+        has_blocking_claim_audit = any(
+            audit.verdict in {"UNSUPPORTED", "MIXED"} for audit in self.claim_audits
+        )
         if self.decision == "ACCEPT" and has_findings:
             raise ValueError("an accepted diary review cannot contain fidelity findings")
-        if self.decision == "REJECT" and not has_findings:
-            raise ValueError("a rejected diary review requires a categorized fidelity finding")
+        if self.decision == "REJECT" and not has_findings and not has_blocking_claim_audit:
+            raise ValueError(
+                "a rejected diary review requires a categorized finding or a blocking claim audit"
+            )
         return self
 
 
@@ -361,7 +381,8 @@ Envelope = TypeVar(
 
 
 _ACTOR_TAGS = (
-    "ACTOR_TEXT", "WELLNESS_SIGNAL", "MEMORY_NOTE", "DIARY_INTENT", "MAGIC_STAT"
+    "ACTOR_TEXT", "WELLNESS_SIGNAL", "MEMORY_NOTE", "DIARY_INTENT", "MAGIC_STAT",
+    "MAGIC_METHOD",
 )
 
 
@@ -421,6 +442,26 @@ def _normalize_native_actor_magic_tag(raw: str) -> str:
             + actor_text[magic_matches[0].end() :]
         )
         decoded["magic_stat"] = attribute.value
+        changed = True
+
+    method_matches = list(
+        re.finditer(
+            r"<MAGIC_METHOD>\s*(?P<method>.*?)\s*</MAGIC_METHOD>",
+            actor_text,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+    )
+    if method_matches:
+        if decoded.get("magic_method") is not None or len(method_matches) != 1:
+            return raw
+        method = method_matches[0].group("method").strip()
+        if not method:
+            return raw
+        actor_text = (
+            actor_text[: method_matches[0].start()]
+            + actor_text[method_matches[0].end() :]
+        )
+        decoded["magic_method"] = method
         changed = True
 
     memory_matches = list(
@@ -683,7 +724,10 @@ def _repair_diary_tag_boundaries(raw: str) -> str:
 def _parse_actor_tags(raw: str) -> dict[str, object] | None:
     fields = _tagged_fields(
         raw,
-        ("ACTOR_TEXT", "WELLNESS_SIGNAL", "MEMORY_NOTE", "DIARY_INTENT", "MAGIC_STAT"),
+        (
+            "ACTOR_TEXT", "WELLNESS_SIGNAL", "MEMORY_NOTE", "DIARY_INTENT",
+            "MAGIC_STAT", "MAGIC_METHOD",
+        ),
     )
     if fields is None or "ACTOR_TEXT" not in fields:
         return None
@@ -693,6 +737,7 @@ def _parse_actor_tags(raw: str) -> dict[str, object] | None:
         "memory_notes": _repeated_tag_values(raw, "MEMORY_NOTE"),
         "diary_intent": _parse_bool(fields.get("DIARY_INTENT"), default=False),
         "magic_stat": _normalize_magic_attribute(fields.get("MAGIC_STAT")),
+        "magic_method": fields.get("MAGIC_METHOD"),
     }
 
 
