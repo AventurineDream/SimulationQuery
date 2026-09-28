@@ -46,10 +46,16 @@ def _tagged_actor(
     *,
     wellness: str | None = None,
     magic_stat: str | None = None,
+    magic_method: str | None = None,
 ) -> ScriptedStream:
     signal = f"<WELLNESS_SIGNAL>{wellness}</WELLNESS_SIGNAL>" if wellness else ""
     stat = f"<MAGIC_STAT>{magic_stat}</MAGIC_STAT>" if magic_stat else ""
-    return ScriptedStream((f"<ACTOR_TEXT>{label}</ACTOR_TEXT>{signal}{stat}",))
+    method = (
+        f"<MAGIC_METHOD>{magic_method or 'I compare the visible movement without deciding what it means.'}</MAGIC_METHOD>"
+        if magic_stat
+        else ""
+    )
+    return ScriptedStream((f"<ACTOR_TEXT>{label}</ACTOR_TEXT>{signal}{stat}{method}",))
 
 
 def _tagged_orchestrator(
@@ -147,6 +153,7 @@ def _runner(
     actor_clients=None,
     two_pass_directing=False,
     forbidden_story_terms=(),
+    prior_stage_narrations=(),
 ):
     database, clock, actors, orchestrator = _scene(
         tmp_path,
@@ -164,6 +171,7 @@ def _runner(
             enforce_narrative_acceptance=two_pass_directing,
             two_pass_directing=two_pass_directing,
             forbidden_story_terms=forbidden_story_terms,
+            prior_stage_narrations=prior_stage_narrations,
         ),
         clock,
     )
@@ -316,6 +324,7 @@ def test_magic_roll_is_persisted_and_the_next_plan_must_respect_it(tmp_path):
                 _tagged_actor(
                     "I read the cheetah's breathing from behind the glass.",
                     magic_stat="Intellect",
+                    magic_method="I compare the breathing rhythm from behind the glass.",
                 ),
                 _tagged_actor("I explain the visible signs without moving closer."),
             ]
@@ -358,6 +367,9 @@ def test_magic_roll_is_persisted_and_the_next_plan_must_respect_it(tmp_path):
     assert payload["outcome"] == "costly_success"
     assert payload["challenge"] == _MAGIC_TEST_CHALLENGE
     assert payload["success_criteria"] == _MAGIC_TEST_CRITERIA
+    assert payload["action"] == "I compare the breathing rhythm from behind the glass."
+    assert payload["actor_text"] == "I read the cheetah's breathing from behind the glass."
+    assert payload["attempt_contract"] == "attempted_method_only"
     assert runner._game_state.pending_magic_result is None
     assert runner._game_state.last_magic_roll["total"] == 7
 
@@ -421,14 +433,14 @@ def test_compiled_magic_beat_has_room_for_exact_runtime_receipt():
     compiled = _compile_director_beat(
         "Sunlight slants across the porch steps.",
         plan,
-        "the Bell family porch",
         magic_adjudication=MagicAdjudication.from_outcome(
             outcome=MagicOutcome.SETBACK,
             success_criteria=criteria,
         ),
     )
 
-    assert len(compiled) > 720
+    assert criteria in compiled
+    assert "Choice A:" not in compiled
     assert OrchestratorEnvelope(narration=compiled).narration == compiled
     assert SceneRunner._review_director_render(compiled, plan, max_words=160) is None
 
@@ -678,6 +690,8 @@ def test_magic_attempt_correction_removes_a_pre_roll_diagnosis(tmp_path):
     assert "FORBIDDEN MAGIC ATTEMPT TERMS FOUND IN REJECTED TURN: sprain" in correction_prompt
     assert "close medical synonym" in correction_prompt
     assert "observation-only language" in correction_prompt
+    assert "one method and one still-unanswered question" in correction_prompt
+    assert "Stop before any finding" in correction_prompt
     roll = database.connection.execute(
         "SELECT payload_json FROM domain_events WHERE event_type='MagicRollResolved'"
     ).fetchone()
@@ -876,7 +890,6 @@ def test_magic_detail_is_runtime_compiled_without_cross_field_copy(tmp_path):
     visible_beat = _compile_director_beat(
         "The family watches from the kitchen doorway.",
         plan,
-        "the shaded porch",
         magic_adjudication=runner._game_state.pending_magic_adjudication,
     )
     assert detail in visible_beat
@@ -941,6 +954,50 @@ def test_recording_a_valid_magic_roll_commits_and_clears_the_pending_challenge()
     assert state.pending_magic_actor is None
     assert state.pending_magic_modifier == 0
     assert state.pending_magic_adjudication is not None
+
+
+def test_explicit_magic_decline_clears_the_challenge_without_creating_a_roll():
+    state = DirectorGameState(
+        pending_magic_challenge=_MAGIC_TEST_CHALLENGE,
+        pending_magic_success_criteria=_MAGIC_TEST_CRITERIA,
+        pending_magic_actor="char-1",
+        pending_magic_modifier=1,
+    )
+
+    state.answer_magic_challenge(character_id="char-1", name="Mara")
+
+    assert state.pending_magic_challenge is None
+    assert state.pending_magic_success_criteria is None
+    assert state.pending_magic_actor is None
+    assert state.pending_magic_modifier == 0
+    assert state.last_magic_roll is None
+
+
+def test_unresolved_magic_challenge_cannot_be_dropped_by_a_later_director_plan(tmp_path):
+    _, runner, _ = _runner(tmp_path, orchestrator_responses=[], two_pass_directing=True)
+    runner._game_state.apply_magic_fields(
+        magic_challenge=_MAGIC_TEST_CHALLENGE,
+        magic_success_criteria=_MAGIC_TEST_CRITERIA,
+        next_actor="Mara",
+        magic_modifier=1,
+    )
+    base = _valid_costly_magic_plan().model_copy(
+        update={"magic_cost_type": None, "magic_effect_detail": None}
+    )
+    dropped = base
+
+    issue = runner._review_director_plan(dropped, 2)
+
+    assert issue is not None
+    assert issue.code == "MAGIC_CHALLENGE_UNRESOLVED"
+    preserved = base.model_copy(
+        update={
+            "magic_challenge": _MAGIC_TEST_CHALLENGE,
+            "magic_success_criteria": _MAGIC_TEST_CRITERIA,
+            "magic_modifier": 1,
+        }
+    )
+    assert runner._review_director_plan(preserved, 2) is None
 
 
 def test_precommitted_success_criteria_survive_roll_until_consequence_is_accepted():
@@ -1085,7 +1142,7 @@ def test_director_objective_ignores_cosmetic_whitespace_only(tmp_path, objective
     assert plan.scene_objective == objective
 
 
-def test_two_pass_director_persists_a_game_plan_and_renders_its_choices(tmp_path):
+def test_two_pass_director_persists_choices_separately_from_scene_prose(tmp_path):
     responses = []
     for round_number in range(1, 5):
         responses.extend((_tagged_director_plan(round_number), _tagged_director_render(round_number)))
@@ -1105,8 +1162,17 @@ def test_two_pass_director_persists_a_game_plan_and_renders_its_choices(tmp_path
     assert len(plans) == 4
     assert '"scene_objective": "Find why the lighthouse remembers the cast before dawn."' in plans[0][0]
     script = result.transcript.script_view()
-    assert "Choice A: Use the numbered key at the east landing." in script
-    assert "Choice B: Study the numbered key before the bell." in script
+    assert "Choice A:" not in script
+    assert "Choice B:" not in script
+    assert json.loads(plans[0][0])["plan"]["choice_a"] == "Use the numbered key at the east landing."
+    actor_call = database.connection.execute(
+        "SELECT prompt_path FROM model_calls WHERE purpose='actor_turn:char-1:round:1'"
+    ).fetchone()
+    actor_prompt = "\n".join(
+        message["content"] for message in json.loads(Path(actor_call["prompt_path"]).read_text())
+    )
+    assert '"offered_choices": ["Use the numbered key at the east landing.", ' in actor_prompt
+    assert "Study the numbered key before the bell." in actor_prompt
 
 
 def test_v16_mint_loss_passes_director_plan_review(tmp_path):
@@ -1259,7 +1325,13 @@ def test_two_pass_director_replaces_a_lethal_cost_with_nonlethal_urgency(tmp_pat
     assert calls[0]["validator_code"] == "DIRECTOR_SENSITIVE_STAKES"
     assert calls[1]["correction_of_call_id"] == calls[0]["call_id"]
     assert calls[1]["acceptance_status"] == "ACCEPTED"
-    assert "permanently lose propulsion" in result.transcript.script_view()
+    actor_call = database.connection.execute(
+        "SELECT prompt_path FROM model_calls WHERE purpose='actor_turn:char-1:round:3'"
+    ).fetchone()
+    actor_prompt = Path(actor_call["prompt_path"]).read_text()
+    assert "permanently lose propulsion" in actor_prompt
+    assert "heat death" not in actor_prompt
+    assert "permanently lose propulsion" not in result.transcript.script_view()
     assert "heat death" not in result.transcript.script_view()
 
 
@@ -1288,8 +1360,9 @@ def test_two_pass_render_correction_preserves_plan_and_provenance(tmp_path):
     script = result.transcript.script_view()
     assert "Mara feels" not in script
     assert "Warm air gathers" in script
-    assert "Choice A: Use the numbered key at the east landing." in script
-    assert "Choice B: Study the numbered key before the bell." in script
+    assert "A numbered key appears at the east landing." in script
+    assert "The key fades when the next bell sounds." in script
+    assert "Choice A:" not in script
     assert database.connection.execute(
         "SELECT COUNT(*) FROM domain_events WHERE event_type='DirectorPlanAccepted'"
     ).fetchone()[0] == 4
@@ -1316,6 +1389,73 @@ def test_two_pass_render_does_not_misread_cast_name_in_validated_choice(tmp_path
         "WHERE purpose='orchestrator_round:1' ORDER BY attempt"
     ).fetchall()
     assert [tuple(row) for row in first_round] == [("ACCEPTED", None)]
+
+
+@pytest.mark.parametrize("needs_correction", [False, True])
+def test_repetitive_render_flavor_is_dropped_on_either_attempt(tmp_path, needs_correction):
+    flavor = "Morning light spills across weathered boards, catching dust motes."
+    responses = [_tagged_director_plan(1)]
+    if needs_correction:
+        responses.append(ScriptedStream(("<NARRATION>Mara feels the heat.</NARRATION>",)))
+    responses.append(ScriptedStream((f"<NARRATION>{flavor}</NARRATION>",)))
+    database, runner, _ = _runner(
+        tmp_path, orchestrator_responses=responses, two_pass_directing=True,
+        prior_stage_narrations=(flavor,),
+    )
+    runner.max_rounds = 1
+    runner.max_actor_turns = 4
+
+    result = asyncio.run(runner.execute())
+
+    assert result.turns == 4
+    assert flavor not in result.transcript.script_view()
+    assert "A numbered key appears at the east landing." in result.transcript.script_view()
+    calls = database.connection.execute(
+        "SELECT call_id,output_path,acceptance_status,correction_of_call_id,validator_code "
+        "FROM model_calls WHERE purpose='orchestrator_round:1' ORDER BY attempt"
+    ).fetchall()
+    assert len(calls) == (2 if needs_correction else 1)
+    assert calls[-1]["acceptance_status"] == "ACCEPTED"
+    assert flavor in Path(calls[-1]["output_path"]).read_text()
+    if needs_correction:
+        assert calls[0]["validator_code"] == "ACTOR_PUPPETEERING"
+        assert calls[0]["acceptance_status"] == "REJECTED"
+        assert calls[-1]["correction_of_call_id"] == calls[0]["call_id"]
+    drops = database.connection.execute(
+        "SELECT payload_json FROM domain_events WHERE event_type='DirectorRenderFlavorDropped'"
+    ).fetchall()
+    assert len(drops) == 1
+    assert json.loads(drops[0][0])["call_id"] == calls[-1]["call_id"]
+    assert json.loads(drops[0][0])["code"] == "SPENT_IMAGERY_REUSED"
+
+
+def test_continuing_state_may_reuse_functional_nouns(tmp_path):
+    database, runner, _ = _runner(tmp_path, orchestrator_responses=[])
+    plan = _valid_costly_magic_plan()
+    plan = plan.model_copy(update={"pressure": "Weathered boards scatter dust motes."})
+    _, issue = runner._prepare_director_render(
+        "Weathered boards scatter dust motes.", plan,
+        round_number=1, call_id="test-render",
+    )
+    assert issue is None
+    assert database.connection.execute(
+        "SELECT COUNT(*) FROM domain_events WHERE event_type='DirectorRenderFlavorDropped'"
+    ).fetchone()[0] == 0
+
+
+def test_flavor_drop_cannot_reaccept_an_identical_stage_beat(tmp_path):
+    database, runner, _ = _runner(tmp_path, orchestrator_responses=[])
+    plan = _valid_costly_magic_plan()
+    already_accepted = _compile_director_beat("", plan)
+    runner._accepted_stage_narrations.add(" ".join(already_accepted.casefold().split()))
+    _, issue = runner._prepare_director_render(
+        plan.pressure, plan,
+        round_number=1, call_id="test-render",
+    )
+    assert issue.code == "EXACT_REPEAT"
+    assert database.connection.execute(
+        "SELECT COUNT(*) FROM domain_events WHERE event_type='DirectorRenderFlavorDropped'"
+    ).fetchone()[0] == 0
 
 
 @pytest.mark.parametrize("correction,reason", [
@@ -1477,8 +1617,14 @@ def test_two_pass_director_restores_safe_fields_after_correction_paraphrase(tmp_
 
     assert result.turns == 16
     script = result.transcript.script_view()
-    assert "Choice A: Reconnect sensors using scarce coolant." in script
-    assert "Choice B: Seal the observation hatch and preserve habitat." in script
+    assert "Choice A:" not in script
+    actor_call = database.connection.execute(
+        "SELECT prompt_path FROM model_calls WHERE purpose='actor_turn:char-1:round:2'"
+    ).fetchone()
+    actor_prompt = Path(actor_call["prompt_path"]).read_text()
+    assert "Reconnect sensors using scarce coolant." in actor_prompt
+    assert "Seal the observation hatch and preserve habitat." in actor_prompt
+    assert "Reconnect sensors with reserve coolant." not in actor_prompt
     call = database.connection.execute(
         "SELECT acceptance_status, validator_code, validator_detail "
         "FROM model_calls WHERE purpose='director_plan_round:2' ORDER BY attempt DESC LIMIT 1"
@@ -1621,6 +1767,68 @@ def test_scene_runner_interrupts_and_preserves_wellness_signal(tmp_path):
     ).fetchone()[0]
     assert "Please pause the scene" in open(model_output, encoding="utf-8").read()
     assert database.connection.execute("SELECT COUNT(*) FROM turns").fetchone()[0] == 1
+
+
+def test_actor_context_uses_current_challenge_state_not_stale_transcript(tmp_path):
+    _, runner, _ = _runner(tmp_path, orchestrator_responses=[])
+    mara, nox = runner.actors[:2]
+    runner._game_state.apply_magic_fields(
+        magic_challenge=_MAGIC_TEST_CHALLENGE,
+        magic_success_criteria=_MAGIC_TEST_CRITERIA,
+        next_actor=mara.name, magic_modifier=0,
+    )
+    mara_state = runner.actor_messages(mara, 1)[-1]["content"]
+    nox_state = runner.actor_messages(nox, 1)[-1]["content"]
+    assert f"PENDING CHALLENGE: {_MAGIC_TEST_CHALLENGE}" in mara_state
+    assert "NO PENDING CHALLENGE" in nox_state
+    assert "magic_stat as null" in nox_state
+    runner._game_state.answer_magic_challenge(character_id=mara.character_id, name=mara.name)
+    assert "NO PENDING CHALLENGE" in runner.actor_messages(mara, 2)[-1]["content"]
+
+
+@pytest.mark.parametrize("resumed", [False, True])
+def test_stat_without_challenge_gets_metadata_only_correction(tmp_path, resumed):
+    text = "I trace the worn serial pattern on my sketch, hoping to recognize its origin."
+    clients = [ScriptedFakeClient([_tagged_actor(text, magic_stat="Intellect"), _tagged_actor(text)])]
+    clients += [ScriptedFakeClient([_tagged_actor(f"I choose route {n}.")]) for n in range(3)]
+    database, runner, _ = _runner(
+        tmp_path, orchestrator_responses=[_tagged_orchestrator(1)], actor_clients=clients
+    )
+    runner.max_rounds = 1
+    runner.max_actor_turns = 4
+    if resumed:
+        # Persist the original rejection before a transport interruption, then
+        # restore the reason code from durable events on the next execution.
+        runner.actors[0].executor.client = ScriptedFakeClient([
+            _tagged_actor(text, magic_stat="Intellect"),
+            ScriptedStream((), error=TimeoutError("test interruption")),
+        ])
+        with pytest.raises(SceneRunError):
+            asyncio.run(runner.execute())
+        runner.actors[0].executor.client = ScriptedFakeClient([_tagged_actor(text)])
+
+    result = asyncio.run(runner.execute())
+
+    assert result.turns == 4
+    assert database.connection.execute(
+        "SELECT COUNT(*) FROM domain_events WHERE event_type='MagicRollResolved'"
+    ).fetchone()[0] == 0
+    correction = database.connection.execute(
+        "SELECT prompt_path,acceptance_status,correction_of_call_id FROM model_calls "
+        "WHERE purpose='actor_correction:char-1:round:1' ORDER BY attempt DESC LIMIT 1"
+    ).fetchone()
+    assert correction["acceptance_status"] == "ACCEPTED"
+    assert correction["correction_of_call_id"] == "S01-run-01:actor:turn:char-1:r1:a1"
+    prompt = Path(correction["prompt_path"]).read_text()
+    assert "metadata-only correction" in prompt
+    assert "in-character text unchanged" in prompt
+    assert "magic_stat as null" in prompt
+    assert "not performing or continuing a scene" in prompt
+    assert "CURRENT SCENE" not in prompt
+    accepted = database.connection.execute(
+        "SELECT content_path FROM turns WHERE character_id='char-1' AND accepted_sequence IS NOT NULL"
+    ).fetchone()
+    assert Path(accepted["content_path"]).read_text() == text
 
 
 def test_scene_runner_requests_one_correction_and_keeps_original_private(tmp_path):

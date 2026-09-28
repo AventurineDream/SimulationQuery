@@ -11,11 +11,14 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
-import re
 from pathlib import Path
 
 from improv_troupe.application.live_runtime import SceneModelManifest
-from improv_troupe.application.scene_runner import continuity_anchors_for_opening
+from improv_troupe.application.scene_runner import (
+    SceneRunner,
+    _compile_director_beat,
+    continuity_anchors_for_opening,
+)
 from improv_troupe.config import AppConfig
 from improv_troupe.domain import HiddenSeasonPlan, OpeningSnapshot
 from improv_troupe.llm.client import make_client
@@ -25,7 +28,7 @@ from improv_troupe.llm.context import (
     build_orchestrator_messages,
     spent_director_imagery,
 )
-from improv_troupe.llm.safety import SafetyIssue, review_orchestrator_narration
+from improv_troupe.llm.safety import SafetyIssue, repeats_shared_phrase, review_orchestrator_narration
 from improv_troupe.llm.structured import (
     StructuredOutputError,
     parse_director_plan_output,
@@ -39,8 +42,8 @@ def _response_instruction(spent_terms: list[str], anchors: tuple[str, ...]) -> s
         "Return one complete director response. Narration is required and must be "
         "shared, sensory scene material only, under 120 words, and must not name "
         "or describe any cast member. The cast will make their own moves after the "
-        "beat. This rehearsal rejects narration that uses more than two terms from "
-        f"this exact spent list: {', '.join(spent_terms) or '(none)'}. "
+        "beat. Avoid recycling descriptive phrases; retain functional nouns for continuity. "
+        f"Previously used imagery (advisory): {', '.join(spent_terms) or '(none)'}. "
         f"Use one exact setting anchor from: {', '.join(anchors)}. "
         "Make the cast's concrete fork explicit as two possible actions, not merely a "
         "changed atmosphere. next_actor is optional; if included, it must be exactly one "
@@ -162,12 +165,10 @@ async def _probe(
         report_lines.extend(("", f"PARSE: failed ({exc})"))
         _write_report(report, report_lines)
         return 2
-    prompt_payload = json.loads(messages[1]["content"])
     issue = review_orchestrator_narration(
         parsed.narration,
         actor_names=opening.cast,
         continuity_anchors=continuity_anchors_for_opening(opening),
-        spent_imagery=prompt_payload["spent_director_imagery"],
     )
     if issue is None and parsed.next_actor and parsed.next_actor.casefold() not in {
         name.casefold() for name in opening.cast
@@ -184,7 +185,7 @@ async def _probe(
         report_lines.append(f"ACCEPTANCE: failed ({issue.code}: {issue.detail})")
         _write_report(report, report_lines)
         return 3
-    report_lines.append("ACCEPTANCE: passed")
+    report_lines.extend(("ACCEPTANCE: passed", "QUALITY: HUMAN_REVIEW_REQUIRED"))
     _write_report(report, report_lines)
     return 0
 
@@ -238,29 +239,14 @@ async def _probe_two_pass(
         report_lines.extend(("PLANNER", "failed (NEXT_ACTOR_INVALID)"))
         _write_report(report, report_lines)
         return 3
-    visible_fields = (
-        plan.state_change,
-        plan.pressure,
-        plan.choice_a,
-        plan.choice_b,
-        *plan.canon_updates,
-    )
     spent_terms = payload["spent_director_imagery"]
-    reused = [
-        term
-        for term in spent_terms
-        if any(re.search(rf"\b{re.escape(term)}\b", field, flags=re.IGNORECASE) for field in visible_fields)
-    ]
-    if len(reused) > 2:
-        report_lines.extend(("PLANNER", f"failed (PLAN_SPENT_IMAGERY_REUSED: {', '.join(reused)})"))
-        _write_report(report, report_lines)
-        return 3
 
     anchors = continuity_anchors_for_opening(opening)
     render_messages = build_director_render_messages(
         plan=plan.model_dump(mode="json"),
         continuity_anchors=anchors,
         spent_director_terms=spent_terms,
+        established_scene=payload["scene_transcript"],
     )
     try:
         render_raw = "".join(
@@ -276,23 +262,20 @@ async def _probe_two_pass(
         report_lines.extend(("PLANNER: passed", "RENDERER", f"failed ({type(exc).__name__}: {exc})"))
         _write_report(report, report_lines)
         return 2
-    compiled = "\n".join(
-        (
-            rendered.narration.strip(),
-            f"At {anchors[0]}: {plan.state_change}",
-            f"Pressure: {plan.pressure}",
-            f"Choice A: {plan.choice_a}",
-            f"Choice B: {plan.choice_b}",
-        )
-    )
+    detail = rendered.narration.strip()
     issue = review_orchestrator_narration(
-        compiled,
+        detail,
         actor_names=opening.cast,
-        continuity_anchors=anchors,
-        spent_imagery=spent_terms,
     )
-    if issue is None and len(compiled.split()) > 120:
-        issue = SafetyIssue("DIRECTOR_RENDER_TOO_VERBOSE", "compiled beat exceeds 120 words")
+    if issue is None and len(detail.split()) > 35:
+        issue = SafetyIssue("DIRECTOR_LEAD_IN_TOO_VERBOSE", "optional lead-in exceeds 35 words")
+    if issue is None and repeats_shared_phrase(
+        detail, (*payload["scene_transcript"], plan.state_change, plan.pressure),
+    ):
+        detail = ""
+        report_lines.append("REPETITIVE OPTIONAL DETAIL: omitted; raw renderer output retained below")
+    compiled = _compile_director_beat(detail, plan)
+    issue = issue or SceneRunner._review_director_render(compiled, plan, max_words=160)
     report_lines.extend(
         (
             "PLANNER: passed",
@@ -307,6 +290,7 @@ async def _probe_two_pass(
     report_lines.append(
         "ACCEPTANCE: passed" if issue is None else f"ACCEPTANCE: failed ({issue.code}: {issue.detail})"
     )
+    report_lines.append("QUALITY: HUMAN_REVIEW_REQUIRED")
     _write_report(report, report_lines)
     return 0 if issue is None else 3
 
