@@ -252,6 +252,7 @@ def test_actor_schema_is_strict_and_matches_the_parser_contract():
         "memory_notes",
         "diary_intent",
         "magic_stat",
+        "magic_method",
     }
     assert parse_actor_output('{"kind":"actor_turn","text":"Lock the hatch."}').text == (
         "Lock the hatch."
@@ -325,11 +326,13 @@ def test_json_and_tagged_actor_outputs_normalize_to_the_same_envelope():
 def test_actor_parser_normalizes_inline_native_magic_and_memory_metadata():
     parsed = parse_actor_output(
         '{"kind":"actor_turn","text":"I watch the cheetah from the doorway. '
-        '<MAGIC_STAT>Intellect</MAGIC_STAT> [Memory: cheetah paw]"}'
+        '<MAGIC_STAT>Intellect</MAGIC_STAT> <MAGIC_METHOD>I compare its steps from the doorway.'
+        '</MAGIC_METHOD> [Memory: cheetah paw]"}'
     )
 
     assert parsed.text == "I watch the cheetah from the doorway."
     assert parsed.magic_stat.value == "Intellect"
+    assert parsed.magic_method == "I compare its steps from the doorway."
     assert parsed.memory_notes == ["cheetah paw"]
 
 
@@ -482,6 +485,29 @@ def test_diary_fidelity_parser_requires_categorized_decisions():
     assert rejected.claim_audits[0].claim_id == 1
     assert rejected.claim_audits[0].verdict == "UNSUPPORTED"
 
+    mixed = parse_diary_fidelity_output(
+        "<DECISION>MANUAL_REVIEW</DECISION>"
+        "<SUMMARY>The sentence combines an observation and an interpretation.</SUMMARY>"
+        "<CLAIM_AUDIT>1|MIXED|1|The factual and interpretive clauses need separate review.</CLAIM_AUDIT>"
+    )
+    assert mixed.claim_audits[0].verdict == "MIXED"
+
+    rejected_claim = parse_diary_fidelity_output(
+        '{"kind":"diary_fidelity_review","decision":"REJECT",'
+        '"summary":"The audit identifies an unsupported claim.",'
+        '"claim_audits":[{"claim_id":1,"verdict":"UNSUPPORTED",'
+        '"evidence_refs":[],"issue":"The scene does not establish this event."}]}'
+    )
+    assert rejected_claim.claim_audits[0].verdict == "UNSUPPORTED"
+
+    rejected_mixed = parse_diary_fidelity_output(
+        '{"kind":"diary_fidelity_review","decision":"REJECT",'
+        '"summary":"The audit identifies a mixed claim.",'
+        '"claim_audits":[{"claim_id":1,"verdict":"MIXED",'
+        '"evidence_refs":[1],"issue":"The second clause is unsupported."}]}'
+    )
+    assert rejected_mixed.claim_audits[0].verdict == "MIXED"
+
     with pytest.raises(StructuredOutputError):
         parse_diary_fidelity_output(
             '{"kind":"diary_fidelity_review","decision":"ACCEPT",'
@@ -512,6 +538,11 @@ def test_diary_fidelity_prompt_exposes_only_scene_and_diary_evidence():
     assert '"claim_audit_required": true' in prompt
     assert '"claim_id": 1, "text": "Mara watches the paw."' in prompt
     assert "exactly one claim_audits item for every candidate ID" in prompt
+    assert "I wonder" in prompt
+    assert "MIXED" in prompt
+    assert "Do not collapse MIXED into UNSUPPORTED" in prompt
+    assert "Jo left a paper kite on the bench" in prompt
+    assert "even if another audit is UNSUPPORTED" in prompt
     assert "hidden direction" not in prompt
     assert "ACCEPT requires all five finding lists to be empty" in prompt
 
@@ -782,9 +813,10 @@ def test_context_builders_keep_peer_and_unclosed_diary_material_out():
     )
     culmination_text = "\n".join(message["content"] for message in culmination)
     assert '"round_phase": "final-player-decision"' in culmination_text
-    assert '"forbidden_visible_terms": ["hatch", "signal"]' in culmination_text
+    assert '"spent_director_imagery": ["hatch", "signal"]' in culmination_text
+    assert "forbidden_visible_terms" not in culmination_text
     assert "set complete=false" in culmination_text
-    assert "hard drafting blacklist" in culmination_text
+    assert "not a ban on functional nouns" in culmination_text
     assert "Cool is composure, patience, and timing under pressure" in culmination_text
     assert "never make a setback a dead end" in culmination_text
 
