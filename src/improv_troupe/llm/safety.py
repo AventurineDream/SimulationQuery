@@ -15,6 +15,21 @@ class SafetyIssue:
     detail: str
 
 
+def repeats_shared_phrase(text: str, previous: Iterable[str], *, words: int = 6) -> bool:
+    """Spot recycled phrasing, not repeated objects or a semantic quality score."""
+
+    tokens = re.findall(r"[\w']+", text.casefold())
+    phrases = {tuple(tokens[start:start + words]) for start in range(len(tokens) - words + 1)}
+    if not phrases:
+        return False
+    for source in previous:
+        prior_tokens = re.findall(r"[\w']+", source.casefold())
+        if any(tuple(prior_tokens[start:start + words]) in phrases
+               for start in range(len(prior_tokens) - words + 1)):
+            return True
+    return False
+
+
 _DEATH_WORDS = re.compile(r"\b(?:dead|death|died|die|kill|killed|murder|murdered)\b")
 _SELF_HARM_WORDS = re.compile(
     r"\b(?:suicide|suicidal|self[- ]harm|kill myself|hurt myself|cut myself)\b"
@@ -245,4 +260,4 @@ def _declares_actor_death(
     return False
 
 
-__all__ = ["SafetyIssue", "review_actor_text", "review_correction_scope", "review_orchestrator_narration"]
+__all__ = ["SafetyIssue", "repeats_shared_phrase", "review_actor_text", "review_correction_scope", "review_orchestrator_narration"]

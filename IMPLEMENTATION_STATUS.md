@@ -1,12 +1,20 @@
 # AI Improv Troupe — Implementation Status
 
 **Owner:** creator
-**Updated:** 2026-09-17
+**Updated:** 2026-09-27
 **Contract:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md)
 
-## Branch note — Amaranth prose-craft patch — 2026-09-23
+## Combined review candidate: Amaranth craft + Codex runtime — 2026-09-27
 
-This branch (`Amaranth`) carries a prompt-layer patch aimed at narrative and
+This is a review branch, not a deploy or rehearsal authorization. It includes the
+Codex runtime/evidence changes and the Amaranth prompt craft and advisory lint.
+The overlapping prompt instructions were reconciled to keep the stricter
+attempt-versus-fact and grounded narration boundaries. Offline tests must pass
+before this branch is pushed for review.
+
+## Amaranth prose-craft patch — 2026-09-23
+
+The Amaranth branch carried a prompt-layer patch aimed at narrative and
 prose quality, prepared for cross-review against the `codex` branch:
 
 - New `improv_troupe.llm.prose` module: shared craft guidance blocks (actor,
@@ -15,36 +23,118 @@ prose quality, prepared for cross-review against the `codex` branch:
   openers). The lint is intentionally **not** wired into scene acceptance;
   gating on it needs its own rehearsal-validated experiment.
 - Craft guidance injected into the actor, orchestrator, director-render, diary,
-  and standalone-scene prompts. Structure, privacy boundaries, MAGIC
-  adjudication, and evidence contracts are unchanged.
+  and standalone-scene prompts. Codex MAGIC, privacy, and evidence checks still apply.
 - Prompt version ids bumped at the changed call sites (`scene-actor-v7`,
   `scene-director-v10`, plan/render and correction ids, all suffixed
   `-prose-craft`) so receipts distinguish the new text.
 - `skills/scene-architect` gains a prose-oriented brief-writing step.
 
-No rehearsal or simulation run was executed for this patch, per the creator's
-standing hold on runs until she prompts. Validation is static only: the full
-local test suite plus new prose tests.
+The Amaranth patch ran static tests. Earlier scoped rehearsals are documented
+separately; no live run is part of this merge.
 
-## Current handoff — porch MAGIC diary reliability and repository consolidation — 2026-09-17
+
+## Codex narrative and prose candidate — 2026-09-23
+
+The `codex` branch contributed an independently prepared prose candidate
+for the creator's planned comparison with Amaranth. Existing uncommitted
+rehearsal fixes were preserved as its baseline. The
+[review handoff](docs/narrative-quality/CODEX_REVIEW_2026-09-23.md) records the
+evidence, changes, presentation tradeoffs, and unresolved quality questions.
+
+The candidate separates shared scene prose from proposed player choices,
+preserves those choices in actor context and replay, makes grounded renderer
+detail optional, replaces noun-based rejection with a narrow phrase-reuse
+check, and strengthens character/diary voice and attempt-versus-fact guidance.
+Runtime MAGIC receipts and the existing privacy, correction, and diary gates
+remain intact. Prompt versions distinguish the candidate from earlier runs.
+
+Verification: **407 offline tests passed** (baseline 390), source/script
+compilation passed, and `git diff --check` passed. Scripted fixtures establish
+mechanical behavior only. No live rehearsal or live model probe was run. No
+production service, saved rehearsal evidence, model binding, or publication
+state was changed. The combined branch still needs creator review and separate authorization
+before any live comparison. This is not a shippable-prose certification.
+
+## Previous handoff — porch MAGIC action/result boundary and diary reliability — 2026-09-21
+
+The subsequent scene-retry cleanup is recorded separately in the
+[2026-09-20 retry review](rehearsals/season-1-porch-retry-cleanup-2026-09-20.md).
+It consolidates first/retry director-render acceptance, makes actor-specific
+MAGIC state explicit, scopes no-challenge corrections to envelope repair, and
+adds honest pass/fail and dice-coverage receipts to the historical five-run
+strategy harness. That old harness did not require a challenge: the preceding
+75/80-turn batch recorded no challenges or rolls and is not a dice test.
+The latest local suite passes **390 tests**. The prior full live check failed at
+7/8 accepted turns with zero rolls after Mara's pre-roll diagnosis survived its
+correction. The Orchestrator subsequently credited an unrolled finding to Mara,
+exposing an unresolved semantic boundary. A separate method-only correction
+probe recorded a roll but still asserted pre-roll observations. The final,
+scoped no-challenge metadata repair passed its matched one-call live probe,
+preserving the character text exactly and recording no unauthorized roll.
+The new action/result patch now records a structured `MAGIC_METHOD` separately
+from actor prose, keeps unanswered challenges sticky, and completed a fresh
+eight-turn forced-setback live rehearsal with one correctly logged roll. The
+mechanical receipt passed, but assistant review still found pre-roll
+observational language in actor prose and pain/injury language in the setback
+beat. These bounded results do not establish end-to-end reliability or
+supersede the diary-quality gate. See the [action/result boundary rehearsal](rehearsals/season-1-porch-magic-action-result-boundary-2026-09-21.md).
 
 The current experimental line is the isolated one-day porch-season rehearsal,
 not a continuation of S01 or an authorization to deploy. Runtime-owned MAGIC
-adjudication and private diary-fidelity review are implemented. The latest
-network-enabled v07 run completed its two-round scene at eight accepted actor
+adjudication and private diary-fidelity review are implemented. The
+network-enabled v08 diary run completed its two-round scene at eight accepted actor
 turns, zero cheetah turns, four diary attempts, and a closed day. The forced
 setback roll was recorded as `2d6 = 2 + 3` plus the actor's MAGIC modifier,
 totaling `6`, and its runtime-owned consequence was carried into the next
-beat. The diary envelope still requires one-based references to the exact
-accepted scene; three diaries were written with range-valid reference sets,
-one diary remained private after two malformed envelopes, and the reviewer
-received both the writer claims and numbered scene evidence. The runtime
-receipt is `FAIL` because the quality gate correctly withheld the diary set:
-Mara and Sage were accepted by fidelity review, Rory was rejected for an
-evidence-reference/event-order mismatch plus unsupported private-state
-attribution, and Eli remained private. Quality remains
-`HUMAN_REVIEW_REQUIRED`, with no diary released to future direction. See the
-[latest rehearsal record](rehearsals/season-1-porch-magic-diary-reviewer-evidence-v01-2026-09-17.md).
+beat. An opt-in sentence-level claim-audit mode deterministically split
+written diaries into candidates and required complete structured coverage:
+Mara had 15/15 candidates with four unsupported claims and was rejected; Eli
+had 18/18 candidates with no unsupported claims and was accepted; Sage and
+Rory remained private after diary-format/quality failures. The runtime receipt
+is `FAIL` because the quality gate correctly withheld the diary set. Quality
+remains `HUMAN_REVIEW_REQUIRED`, with no diary released to future direction.
+See the [v08 rehearsal record](rehearsals/season-1-porch-magic-diary-claim-audit-v01-2026-09-18.md).
+
+A private, model-blind calibration packet now preserves the 33 reviewed claim
+candidates, their accepted-scene evidence, and separate model annotations. The
+tracked [calibration protocol](research/DIARY_CLAIM_CALIBRATION_PROTOCOL_V01.md)
+keeps the human-labeling and scoring procedure separate from diary text. No
+additional production action was taken; the claim gate remains opt-in and
+rehearsal-only pending human labels and boundary review. The subsequent v09
+live boundary rehearsal completed its eight-turn scene and forced setback, but
+only Rory reached claim review; the other diaries remained private after
+format/structure/autonomy failures. See the [v09 rehearsal record](rehearsals/season-1-porch-magic-diary-claim-boundary-v02-2026-09-19.md).
+
+A 2026-09-20 reviewer-only probe used a synthetic scene after the approval layer
+blocked sending saved v09 scene evidence to the configured model server. The
+same `qwen3:30b-instruct` reviewer returned 7/8 expected claim labels across
+three structured requests, but classified the isolated mixed claim as
+`UNSUPPORTED` rather than `MIXED`, including after the app's single correction
+instruction. Both `REJECT` responses failed envelope validation. The clear-label
+batch included an `ACCEPT` envelope alongside two unsupported audits; the
+current runtime rule would override that to `REJECTED` (code-path inference, not
+a full service integration run). No diary or rehearsal database was touched.
+The claim gate remains rehearsal-only. See the [synthetic live probe
+record](rehearsals/diary-claim-reviewer-live-probe-synthetic-v01-2026-09-20.md).
+
+The same synthetic fixture was replayed against `qwen3:30b-instruct` after a
+contrastive mixed-claim prompt and schema change. The seven clear claims again
+matched, but the model still labeled the mixed sentence `UNSUPPORTED` and
+omitted the citation for its supported clause: model classification remains
+7/8, not a pass. A conservative runtime fallback now routes an
+`UNSUPPORTED` candidate containing an exact normalized accepted-scene statement
+to `MANUAL_REVIEW`; the model's raw label is preserved. Reapplying the saved
+server response to this helper routes both batches as expected, but that was an
+offline re-evaluation with zero new model calls. The heuristic does not cover
+paraphrases, so the wider mixed boundary remains unproven and the gate stays
+rehearsal-only. See the [v02 synthetic probe record](rehearsals/diary-claim-reviewer-live-probe-synthetic-v02-2026-09-20.md).
+
+The first owner calibration pass covered eight examples. It established that
+clearly marked questions, guesses, metaphors, and uncertainty should remain
+`SUBJECTIVE`; materially mixed factual/interpretive sentences should produce a
+runtime `MIXED`/`MANUAL_REVIEW` result instead of an automatic rejection. The
+review prompt, envelope, runtime decision boundary, and focused tests now carry
+that rule.
 
 The fidelity service now permits one private, provenance-linked correction when
 the first reviewer response violates its structured contract. The live v04 and
@@ -65,10 +155,13 @@ Raw `.rehearsal-data/` roots remain in place. The durable map and cleanup record
 are [`docs/README.md`](docs/README.md) and
 [`docs/maintenance/2026-09-17-repository-cleanup.md`](docs/maintenance/2026-09-17-repository-cleanup.md).
 
-Current local verification: **361 tests passed**. Local Markdown-link audit,
-Python compilation, and `git diff --check` also pass. No live service
-configuration, production season state, publication state, or remote checkout
-was changed; this rehearsal did call the configured private model server.
+Local verification for the preceding diary-claim patch: **366 tests passed**, Python source
+compilation passed, and `git diff --check` passed. The earlier Markdown-link
+audit, calibration-packet construction, and blank-packet scoring remain as
+previously recorded. No live service configuration, production season,
+publication state, or remote checkout was changed. The v09 rehearsal and the
+v01/v02 synthetic probes did call the configured private model server; the
+reviewer probes sent only synthetic fixture text.
 
 ## Production implementation update — 2026-08-21
 

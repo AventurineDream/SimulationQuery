@@ -93,11 +93,59 @@ def _claim_validation_issues(
             issues.append(
                 f"claim {audit.claim_id} cited invalid accepted-scene evidence IDs {invalid_refs}"
             )
-        if audit.verdict == "UNSUPPORTED":
+        if audit.verdict in {"UNSUPPORTED", "MIXED"}:
             issues.append(
-                f"claim {audit.claim_id} was classified UNSUPPORTED: {audit.issue or 'no issue given'}"
+                f"claim {audit.claim_id} was classified {audit.verdict}: "
+                f"{audit.issue or 'no issue given'}"
             )
     return tuple(issues[:8])
+
+
+def _possible_partial_support_claim_ids(
+    candidates: Sequence[str],
+    audits: Sequence[DiaryClaimAudit],
+    accepted_scene: Sequence[str],
+) -> tuple[int, ...]:
+    """Find rejected claims that repeat an entire accepted-scene statement."""
+
+    def normalize(text: str) -> str:
+        return " ".join(re.findall(r"\w+", text.casefold()))
+
+    evidence_statements = tuple(
+        normalized
+        for line in accepted_scene
+        if (normalized := normalize(line))
+    )
+    possible_partial_support: set[int] = set()
+    for audit in audits:
+        if audit.verdict != "UNSUPPORTED" or audit.claim_id > len(candidates):
+            continue
+        candidate = normalize(candidates[audit.claim_id - 1])
+        if candidate and any(statement in candidate for statement in evidence_statements):
+            possible_partial_support.add(audit.claim_id)
+    return tuple(sorted(possible_partial_support))
+
+
+def _apply_claim_audit_route(
+    decision: str,
+    audits: Sequence[DiaryClaimAudit],
+    validation_issues: Sequence[str],
+    *,
+    possible_partial_support_claim_ids: Sequence[int] = (),
+) -> str:
+    """Apply the non-negotiable runtime route for sentence-level claim audits."""
+
+    has_mixed_claim = any(audit.verdict == "MIXED" for audit in audits)
+    if has_mixed_claim or possible_partial_support_claim_ids:
+        return "MANUAL_REVIEW"
+
+    has_unsupported_claim = any(audit.verdict == "UNSUPPORTED" for audit in audits)
+    if has_unsupported_claim and decision != "MANUAL_REVIEW":
+        return "REJECTED"
+
+    if validation_issues and decision == "ACCEPTED":
+        return "REJECTED"
+    return decision
 
 
 @dataclass(frozen=True)
@@ -354,9 +402,9 @@ class DiaryService:
             ),
             character_id=actor.character_id,
             prompt_version_id=(
-                "diary-actor-v6-evidence-references-surgical-correction"
+                "diary-actor-v7-grounded-personal-voice-surgical-correction"
                 if repair_context is not None
-                else "diary-actor-v6-evidence-references"
+                else "diary-actor-v7-grounded-personal-voice"
             ),
             context_version_id=(
                 f"diary:{self.season_id}:day:{self.day_number}:slot:{current_slot_number}:v4"
@@ -874,15 +922,15 @@ class DiaryService:
         )
         if claim_candidates:
             tagged_format_instructions += (
-                "<CLAIM_AUDIT>claim_id|SUPPORTED|evidence_ids|issue</CLAIM_AUDIT>"
+                "<CLAIM_AUDIT>claim_id|verdict|evidence_ids|issue</CLAIM_AUDIT>"
             )
         review_version = (
-            "diary-fidelity-review-v3-claim-audit"
+            "diary-fidelity-review-v4-claim-audit-mixed-route"
             if claim_candidates
             else "diary-fidelity-review-v2-evidence-references"
         )
         review_context_version = (
-            f"diary-fidelity:{self.season_id}:day:{self.day_number}:v3-claim-audit"
+            f"diary-fidelity:{self.season_id}:day:{self.day_number}:v4-claim-audit-mixed-route"
             if claim_candidates
             else f"diary-fidelity:{self.season_id}:day:{self.day_number}:v2"
         )
@@ -928,11 +976,13 @@ class DiaryService:
                     "content": (
                         "Correct exactly one rejected private diary-fidelity review. "
                         "Return a complete review envelope, not an explanation. Preserve the "
-                        "same evidence and summary wherever possible. ACCEPT is valid only when "
-                        "all five finding lists are empty. REJECT requires at least one "
-                        "categorized finding. Use MANUAL_REVIEW only when the evidence cannot "
-                        "support either decision. Do not add story facts or expose private "
-                        "material in the summary."
+                        "same evidence and summary wherever possible. ACCEPT requires all five "
+                        "finding lists to be empty and no UNSUPPORTED or MIXED claim audits. "
+                        "REJECT requires a categorized finding or an UNSUPPORTED claim audit. "
+                        "Any MIXED claim requires MANUAL_REVIEW, even when another claim is "
+                        "UNSUPPORTED; use MANUAL_REVIEW too when the evidence is genuinely "
+                        "ambiguous. Do not add story facts or expose private material in the "
+                        "summary."
                         + (
                             " Return exactly one claim audit for every numbered candidate and "
                             "do not omit or duplicate candidate IDs."
@@ -954,12 +1004,12 @@ class DiaryService:
                 tagged_format_instructions=tagged_format_instructions,
                 character_id=actor.character_id,
                 prompt_version_id=(
-                    "diary-fidelity-review-correction-v3-claim-audit"
+                    "diary-fidelity-review-correction-v4-claim-audit-mixed-route"
                     if claim_candidates
                     else "diary-fidelity-review-correction-v2"
                 ),
                 context_version_id=(
-                    f"diary-fidelity:{self.season_id}:day:{self.day_number}:correction:v3-claim-audit"
+                    f"diary-fidelity:{self.season_id}:day:{self.day_number}:correction:v4-claim-audit-mixed-route"
                     if claim_candidates
                     else f"diary-fidelity:{self.season_id}:day:{self.day_number}:correction:v2"
                 ),
@@ -997,6 +1047,15 @@ class DiaryService:
             if claim_candidates
             else ()
         )
+        possible_partial_support_claim_ids = (
+            _possible_partial_support_claim_ids(
+                claim_candidates,
+                envelope.claim_audits,
+                accepted_scene,
+            )
+            if claim_candidates
+            else ()
+        )
         findings = {
             "invented_events": tuple(envelope.invented_events),
             "other_character_private_states": tuple(envelope.other_character_private_states),
@@ -1006,13 +1065,23 @@ class DiaryService:
         }
         if claim_candidates:
             findings["claim_validation_issues"] = claim_validation_issues
+            findings["claim_partial_support_issues"] = tuple(
+                f"claim {claim_id} repeats an accepted-scene statement but was labeled "
+                "UNSUPPORTED; route to manual review for possible mixed content"
+                for claim_id in possible_partial_support_claim_ids
+            )
         decision = {
             "ACCEPT": "ACCEPTED",
             "REJECT": "REJECTED",
             "MANUAL_REVIEW": "MANUAL_REVIEW",
         }[envelope.decision]
-        if claim_validation_issues and decision == "ACCEPTED":
-            decision = "REJECTED"
+        if claim_candidates:
+            decision = _apply_claim_audit_route(
+                decision,
+                envelope.claim_audits,
+                claim_validation_issues,
+                possible_partial_support_claim_ids=possible_partial_support_claim_ids,
+            )
         review_payload = {
             "diary_id": diary_id,
             "character_id": actor.character_id,
@@ -1025,6 +1094,7 @@ class DiaryService:
         if claim_candidates:
             review_payload.update(
                 {
+                    "claim_route_version": "mixed-first-exact-scene-overlap-v1",
                     "claim_candidates": list(claim_candidates),
                     "claim_audits": [
                         audit.model_dump(mode="json") for audit in envelope.claim_audits
@@ -1058,6 +1128,7 @@ class DiaryService:
         if claim_candidates:
             event_payload.update(
                 {
+                    "claim_route_version": "mixed-first-exact-scene-overlap-v1",
                     "claim_audits": [
                         audit.model_dump(mode="json") for audit in envelope.claim_audits
                     ],

@@ -529,6 +529,7 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
                 "diary-body absence from scene prompts",
                 "scene and MAGIC contract checks",
                 "structured diary-fidelity review and context withholding",
+                "sentence-level claim-audit coverage and evidence-range checks",
             ],
             "not_automated": [
                 "human confirmation that the fidelity review caught every unsupported claim",

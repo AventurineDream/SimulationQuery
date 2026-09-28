@@ -365,6 +365,208 @@ def test_diary_claim_audit_rejects_an_unsupported_candidate_even_after_accept(tm
     assert "claim 2 was classified UNSUPPORTED" in event[0]
 
 
+def test_diary_claim_audit_keeps_an_explicit_question_subjective(tmp_path):
+    database, clock, service, actor = _service(
+        tmp_path,
+        [
+            _diary_response(
+                slot=1,
+                write_now=True,
+                text=(
+                    "I couldn't help but wonder whether this was the first time our family "
+                    "had seen a wild animal so close to home."
+                ),
+            ),
+            _fidelity_response(
+                decision="ACCEPT",
+                summary="The claim is framed as the writer's own question.",
+                claim_audits=((1, "SUBJECTIVE", (), None),),
+            ),
+        ],
+        validate_claims=True,
+    )
+    accepted_scene = ("Mara: I watched the cheetah from the porch.",)
+    asyncio.run(
+        service.write_after_run(
+            actor,
+            current_slot_number=1,
+            accepted_scene=accepted_scene,
+            cutoff_at=clock.now() + timedelta(hours=1),
+        )
+    )
+
+    reviewed = asyncio.run(
+        service.review_fidelity(
+            actor,
+            accepted_scene=accepted_scene,
+            reviewer=actor.executor,
+        )
+    )
+
+    assert reviewed.decision == "ACCEPTED"
+    assert reviewed.findings["claim_validation_issues"] == ()
+
+
+def test_diary_claim_audit_sends_a_mixed_candidate_to_manual_review(tmp_path):
+    database, clock, service, actor = _service(
+        tmp_path,
+        [
+            _diary_response(
+                slot=1,
+                write_now=True,
+                text="I watched the blue door, and I know Rory was afraid.",
+            ),
+            _fidelity_response(
+                decision="ACCEPT",
+                summary="One sentence combines an observation and an interpretation.",
+                claim_audits=(
+                    (
+                        1,
+                        "MIXED",
+                        (1,),
+                        "The sentence combines supported observation with an unsupported private-state assertion.",
+                    ),
+                ),
+            ),
+        ],
+        validate_claims=True,
+    )
+    asyncio.run(
+        service.write_after_run(
+            actor,
+            current_slot_number=1,
+            accepted_scene=("Mara: I watched the blue door.",),
+            cutoff_at=clock.now() + timedelta(hours=1),
+        )
+    )
+
+    reviewed = asyncio.run(
+        service.review_fidelity(
+            actor,
+            accepted_scene=("Mara: I watched the blue door.",),
+            reviewer=actor.executor,
+        )
+    )
+
+    assert reviewed.decision == "MANUAL_REVIEW"
+    assert reviewed.findings["claim_validation_issues"] == (
+        "claim 1 was classified MIXED: The sentence combines supported observation with an unsupported private-state assertion.",
+    )
+
+
+def test_mixed_claim_audit_takes_precedence_over_rejection_and_unsupported_claims(tmp_path):
+    database, clock, service, actor = _service(
+        tmp_path,
+        [
+            _diary_response(
+                slot=1,
+                write_now=True,
+                text=(
+                    "I watched the blue door, and I know Rory was afraid. "
+                    "Cal secretly took the key."
+                ),
+            ),
+            _fidelity_response(
+                decision="REJECT",
+                summary="One claim mixes observation with invention; another is unsupported.",
+                claim_audits=(
+                    (
+                        1,
+                        "MIXED",
+                        (1,),
+                        "The sentence combines a supported observation with an unsupported private-state assertion.",
+                    ),
+                    (2, "UNSUPPORTED", (), "The scene does not establish that Cal took the key."),
+                ),
+            ),
+        ],
+        validate_claims=True,
+    )
+    accepted_scene = ("Mara: I watched the blue door.",)
+    asyncio.run(
+        service.write_after_run(
+            actor,
+            current_slot_number=1,
+            accepted_scene=accepted_scene,
+            cutoff_at=clock.now() + timedelta(hours=1),
+        )
+    )
+
+    reviewed = asyncio.run(
+        service.review_fidelity(
+            actor,
+            accepted_scene=accepted_scene,
+            reviewer=actor.executor,
+        )
+    )
+
+    assert reviewed.decision == "MANUAL_REVIEW"
+    assert reviewed.findings["claim_validation_issues"] == (
+        "claim 1 was classified MIXED: The sentence combines a supported observation with an unsupported private-state assertion.",
+        "claim 2 was classified UNSUPPORTED: The scene does not establish that Cal took the key.",
+    )
+    diagnostics = database.connection.execute(
+        "SELECT parse_status, acceptance_status FROM model_calls "
+        "WHERE call_id LIKE '%diary-review%'"
+    ).fetchall()
+    assert len(diagnostics) == 1
+    assert tuple(diagnostics[0]) == ("PARSED", "ACCEPTED")
+
+
+def test_unsupported_label_with_an_exact_supported_clause_routes_to_manual_review(tmp_path):
+    accepted_scene = (
+        "At noon, the town library's front door was locked.",
+        "Mina placed a blue umbrella beside the library steps.",
+        "Cal told Mina, 'I will wait here until the librarian returns.'",
+    )
+    mixed_text = (
+        "Mina placed a blue umbrella beside the library steps, and the librarian had already "
+        "closed the building for the season."
+    )
+    database, clock, service, actor = _service(
+        tmp_path,
+        [
+            _diary_response(slot=1, write_now=True, text=mixed_text),
+            _fidelity_response(
+                decision="REJECT",
+                summary="The seasonal-closure assertion is unsupported.",
+                claim_audits=(
+                    (1, "UNSUPPORTED", (), "The scene does not establish a seasonal closure."),
+                ),
+            ),
+        ],
+        validate_claims=True,
+    )
+    asyncio.run(
+        service.write_after_run(
+            actor,
+            current_slot_number=1,
+            accepted_scene=accepted_scene,
+            cutoff_at=clock.now() + timedelta(hours=1),
+        )
+    )
+
+    reviewed = asyncio.run(
+        service.review_fidelity(
+            actor,
+            accepted_scene=accepted_scene,
+            reviewer=actor.executor,
+        )
+    )
+
+    assert reviewed.decision == "MANUAL_REVIEW"
+    assert reviewed.findings["claim_partial_support_issues"] == (
+        "claim 1 repeats an accepted-scene statement but was labeled UNSUPPORTED; route to manual review for possible mixed content",
+    )
+    assert reviewed.findings["claim_validation_issues"] == (
+        "claim 1 was classified UNSUPPORTED: The scene does not establish a seasonal closure.",
+    )
+    event = database.connection.execute(
+        "SELECT payload_json FROM domain_events WHERE event_type = 'DiaryFidelityReviewed'"
+    ).fetchone()
+    assert '"claim_route_version": "mixed-first-exact-scene-overlap-v1"' in event[0]
+
+
 def test_diary_fidelity_review_corrects_one_contradictory_envelope(tmp_path):
     database, clock, service, actor = _service(
         tmp_path,
@@ -412,7 +614,7 @@ def test_diary_fidelity_review_corrects_one_contradictory_envelope(tmp_path):
     assert calls[1]["correction_of_call_id"] == calls[0]["call_id"]
     assert calls[1]["acceptance_status"] == "ACCEPTED"
     correction_prompt = open(calls[1]["prompt_path"], encoding="utf-8").read()
-    assert "ACCEPT is valid only when all five finding lists are empty" in correction_prompt
+    assert "ACCEPT requires all five finding lists to be empty" in correction_prompt
 
 
 def test_diary_fidelity_review_correction_remains_fail_closed(tmp_path):

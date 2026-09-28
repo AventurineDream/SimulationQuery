@@ -91,14 +91,14 @@ ACTOR_PROSE_GUIDE = (
     "character's vocabulary, rhythm, and blind spots come from their brief and "
     "voice notes: two characters must not sound interchangeable. Never restate "
     "the narration's imagery or another character's move: if the narration showed "
-    "the scuff marks, your character notices what the narration did not. Add one "
-    "sensory detail of your own, from your own vantage."
+    "the scuff marks, notice a different detail only if it is already established "
+    "in the accepted scene, from your own vantage. Never invent a discovery."
 )
 
 DIRECTOR_PROSE_GUIDE = (
     " Narration craft: concrete and specific beats adjective-piled mood. Anchor "
-    "each beat in one or two physical particulars the cast can act on; an "
-    "evocative detail is one with a consequence attached. Vary sentence rhythm "
+    "each beat in established physical particulars the cast can act on; an "
+    "evocative detail must be grounded, not a new fact. Vary sentence rhythm "
     "and keep the strongest image for the end of the beat. Avoid stock imagery "
     "(air growing thick, silence stretching, hearts pounding) and never use "
     "out-of-world language."

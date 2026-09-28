@@ -94,15 +94,27 @@ season-end action, and do not publish or delete any S01 artifact.
 
 The active reliability line is an isolated, one-day rehearsal of the porch
 season's MAGIC rules, runtime-owned dice adjudication, and private diary
-fidelity gate. The latest live run completed mechanically with eight accepted
-actor turns, no cheetah turns, four diary attempts, and a closed day. Diary
-envelopes carry range-checked references to the accepted scene, and the
-reviewer now checks those claims against numbered scene evidence. The v07 run
-recorded one malformed-diary correction, two malformed-review corrections, and
-one concrete evidence-reference/event-order finding. Its quality status is
-`HUMAN_REVIEW_REQUIRED`: no diary was released to future direction. See the
-[latest rehearsal review](rehearsals/season-1-porch-magic-diary-reviewer-evidence-v01-2026-09-17.md)
-for the separate mechanical and quality results.
+fidelity gate. The v09 live diary run completed mechanically with eight
+accepted actor turns, no cheetah turns, the forced setback recorded and carried
+forward, four diary attempts, and a closed day. Its overall receipt is `FAIL`
+because only Rory reached fidelity review; the other diaries remained private
+after format/structure/autonomy failures. See the [latest rehearsal review](rehearsals/season-1-porch-magic-diary-claim-boundary-v02-2026-09-19.md)
+for the separate mechanical and diary results. The preceding v08 experiment
+provided the 33-claim calibration packet, and the current procedure is recorded
+in [the diary claim calibration protocol](research/DIARY_CLAIM_CALIBRATION_PROTOCOL_V01.md);
+the packet itself is not tracked.
+
+A later synthetic reviewer probe confirmed the clear claim labels but found the
+model still collapses one supported-plus-unsupported sentence to
+`UNSUPPORTED`. The runtime now defers the exact-evidence-overlap case to human
+review; broader mixed-claim reliability remains open. See the [latest synthetic
+reviewer probe](rehearsals/diary-claim-reviewer-live-probe-synthetic-v02-2026-09-20.md).
+
+The [scene-retry cleanup](rehearsals/season-1-porch-retry-cleanup-2026-09-20.md)
+tracks the subsequent actor/director retry fixes and their isolated live
+verification. The historical five-strategy harness does not require dice;
+see the [rehearsal index](rehearsals/README.md) to select a strategy, controlled
+dice, or diary experiment. Mechanical completion is not prose-quality approval.
 
 Start with [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) for the current
 handoff and [docs/README.md](docs/README.md) for the repository map. The earlier
