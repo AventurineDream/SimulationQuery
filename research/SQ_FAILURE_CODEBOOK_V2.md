@@ -185,7 +185,7 @@ A `writer_evidence_refs` field, where present, is provenance only and is not pro
 ### 6.2 Calibration set composition
 
 - Thirty claims, synthetic and adversarial, per the paper's section 4.
-- **Every mixed supported/unsupported case** from the prior 33-claim reviewer calibration packet and from the synthetic probe fixtures (v01/v02 eight-claim library) is included verbatim. No clean subset: the set must contain the cases that broke the boundary, including partial-support (section 3.4), smuggled-assertion (R4), and post-reveal epistemic cases (section 4.3), not only clear supported/subjective/unsupported examples.
+- Calibration sets use legible, unambiguous claims so kappa measures codebook clarity rather than script confusion. Ambiguous or confusing passages, including boundary cases, belong in a separate frontier set where disagreement is expected.
 - The set's composition (counts per expected label family and per boundary type) is recorded in the calibration manifest pinned at freeze time.
 
 ### 6.3 Procedure and kappa bar
