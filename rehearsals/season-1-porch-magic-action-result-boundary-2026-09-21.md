@@ -29,10 +29,10 @@ also passed.
 ## Live rehearsal
 
 Root:
-[`season-1-porch-magic-action-result-20260921`](../.rehearsal-data/season-1-porch-magic-action-result-20260921/)
+`season-1-porch-magic-action-result-20260921` (private evidence: `../.rehearsal-data/season-1-porch-magic-action-result-20260921/`)
 
 Receipt:
-[`magic-dice-rehearsal-report.json`](../.rehearsal-data/season-1-porch-magic-action-result-20260921/state/magic-dice-rehearsal-report.json)
+`magic-dice-rehearsal-report.json` (private evidence: `../.rehearsal-data/season-1-porch-magic-action-result-20260921/state/magic-dice-rehearsal-report.json`)
 
 Conditions:
 
@@ -67,3 +67,6 @@ Next bounded test: add a separate review rule for pre-roll actor observations
 and unsupported medical/result claims, then run one controlled comparison
 without changing the dice or diary conditions. Do not treat this rehearsal as
 evidence for diary quality, outcome variance, or production readiness.
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.

@@ -1,3 +1,4 @@
+# Portable example. Exact historical machine configuration is archived in private Drive.
 service:
   data_root: /private/tmp/ai-improv-actor-audition-v8-20260902
   poll_interval_seconds: 5
@@ -8,7 +9,7 @@ service:
 
 backends:
   local:
-    base_url: http://10.0.0.103:11434
+    base_url: http://127.0.0.1:11434
     kind: ollama
     timeout_seconds: 1800
     models:

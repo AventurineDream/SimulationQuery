@@ -1,5 +1,6 @@
+# Portable example. Exact historical machine configuration is archived in private Drive.
 service:
-  data_root: /Users/aven/Software/Github/AI-improv-troupe/.rehearsal-data/season-1-porch-live-20260912
+  data_root: .rehearsal-data/season-1-porch-live-20260912
   poll_interval_seconds: 5
   recovery_wait_seconds: 1800
   auto_retry_timeouts: false
@@ -7,7 +8,7 @@ service:
   worker_id: season-1-porch-live-20260912
 backends:
   local:
-    base_url: http://10.0.0.103:11434
+    base_url: http://127.0.0.1:11434
     kind: ollama
     timeout_seconds: 1800
     models:

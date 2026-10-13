@@ -30,7 +30,7 @@ Batch: **FAIL**, 75/80 accepted actor turns, no diaries or cheetah turns,
 dice coverage `NOT_EXERCISED`. The original database and report were not rewritten.
 
 Baseline root:
-[`season-1-porch-live-20260912-rerun-20260920`](../.rehearsal-data/season-1-porch-live-20260912-rerun-20260920/).
+`season-1-porch-live-20260912-rerun-20260920` (private evidence: `../.rehearsal-data/season-1-porch-live-20260912-rerun-20260920/`).
 
 ## Diagnoses and changes
 
@@ -98,9 +98,9 @@ flavor-drop event: the unified render fallback is regression-tested, not newly
 confirmed on the server by this scene.
 
 Live root:
-[`season-1-porch-magic-dice-retry-cleanup-20260920`](../.rehearsal-data/season-1-porch-magic-dice-retry-cleanup-20260920/).
+`season-1-porch-magic-dice-retry-cleanup-20260920` (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-retry-cleanup-20260920/`).
 Machine receipt:
-[`magic-dice-rehearsal-report.json`](../.rehearsal-data/season-1-porch-magic-dice-retry-cleanup-20260920/state/magic-dice-rehearsal-report.json).
+`magic-dice-rehearsal-report.json` (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-retry-cleanup-20260920/state/magic-dice-rehearsal-report.json`).
 
 ## Focused follow-up
 
@@ -123,7 +123,7 @@ controlled roll after this synthetic premature-result rejection. One successful
 case would be evidence of capability, not a live success-rate estimate.
 
 Probe root:
-[`season-1-porch-magic-actor-retry-probe-20260920`](../.rehearsal-data/season-1-porch-magic-actor-retry-probe-20260920/).
+`season-1-porch-magic-actor-retry-probe-20260920` (private evidence: `../.rehearsal-data/season-1-porch-magic-actor-retry-probe-20260920/`).
 Result: **mechanical PASS, semantic attempt-only boundary FAIL on assistant
 review**. Exactly one server call supplied the correction, which was accepted
 and recorded `2d6 = 2 + 3`, Intellect modifier `+1`, total `6`, setback. However,
@@ -139,7 +139,7 @@ explicitly labels future receipts `status_scope: mechanical_contract_only` and
 
 A companion no-challenge probe tests the metadata-only correction with one
 server call and no expected roll:
-[`season-1-porch-magic-no-challenge-retry-probe-20260920`](../.rehearsal-data/season-1-porch-magic-no-challenge-retry-probe-20260920/).
+`season-1-porch-magic-no-challenge-retry-probe-20260920` (private evidence: `../.rehearsal-data/season-1-porch-magic-no-challenge-retry-probe-20260920/`).
 Result: **FAIL**. The model removed the stat but replaced the supplied move with
 new observations/actions. `CORRECTION_SCOPE_DRIFT` withheld it; zero accepted
 actor turns and zero rolls. The guard worked, but the v8 prompt did not repair
@@ -149,7 +149,7 @@ The v9 follow-up removes the scene/performance context from this metadata-only
 request, retains the exact rejected text, and applies an exact-text acceptance
 check. All other character/safety checks and the one-retry limit remain in
 force. The same fixture is replayed once in a separate root:
-[`season-1-porch-magic-no-challenge-retry-probe-v02-20260920`](../.rehearsal-data/season-1-porch-magic-no-challenge-retry-probe-v02-20260920/).
+`season-1-porch-magic-no-challenge-retry-probe-v02-20260920` (private evidence: `../.rehearsal-data/season-1-porch-magic-no-challenge-retry-probe-v02-20260920/`).
 Result: **PASS for this targeted repair**, one live correction. The returned
 envelope has `magic_stat: null` and text exactly equal to the rejected original;
 the runtime accepts one actor turn and records zero rolls. Assistant review
@@ -184,3 +184,6 @@ review still found visible pre-roll observations and unsupported pain/injury
 language. The next test should target that prose policy in isolation. Expanding
 a medical-word list alone cannot establish the semantic boundary. The current
 evidence still does not establish a need for post-training.
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.

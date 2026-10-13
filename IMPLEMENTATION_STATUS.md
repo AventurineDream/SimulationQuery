@@ -4,6 +4,13 @@
 **Updated:** 2026-09-27
 **Contract:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md)
 
+> Organization update — October 12, 2026: this is the dated software
+> implementation record. Current private run status and deployed errata are
+> owned by Drive. See [project organization](docs/PROJECT_ORGANIZATION.md)
+> and the [cleanup record](docs/maintenance/2026-10-12-project-organization.md).
+> The completed Porch evidence and the separate closure decision are indexed
+> there; the historical entries below retain their original dates.
+
 ## Combined review candidate: Amaranth craft + Codex runtime — 2026-09-27
 
 This is a review branch, not a deploy or rehearsal authorization. It includes the
@@ -150,7 +157,7 @@ The repository was reorganized without deleting research evidence. Dashboard
 records now live under [`docs/dashboard/`](docs/dashboard/), completed
 Simulation Query reviews under [`research/reviews/`](research/reviews/), and
 the unrelated, nonidentical FMK folder/ZIP pair under
-[`archive/adjacent-projects/fmk-study/`](archive/adjacent-projects/fmk-study/).
+the private Drive repository migration archive (see [archive policy](archive/README.md)).
 Raw `.rehearsal-data/` roots remain in place. The durable map and cleanup record
 are [`docs/README.md`](docs/README.md) and
 [`docs/maintenance/2026-09-17-repository-cleanup.md`](docs/maintenance/2026-09-17-repository-cleanup.md).

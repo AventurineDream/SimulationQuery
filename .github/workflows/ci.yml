@@ -1,0 +1,28 @@
+name: Offline validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.14']
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -e '.[dev,tui]'
+      - run: python -m pytest -q
+      - run: python scripts/check_repository.py
+      - run: python -m compileall -q src scripts tests
+      - run: improv validate examples/the_last_train.plan.json
+      - run: improv run examples/the_last_train.plan.json --dry-run -o "$RUNNER_TEMP/scene.script.md"
+      - run: git diff --check

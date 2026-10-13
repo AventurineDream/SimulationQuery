@@ -79,6 +79,9 @@ preserve outcome variance without becoming a new source of unsupported canon.
 
 ## Evidence
 
-- [live JSON receipt](../.rehearsal-data/season-1-porch-magic-diary-v02-setback-20260916/state/magic-diary-rehearsal-report.json)
-- [preserved diary rehearsal root](../.rehearsal-data/season-1-porch-magic-diary-v02-setback-20260916/)
-- [earlier interrupted diary branch](../.rehearsal-data/season-1-porch-magic-diary-v01-costly-20260916/)
+- live JSON receipt (private evidence: `../.rehearsal-data/season-1-porch-magic-diary-v02-setback-20260916/state/magic-diary-rehearsal-report.json`)
+- preserved diary rehearsal root (private evidence: `../.rehearsal-data/season-1-porch-magic-diary-v02-setback-20260916/`)
+- earlier interrupted diary branch (private evidence: `../.rehearsal-data/season-1-porch-magic-diary-v01-costly-20260916/`)
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.
