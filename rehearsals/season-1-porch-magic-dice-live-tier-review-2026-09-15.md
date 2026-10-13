@@ -43,9 +43,9 @@ The first director plan required a strict setup correction in all three runs. Th
 
 ## Reproducible reports
 
-- [Setback report](../.rehearsal-data/season-1-porch-magic-dice-v01-setback-parserretry2-20260915/state/magic-dice-rehearsal-report.json)
-- [Costly-success report](../.rehearsal-data/season-1-porch-magic-dice-v01-costly-20260915/state/magic-dice-rehearsal-report.json)
-- [Clean-success report](../.rehearsal-data/season-1-porch-magic-dice-v01-clean-20260915/state/magic-dice-rehearsal-report.json)
+- Setback report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v01-setback-parserretry2-20260915/state/magic-dice-rehearsal-report.json`)
+- Costly-success report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v01-costly-20260915/state/magic-dice-rehearsal-report.json`)
+- Clean-success report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v01-clean-20260915/state/magic-dice-rehearsal-report.json`)
 
 Earlier failed and invalid setup attempts remain preserved in their separate `.rehearsal-data/` roots and are not counted in the three tier results.
 
@@ -55,3 +55,6 @@ Earlier failed and invalid setup attempts remain preserved in their separate `.r
 - `compileall` passed; `git diff --check` passed.
 - The full run had 317 passes and one failure in `test_explicit_scheduled_resume_reopens_only_the_stopped_run`: its fixture expects a September 6 slot to remain `SCHEDULED`, but the workspace date is September 15 and the resumed run completes. No unrelated scheduling code was changed.
 - Before diary rehearsals, freeze the opening beat and add a validator that rejects any opening plan that resolves or attributes an injury diagnosis before the pending roll. Then repeat the three outcomes and require an explicit, visible cost for costly success and an explicit failed inference for setback.
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.

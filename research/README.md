@@ -15,3 +15,8 @@ preparation records remain here because they describe active study operations.
 
 Research outputs and failed attempts are provenance-bearing evidence. Preserve
 them independently of whether a model or hypothesis remains selected.
+
+Sealed human labels, claim/diary text, raw batch results, and private run outputs
+are held in Drive. The public calibration manifests and coding rules remain at
+their original paths and versions. See [project organization](../docs/PROJECT_ORGANIZATION.md)
+for the source-of-truth boundary and current private evidence index.

@@ -51,7 +51,10 @@ after the current live branch reliability is accepted or another bounded retry c
 
 ## Evidence roots
 
-- [v03 setback](../.rehearsal-data/season-1-porch-magic-adjudication-v03-20260916-setback-server/)
-- [v03 costly](../.rehearsal-data/season-1-porch-magic-adjudication-v03-20260916-costly-server/)
-- [v03 clean](../.rehearsal-data/season-1-porch-magic-adjudication-v03-20260916-clean-server/)
-- [v04 costly](../.rehearsal-data/season-1-porch-magic-adjudication-v04-20260916-costly-server/)
+- v03 setback (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v03-20260916-setback-server/`)
+- v03 costly (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v03-20260916-costly-server/`)
+- v03 clean (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v03-20260916-clean-server/`)
+- v04 costly (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v04-20260916-costly-server/`)
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.

@@ -1,7 +1,10 @@
 # Rehearsal evidence index
 
 This directory is intentionally chronological. Configuration and report files
-stay beside their historical names so raw audit references remain stable.
+retain their historical names so script and audit references remain stable.
+The YAML files are portable examples: workstation paths and the endpoint were
+replaced for public use; exact historical versions are archived in private Drive.
+Model handles, manifests, and experimental settings remain unchanged.
 
 ## Current porch-season reliability line
 

@@ -8,6 +8,7 @@ pytest.importorskip("textual")
 
 from demos.textual_background_sampler import (  # noqa: E402
     BACKGROUND_SPECS,
+    BackgroundCanvas,
     BackgroundSampler,
     render_frame,
 )
@@ -29,24 +30,40 @@ def test_unknown_background_mode_is_rejected() -> None:
 
 
 @pytest.mark.asyncio
-async def test_sampler_switches_modes_and_advances_at_a_bounded_rate() -> None:
+async def test_sampler_switches_modes_and_advances_at_a_bounded_rate(monkeypatch) -> None:
+    scheduled = []
+
+    def capture_interval(self, interval, callback, **kwargs):
+        scheduled.append((interval, callback))
+
+    # Drive the application's timer callback explicitly. Textual key dispatch
+    # may take several frames, so elapsed wall time is not a stable assertion.
+    monkeypatch.setattr(BackgroundCanvas, "set_interval", capture_interval)
     app = BackgroundSampler()
     async with app.run_test(size=(64, 20)) as pilot:
+        assert len(scheduled) == 1
+        interval, advance = scheduled[0]
+        assert interval == pytest.approx(1 / 12)
         assert app._canvas.mode == "dust"
         assert app._canvas.frame_number == 0
 
         await pilot.press("2")
         assert app._canvas.mode == "fractal"
-        # The app's 12fps timer may legitimately fire during key dispatch.
-        assert 0 <= app._canvas.frame_number <= 1
+        assert app._canvas.frame_number == 0
 
-        await pilot.pause(0.20)
-        assert 1 <= app._canvas.frame_number <= 4
+        advance()
+        advance()
+        assert app._canvas.frame_number == 2
 
         await pilot.press("space")
         paused_at = app._canvas.frame_number
-        await pilot.pause(0.20)
+        advance()
+        advance()
         assert app._canvas.frame_number == paused_at
 
         await pilot.press("3")
         assert app._canvas.mode == "signal"
+        assert app._canvas.frame_number == 0
+        await pilot.press("space")
+        advance()
+        assert app._canvas.frame_number == 1
