@@ -46,10 +46,13 @@ any new context source.
 
 ## Evidence roots
 
-- [setback](../.rehearsal-data/season-1-porch-magic-adjudication-v01-20260916-setback-server/)
-- [costly success](../.rehearsal-data/season-1-porch-magic-adjudication-v01-20260916-costly-server/)
-- [clean success](../.rehearsal-data/season-1-porch-magic-adjudication-v01-20260916-clean-server/)
+- setback (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v01-20260916-setback-server/`)
+- costly success (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v01-20260916-costly-server/`)
+- clean success (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v01-20260916-clean-server/`)
 
 The initial unsandboxed attempt is preserved separately under
 `season-1-porch-magic-adjudication-v01-20260916-setback`; it failed because the sandbox could not
 reach the configured endpoint and produced no scene turn or roll.
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.

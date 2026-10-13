@@ -1,3 +1,4 @@
+# Portable example. Exact historical machine configuration is archived in private Drive.
 # Copy to /etc/improv-troupe/config.yaml and fill in the private model
 # endpoints/model manifest when the live scene runtime is selected.
 
@@ -16,7 +17,7 @@ backends:
   local:
     # A root URL or /v1 URL both work. `kind: ollama` selects native /api/chat
     # so output envelopes can use Ollama's JSON-schema constraint.
-    base_url: http://10.0.0.103:11434
+    base_url: http://127.0.0.1:11434
     kind: ollama
     timeout_seconds: 600
     models:

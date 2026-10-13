@@ -1,5 +1,6 @@
+# Portable example. Exact historical machine configuration is archived in private Drive.
 service:
-  data_root: /Users/aven/Software/Github/AI-improv-troupe/.rehearsal-data/actor-audition-v20-director-rotation-20260904
+  data_root: .rehearsal-data/actor-audition-v20-director-rotation-20260904
   poll_interval_seconds: 5
   recovery_wait_seconds: 1800
   auto_retry_timeouts: true
@@ -7,7 +8,7 @@ service:
   worker_id: actor-audition-v20-worker
 backends:
   local:
-    base_url: http://10.0.0.103:11434
+    base_url: http://127.0.0.1:11434
     kind: ollama
     timeout_seconds: 1800
     models:

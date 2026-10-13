@@ -13,3 +13,20 @@ venv/
 # user-generated output
 transcripts/
 *.script.md
+
+# Private working material and service evidence
+.env
+.env.*
+!.env.example
+private/
+season1/
+state/
+snapshots/
+.cleanup/
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+*.log

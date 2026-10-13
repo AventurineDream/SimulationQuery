@@ -49,6 +49,9 @@ accept the current boundary and make diary entries the next isolated variable.
 
 ## Evidence roots
 
-- [setback](../.rehearsal-data/season-1-porch-magic-adjudication-v02-20260916-setback-server/)
-- [costly success](../.rehearsal-data/season-1-porch-magic-adjudication-v02-20260916-costly-server/)
-- [clean success](../.rehearsal-data/season-1-porch-magic-adjudication-v02-20260916-clean-server/)
+- setback (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v02-20260916-setback-server/`)
+- costly success (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v02-20260916-costly-server/`)
+- clean success (private evidence: `../.rehearsal-data/season-1-porch-magic-adjudication-v02-20260916-clean-server/`)
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.
