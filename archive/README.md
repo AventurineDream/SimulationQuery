@@ -1,9 +1,10 @@
-# Repository archive
+# Historical material
 
-This directory holds preserved material that is not part of the active AI
-Improv Troupe implementation or research workflow. Archiving here is a
-reversible separation, not a deletion or endorsement of the material.
+Private archives are held in the SimulationQuery Drive folder. The unrelated FMK
+prototype's loose files and distinct ZIP were preserved separately, with original
+paths and checksums, in the private repository migration archive before removal
+from the public tree.
 
-- [`adjacent-projects/fmk-study/`](adjacent-projects/fmk-study/) contains both
-  the loose FMK prototype and a distinct source ZIP. They were not exact
-  duplicates and were therefore retained separately.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the archive policy.
+Historical Git commits retain the earlier public copies; this cleanup does not
+rewrite repository history.

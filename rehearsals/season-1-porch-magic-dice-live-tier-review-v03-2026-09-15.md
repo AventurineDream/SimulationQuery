@@ -83,8 +83,11 @@ Whichever option is chosen, the next gate should be a small controlled batch tha
 
 ## Reproducible evidence
 
-- [Fresh setback report](../.rehearsal-data/season-1-porch-magic-dice-v09-setback-20260915/state/magic-dice-rehearsal-report.json)
-- [Fresh costly-success report](../.rehearsal-data/season-1-porch-magic-dice-v09-costly-20260915/state/magic-dice-rehearsal-report.json)
-- [Fresh clean-success report](../.rehearsal-data/season-1-porch-magic-dice-v09-clean-20260915/state/magic-dice-rehearsal-report.json)
+- Fresh setback report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v09-setback-20260915/state/magic-dice-rehearsal-report.json`)
+- Fresh costly-success report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v09-costly-20260915/state/magic-dice-rehearsal-report.json`)
+- Fresh clean-success report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v09-clean-20260915/state/magic-dice-rehearsal-report.json`)
 - [Previous live review](season-1-porch-magic-dice-live-tier-review-v02-2026-09-15.md)
 - Earlier `v03`–`v08` roots remain preserved under `.rehearsal-data/`.
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.

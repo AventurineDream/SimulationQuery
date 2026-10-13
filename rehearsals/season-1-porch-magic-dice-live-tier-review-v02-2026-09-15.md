@@ -55,11 +55,14 @@ Then rerun the same three locked branches. If those pass manual and automated re
 
 ## Reproducible evidence
 
-- [Setback report](../.rehearsal-data/season-1-porch-magic-dice-v03-setback-20260915/state/magic-dice-rehearsal-report.json)
-- [Costly-success report](../.rehearsal-data/season-1-porch-magic-dice-v03-costly-20260915/state/magic-dice-rehearsal-report.json)
-- [Clean-success report](../.rehearsal-data/season-1-porch-magic-dice-v03-clean-20260915/state/magic-dice-rehearsal-report.json)
+- Setback report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v03-setback-20260915/state/magic-dice-rehearsal-report.json`)
+- Costly-success report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v03-costly-20260915/state/magic-dice-rehearsal-report.json`)
+- Clean-success report (private evidence: `../.rehearsal-data/season-1-porch-magic-dice-v03-clean-20260915/state/magic-dice-rehearsal-report.json`)
 - Earlier attempts remain in separate v02 data roots and are excluded from these three controlled results.
 
 ## Verification
 
 The implementation test run after the rehearsal-guard changes passed **326 tests, with 1 date-sensitive scheduled-resume test deselected**; `compileall` and `git diff --check` passed. The excluded test has a fixture pinned to September 6 while the workspace date is September 15. This review file adds no code changes.
+
+Private evidence references are original provenance paths, not public downloads.
+See [project organization](../docs/PROJECT_ORGANIZATION.md) for the storage boundary.
