@@ -121,6 +121,8 @@ async def run_live_actor_audition_rehearsal(
 
 def _audition_scene_factory(database, roots, config, clock, client_factory=None):
     return LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database, roots=roots, config=config, clock=clock,
         client_factory=client_factory, strict_rehearsal_acceptance=True,
         sessions_per_day=2,

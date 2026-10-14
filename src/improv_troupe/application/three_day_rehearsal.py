@@ -74,6 +74,8 @@ async def run_live_three_day_rehearsal(
         )
 
     factory = LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database,
         roots=roots,
         config=config,

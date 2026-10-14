@@ -1825,6 +1825,8 @@ def test_stat_without_challenge_gets_metadata_only_correction(tmp_path, resumed)
     assert "magic_stat as null" in prompt
     assert "not performing or continuing a scene" in prompt
     assert "CURRENT SCENE" not in prompt
+    assert "readers outside the fictional scene" in prompt
+    assert "does not itself record publication consent" in prompt
     accepted = database.connection.execute(
         "SELECT content_path FROM turns WHERE character_id='char-1' AND accepted_sequence IS NOT NULL"
     ).fetchone()

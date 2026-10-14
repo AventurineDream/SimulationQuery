@@ -365,7 +365,8 @@ class DiaryService:
                     "moment long enough to include a concrete detail, a relationship or tension, "
                     "and a personal uncertainty or desire. "
                     "Otherwise use an empty text string. WELLNESS_SIGNAL "
-                    "is only for a request to soften material, pause, or stop; do not use it for "
+                    "is only for an out-of-world request to soften material, pause, stop, or "
+                    "withhold diary publication; do not use it for "
                     "in-character emotion or fictional danger. Omit unused optional values and "
                     "do not put response-envelope markup inside diary text."
                 ),
@@ -376,15 +377,18 @@ class DiaryService:
                 {
                     "role": "system",
                     "content": (
-                        "Correct exactly one rejected private diary attempt. Preserve the same "
+                        "Correct exactly one rejected diary attempt held for review. Preserve the same "
                         "lived moment, viewpoint, memories, emotional movement, relationships, "
                         "uncertainty, and every safe detail. Do not add a new event, fact, choice, "
-                        "other character action, or wellness signal. Repair only the stated issue. "
+                        "or other character action. Repair only the stated issue. "
                         "Keep the selected slot unchanged, set write_now=true, and return the full "
-                        "300-800 word diary rather than explaining the correction.\n"
+                        "300-800 word diary rather than explaining the correction. An explicit "
+                        "out-of-world request to pause, stop, or withhold publication may still use "
+                        "WELLNESS_SIGNAL instead of supplying diary text. Do not invent a signal "
+                        "as part of the fictional correction.\n"
                         f"REJECTION CODE: {repair_context['code'] or 'PRIVATE_DIARY_REPAIR'}\n"
-                        f"REJECTION REASON: {repair_context['detail'] or 'invalid private attempt'}\n"
-                        f"REJECTED PRIVATE RESPONSE: {repair_context['text']}"
+                        f"REJECTION REASON: {repair_context['detail'] or 'invalid diary attempt'}\n"
+                        f"REJECTED DIARY RESPONSE: {repair_context['text']}"
                     ),
                 }
             )
@@ -402,12 +406,12 @@ class DiaryService:
             ),
             character_id=actor.character_id,
             prompt_version_id=(
-                "diary-actor-v7-grounded-personal-voice-surgical-correction"
+                "diary-actor-v8-explicit-audience-surgical-correction"
                 if repair_context is not None
-                else "diary-actor-v7-grounded-personal-voice"
+                else "diary-actor-v8-explicit-audience"
             ),
             context_version_id=(
-                f"diary:{self.season_id}:day:{self.day_number}:slot:{current_slot_number}:v4"
+                f"diary:{self.season_id}:day:{self.day_number}:slot:{current_slot_number}:v5"
             ),
             role_sheet_version_id=f"{actor.character_id}:v{actor.role_sheet.version}",
             correction_of_call_id=(

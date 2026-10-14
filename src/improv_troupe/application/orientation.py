@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 from ..infrastructure import EventRepository
 from ..llm.adapter import NormalizedCallStatus
 from ..llm.context import build_orientation_messages
+from ..llm.diary_audience import DIARY_AUDIENCE_VERSION
 from ..llm.structured import StructuredOutputError, parse_orientation_output
 from .model_calls import ModelCallExecutor
 from .wellness import WellnessService
@@ -70,8 +71,8 @@ class OrientationService:
                 "<ACCEPTED>true|false</ACCEPTED><WELLNESS_SIGNAL>...</WELLNESS_SIGNAL>"
             ),
             character_id=actor.character_id,
-            prompt_version_id="orientation-v1",
-            context_version_id=f"orientation:{self.season_id}:{actor.character_id}:v1",
+            prompt_version_id="orientation-v2-explicit-diary-audience",
+            context_version_id=f"orientation:{self.season_id}:{actor.character_id}:v2",
         )
         if result.status is not NormalizedCallStatus.COMPLETED:
             return OrientationResult(
@@ -98,7 +99,11 @@ class OrientationService:
                     aggregate_type="cast_member",
                     aggregate_id=f"{self.season_id}:{actor.character_id}",
                     event_type="OrientationAccepted",
-                    payload={"character_id": actor.character_id},
+                    payload={
+                        "character_id": actor.character_id,
+                        "call_id": call_id,
+                        "diary_audience_version": DIARY_AUDIENCE_VERSION,
+                    },
                 )
             return OrientationResult(
                 character_id=actor.character_id,

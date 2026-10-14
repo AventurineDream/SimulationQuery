@@ -1,3 +1,5 @@
+import asyncio
+import json
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -5,7 +7,11 @@ import pytest
 from improv_troupe.application import (
     LiveRuntimeConfigurationError,
     LiveSceneFactory,
+    ModelCallExecutor,
+    OrientationActor,
+    OrientationService,
     SceneModelManifest,
+    WellnessService,
     validate_model_manifest,
 )
 from improv_troupe.clock import VirtualClock
@@ -26,9 +32,11 @@ from improv_troupe.infrastructure import (
     SQLiteDatabase,
     SeasonRepository,
 )
+from improv_troupe.llm import ScriptedFakeClient
+from improv_troupe.llm.diary_audience import DIARY_AUDIENCE_VERSION
 
 
-def _setup(tmp_path):
+def _setup(tmp_path, *, oriented=True):
     roots = DataRoots.from_root(tmp_path / "data")
     roots.prepare()
     database = SQLiteDatabase(roots.state / "improv.sqlite3")
@@ -98,7 +106,95 @@ def _setup(tmp_path):
             )
         }
     )
+    if oriented:
+        _orient(roots, database, cast)
     return roots, database, config, cast
+
+
+def _orient(roots, database, cast, *, accepted=True):
+    clock = VirtualClock(datetime(2026, 8, 21, tzinfo=timezone.utc))
+    service = OrientationService(
+        season_id="S01",
+        wellness=WellnessService(
+            database=database, season_id="S01", clock=clock, audit_root=roots.private,
+        ),
+    )
+    for member in cast:
+        executor = ModelCallExecutor(
+            database=database,
+            client=ScriptedFakeClient([f"<ACCEPTED>{str(accepted).lower()}</ACCEPTED>"]),
+            clock=clock, audit_root=roots.private, backend="scripted-fake", model="actor-8b",
+        )
+        result = asyncio.run(service.orient(OrientationActor(member.character_id, member.name, executor)))
+        assert result.accepted is accepted
+
+
+@pytest.mark.parametrize("completed_actors", [0, 3])
+def test_live_scene_cannot_start_with_missing_orientation(tmp_path, completed_actors):
+    roots, database, config, cast = _setup(tmp_path, oriented=False)
+    _orient(roots, database, cast[:completed_actors])
+    clients_created = []
+    factory = LiveSceneFactory(
+        database=database, roots=roots, config=config,
+        clock=VirtualClock(datetime(2026, 8, 21, tzinfo=timezone.utc)),
+        client_factory=lambda handle: clients_created.append(handle),
+    )
+    # Preflight remains possible before the opening briefing; dispatch does not.
+    factory.validate_season("S01")
+    calls_before = database.connection.execute("SELECT COUNT(*) FROM model_calls").fetchone()[0]
+    with pytest.raises(LiveRuntimeConfigurationError, match="missing:.*jun"):
+        factory({"season_id": "S01", "run_id": "S01-run-01"})
+    assert not clients_created
+    assert database.connection.execute("SELECT COUNT(*) FROM model_calls").fetchone()[0] == calls_before
+
+
+def test_declined_orientation_does_not_unlock_scene(tmp_path):
+    roots, database, config, cast = _setup(tmp_path, oriented=False)
+    _orient(roots, database, cast[:3])
+    _orient(roots, database, cast[3:], accepted=False)
+    factory = LiveSceneFactory(
+        database=database, roots=roots, config=config,
+        clock=VirtualClock(datetime(2026, 8, 21, tzinfo=timezone.utc)),
+    )
+    with pytest.raises(LiveRuntimeConfigurationError, match="missing: jun"):
+        factory({"season_id": "S01", "run_id": "S01-run-01"})
+
+
+def test_legacy_acceptance_without_briefing_receipt_does_not_unlock_scene(tmp_path):
+    roots, database, config, cast = _setup(tmp_path, oriented=False)
+    for member in cast:
+        key = f"S01:orientation:{member.character_id}:accepted"
+        EventRepository(database).append(
+            event_id=key, natural_key=key, aggregate_type="cast_member",
+            aggregate_id=f"S01:{member.character_id}", event_type="OrientationAccepted",
+            payload={"character_id": member.character_id},
+        )
+    factory = LiveSceneFactory(
+        database=database, roots=roots, config=config,
+        clock=VirtualClock(datetime(2026, 8, 21, tzinfo=timezone.utc)),
+    )
+    with pytest.raises(LiveRuntimeConfigurationError, match="Do not backfill frozen season records"):
+        factory({"season_id": "S01", "run_id": "S01-run-01"})
+
+
+@pytest.mark.parametrize("broken_field,broken_value", [
+    ("status", "TRANSPORT_FAILURE"),
+    ("purpose", "orientation:OTHER:mara"),
+])
+def test_acceptance_must_link_to_completed_orientation_for_this_season(tmp_path, broken_field, broken_value):
+    roots, database, config, _ = _setup(tmp_path)
+    with database.transaction() as connection:
+        # Controlled corruption of synthetic evidence must fail closed.
+        connection.execute(
+            f"UPDATE model_calls SET {broken_field} = ? WHERE call_id = ?",
+            (broken_value, "S01:orientation:mara:a1"),
+        )
+    factory = LiveSceneFactory(
+        database=database, roots=roots, config=config,
+        clock=VirtualClock(datetime(2026, 8, 21, tzinfo=timezone.utc)),
+    )
+    with pytest.raises(LiveRuntimeConfigurationError, match="missing: mara"):
+        factory({"season_id": "S01", "run_id": "S01-run-01"})
 
 
 def test_live_scene_factory_builds_four_independent_character_sessions(tmp_path):
@@ -120,6 +216,21 @@ def test_live_scene_factory_builds_four_independent_character_sessions(tmp_path)
     assert runner.orchestrator.client._timeout == 300
     assert runner.day_number == 1
     assert runner.slot_number == 1
+    events = database.connection.execute(
+        "SELECT payload_json FROM domain_events WHERE event_type='OrientationAccepted'"
+    ).fetchall()
+    assert len(events) == 4
+    for event in events:
+        receipt = json.loads(event["payload_json"])
+        assert receipt["diary_audience_version"] == DIARY_AUDIENCE_VERSION
+        call = database.connection.execute(
+            "SELECT prompt_version_id,prompt_path FROM model_calls WHERE call_id = ?",
+            (receipt["call_id"],),
+        ).fetchone()
+        assert call["prompt_version_id"] == "orientation-v2-explicit-diary-audience"
+        with open(call["prompt_path"], encoding="utf-8") as prompt:
+            assert "readers outside the fictional scene" in prompt.read()
+    assert database.connection.execute("SELECT COUNT(*) FROM consent_decisions").fetchone()[0] == 0
 
 
 def test_manifest_validation_rejects_unknown_backend_before_model_calls(tmp_path):

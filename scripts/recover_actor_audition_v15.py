@@ -55,6 +55,8 @@ async def recover():
     final_run = runs[-1]
     clock = VirtualClock(datetime.fromisoformat(final_run["actual_completed_at"]))
     factory = LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database, roots=roots, config=config, clock=clock,
         strict_rehearsal_acceptance=True, sessions_per_day=2,
     )

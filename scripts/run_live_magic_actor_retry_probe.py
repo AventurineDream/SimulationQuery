@@ -44,6 +44,8 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
         clock=clock, dice_trial=True,
     )
     factory = LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database, roots=roots, config=config, clock=clock,
         strict_rehearsal_acceptance=True, sessions_per_day=1,
     )

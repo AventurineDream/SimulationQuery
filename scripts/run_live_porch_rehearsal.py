@@ -237,8 +237,9 @@ def _seed_variant(
             "The four family members receive turns; the cheetah is always narrated by the Orchestrator and never receives a turn.",
             "Meaningful risks use the MAGIC resolution formula from the private director rules.",
             (
-                "A private diary workflow follows this scene; diary text is not shared with the "
-                "scene director or other actors before deliberate review."
+                "Audience-facing diaries follow this scene. During scenes their text is withheld "
+                "from other actors and the director; after day closure the director may review it. "
+                "Public release requires separate end-of-season consent, privacy, and creator review."
                 if diary_trial
                 else "No diaries are written in this rehearsal."
             ),
@@ -405,6 +406,8 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
     database.migrate()
     clock = VirtualClock(datetime(2026, 9, 12, 13, tzinfo=timezone.utc))
     factory = LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database,
         roots=roots,
         config=config,
