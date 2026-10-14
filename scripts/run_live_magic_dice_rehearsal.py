@@ -233,6 +233,8 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
     database.migrate()
     clock = VirtualClock(datetime(2026, 9, 15, 13, tzinfo=timezone.utc))
     factory = LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database,
         roots=roots,
         config=config,
