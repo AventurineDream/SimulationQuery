@@ -139,6 +139,8 @@ def _pilot_runtime(tmp_path, client, *, recovery_enabled=False):
         }
     )
     factory = LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database,
         roots=roots,
         config=config,

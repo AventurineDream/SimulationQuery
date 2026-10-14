@@ -15,6 +15,8 @@ The repository root holds the current cross-cutting contracts:
 
 Supporting material is grouped by purpose:
 
+- [`DIARY_AUDIENCE.md`](DIARY_AUDIENCE.md) — prospective diary-audience briefing,
+  recorded orientation gate, and separate publication consent.
 - [`narrative-quality/CODEX_REVIEW_2026-09-23.md`](narrative-quality/CODEX_REVIEW_2026-09-23.md)
   — Codex prose candidate, implementation tradeoffs, offline evidence, and peer-review handoff.
 - [`dashboard/`](dashboard/) — operator-dashboard product, design, and rehearsal records.
