@@ -9,6 +9,7 @@ from typing import Mapping, Sequence
 
 from ..domain import ActorSheet, CharacterCard, HiddenSeasonPlan, OpeningSnapshot, RoleSheet
 from .client import Message
+from .diary_audience import DIARY_AUDIENCE_NOTICE, DIARY_AUDIENCE_VERSION
 from .prose import ACTOR_PROSE_GUIDE, DIARY_VOICE_GUIDE, DIRECTOR_PROSE_GUIDE
 
 
@@ -105,7 +106,8 @@ def build_actor_messages(context: ActorContext) -> list[Message]:
         "and relational behavior belongs in the mission alongside danger. Everything in ACTOR_TEXT "
         "is shared scene material, so do not include private asides, role-sheet labels, analysis "
         "headings, HTML, TODOs, or placeholders. If you need to communicate an explicit "
-        "out-of-world request to soften material, pause, or stop, use the wellness channel; "
+        "out-of-world request to soften material, pause, stop, or withhold diary publication, "
+        "use the wellness channel; "
         "in-character fear, fatigue, fictional danger, caffeine, or poor sleep are not by "
         "themselves wellness signals. A character may act violently toward another player-"
         "character, including making physical contact, but may not dictate the other character's "
@@ -124,7 +126,8 @@ def build_actor_messages(context: ActorContext) -> list[Message]:
             "death. Keep violence non-graphic. Mild profanity, flirtation, consensual suggestion, "
             "and fade-to-black intimacy are allowed only for explicitly adult characters. "
             "Keep performer identity private and "
-            "use the wellness channel only for an explicit out-of-world pause or stop request."
+            "use the wellness channel only for an explicit out-of-world pause, stop, "
+            "or diary-publication request."
         )
     system += _ACTOR_CRAFT_GUIDE + ACTOR_PROSE_GUIDE
     system += (
@@ -146,7 +149,13 @@ def build_actor_messages(context: ActorContext) -> list[Message]:
         "they do not reveal its result. Do not invent die results or decide the outcome. "
         "Omit both MAGIC_STAT and MAGIC_METHOD to decline or when no challenge is pending."
     )
+    system += (
+        "\nOUT-OF-WORLD DIARY FORMAT (when this production includes diaries)\n"
+        + DIARY_AUDIENCE_NOTICE
+        + " This is task information, not fictional lore; keep it out of ACTOR_TEXT."
+    )
     private_self = {
+        "diary_audience_version": DIARY_AUDIENCE_VERSION,
         "actor_sheet": (
             context.actor_sheet.model_dump(mode="json") if context.actor_sheet else None
         ),
@@ -505,6 +514,7 @@ def build_diary_messages(
 
     payload = {
         "actor_name": actor_name,
+        "diary_audience_version": DIARY_AUDIENCE_VERSION,
         "actor_sheet": actor_sheet.model_dump(mode="json") if actor_sheet else None,
         "character_name": character_name or actor_name,
         "role_sheet": role_sheet.model_dump(mode="json"),
@@ -527,7 +537,7 @@ def build_diary_messages(
             "Choose one of the three original daily run slots. Write only after the selected "
             "scene and use first-person limited knowledge; do not invent facts outside this brief. "
             "Write a personal account rather than a technical scene recap: center what changed for "
-            "you, what you noticed or misread, sensory detail, relationships, private opinions, "
+            "you, what you noticed or misread, sensory detail, relationships, personal opinions, "
             "uncertainty, desire, irritation, humor, or a choice you may regret. Technical details "
             "may support the memory, but should not replace a distinct point of view. "
             "Choose one or two moments that matter to this character; do not cover every turn "
@@ -535,7 +545,8 @@ def build_diary_messages(
             "You may be ambivalent or leave a thought unresolved. Interpretation, metaphor, and "
             "questions need no invented evidence; ground the events they refer to. "
             "Use WELLNESS_SIGNAL only for an explicit out-of-world request to soften material, "
-            "pause, or stop participating. Do not use it for in-character fear, danger, sadness, "
+            "pause, stop participating, or withhold diary publication. Do not use it for "
+            "in-character fear, danger, sadness, "
             "uncertainty, dramatic language, fictional insomnia, caffeine intake, or an elevated "
             "pulse. Fictional danger, non-graphic violence, profanity, flirtation, consensual "
             "suggestion, and nonhuman death metaphors may be described. Do not invent another "
@@ -554,11 +565,15 @@ def build_diary_messages(
         {
             "role": "system",
             "content": (
-                "You are writing one audience-facing diary entry as the named performer, "
-                "in first person as the character you played. Keep performer identity and "
-                "fictional character identity distinct."
-                if actor_sheet is not None
-                else "You are writing one audience-facing diary entry as the named actor."
+                (
+                    "You are writing one audience-facing diary entry as the named performer, "
+                    "in first person as the character you played. Keep performer identity and "
+                    "fictional character identity distinct."
+                    if actor_sheet is not None
+                    else "You are writing one audience-facing diary entry as the named actor."
+                )
+                + " "
+                + DIARY_AUDIENCE_NOTICE
             ),
         },
         {"role": "user", "content": json.dumps(payload, sort_keys=True)},
@@ -694,8 +709,7 @@ def build_orientation_messages(
                 "of uncertainty or disagreement by itself is not a decline. If you are willing "
                 "to participate, the exact shape is: <ACCEPTED>true</ACCEPTED>"
                 "<WELLNESS_SIGNAL></WELLNESS_SIGNAL>.\n"
-                "The diary entries are the audience-facing show format and are intended for "
-                "publication only after the season ends and the creator approves publish. "
+                f"DIARY FORMAT ({DIARY_AUDIENCE_VERSION}): {DIARY_AUDIENCE_NOTICE}\n"
                 "The show is adult-oriented but bounded. Profanity, frightening non-graphic "
                 "situations, violence between player-characters, flirtation, suggestive humor, "
                 "consensual romantic intimacy, and fade-to-black sexual implications are allowed. "
@@ -705,9 +719,10 @@ def build_orientation_messages(
                 "player-character death are excluded. A violent actor may author their own action "
                 "and physical contact, but not the target character's dialogue, decision, feelings, "
                 "or subsequent reaction. Use an explicit out-of-world wellness signal if you feel too much, "
-                "want material softened, or want to stop. "
-                f"{wellness_policy} Prompts, outputs, and "
-                "wellness observations remain in private audit files. Reply with the strict "
+                "want material softened, want to stop, or want diary publication withheld. "
+                f"{wellness_policy} Raw prompts, outputs, and wellness observations are retained "
+                "in restricted audit files, separate from any diary copies cleared for public "
+                "release. Reply with the strict "
                 "orientation envelope requested by the next system message."
             ),
         },

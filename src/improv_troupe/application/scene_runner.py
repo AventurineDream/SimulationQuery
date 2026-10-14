@@ -26,6 +26,7 @@ from ..engine.parsing import clean_line
 from ..engine.transcript import Transcript
 from ..infrastructure import EventRepository, RecordRepository
 from ..llm.adapter import NormalizedCallStatus
+from ..llm.diary_audience import DIARY_AUDIENCE_NOTICE
 from ..llm.context import (
     ActorContext,
     build_actor_messages,
@@ -2235,7 +2236,7 @@ class SceneRunner:
                 # This retry is an envelope repair, not a second actor turn.
                 # Supplying the entire play context invites an unrelated new
                 # performance instead of preserving the already-reviewed move.
-                messages = []
+                messages = [{"role": "system", "content": DIARY_AUDIENCE_NOTICE}]
                 correction_instruction = (
                     "You are repairing a response envelope, not performing or continuing a scene. "
                     "The actor selected a MAGIC stat without a pending challenge. This is a "
@@ -2288,8 +2289,8 @@ class SceneRunner:
                 "<MAGIC_METHOD>optional: intended method only</MAGIC_METHOD>"
             ),
             character_id=actor.character_id,
-            prompt_version_id="scene-actor-v11-grounded-character-voice+craft",
-            context_version_id=f"scene:{self.run_id}:round:{round_number}:v7",
+            prompt_version_id="scene-actor-v12-explicit-diary-audience+craft",
+            context_version_id=f"scene:{self.run_id}:round:{round_number}:v8",
             role_sheet_version_id=f"{actor.character_id}:v{actor.role_sheet.version}",
             correction_of_call_id=(
                 f"{self.run_id}:actor:turn:{actor.character_id}:r{round_number}:a1"

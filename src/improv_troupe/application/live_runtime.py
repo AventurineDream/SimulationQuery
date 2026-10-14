@@ -11,8 +11,10 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from ..clock import Clock
 from ..config import AppConfig
+from ..domain import Season
 from ..infrastructure import DataRoots, SeasonRepository, SQLiteDatabase
 from ..llm.client import ChatClient, make_client
+from ..llm.diary_audience import DIARY_AUDIENCE_VERSION
 from .model_calls import ModelCallExecutor
 from .scene_runner import SceneActor, SceneRunner
 from .wellness import WellnessService
@@ -129,6 +131,7 @@ class LiveSceneFactory:
     sessions_per_day: int = 3
     episode_phases: tuple[str, ...] = ()
     episode_spine: Mapping[str, EpisodeSpineBeat] = field(default_factory=dict)
+    require_orientation: bool = True
     clients: dict[str, ChatClient] = field(default_factory=dict)
     seasons: SeasonRepository = field(init=False)
 
@@ -140,6 +143,8 @@ class LiveSceneFactory:
         run_id = str(payload["run_id"])
         manifest, role_sheets = self._validated_inputs(season_id)
         season = self.seasons.get(season_id)
+        if self.require_orientation:
+            self._require_accepted_orientation(season)
         narrative = self._run_narrative_context(season_id=season_id, run_id=run_id)
         assert season.opening is not None
         assert season.private_plan is not None
@@ -202,6 +207,37 @@ class LiveSceneFactory:
             forbidden_story_terms=(spine.forbidden_story_terms if spine else ()),
             world_books=tuple(season.world_books),
         )
+
+    def _require_accepted_orientation(self, season: Season) -> None:
+        """Check archived acceptance before constructing any live model clients."""
+        missing = []
+        for member in season.cast:
+            row = self.database.connection.execute(
+                "SELECT payload_json FROM domain_events WHERE natural_key = ? "
+                "AND event_type = 'OrientationAccepted'",
+                (f"{season.season_id}:orientation:{member.character_id}:accepted",),
+            ).fetchone()
+            receipt = json.loads(row["payload_json"]) if row else {}
+            call = self.database.connection.execute(
+                "SELECT status, purpose, character_id FROM model_calls WHERE call_id = ?",
+                (receipt.get("call_id"),),
+            ).fetchone()
+            if (
+                receipt.get("diary_audience_version") != DIARY_AUDIENCE_VERSION
+                or receipt.get("character_id") != member.character_id
+                or call is None
+                or call["status"] != "COMPLETED"
+                or call["character_id"] != member.character_id
+                or call["purpose"] != f"orientation:{season.season_id}:{member.character_id}"
+            ):
+                missing.append(member.character_id)
+        if missing:
+            raise LiveRuntimeConfigurationError(
+                "live scenes require recorded acceptance of the current diary-audience "
+                "briefing for every cast member; missing: " + ", ".join(sorted(missing))
+                + ". Complete orientation in the approved launch process before dispatch. "
+                "Do not backfill frozen season records."
+            )
 
     def validate_season(self, season_id: str) -> None:
         """Validate a live season's private runtime inputs without calling a model."""

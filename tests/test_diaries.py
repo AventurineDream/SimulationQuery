@@ -6,6 +6,7 @@ from improv_troupe.clock import VirtualClock
 from improv_troupe.domain import RoleSheet, Season
 from improv_troupe.infrastructure import SQLiteDatabase, SeasonRepository
 from improv_troupe.llm import ScriptedFakeClient, ScriptedStream
+from improv_troupe.llm.diary_audience import DIARY_AUDIENCE_NOTICE, DIARY_AUDIENCE_VERSION
 
 
 def _diary_response(
@@ -127,6 +128,9 @@ def test_diary_actor_chooses_a_later_slot_and_first_write_is_accepted(tmp_path):
     assert row["late"] == 0
     assert "I write what I can remember." in open(row["content_path"], encoding="utf-8").read()
     assert database.connection.execute("SELECT COUNT(*) FROM model_calls").fetchone()[0] == 2
+    # Both slot selection and the later write receive the full release conditions.
+    for call in actor.executor.client.calls:
+        assert DIARY_AUDIENCE_NOTICE in call["messages"][0]["content"]
 
     replay = asyncio.run(
         service.write_after_run(
@@ -750,7 +754,7 @@ def test_private_diary_safety_repair_preserves_attempt_and_targets_only_rejectio
     assert first.status == "PRIVATE"
     assert repaired.status == "WRITTEN"
     calls = database.connection.execute(
-        "SELECT call_id,correction_of_call_id,prompt_path,acceptance_status "
+        "SELECT call_id,correction_of_call_id,prompt_path,acceptance_status,prompt_version_id "
         "FROM model_calls ORDER BY rowid"
     ).fetchall()
     assert len(calls) == 2
@@ -758,8 +762,13 @@ def test_private_diary_safety_repair_preserves_attempt_and_targets_only_rejectio
     assert calls[1]["correction_of_call_id"] == calls[0]["call_id"]
     prompt = open(calls[1]["prompt_path"], encoding="utf-8").read()
     assert "REJECTION CODE: DIARY_SELF_HARM" in prompt
-    assert "Correct exactly one rejected private diary attempt" in prompt
+    assert "Correct exactly one rejected diary attempt held for review" in prompt
     assert "I called the plan suicide" in prompt
+    assert calls[1]["prompt_version_id"] == "diary-actor-v8-explicit-audience-surgical-correction"
+    # A correction carries the same audience briefing as its rejected ancestor.
+    for call in actor.executor.client.calls:
+        assert DIARY_AUDIENCE_NOTICE in call["messages"][0]["content"]
+        assert DIARY_AUDIENCE_VERSION in "\n".join(m["content"] for m in call["messages"])
 
 
 def test_explicit_private_diary_repair_preserves_first_attempt_and_accepts_new_entry(tmp_path):

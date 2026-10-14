@@ -241,6 +241,8 @@ async def run_one_day_rehearsal(root: str | Path) -> OneDayRehearsalReport:
         backends={"synthetic": BackendConfig(base_url="http://synthetic.invalid/v1", kind="ollama")}
     )
     factory = LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database,
         roots=roots,
         config=config,
@@ -308,6 +310,8 @@ async def run_live_one_day_rehearsal(
         _seed_live_aether_one_day(database, clock, config=config, manifest=manifest)
 
     factory = LiveSceneFactory(
+        # Technical rehearsal only; this does not establish orientation or consent.
+        require_orientation=False,
         database=database,
         roots=roots,
         config=config,
