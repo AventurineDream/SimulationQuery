@@ -17,7 +17,7 @@ dependencies = [
 
 [project.optional-dependencies]
 tui = ["textual>=0.60"]
-dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.6"]
 
 [project.scripts]
 improv = "improv_troupe.cli:main"
@@ -35,3 +35,13 @@ improv_troupe = [
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
+
+[tool.ruff]
+# Lint gate: `ruff check .` in CI, AGENTS.md, and README. Formatting is not enforced.
+target-version = "py311"
+
+[tool.ruff.lint]
+# Only pyflakes error classes (syntax errors, invalid comparisons, undefined names)
+# are selected: the tree passes them unchanged. Add F401, F841, E701, E702, and E731
+# when their existing violations are cleaned up in their own commits.
+select = ["E9", "F63", "F7", "F82"]

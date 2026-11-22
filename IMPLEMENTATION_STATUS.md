@@ -1,7 +1,7 @@
 # AI Improv Troupe — Implementation Status
 
 **Owner:** creator
-**Updated:** 2026-09-27
+**Updated:** 2026-11-21 (header only; entries below keep their dates)
 **Contract:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md)
 
 > Organization update — October 12, 2026: this is the dated software
@@ -10,6 +10,11 @@
 > and the [cleanup record](docs/maintenance/2026-10-12-project-organization.md).
 > The completed Porch evidence and the separate closure decision are indexed
 > there; the historical entries below retain their original dates.
+> Header refresh — November 21, 2026: the project is not in a closed or frozen
+> software phase, because the Season 1 closure decision is still pending. Entries
+> below are not updated for later commits. The October 12 organization change and
+> the October 14 diary-audience and orientation-gate change are in git history
+> (see [diary audience](docs/DIARY_AUDIENCE.md)). Current run status is in Drive.
 
 ## Combined review candidate: Amaranth craft + Codex runtime — 2026-09-27
 

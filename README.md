@@ -100,6 +100,7 @@ acceptance or publication.
 
 ```bash
 .venv/bin/python -m pytest -q
+.venv/bin/python -m ruff check .
 .venv/bin/python scripts/check_repository.py
 .venv/bin/python -m compileall -q src scripts tests
 git diff --check

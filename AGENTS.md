@@ -24,6 +24,7 @@ Use Python 3.11 or newer and a virtual environment created on this machine:
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[dev,tui]'
 .venv/bin/python -m pytest -q
+.venv/bin/python -m ruff check .
 .venv/bin/python scripts/check_repository.py
 .venv/bin/python -m compileall -q src scripts tests
 .venv/bin/improv validate examples/the_last_train.plan.json
